@@ -1,0 +1,52 @@
+# Entorno virtual
+env/
+venv/
+*.py[cod]
+__pycache__/
+*.so
+
+# Archivos de configuración sensibles
+**/settings.py
+
+# Base de datos SQLite
+*.sqlite3
+
+# Archivos temporales
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.bak
+.DS_Store
+Thumbs.db
+
+# Archivos de Django
+db.sqlite3
+media/
+staticfiles/
+local_settings.py
+
+# VSCode
+.vscode/
+
+# Archivos compilados de traducción
+*.mo
+
+# Archivos de dependencias si no se usan (opcional)
+Pipfile.lock
+poetry.lock
+
+# Archivos de pruebas o coverage
+.coverage
+htmlcov/
+*.cover
+coverage.xml
+
+# Archivos del sistema
+.idea/
+*.iml
+
+# Slippers
+templates/components.yaml

@@ -1,0 +1,33 @@
+<!-- blog/templates/blog/blog_detail.html -->
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<section id="news" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Blog</h2>
+            <div class="row">
+                {% for content in posts %}
+                <div class="col-md-4 animate-fadeIn">
+                    <div class="card">
+                        <img src="/media/{{ content.image }}" class="card-img-top" alt="{{ content.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ content.title }}</h5>
+                            <p class="card-text">{{ content.short }}</p>
+                            <a href="{% url 'blog_app:blog_detail' content.id %}" class="btn btn-primary-custom btn-sm">Leer más</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            {{ content.published_at|date:"Y/m/d" }}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %} 
+            </div>
+           
+        </div>
+    </section>
+{% endblock %}
+

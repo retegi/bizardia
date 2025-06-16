@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block head %}
+<style>
+#map { height: 180px; }
+</style>
+{% endblock %}
+
+
+{% block content %}
+    <!-- Hero Carousel -->
+    <section class="hero-section">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100 hero-image" alt="Restaurante Bizardia">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2 style="text-shadow:2px 2px 5px white;">1977an sortutako Gurutzeko elkartzea</h2>
+                        <p style="text-shadow:2px 2px black;">Gurutzeko Elkartea sortu zenean, ez zen orain ikusten dena. Ezagutu historia.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100 hero-image" alt="Eventos culturales">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2 style="text-shadow:2px 2px 5px white;">80 bazkide.</h2>
+                        <p style="text-shadow:2px 2px black;">Hasiera batean gurutzekoak, eta Oiartzurrek era hartzen dute parte.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1470116892389-0de5d9770b2c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100 hero-image" alt="Montañas vascas">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2 style="text-shadow:2px 2px 5px white;">Gastronomia eta kultura bizitzeaz gain</h2>
+                        <p style="text-shadow:2px 2px black;">Mendi kirolak, mahai jokoak, kirolak eta hainbat ekintza antolatzen ditugu.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title animate-fadeIn text-white" style="text-shadow:2px 2px black;">Bizardia</h1>
+            <p class="lead mb-4 animate-fadeIn delay-1 text-shadow" style="text-shadow:2px 2px black;"><b>Gurutzeko elkartea</b></p>
+            <div class="animate-fadeIn delay-2">
+                <a href="{% url 'diningroom_app:create_reservation' %}" class="btn btn-primary-custom btn-lg">{% trans 'Reserve table' %}</a>
+                <a href="#activities" class="btn btn-secondary-custom btn-lg bg-white text-dark">{% trans 'Activities' %}</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Noticias Section -->
+    <section id="news" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">{% trans 'News' %}</h2>
+            <div class="row">
+                {% for news in latest_news %}
+                <div class="col-md-4 animate-fadeIn">
+                    <div class="card">
+                        <img src="/media/{{ news.image }}" class="card-img-top" alt="Noticia 1">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ news.title }}</h5>
+                            <p class="card-text">{{ news.short }}</p>
+                            <a href="{% url 'news_app:news_detail' news.id %}" class="btn btn-primary-custom btn-sm">Leer más</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            {{ news.published_at|date:"Y/m/d H:i" }}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+               
+                
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'news_app:news_list' %}" class="btn btn-outline-secondary">{% trans 'See more' %}</a>
+            </div>
+        </div>
+    </section>
+
+
+   <!-- Noticias Section -->
+    <section id="blog" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Blog</h2>
+            <div class="row">
+            {{ news_item }}
+                {% for content in latest_post %}
+                <div class="col-md-4 animate-fadeIn">
+                    <div class="card">
+                        <img src="/media/{{ content.image }}" class="card-img-top" alt="Noticia 1">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ content.title }}</h5>
+                            <p class="card-text">{{ content.short }}</p>
+                            <a href="{% url 'blog_app:blog_detail' content.id %}" class="btn btn-primary-custom btn-sm">{% trans 'Read more' %}</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            {% trans 'Published at' %} {{ content.published_at|date:"Y/m/d" }}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+               
+                
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'blog_app:blog_list' %}" class="btn btn-outline-secondary">{% trans 'See more' %}</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Actividades Section -->
+    <section id="activities" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center section-title">{% trans 'Activities' %}</h2>
+            <div class="row">
+            
+                {% for content in latest_activity %}
+                <div class="col-lg-6 mb-4 animate-fadeIn">
+                    <div class="card">
+                        <div class="row g-0">
+                            <div class="col-md-5">
+                                <img src="/media/{{ content.image }}" class="img-fluid rounded-start" alt="Taller de cocina">
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ content.title }}</h5>
+                                    <h4 class="">{{ content.activityDateHour|date:"Y/m/d H:i" }}</h4>
+                                    <p class="card-text">{{ content.short }}</p>
+                                    
+                                    {% if content.price %}
+                                    <h5 class="card-title text-secondary">{{ content.price }}€</h5>
+                                    {% endif %}
+                                    <a href="{% url 'activity_app:activity_detail' content.id %}" class="btn btn-primary-custom btn-sm">{% trans 'Detail' %}</a><a href="#" class="btn btn-primary-custom btn-sm">{% trans 'Register' %}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'activity_app:activity_list' %}" class="btn btn-outline-secondary">{% trans 'See more' %}</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería Section -->
+    <section id="gallery" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">{% trans 'Gallery' %}</h2>
+            <div class="row">
+                {% for content in latest_images %}
+                <div class="col-md-4 col-sm-6 mb-4 animate-fadeIn">
+                    <div class="gallery-item">
+                        <img src="/media/{{ content.image }}" alt="Gastronomía vasca" class="img-fluid">
+                    </div>
+                </div>
+                {% endfor %}
+
+                 <div class="text-center mt-1">
+                <a href="#" class="btn btn-outline-secondary">{% trans 'See more' %}</a>
+            </div>
+            </div>
+            
+            <!-- Video Section -->
+            <div class="row mt-5">
+                <div class="col-12 animate-fadeIn">
+                    <h3 class="text-center mb-4">{% trans 'Videos' %}</h3>
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/-NZcgvqObB0" title="Video de Bizardia" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+             <div class="text-center mt-4">
+                <a href="#" class="btn btn-outline-secondary">{% trans 'See more' %}</a>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Historia Section -->
+    <section id="history" class="history-section py-5">
+        <div class="container">
+            <h2 class="text-center section-title">{% trans 'History' %}</h2>
+            <div class="row align-items-center">
+            {% for content in latest_history %}
+                <div class="col-lg-6 animate-fadeIn">
+                    <img src="/media/{{ content.image }}" alt="Historia de Bizardia" class="img-fluid rounded shadow w-100">
+                </div>
+                <div class="col-lg-6 animate-fadeIn delay-1">
+                    <h3>{{ content.title }}</h3>
+                    <p>{{ content.content }}</p>
+                    <a href="#" class="btn btn-primary-custom">{% trans 'Read more' %}</a>
+                </div>
+            {% endfor %}
+            </div>
+             <div class="text-center mt-4">
+                <a href="#" class="btn btn-outline-secondary">{% trans 'All articles on the history of Bizardia' %}</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contact" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center section-title">{% trans 'Contact' %}</h2>
+            <div class="row">
+                <div class="col-lg-6 animate-fadeIn">
+                    <h3>{% trans 'Contact information' %}</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Gurutze bidea 18, 20180 Oiartzun</li>
+                        <li><i class="fas fa-phone"></i> +34 943 123 456</li>
+                        <li><i class="fas fa-envelope"></i> info@bizardia.com</li>
+                        <!--<li><i class="fas fa-clock"></i> Horario: Lunes a Domingo, 10:00 - 23:00</li>-->
+                    </ul>
+                    
+                    <!--<div class="mt-4">
+                        <h4>Síguenos</h4>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>-->
+                    
+                    <div class="mt-4">
+                        <h4>{% trans 'Location' %}</h4>
+                        <div class="ratio ratio-16x9">
+                            <div id="map"></div>
+                       </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 animate-fadeIn delay-1">
+                    <h3>{% trans 'Contact form' %}</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">{% trans 'Name' %}</label>
+                            <input type="text" class="form-control" id="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="asunto" class="form-label">{% trans 'Subject' %}</label>
+                            <select class="form-select" id="asunto">
+                                <option selected>{% trans 'Select a subject' %}</option>
+                                <option>{% trans 'Reservations' %}</option>
+                                <option>{% trans 'Information' %}</option>
+                                <option>{% trans 'Events' %}</option>
+                                <option>{% trans 'Other topic' %}</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensaje" class="form-label">{% trans 'Message' %}</label>
+                            <textarea class="form-control" id="mensaje" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary-custom">{% trans 'Send message' %}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

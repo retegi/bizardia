@@ -1,0 +1,5 @@
+django-admin makemessages -l eu --ignore=env/
+django-admin makemessages -l es --ignore=env/
+django-admin makemessages -l en --ignore=env/
+
+django-admin compilemessages

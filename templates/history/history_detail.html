@@ -1,0 +1,35 @@
+<!-- blog/templates/blog/blog_detail.html -->
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block head %}
+{% endblock %}
+
+
+{% block content %}
+<div class="container py-5">
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+      <h1 class="card-title display-5 mb-3">{{ post.title }}</h1>
+      <p class="text-muted mb-4">
+        <strong>Por:</strong> {{ post.author }} |
+        <strong>Fecha:</strong> {{ post.published_at|date:"d M Y" }}
+      </p>
+
+      {% if post.image %}
+        <img src="{{ post.image.url }}" alt="Imagen del artículo"
+             class="img-fluid rounded mb-4" style="max-height: 400px; object-fit: cover;">
+      {% endif %}
+
+      <div class="card-text fs-5">
+        {{ post.content|linebreaks }}
+      </div>
+
+      <a href="{% url 'blog_app:blog_list' %}" class="btn btn-outline-success mt-4">
+        ← {% trans 'Back to history' %}
+      </a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

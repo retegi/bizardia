@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block head %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+<div class="row">
+<h1>Stock de Productos</h1>
+<table>
+  <tr>
+    <th>Producto</th><th>Categoría</th><th>Stock</th><th>Mínimo</th>
+  </tr>
+  {% for product in products %}
+    <tr>
+      <td>{{ product.name }}</td>
+      <td>{{ product.category }}</td>
+      <td>{{ product.stock_level }}</td>
+      <td>{{ product.min_stock }}</td>
+    </tr>
+  {% endfor %}
+</table>
+<a href="{% url 'warehouse:create_order' %}">Crear nuevo pedido</a>
+</div>
+</div>
+{% endblock %}

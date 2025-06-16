@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block head %}
+{% endblock %}
+
+{% block content %}
+    <div class="container py-5 bg-success text-center">
+        <h2 class="text-white">{% trans 'Reservation completed successfully' %}</h2>
+        <p class="text-white">{% trans 'Thank you! Your reservation has been submitted' %}.</p>
+    </div>
+{% endblock %}
