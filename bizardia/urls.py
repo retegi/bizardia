@@ -27,6 +27,7 @@ urlpatterns += i18n_patterns(
     path('activity/', include('applications.activity.urls')),
     path('diningroom/', include('applications.diningRoom.urls')),
     path('warehouse/', include('applications.warehouse.urls')),
+    path('partner/', include('applications.partner.urls')),
 
     path('accounts/', include('allauth.urls')),
 )
