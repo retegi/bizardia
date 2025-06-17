@@ -20,6 +20,13 @@
             <input type="date" class="form-control" id="reservaFecha" name="reservation_date" required>
         </div>
 
+        <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById("reservaFecha").setAttribute('min', today);
+    });
+</script>
+
         <!-- 1. Número de socio -->
         <div class="mb-3">
             <label for="membershipNumber" class="form-label">{% trans 'Membership number' %}</label>

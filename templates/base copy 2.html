@@ -400,7 +400,7 @@
                     <button class="btn btn-outline-light dropdown-toggle text-dark" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         {{ CURRENT_LANGUAGE|upper }}
                     </button>
-                    <ul class="dropdown-menu dropdown-menu" aria-labelledby="languageDropdown">
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
                         {% for language in languages %}
                             {% if language.code != CURRENT_LANGUAGE %}
                                 <li>

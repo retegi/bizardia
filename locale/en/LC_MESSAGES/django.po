@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-16 18:25+0200\n"
+"POT-Creation-Date: 2025-06-17 19:47+0200\n"
 "PO-Revision-Date: 2025-06-16 18:31+0200\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,44 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
+
+#: applications/diningRoom/forms.py:8 templates/diningroom/diningroom.html:173
+#: templates/diningroom/reservations copy.html:26
+#: templates/diningroom/reservations.html:33
+msgid "Breakfast"
+msgstr ""
+
+#: applications/diningRoom/forms.py:9 templates/diningroom/diningroom.html:176
+#: templates/diningroom/reservations copy.html:27
+#: templates/diningroom/reservations.html:34
+msgid "Lunch"
+msgstr ""
+
+#: applications/diningRoom/forms.py:10 templates/diningroom/diningroom copy
+#: 2.html:157 templates/diningroom/diningroom.html:179
+#: templates/diningroom/reservations copy.html:28
+#: templates/diningroom/reservations.html:35
+msgid "Midday meal"
+msgstr ""
+
+#: applications/diningRoom/forms.py:11 templates/diningroom/diningroom.html:182
+#: templates/diningroom/reservations copy.html:29
+#: templates/diningroom/reservations.html:36
+msgid "Merienda"
+msgstr ""
+
+#: applications/diningRoom/forms.py:12 templates/diningroom/diningroom copy
+#: 2.html:160 templates/diningroom/diningroom.html:185
+#: templates/diningroom/reservations copy.html:30
+#: templates/diningroom/reservations.html:37
+msgid "Dinner"
+msgstr ""
+
+#: applications/diningRoom/forms.py:13 templates/diningroom/diningroom.html:188
+#: templates/diningroom/reservations copy.html:31
+#: templates/diningroom/reservations.html:39
+msgid "Other activity"
+msgstr ""
 
 #: applications/warehouse/models.py:9 applications/warehouse/models.py:21
 #: templates/home/index.html:251
@@ -56,6 +94,20 @@ msgstr "Product"
 msgid "Products"
 msgstr "Products"
 
+#: templates/account/signup_pending.html:5
+msgid "Registro enviado"
+msgstr ""
+
+#: templates/account/signup_pending.html:6
+msgid ""
+"Gracias por registrarte. Tu cuenta será revisada y activada manualmente por "
+"un administrador"
+msgstr ""
+
+#: templates/account/signup_pending.html:7
+msgid "Recibirás un correo cuando esté lista para usarse"
+msgstr ""
+
 #: templates/activity/activity_detail.html:15
 #: templates/activity/activity_detail.html:31
 #: templates/activity/activity_list.html:21 templates/home/index.html:145
@@ -68,7 +120,7 @@ msgid "Author"
 msgstr "Author"
 
 #: templates/activity/activity_detail.html:19
-#: templates/news/news_detail.html:16
+#: templates/diningroom/reservations.html:12 templates/news/news_detail.html:16
 msgid "Date"
 msgstr "Date"
 
@@ -86,6 +138,92 @@ msgstr "Activity"
 msgid "Details"
 msgstr "Details"
 
+#: templates/base copy 2.html:353 2.html:475 templates/base.html:353
+#: templates/base.html:475 templates/home/index.html:66
+#: templates/news/news_list.html:12
+msgid "News"
+msgstr ""
+
+#: templates/base copy 2.html:356 2.html:476 templates/base.html:356
+#: templates/base.html:476 templates/diningroom/reservations copy.html:22
+#: templates/home/index.html:58 templates/home/index.html:126
+msgid "Activities"
+msgstr ""
+
+#: templates/base copy 2.html:359 2.html:477 templates/base.html:359
+#: templates/base.html:477 templates/gallery/gallery_list.html:11
+#: templates/home/index.html:163
+msgid "Gallery"
+msgstr ""
+
+#: templates/base copy 2.html:365 2.html:478 templates/base.html:365
+#: templates/base.html:478 templates/home/index.html:197
+msgid "History"
+msgstr ""
+
+#: templates/base copy 2.html:372 2.html:485 templates/base.html:372
+#: templates/base.html:485
+msgid "Legal statutes"
+msgstr ""
+
+#: templates/base copy 2.html:373 2.html:486 templates/base.html:373
+#: templates/base.html:486
+msgid "Organization chart"
+msgstr ""
+
+#: templates/base copy 2.html:374 2.html:487 templates/base.html:374
+#: templates/base.html:487
+msgid "Transparency"
+msgstr ""
+
+#: templates/base copy 2.html:380 2.html:383 templates/base.html:380
+#: templates/base.html:383
+msgid "Reserve"
+msgstr ""
+
+#: templates/base copy 2.html:384 templates/base.html:384
+msgid "See reservations"
+msgstr ""
+
+#: templates/base copy 2.html:389 2.html:479 copy.html:39
+#: templates/base.html:389 templates/base.html:479
+#: templates/home/index.html:219
+msgid "Contact"
+msgstr "Contact"
+
+#: templates/base copy 2.html:429 templates/base.html:429
+msgid "Settings"
+msgstr ""
+
+#: templates/base copy 2.html:430 templates/base.html:430
+msgid "Logout"
+msgstr ""
+
+#: templates/base copy 2.html:438 2.html:441 templates/base.html:438
+#: templates/base.html:441
+msgid "Login"
+msgstr ""
+
+#: templates/base copy 2.html:442 templates/base.html:442
+msgid "Sign up"
+msgstr ""
+
+#: templates/base copy 2.html:506 templates/base.html:506
+msgid "All rights reserved"
+msgstr ""
+
+#: templates/base copy 2.html:510 templates/base.html:510
+msgid "Privacy Policy"
+msgstr ""
+
+#: templates/base copy 2.html:511 templates/base.html:511
+msgid "Terms and conditions"
+msgstr ""
+
+#: templates/base copy 2.html:512 templates/base.html:512
+msgid "Cookies"
+msgstr ""
+
 #: templates/base copy.html:37
 msgid "Home"
 msgstr "Home"
@@ -93,11 +231,6 @@ msgstr "Home"
 #: templates/base copy.html:38
 msgid "About"
 msgstr "About"
-
-#: templates/base copy.html:39 templates/base.html:389 templates/base.html:479
-#: templates/home/index.html:219
-msgid "Contact"
-msgstr "Contact"
 
 #: templates/base copy.html:43
 msgid "Search..."
@@ -115,79 +248,6 @@ msgstr ""
 msgid "politica de cookies"
 msgstr ""
 
-#: templates/base.html:353 templates/base.html:475
-#: templates/home/index.html:66 templates/news/news_list.html:12
-msgid "News"
-msgstr ""
-
-#: templates/base.html:356 templates/base.html:476
-#: templates/diningroom/reservations.html:22 templates/home/index.html:58
-#: templates/home/index.html:126
-msgid "Activities"
-msgstr ""
-
-#: templates/base.html:359 templates/base.html:477
-#: templates/gallery/gallery_list.html:11 templates/home/index.html:163
-msgid "Gallery"
-msgstr ""
-
-#: templates/base.html:365 templates/base.html:478
-#: templates/home/index.html:197
-msgid "History"
-msgstr ""
-
-#: templates/base.html:372 templates/base.html:485
-msgid "Legal statutes"
-msgstr ""
-
-#: templates/base.html:373 templates/base.html:486
-msgid "Organization chart"
-msgstr ""
-
-#: templates/base.html:374 templates/base.html:487
-msgid "Transparency"
-msgstr ""
-
-#: templates/base.html:380 templates/base.html:383
-msgid "Reserve"
-msgstr ""
-
-#: templates/base.html:384
-msgid "See reservations"
-msgstr ""
-
-#: templates/base.html:429
-msgid "Settings"
-msgstr ""
-
-#: templates/base.html:430
-msgid "Logout"
-msgstr ""
-
-#: templates/base.html:438 templates/base.html:441
-msgid "Login"
-msgstr ""
-
-#: templates/base.html:442
-msgid "Sign up"
-msgstr ""
-
-#: templates/base.html:506
-msgid "All rights reserved"
-msgstr ""
-
-#: templates/base.html:510
-msgid "Privacy Policy"
-msgstr ""
-
-#: templates/base.html:511
-msgid "Terms and conditions"
-msgstr ""
-
-#: templates/base.html:512
-msgid "Cookies"
-msgstr ""
-
 #: templates/blog/blog_detail.html:29
 msgid "Back to blog"
 msgstr ""
@@ -198,32 +258,32 @@ msgid "Reserve table"
 msgstr ""
 
 #: templates/diningroom/diningroom copy 2.html:19
-#: templates/diningroom/diningroom.html:19
-#: templates/diningroom/reservations.html:49
+#: templates/diningroom/diningroom.html:19 templates/diningroom/reservations
+#: copy.html:49
 msgid "Reservation date"
 msgstr ""
 
 #: templates/diningroom/diningroom copy 2.html:25
-#: templates/diningroom/diningroom.html:25
-#: templates/diningroom/reservations.html:18
+#: templates/diningroom/diningroom.html:32 templates/diningroom/reservations
+#: copy.html:18 templates/diningroom/reservations.html:22
 msgid "Membership number"
 msgstr ""
 
 #: templates/diningroom/diningroom copy 2.html:31
-#: templates/diningroom/diningroom.html:31
-#: templates/diningroom/reservations.html:19
+#: templates/diningroom/diningroom.html:38 templates/diningroom/reservations
+#: copy.html:19
 msgid "Number of diners"
 msgstr ""
 
 #: templates/diningroom/diningroom copy 2.html:124
-#: templates/diningroom/diningroom.html:125
-#: templates/diningroom/reservations.html:44
+#: templates/diningroom/diningroom.html:132 templates/diningroom/reservations
+#: copy.html:44 templates/diningroom/reservations.html:57
 msgid "Urkabe room"
 msgstr ""
 
 #: templates/diningroom/diningroom copy 2.html:125
-#: templates/diningroom/diningroom.html:127
-#: templates/diningroom/reservations.html:45
+#: templates/diningroom/diningroom.html:134 templates/diningroom/reservations
+#: copy.html:45
 msgid "Goiko room"
 msgstr ""
 
@@ -231,98 +291,60 @@ msgstr ""
 msgid "Select your options"
 msgstr ""
 
-#: templates/diningroom/diningroom copy 2.html:157
-#: templates/diningroom/diningroom.html:172
-#: templates/diningroom/reservations.html:28
-msgid "Midday meal"
-msgstr ""
-
-#: templates/diningroom/diningroom copy 2.html:160
-#: templates/diningroom/diningroom.html:178
-#: templates/diningroom/reservations.html:30
-msgid "Dinner"
-msgstr ""
-
 #: templates/diningroom/diningroom copy 2.html:163
-#: templates/diningroom/reservations.html:42
+#: templates/diningroom/reservations copy.html:42
 msgid "Birthday"
 msgstr ""
 
 #: templates/diningroom/diningroom copy 2.html:169
-#: templates/diningroom/diningroom.html:223
+#: templates/diningroom/diningroom.html:230
 msgid "How many fires?"
 msgstr ""
 
 #: templates/diningroom/diningroom copy 2.html:180
-#: templates/diningroom/diningroom.html:234
+#: templates/diningroom/diningroom.html:241
 msgid "How many ovens?"
 msgstr ""
 
 #: templates/diningroom/diningroom copy 2.html:191
-#: templates/diningroom/diningroom.html:245
+#: templates/diningroom/diningroom.html:252
 msgid "Barbecue?"
 msgstr ""
 
 #: templates/diningroom/diningroom copy 2.html:200
-#: templates/diningroom/diningroom.html:254
+#: templates/diningroom/diningroom.html:261
 msgid "Submit reservation"
 msgstr ""
 
-#: templates/diningroom/diningroom.html:111
+#: templates/diningroom/diningroom.html:118
 msgid "Select your tables and rooms"
 msgstr ""
 
-#: templates/diningroom/diningroom.html:163
+#: templates/diningroom/diningroom.html:170
 msgid "Select your activities"
 msgstr ""
 
-#: templates/diningroom/diningroom.html:166
-#: templates/diningroom/reservations.html:26
-msgid "Breakfast"
-msgstr ""
-
-#: templates/diningroom/diningroom.html:169
-#: templates/diningroom/reservations.html:27
-msgid "Lunch"
-msgstr ""
-
-#: templates/diningroom/diningroom.html:175
-#: templates/diningroom/reservations.html:29
-msgid "Merienda"
-msgstr ""
-
-#: templates/diningroom/diningroom.html:181
-#: templates/diningroom/reservations.html:31
-msgid "Other activity"
-msgstr ""
-
-#: templates/diningroom/diningroom.html:187
+#: templates/diningroom/diningroom.html:194
 msgid "Please specify the activity"
 msgstr ""
 
-#: templates/diningroom/diningroom.html:188
+#: templates/diningroom/diningroom.html:195
 msgid "e.g. Board game night, Workshop, Meeting..."
 msgstr ""
 
-#: templates/diningroom/diningroom.html:211
+#: templates/diningroom/diningroom.html:218
 msgid "Is it a birthday celebration?"
 msgstr ""
 
-#: templates/diningroom/diningroom.html:214
-#: templates/diningroom/diningroom.html:248
-#: templates/diningroom/reservations.html:42
-#: templates/diningroom/reservations.html:44
-#: templates/diningroom/reservations.html:45
-#: templates/diningroom/reservations.html:48
+#: templates/diningroom/diningroom.html:221
+#: templates/diningroom/diningroom.html:255 templates/diningroom/reservations
+#: copy.html:42 copy.html:44 copy.html:45 copy.html:48
 msgid "No"
 msgstr ""
 
-#: templates/diningroom/diningroom.html:217
-#: templates/diningroom/diningroom.html:250
-#: templates/diningroom/reservations.html:42
-#: templates/diningroom/reservations.html:44
-#: templates/diningroom/reservations.html:45
-#: templates/diningroom/reservations.html:48
+#: templates/diningroom/diningroom.html:224
+#: templates/diningroom/diningroom.html:257 templates/diningroom/reservations
+#: copy.html:42 copy.html:44 copy.html:45 copy.html:48
 msgid "Yes"
 msgstr ""
 
@@ -334,32 +356,55 @@ msgstr ""
 msgid "Thank you! Your reservation has been submitted"
 msgstr ""
 
+#: templates/diningroom/reservations copy.html:6
 #: templates/diningroom/reservations.html:6
 msgid "All Reservations"
 msgstr ""
 
-#: templates/diningroom/reservations.html:38
+#: templates/diningroom/reservations copy.html:38
 msgid "Other activity details"
 msgstr ""
 
-#: templates/diningroom/reservations.html:43
+#: templates/diningroom/reservations copy.html:43
 msgid "Selected tables"
 msgstr ""
 
-#: templates/diningroom/reservations.html:46
+#: templates/diningroom/reservations copy.html:46
+#: templates/diningroom/reservations.html:20
 msgid "Fires"
 msgstr ""
 
-#: templates/diningroom/reservations.html:47
+#: templates/diningroom/reservations copy.html:47
+#: templates/diningroom/reservations.html:21
 msgid "Ovens"
 msgstr ""
 
-#: templates/diningroom/reservations.html:48
+#: templates/diningroom/reservations copy.html:48
+#: templates/diningroom/reservations.html:19
 msgid "Barbecue"
 msgstr ""
 
-#: templates/diningroom/reservations.html:53
+#: templates/diningroom/reservations copy.html:53
+#: templates/diningroom/reservations.html:64
 msgid "No reservations"
+msgstr ""
+
+#: templates/diningroom/reservations.html:13
+msgid "Day moment"
+msgstr ""
+
+#: templates/diningroom/reservations.html:15
+msgid "Table"
+msgstr ""
+
+#: templates/diningroom/reservations.html:44
+#, fuzzy
+#| msgid "Activity"
+msgid "No activity"
+msgstr "Activity"
+
+#: templates/diningroom/reservations.html:56
+msgid "Goikoa room"
 msgstr ""
 
 #: templates/history/history_detail.html:29

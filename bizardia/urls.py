@@ -3,6 +3,9 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
+from applications.partner.views import SignupPendingView
+
+
 
 # Elimina esta redirección forzada:
 # path('', lambda request: HttpResponseRedirect(f'/{settings.LANGUAGE_CODE.split("-")[0]}/')),
@@ -27,7 +30,7 @@ urlpatterns += i18n_patterns(
     path('activity/', include('applications.activity.urls')),
     path('diningroom/', include('applications.diningRoom.urls')),
     path('warehouse/', include('applications.warehouse.urls')),
-    path('partner/', include('applications.partner.urls')),
+    path('registro/pending/', SignupPendingView.as_view(), name='signup_pending'),
 
     path('accounts/', include('allauth.urls')),
 )

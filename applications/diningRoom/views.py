@@ -5,8 +5,13 @@ from .models import Reservation
 from collections import defaultdict
 from datetime import date
 from django.views.generic import TemplateView
-
+from collections import defaultdict
+from django.utils.timezone import localtime
 from .forms import ReservationForm
+from collections import defaultdict
+from django.utils import timezone
+from django.db.models import Q
+
 
 class ReservationCreateView(LoginRequiredMixin, CreateView):
     model = Reservation
@@ -26,7 +31,7 @@ class ReservationCreateView(LoginRequiredMixin, CreateView):
         return super().form_invalid(form)
 
 
-class ReservationListView(TemplateView):
+"""class ReservationListView(TemplateView):
     template_name = 'diningroom/reservations.html'
 
     def get_context_data(self, **kwargs):
@@ -37,5 +42,20 @@ class ReservationListView(TemplateView):
             grouped[r.reservation_date].append(r)
 
         context['grouped_reservations'] = dict(grouped)
-        return context
+        return context"""
 
+
+
+
+
+class ReservationListView(TemplateView):
+    template_name = 'diningroom/reservations.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        today = timezone.now().date()
+        reservations = Reservation.objects.filter(
+            reservation_date__date__gte=today
+        ).order_by('-reservation_date')
+        context['reservations'] = reservations
+        return context

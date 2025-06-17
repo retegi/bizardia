@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">{% trans "All Reservations" %}</h1>
+
+    <div class="row">
+        {% for date, reservations in grouped_reservations.items %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-bizardia text-white text-center">
+                    <strong>{{ date }}</strong>
+                </div>
+                <div class="card-body">
+                    {% for reservation in reservations %}
+                    <div class="border rounded p-3 mb-3">
+                        <p><strong>{% trans "Membership number" %}:</strong> {{ reservation.membership_number }}</p>
+                        <p><strong>{% trans "Number of diners" %}:</strong> {{ reservation.num_diners }}</p>
+
+                        {% if reservation.activities %}
+                        <p><strong>{% trans "Activities" %}:</strong></p>
+                        <ul class="mb-2">
+                            {% for activity in reservation.activities %}
+                                <li>
+                                    {% if activity == "breakfast" %}☕ {% trans "Breakfast" %}
+                                    {% elif activity == "lunch" %}🍴 {% trans "Lunch" %}
+                                    {% elif activity == "midday" %}🍽 {% trans "Midday meal" %}
+                                    {% elif activity == "merienda" %}🍪 {% trans "Merienda" %}
+                                    {% elif activity == "dinner" %}🌙 {% trans "Dinner" %}
+                                    {% elif activity == "other" %}🎉 {% trans "Other activity" %}
+                                    {% else %}{{ activity }}
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        {% if "other" in reservation.activities and reservation.custom_activity %}
+                            <p><strong>{% trans "Other activity details" %}:</strong> {{ reservation.custom_activity }}</p>
+                        {% endif %}
+                        {% endif %}
+
+                        <p><strong>{% trans "Birthday" %}:</strong> {% if reservation.is_birthday %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</p>
+                        <p><strong>{% trans "Selected tables" %}:</strong> {{ reservation.selected_tables|join:", " }}</p>
+                        <p><strong>{% trans "Urkabe room" %}:</strong> {% if reservation.room_urkabe %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</p>
+                        <p><strong>{% trans "Goiko room" %}:</strong> {% if reservation.room_goiko %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</p>
+                        <p><strong>{% trans "Fires" %}:</strong> {{ reservation.fires }}</p>
+                        <p><strong>{% trans "Ovens" %}:</strong> {{ reservation.ovens }}</p>
+                        <p><strong>{% trans "Barbecue" %}:</strong> {% if reservation.barbacue %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</p>
+                        <p><strong>{% trans "Reservation date" %}:</strong> {{ reservation.reservation_date|date:"Y/m/d H:i" }}</p>
+
+                    </div>
+                    {% empty %}
+                    <p class="text-muted text-center">{% trans "No reservations" %}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

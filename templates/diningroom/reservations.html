@@ -5,58 +5,69 @@
 <div class="container mt-5">
     <h1 class="text-center mb-4">{% trans "All Reservations" %}</h1>
 
-    <div class="row">
-        {% for date, reservations in grouped_reservations.items %}
-        <div class="col-md-4 mb-4">
-            <div class="card shadow-sm">
-                <div class="card-header bg-bizardia text-white text-center">
-                    <strong>{{ date }}</strong>
-                </div>
-                <div class="card-body">
-                    {% for reservation in reservations %}
-                    <div class="border rounded p-3 mb-3">
-                        <p><strong>{% trans "Membership number" %}:</strong> {{ reservation.membership_number }}</p>
-                        <p><strong>{% trans "Number of diners" %}:</strong> {{ reservation.num_diners }}</p>
-
-                        {% if reservation.activities %}
-                        <p><strong>{% trans "Activities" %}:</strong></p>
-                        <ul class="mb-2">
-                            {% for activity in reservation.activities %}
-                                <li>
-                                    {% if activity == "breakfast" %}☕ {% trans "Breakfast" %}
-                                    {% elif activity == "lunch" %}🍴 {% trans "Lunch" %}
-                                    {% elif activity == "midday" %}🍽 {% trans "Midday meal" %}
-                                    {% elif activity == "merienda" %}🍪 {% trans "Merienda" %}
-                                    {% elif activity == "dinner" %}🌙 {% trans "Dinner" %}
-                                    {% elif activity == "other" %}🎉 {% trans "Other activity" %}
-                                    {% else %}{{ activity }}
-                                    {% endif %}
-                                </li>
-                            {% endfor %}
-                        </ul>
-                        {% if "other" in reservation.activities and reservation.custom_activity %}
-                            <p><strong>{% trans "Other activity details" %}:</strong> {{ reservation.custom_activity }}</p>
-                        {% endif %}
-                        {% endif %}
-
-                        <p><strong>{% trans "Birthday" %}:</strong> {% if reservation.is_birthday %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</p>
-                        <p><strong>{% trans "Selected tables" %}:</strong> {{ reservation.selected_tables|join:", " }}</p>
-                        <p><strong>{% trans "Urkabe room" %}:</strong> {% if reservation.room_urkabe %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</p>
-                        <p><strong>{% trans "Goiko room" %}:</strong> {% if reservation.room_goiko %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</p>
-                        <p><strong>{% trans "Fires" %}:</strong> {{ reservation.fires }}</p>
-                        <p><strong>{% trans "Ovens" %}:</strong> {{ reservation.ovens }}</p>
-                        <p><strong>{% trans "Barbecue" %}:</strong> {% if reservation.barbacue %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</p>
-                        <p><strong>{% trans "Reservation date" %}:</strong> {{ reservation.reservation_date|date:"Y/m/d H:i" }}</p>
-
-                    </div>
-                    {% empty %}
-                    <p class="text-muted text-center">{% trans "No reservations" %}</p>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle text-center">
+            <thead class="table-secondary">
+                <tr>
+                    <th>{% trans "Date" %}</th>
+                    <th>{% trans "Day moment" %}</th>
+                    {% for i in "12345678" %}
+                        <th class="">{% trans "Table" %} {{ i }}</th>
                     {% endfor %}
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+                    <th>Goikoa</th>
+                    <th>Urkabe</th>
+                    <th>{% trans "Barbecue" %}</th>
+                    <th>{% trans 'Fires' %}</th>
+                    <th>{% trans 'Ovens' %}</th>
+                    <th>{% trans "Membership number" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.reservation_date|date:"Y/m/d" }}</td>
+                    <td>
+                        {% if reservation.activities %}
+                            {% for activity in reservation.activities %}
+                                <span class="badge bg-light border text-dark me-1">
+                                    {% if activity == "breakfast" %}{% trans "Breakfast" %}
+                                    {% elif activity == "lunch" %}{% trans "Lunch" %}
+                                    {% elif activity == "midday" %}{% trans "Midday meal" %}
+                                    {% elif activity == "merienda" %}{% trans "Merienda" %}
+                                    {% elif activity == "dinner" %}{% trans "Dinner" %}
+                                    {% elif activity == "other" %}
+                                        {% trans "Other activity" %}{% if reservation.custom_activity %}: {{ reservation.custom_activity }}{% endif %}
+                                    {% else %}{{ activity }}{% endif %}
+                                </span>
+                            {% endfor %}
+                        {% else %}
+                            <span class="text-muted">{% trans "No activity" %}</span>
+                        {% endif %}
+                    </td>
+
+
+
+                    {% for i in "12345678" %}
+                        <td class="{% if i in reservation.selected_tables %}text-white{% endif %}" style="{% if i in reservation.selected_tables %}background-color:#6b8e23;{% endif %}">
+                            {% if i in reservation.selected_tables %}{{ i }}{% endif %}
+                        </td>
+                    {% endfor %}
+
+                    <td class="{% if reservation.room_goiko %}text-white{% endif %}" style="{% if reservation.room_goiko %}background-color:#6b8e23;{% endif %}">{% if reservation.room_goiko %}{% trans "Goikoa room" %}{% endif %}</td>
+                    <td class="{% if reservation.room_urkabe %}text-white{% endif %}"style="{% if reservation.room_urkabe %}background-color:#6b8e23;{% endif %}">{% if reservation.room_urkabe %}{% trans "Urkabe room" %}{% endif %}</td>
+                    <td class="{% if reservation.barbacue %}text-white{% endif %}"style="{% if reservation.barbacue %}background-color:#6b8e23;{% endif %}">{% if reservation.barbacue %}✓{% endif %}</td>
+                    <td class="{% if reservation.fires %}text-white{% endif %}"style="{% if reservation.fires %}background-color:#6b8e23;{% endif %}">{{ reservation.fires }}</td>
+                    <td class="{% if reservation.ovens %}text-white{% endif %}"style="{% if reservation.ovens %}background-color:#6b8e23;{% endif %}">{{ reservation.ovens }}</td>
+                    <td>{{ reservation.membership_number }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="14" class="text-muted">{% trans "No reservations" %}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
+
+
 
 {% endblock %}
