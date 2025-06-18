@@ -20,13 +20,8 @@
       </p>
      
 
-      {% if post.image %}
-        <img src="{{ post.image.url }}" alt="Imagen del artículo"
-             class="img-fluid rounded mb-4" style="max-height: 400px; object-fit: cover;">
-      {% endif %}
-
       <div class="card-text fs-5">
-        {{ post.content|linebreaks }}
+        {{ post.content|safe }}
       </div>
       <a href="#" class="btn btn-primary-custom btn-sm">{% trans 'Register' %}</a><br>
 

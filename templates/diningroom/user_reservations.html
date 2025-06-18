@@ -23,6 +23,7 @@
                     <th>{% trans 'Fires' %}</th>
                     <th>{% trans 'Ovens' %}</th>
                     <th>{% trans "Membership number" %}</th>
+                     <th>{% trans "Options" %}</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,6 +63,7 @@
                     <td class="{% if reservation.fires %}text-white{% endif %}"style="{% if reservation.fires %}background-color:#6b8e23;{% endif %}">{{ reservation.fires }}</td>
                     <td class="{% if reservation.ovens %}text-white{% endif %}"style="{% if reservation.ovens %}background-color:#6b8e23;{% endif %}">{{ reservation.ovens }}</td>
                     <td>{{ reservation.membership_number }}</td>
+                    <td><a href="{% url 'diningroom_app:delete' reservation.id %}"><button class="btn btn-sm bg-secondary text-white">{% trans 'Delete' %}</button></td>
                 </tr>
                 {% empty %}
                 <tr><td colspan="14" class="text-muted">{% trans "No reservations" %}</td></tr>

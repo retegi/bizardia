@@ -68,10 +68,10 @@
                 {% for news in latest_news %}
                 <div class="col-md-4 animate-fadeIn">
                     <div class="card">
-                        <img src="/media/{{ news.image }}" class="card-img-top" alt="Noticia 1">
+                        <a href="{% url 'news_app:news_detail' news.id %}"><img src="/media/{{ news.image }}" class="card-img-top" alt="Noticia 1"></a>
                         <div class="card-body">
                             <h5 class="card-title">{{ news.title }}</h5>
-                            <p class="card-text">{{ news.short }}</p>
+                            <p class="card-text">{{ news.short|safe }}</p>
                             <a href="{% url 'news_app:news_detail' news.id %}" class="btn btn-primary-custom btn-sm">Leer más</a>
                         </div>
                         <div class="card-footer text-muted">
@@ -99,10 +99,10 @@
                 {% for content in latest_post %}
                 <div class="col-md-4 animate-fadeIn">
                     <div class="card">
-                        <img src="/media/{{ content.image }}" class="card-img-top" alt="Noticia 1">
+                        <a href="{% url 'blog_app:blog_detail' content.id %}"><img src="/media/{{ content.image }}" class="card-img-top" alt="Noticia 1"></a>
                         <div class="card-body">
                             <h5 class="card-title">{{ content.title }}</h5>
-                            <p class="card-text">{{ content.short }}</p>
+                            <p class="card-text">{{ content.short|safe }}</p>
                             <a href="{% url 'blog_app:blog_detail' content.id %}" class="btn btn-primary-custom btn-sm">{% trans 'Read more' %}</a>
                         </div>
                         <div class="card-footer text-muted">
@@ -131,7 +131,7 @@
                     <div class="card">
                         <div class="row g-0">
                             <div class="col-md-5">
-                                <img src="/media/{{ content.image }}" class="img-fluid rounded-start" alt="Taller de cocina">
+                                <a href="{% url 'activity_app:activity_detail' content.id %}"><img src="/media/{{ content.image }}" class="img-fluid rounded-start" alt="Taller de cocina"></a>
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
@@ -198,7 +198,7 @@
             <div class="row align-items-center">
             {% for content in latest_history %}
                 <div class="col-lg-6 animate-fadeIn">
-                    <img src="/media/{{ content.image }}" alt="Historia de Bizardia" class="img-fluid rounded shadow w-100">
+                    <a href=""><img src="/media/{{ content.image }}" alt="Historia de Bizardia" class="img-fluid rounded shadow w-100"></a>
                 </div>
                 <div class="col-lg-6 animate-fadeIn delay-1">
                     <h3>{{ content.title }}</h3>

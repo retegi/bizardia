@@ -16,13 +16,8 @@
         <strong>{% trans 'Date' %}:</strong> {{ news.published_at|date:"d M Y" }}
       </p>
 
-      {% if news.image %}
-        <img src="{{ news.image.url }}" alt="Imagen del artículo"
-             class="img-fluid rounded mb-4" style="max-height: 400px; object-fit: cover;">
-      {% endif %}
-
       <div class="card-text fs-5">
-        {{ news.content|linebreaks }}
+        {{ news.content|safe }}
       </div>
 
       <a href="{% url 'news_app:news_list' %}" class="btn btn-outline-success mt-4">
