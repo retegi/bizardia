@@ -50,3 +50,4 @@ coverage.xml
 
 # Slippers
 templates/components.yaml
+locale/
