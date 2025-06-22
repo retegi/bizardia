@@ -5,9 +5,14 @@ from applications.blog.models import Post
 from applications.activity.models import Activity
 from applications.history.models import History
 from applications.home.models import Gallery
+from django.conf import settings
+
 
 class HomePageView(TemplateView):
-    template_name = 'home/index.html'
+    if settings.PUBLIC:
+        template_name = 'home/index.html'
+    else:
+        template_name = 'home/contruction.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

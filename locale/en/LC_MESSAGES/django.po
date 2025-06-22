@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-18 19:00+0200\n"
+"POT-Creation-Date: 2025-06-19 19:39+0200\n"
 "PO-Revision-Date: 2025-06-16 18:31+0200\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -147,40 +147,40 @@ msgid "Details"
 msgstr "Details"
 
 #: templates/base copy 2.html:353 2.html:475 templates/base.html:353
-#: templates/base.html:476 templates/home/index.html:66
+#: templates/base.html:490 templates/home/index.html:66
 #: templates/news/news_list.html:12
 msgid "News"
 msgstr ""
 
 #: templates/base copy 2.html:356 2.html:476 templates/base.html:356
-#: templates/base.html:477 templates/diningroom/reservations copy.html:22
+#: templates/base.html:491 templates/diningroom/reservations copy.html:22
 #: templates/home/index.html:58 templates/home/index.html:126
 msgid "Activities"
 msgstr ""
 
 #: templates/base copy 2.html:359 2.html:477 templates/base.html:359
-#: templates/base.html:478 templates/gallery/gallery_list.html:11
+#: templates/base.html:492 templates/gallery/gallery_list.html:11
 #: templates/home/index.html:163
 msgid "Gallery"
 msgstr ""
 
 #: templates/base copy 2.html:365 2.html:478 templates/base.html:365
-#: templates/base.html:479 templates/home/index.html:197
+#: templates/base.html:493 templates/home/index.html:197
 msgid "History"
 msgstr ""
 
 #: templates/base copy 2.html:372 2.html:485 templates/base.html:372
-#: templates/base.html:486
+#: templates/base.html:500
 msgid "Legal statutes"
 msgstr ""
 
 #: templates/base copy 2.html:373 2.html:486 templates/base.html:373
-#: templates/base.html:487
+#: templates/base.html:501
 msgid "Organization chart"
 msgstr ""
 
 #: templates/base copy 2.html:374 2.html:487 templates/base.html:374
-#: templates/base.html:488
+#: templates/base.html:502
 msgid "Transparency"
 msgstr ""
 
@@ -194,41 +194,41 @@ msgid "See reservations"
 msgstr ""
 
 #: templates/base copy 2.html:389 2.html:479 copy.html:39
-#: templates/base.html:390 templates/base.html:480
+#: templates/base.html:404 templates/base.html:494
 #: templates/home/index.html:219
 msgid "Contact"
 msgstr "Contact"
 
-#: templates/base copy 2.html:429 templates/base.html:430
+#: templates/base copy 2.html:429 templates/base.html:444
 msgid "Settings"
 msgstr ""
 
-#: templates/base copy 2.html:430 templates/base.html:431
+#: templates/base copy 2.html:430 templates/base.html:445
 msgid "Logout"
 msgstr ""
 
-#: templates/base copy 2.html:438 2.html:441 templates/base.html:439
-#: templates/base.html:442
+#: templates/base copy 2.html:438 2.html:441 templates/base.html:453
+#: templates/base.html:456
 msgid "Login"
 msgstr ""
 
-#: templates/base copy 2.html:442 templates/base.html:443
+#: templates/base copy 2.html:442 templates/base.html:457
 msgid "Sign up"
 msgstr ""
 
-#: templates/base copy 2.html:506 templates/base.html:507
+#: templates/base copy 2.html:506 templates/base.html:521
 msgid "All rights reserved"
 msgstr ""
 
-#: templates/base copy 2.html:510 templates/base.html:511
+#: templates/base copy 2.html:510 templates/base.html:525
 msgid "Privacy Policy"
 msgstr ""
 
-#: templates/base copy 2.html:511 templates/base.html:512
+#: templates/base copy 2.html:511 templates/base.html:526
 msgid "Terms and conditions"
 msgstr ""
 
-#: templates/base copy 2.html:512 templates/base.html:513
+#: templates/base copy 2.html:512 templates/base.html:527
 msgid "Cookies"
 msgstr ""
 
@@ -259,6 +259,32 @@ msgstr ""
 #: templates/base.html:385
 msgid "My reservations"
 msgstr ""
+
+#: templates/base.html:391
+msgid "ERP"
+msgstr ""
+
+#: templates/base.html:394
+msgid "Create order"
+msgstr ""
+
+#: templates/base.html:395
+msgid "All orders"
+msgstr ""
+
+#: templates/base.html:396
+msgid "All order slips"
+msgstr ""
+
+#: templates/base.html:397
+msgid "All invoices"
+msgstr ""
+
+#: templates/base.html:399
+#, fuzzy
+#| msgid "Stock level"
+msgid "Stock"
+msgstr "Stock level"
 
 #: templates/blog/blog_detail.html:26
 msgid "Back to blog"
@@ -532,21 +558,4 @@ msgstr ""
 
 #: templates/news/news_detail.html:24
 msgid "Back to news"
-msgstr ""
-
-#: templates/warehouse/create_order.html:7
-#: templates/warehouse/create_order.html:14
-msgid "Crear Pedido al Almacén"
-msgstr ""
-
-#: templates/warehouse/create_order.html:24
-msgid "Productos solicitados"
-msgstr ""
-
-#: templates/warehouse/create_order.html:51
-msgid "Añadir producto"
-msgstr ""
-
-#: templates/warehouse/create_order.html:56
-msgid "Guardar Pedido"
 msgstr ""
