@@ -6,12 +6,13 @@ from .forms import HistoryForm
 
 
 def history_list(request):
-    posts = History.objects.order_by('-fecha_creacion')
-    return render(request, 'history/history_list.html', {'posts': posts})
+    content = History.objects.order_by('published_at')
+    print(content)
+    return render(request, 'history/history_list.html', {'content': content})
 
-def history_detail(request, slug):
-    post = get_object_or_404(History, slug=slug)
-    return render(request, 'history/history_detail.html', {'post': post})
+def history_detail(request, pk):
+    content = get_object_or_404(History, pk=pk)
+    return render(request, 'history/history_detail.html', {'content': content})
 
 def history_create(request):
     if request.method == 'POST':

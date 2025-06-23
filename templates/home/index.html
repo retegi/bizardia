@@ -176,7 +176,7 @@
             </div>
             
             <!-- Video Section -->
-            <div class="row mt-5">
+            <!--<div class="row mt-5">
                 <div class="col-12 animate-fadeIn">
                     <h3 class="text-center mb-4">{% trans 'Videos' %}</h3>
                     <div class="ratio ratio-16x9">
@@ -186,7 +186,7 @@
             </div>
              <div class="text-center mt-4">
                 <a href="#" class="btn btn-outline-secondary">{% trans 'See more' %}</a>
-            </div>
+            </div>-->
             
         </div>
     </section>
@@ -203,12 +203,12 @@
                 <div class="col-lg-6 animate-fadeIn delay-1">
                     <h3>{{ content.title }}</h3>
                     <p>{{ content.content }}</p>
-                    <a href="#" class="btn btn-primary-custom">{% trans 'Read more' %}</a>
+                    <a href="{% url 'history_app:history_detail' content.pk %}" class="btn btn-primary-custom">{% trans 'Read more' %}</a>
                 </div>
             {% endfor %}
             </div>
              <div class="text-center mt-4">
-                <a href="#" class="btn btn-outline-secondary">{% trans 'All articles on the history of Bizardia' %}</a>
+                <a href="{% url 'history_app:history_list' %}" class="btn btn-outline-secondary">{% trans 'All articles on the history of Bizardia' %}</a>
             </div>
         </div>
     </section>

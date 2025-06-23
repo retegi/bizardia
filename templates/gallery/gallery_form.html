@@ -8,11 +8,11 @@
 
 
 {% block content %}
-<h2>Crear nuevo post</h2>
+<h2>{% trans 'Add photo' %}</h2>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Publicar</button>
+    <button type="submit">{% trans 'Publish' %}</button>
 </form>
-<a href="{% url 'blog_app:blog_list' %}">← Volver</a>
+<a href="{% url 'blog_app:blog_list' %}">← {% trans 'Return' %}</a>
 {% endblock %}

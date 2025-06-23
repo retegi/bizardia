@@ -10,15 +10,15 @@
         <div class="container">
             <h2 class="text-center section-title">{% trans 'Gallery' %}</h2>
             <div class="row">
-                {% for content in activity %}
+                {% for content in content %}
                 <div class="col-md-4 animate-fadeIn">
                     <div class="card">
                         <img src="/media/{{ content.image }}" class="card-img-top" alt="{{ content.title }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ content.title }}</h5>
-                            <p class="card-text">{{ content.short }}</p>
-                            <a href="{% url 'activity_app:activity_detail' content.id %}" class="btn btn-primary-custom btn-sm">{% trans 'Details' %}</a>
-                            <a href="#" class="btn btn-primary-custom btn-sm">Inscribirse</a>
+                            <p class="card-text">{{ content.short|safe }}</p>
+                            <a href="{% url 'gallery_app:gallery_detail' content.id %}" class="btn btn-primary-custom btn-sm">{% trans 'Details' %}</a>
+                            
                         </div>
                         <div class="card-footer text-muted">
                             <b>{{ content.activityDateHour|date:"Y/m/d H:i" }}</b>

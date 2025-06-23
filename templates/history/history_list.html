@@ -7,15 +7,54 @@
 
 
 {% block content %}<!-- blog/templates/blog/blog_list.html -->
-<h1>Historia</h1>
-<a href="{% url 'blog_app:blog_create' %}">Nuevo post</a>
-<ul>
-    {% for post in posts %}
-        <li>
-            <a href="{% url 'blog_app:blog_detail' post.slug %}">{{ post.titulo }}</a> - {{ post.fecha_creacion|date:"d M Y" }}
-        </li>
+
+
+<div class="container" style="min-height:80vh;">
+<div class="row">
+
+<h1 class="text-center p-5">{% trans 'History' %}</h1>
+<div class="w-100 text-end">
+
+<a href="{% url 'blog_app:blog_create' %}"><button class="btn btn-sm bg-white">{% trans 'Add historical event' %}</button></a>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">{% trans 'Date' %}</th>
+      <th scope="col">{% trans 'Event' %}</th>
+      <th scope="col">{% trans 'Image' %}</th>
+
+      
+     
+    </tr>
+  </thead>
+  <tbody>
+    {% for content in content %}
+    <tr>
+      <th scope="row" class="bg-dark text-white w-25">{{ content.published_at|date:"d M Y" }}</th>
+      
+      <td><b>{{ content.title }}</b><br>{{ content.short|safe }}<br>
+      <div class="w-100 text-end">
+        <a href="{% url 'history_app:history_detail' content.id %}"><button class="btn btn-sm bg-bizardia w-25 text-white">{% trans 'Read' %}</button></a>
+      </div>
+      </td>
+      <td class="">
+        <img class="w-100" src="/media/{{ content.image }}">
+      </td>
+     
+    </tr>
     {% empty %}
-        <li>No hay entradas aún.</li>
+    <tr>
+      <th scope="row">0</th>
+      <td>{% trans 'There are no events' %}</td>
+     
+    </tr>
     {% endfor %}
-</ul>
+    
+  </tbody>
+</table>
+
+</div>
+</div>
 {% endblock %}

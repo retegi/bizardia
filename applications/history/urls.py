@@ -9,6 +9,6 @@ urlpatterns = [
 
     path('', views.history_list, name='history_list'),
     path('crear/', views.history_create, name='history_create'),
-    path('<int:pk>/', views.history_detail, name='history_detail'),
+    path('<int:pk>/', views.history_detail, name='history_detail'),  # <-- este es el cambio
 
 ]

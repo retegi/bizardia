@@ -27,7 +27,9 @@ urlpatterns += i18n_patterns(
 
     path('blog/', include('applications.blog.urls')),
     path('news/', include('applications.news.urls')),
+    path('history/', include('applications.history.urls', namespace='history_app')),
     path('activity/', include('applications.activity.urls')),
+    path('galleryy/', include('applications.gallery.urls')),
     path('diningroom/', include('applications.diningRoom.urls')),
     path('warehouse/', include('applications.warehouse.urls')),
     path('registro/pending/', SignupPendingView.as_view(), name='signup_pending'),

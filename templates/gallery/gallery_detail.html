@@ -12,25 +12,25 @@
   <div class="card shadow-sm border-0">
   
     <div class="card-body">
-    <a href="#" class="btn btn-primary-custom btn-sm">Inscribirse</a><br>
-      <h1 class="card-title display-5 mb-3">{{ post.title }}</h1>
+    
+      <h1 class="card-title display-5 mb-3">{{ content.title }}</h1>
       <p class="text-muted mb-4">
-        <strong>Por:</strong> {{ post.author }} |
-        <strong>Fecha:</strong> {{ post.published_at|date:"Y/m/d H:i" }}
+        <strong>Por:</strong> {{ content.author }} |
+        <strong>Fecha:</strong> {{ content.published_at|date:"Y/m/d H:i" }}
       </p>
      
 
-      {% if post.image %}
-        <img src="{{ post.image.url }}" alt="Imagen del artículo"
+      {% if content.image %}
+        <img src="{{ content.image.url }}" alt="Imagen del artículo"
              class="img-fluid rounded mb-4" style="max-height: 400px; object-fit: cover;">
       {% endif %}
 
       <div class="card-text fs-5">
-        {{ post.content|linebreaks }}
+        {{ content.content|safe }}
       </div>
-      <a href="#" class="btn btn-primary-custom btn-sm">Inscribirse</a><br>
+      
 
-      <a href="{% url 'activity_app:activity_list' %}" class="btn btn-outline-success mt-4">
+      <a href="{% url 'gallery_app:gallery_list' %}" class="btn mt-4 bg-bizardia">
         ← {% trans 'Back to activities' %}
       </a>
     </div>
