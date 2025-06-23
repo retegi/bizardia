@@ -202,7 +202,7 @@
                 </div>
                 <div class="col-lg-6 animate-fadeIn delay-1">
                     <h3>{{ content.title }}</h3>
-                    <p>{{ content.content }}</p>
+                    <p>{{ content.content|safe }}</p>
                     <a href="{% url 'history_app:history_detail' content.pk %}" class="btn btn-primary-custom">{% trans 'Read more' %}</a>
                 </div>
             {% endfor %}
