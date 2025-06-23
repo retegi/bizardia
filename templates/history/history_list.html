@@ -39,8 +39,11 @@
         <a href="{% url 'history_app:history_detail' content.id %}"><button class="btn btn-sm bg-bizardia w-25 text-white">{% trans 'Read' %}</button></a>
       </div>
       </td>
+      
       <td class="">
-        <img class="w-100" src="/media/{{ content.image }}">
+        {% if content.image %}
+            <img class="w-100" src="/media/{{ content.image }}">
+        {% endif %}
       </td>
      
     </tr>
