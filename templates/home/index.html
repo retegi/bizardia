@@ -91,7 +91,7 @@
 
 
    <!-- Noticias Section -->
-    <section id="blog" class="py-5">
+    <section id="blog" class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center section-title">Blog</h2>
             <div class="row">
@@ -198,7 +198,7 @@
             <div class="row align-items-center">
             {% for content in latest_history %}
                 <div class="col-lg-6 animate-fadeIn">
-                    <a href=""><img src="/media/{{ content.image }}" alt="Historia de Bizardia" class="img-fluid rounded shadow w-100"></a>
+                    <a href="{% url 'history_app:history_detail' content.pk %}"><img src="/media/{{ content.image }}" alt="Historia de Bizardia" class="img-fluid rounded shadow w-100"></a>
                 </div>
                 <div class="col-lg-6 animate-fadeIn delay-1">
                     <h3>{{ content.title }}</h3>
