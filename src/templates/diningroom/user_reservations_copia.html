@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container-fluid mt-5" style="min-height:80vh;">
+    <h1 class="text-center mb-4">{% trans "My Reservations" %}</h1>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle text-center">
+            <thead class="table-secondary">
+                <tr>
+                    <th>{% trans "Date" %}</th>
+                    <th>{% trans "Day moment" %}</th>
+                    <th>{% trans "Diners" %}</th>
+
+                    {% for i in "12345678" %}
+                        <th>{% trans "Table" %} {{ i }}</th>
+                    {% endfor %}
+
+                    <th>Goikoa</th>
+                    <th>Urkabe</th>
+                    <th>{% trans "Barbecue" %}</th>
+                    <th>{% trans "Birthday" %}</th>
+                    <th>{% trans "Fires" %}</th>
+                    <th>{% trans "Ovens" %}</th>
+                    <th>{% trans "Membership number" %}</th>
+                    <th>{% trans "Options" %}</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+    {% for reservation in reservations %}
+        {% for slot in reservation.slots.all %}
+        <tr>
+            <td>{{ reservation.reservation_date|date:"Y/m/d" }}</td>
+
+            <td>
+                <span class="badge bg-light border text-dark">
+                    {{ slot.get_time_slot_display }}
+                </span>
+            </td>
+
+            <td>
+                <strong>{{ reservation.num_diners }}</strong>
+            </td>
+
+            {% for i in "12345678" %}
+                <td class="{% if i in slot.selected_tables %}text-white{% endif %}"
+                    style="{% if i in slot.selected_tables %}background-color:#6b8e23;{% endif %}">
+                    {% if i in slot.selected_tables %}✓{% endif %}
+                </td>
+            {% endfor %}
+
+            <td class="{% if slot.room_goiko %}text-white{% endif %}"
+                style="{% if slot.room_goiko %}background-color:#6b8e23;{% endif %}">
+                {% if slot.room_goiko %}✓{% endif %}
+            </td>
+
+            <td class="{% if slot.room_urkabe %}text-white{% endif %}"
+                style="{% if slot.room_urkabe %}background-color:#6b8e23;{% endif %}">
+                {% if slot.room_urkabe %}✓{% endif %}
+            </td>
+
+            <td class="{% if slot.barbacue %}text-white{% endif %}"
+                style="{% if slot.barbacue %}background-color:#6b8e23;{% endif %}">
+                {% if slot.barbacue %}✓{% else %}-{% endif %}
+            </td>
+
+            <td class="{% if slot.is_birthday %}text-white{% endif %}"
+                style="{% if slot.is_birthday %}background-color:#ff69b4;{% endif %}">
+                {% if slot.is_birthday %}🎂{% else %}-{% endif %}
+            </td>
+
+            <td>{{ slot.fires }}</td>
+            <td>{{ slot.ovens }}</td>
+
+            <td>{{ reservation.membership_number }}</td>
+
+            <td>
+                <a href="{% url 'diningroom_app:delete' reservation.id %}"
+                   class="btn btn-sm btn-danger">
+                   {% trans "Delete" %}
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    {% empty %}
+        <tr>
+            <td colspan="18" class="text-muted">
+                {% trans "No reservations" %}
+            </td>
+        </tr>
+    {% endfor %}
+</tbody>
+
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+<!-- blog/templates/blog/blog_detail.html -->
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<section id="activity" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">{% trans 'Activity' %}</h2>
+            <div class="row">
+                {% for content in activity %}
+                <div class="col-md-4 animate-fadeIn">
+                    <div class="card">
+                        <a href="{% url 'activity_app:activity_detail' content.slug %}">
+                        <img src="/media/{{ content.cover_image }}" class="card-img-top" alt="{{ content.title }}">
+                        </a>
+                            <div class="card-body">
+                            <a href="{% url 'activity_app:activity_detail' content.slug %}" style="text-decoration:none;color:black;">
+                                <h5 class="card-title">{{ content.title }}</h5></a>
+                            <p class="card-text">{{ content.short }} <a href="{% url 'activity_app:activity_detail' content.slug %}" style="text-decoration:none;" class="text-bizardia"><b>(...)</b></a></p>
+                                {% if content.audience %}
+                                    <label>{% trans 'Nork hartu dezake parte?' %} <b>{{ content.audience }}</b></label>
+                                    {% endif %}
+                                {% if content.show_price %}
+                                <label class="w-100">{% trans 'Price' %}: <b>{{ content.price }}</b></label>
+                                {% endif %}
+                            <a href="{% url 'activity_app:activity_detail' content.slug %}" class="btn btn-primary-custom btn-sm">{% trans 'Details' %}</a>
+                                {% if content.show_registration_button %}
+                            <a href="{% url 'activity_app:activity_register' content.slug %}" class="btn btn-primary-custom btn-sm">{% trans 'Register' %}</a>
+                                {% endif %}
+                            </div>
+                        <div class="card-footer text-muted">
+                            <b>{{ content.activityDateHour|date:"Y/m/d H:i" }}</b>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %} 
+            </div>
+           
+        </div>
+    </section>
+{% endblock %}
+

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="container py-5">
+    <h1 class="text-center mb-5">{% trans "Gallery" %}</h1>
+
+    <div class="row g-4">
+
+        {% for gallery in content %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm h-100 border-0">
+
+                {% with gallery.images.first as cover %}
+                    {% if cover %}
+                        <a href="{% url 'gallery_app:gallery_detail' gallery.pk %}">
+                            <img src="{{ cover.image.url }}"
+                                 class="card-img-top"
+                                 style="height:250px; object-fit:cover;"
+                                 alt="{{ gallery.title }}">
+                        </a>
+                    {% else %}
+                        <div class="bg-light d-flex align-items-center justify-content-center"
+                             style="height:250px;">
+                            <span class="text-muted">{% trans "No image" %}</span>
+                        </div>
+                    {% endif %}
+                {% endwith %}
+
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ gallery.title }}</h5>
+                    <p class="card-text text-muted small">
+                        {{ gallery.published_at|date:"Y/m/d" }}
+                    </p>
+
+                    {% if gallery.short %}
+                        <p class="card-text">
+                            {{ gallery.short|truncatewords:20 }}
+                        </p>
+                    {% endif %}
+
+                    <div class="mt-auto">
+                        <a href="{% url 'gallery_app:gallery_detail' gallery.pk %}"
+                           class="btn btn-sm bg-bizardia text-white w-100">
+                            {% trans "View gallery" %}
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">{% trans "No galleries available." %}</p>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

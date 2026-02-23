@@ -1,0 +1,79 @@
+# ===============================
+# 🐍 Python
+# ===============================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Logs
+*.log
+
+# Base de datos local
+db.sqlite3
+*.sqlite3
+
+# Coverage / testing
+.coverage
+coverage.xml
+htmlcov/
+.pytest_cache/
+
+# ===============================
+# 🌍 Entornos virtuales
+# ===============================
+env/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ===============================
+# 🔐 Variables de entorno
+# ===============================
+.env
+.env.*
+!.env.example
+
+# ===============================
+# 🧱 Django
+# ===============================
+staticfiles/
+media/
+*.mo
+*.pot
+
+# ⚠️ NO ignorar migraciones en proyectos reales
+# Si quisieras ignorarlas SOLO en un caso específico:
+# */migrations/*
+# !*/migrations/__init__.py
+
+# ===============================
+# 🐳 Docker
+# ===============================
+*.pid
+*.sock
+docker-compose.override.yml
+*.tar
+
+# ===============================
+# 🖥 IDE / Editores
+# ===============================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ===============================
+# 💻 Sistema Operativo
+# ===============================
+.DS_Store
+Thumbs.db
+
+# ===============================
+# 📦 Node (si algún día lo usas)
+# ===============================
+node_modules/
+dist/
+build/

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<section class="container my-5">
+
+    <!-- TÍTULO -->
+    <div class="row mb-4">
+        <div class="col text-center">
+            <h2 class="fw-bold">
+                {% trans 'Registered list' %}
+            </h2>
+            <p class="text-muted">
+                {{ activity.title }}
+            </p>
+        </div>
+    </div>
+
+    <!-- LISTA -->
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+
+            {% if registrations %}
+                <div class="card shadow-sm">
+                    <div class="card-body p-0">
+
+                        <table class="table table-striped mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Locality</th>
+                                    <th>Federation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for reg in registrations %}
+                                    <tr>
+                                        <td>
+                                            {{ reg.name }} {{ reg.surname }}
+                                        </td>
+                                        <td>
+                                            {{ reg.locality|default:"—" }}
+                                        </td>
+                                        <td>
+                                            {% if reg.federation_member %}
+                                                ✅
+                                            {% else %}
+                                                ❌
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            {% else %}
+                <div class="alert alert-info text-center">
+                    {% trans "No registered users yet" %}.
+                </div>
+            {% endif %}
+
+            <!-- BOTÓN VOLVER -->
+            <div class="text-center mt-4">
+                <a href="{% url 'activity_app:activity_detail' activity.slug %}"
+                   class="btn btn-outline-secondary">
+                    ← {% trans 'Back to activity' %}
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+{% endblock %}

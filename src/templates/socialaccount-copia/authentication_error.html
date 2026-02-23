@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<div class="alert alert-danger" style="max-width: 600px; margin: 50px auto; text-align: center;">
+    <h2>❌ {% trans "No se pudo completar el inicio de sesión" %}</h2>
+    <p>{% trans "Se produjo un error al intentar iniciar sesión a través de su cuenta de terceros." %}</p>
+    <p><strong>{% trans "Posible causa:" %}</strong> {% trans "Tu cuenta todavía no ha sido activada." %}</p>
+    <p>👉 {% trans "Espera la activación o ponte en contacto con un administrador." %}</p>
+    <a href="{% url 'account_login' %}" class="btn btn-primary mt-3">{% trans "Volver a iniciar sesión" %}</a>
+</div>
+{% endblock %}
+

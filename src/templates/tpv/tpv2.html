@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8">
+  <title>TPV – Bizardia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* RESET BÁSICO */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f4f6f8;
+    }
+
+    /* CONTENEDOR PRINCIPAL */
+    .tpv-container {
+      display: flex;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    /* IZQUIERDA 60% */
+.tpv-left {
+  width: 60%;
+  padding: 24px;
+  overflow: hidden;
+}
+
+    /* DERECHA 40% */
+    .tpv-right {
+      width: 40%;
+      padding: 24px;
+      background: #ffffff;
+      border-left: 2px solid #e0e0e0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* GRID DE CATEGORÍAS */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    /* TARJETA DE CATEGORÍA */
+.category-card {
+  height: 180px;
+}
+    .category-card:hover {
+      transform: scale(1.04);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+    }
+
+    .category-image {
+      position: relative;
+      width: 100%;
+      height: 180px;
+    }
+
+    .category-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .category-title-overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 14px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-align: center;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.75),
+        rgba(0,0,0,0.05)
+      );
+    }
+
+    /* TICKET */
+    .tpv-right h2 {
+      margin-top: 0;
+      font-size: 1.8rem;
+    }
+
+    #ticket-items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    #ticket-items li {
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 1.1rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .ticket-total {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    /* BOTÓN FINALIZAR */
+    .btn-finish {
+      margin-top: 20px;
+      padding: 18px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      background: #1d3557;
+      color: white;
+      cursor: pointer;
+    }
+
+    .btn-finish:hover {
+      background: #16324d;
+    }
+
+    .categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+
+  height: calc(100vh - 48px); /* 24px arriba + 24px abajo */
+  overflow-y: auto;
+  padding-bottom: 20px;
+}
+    .category-no-image {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+}
+  </style>
+</head>
+
+<body>
+
+<div class="tpv-container">
+
+  <!-- IZQUIERDA: CATEGORÍAS -->
+  <div class="tpv-left">
+    <div class="categories-grid" id="categories">
+      {% for category in categories %}
+        <div class="category-card"
+             data-category="{{ category.id }}"
+             tabindex="0">
+
+          <div class="category-image">
+  {% if category.image %}
+    <img src="{{ category.image.url }}" alt="{{ category.name }}">
+  {% else %}
+    <div class="category-no-image"></div>
+  {% endif %}
+
+  <div class="category-title-overlay">
+    {{ category.name }}
+  </div>
+</div>
+
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- DERECHA: TICKET -->
+  <div class="tpv-right">
+    <h2>Ticket</h2>
+
+    <ul id="ticket-items">
+      <!-- Líneas del ticket por JS -->
+    </ul>
+
+    <div class="ticket-total">
+      Total: <span id="ticket-total">{{ ticket.total }}</span> €
+    </div>
+
+    <button class="btn-finish">
+      Finalizar ticket
+    </button>
+  </div>
+
+</div>
+
+</body>
+</html>
+
+
+<script>
+document.querySelectorAll('.product-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const productId = btn.dataset.product;
+    const ticketId = btn.dataset.ticket;
+
+    fetch("{% url 'tpv:add_item' %}", {
+      method: "POST",
+      headers: {
+        "X-CSRFToken": "{{ csrf_token }}",
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: `product_id=${productId}&ticket_id=${ticketId}`
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        document.getElementById('ticket-total').innerText = data.total;
+      }
+    });
+  });
+});
+</script>
+

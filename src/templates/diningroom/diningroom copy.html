@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+<style>
+    .mesa-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        gap: 15px;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .mesa {
+        width: 100px;
+        height: 60px;
+        background-color: #ccc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: background-color 0.2s;
+    }
+
+    .mesa.selected {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .mesa.disabled {
+        visibility: hidden;
+    }
+</style>
+
+<div class="mesa-grid" id="mesaGrid">
+    <!-- Primera fila: mesas 7, 8, vacío -->
+    <div class="mesa" data-id="7">7</div>
+    <div class="mesa" data-id="8">8</div>
+    <div class="mesa disabled"></div>
+
+    <!-- Segunda fila: mesas 4, 5, 6 -->
+    <div class="mesa" data-id="4">4</div>
+    <div class="mesa" data-id="5">5</div>
+    <div class="mesa" data-id="6">6</div>
+
+    <!-- Tercera fila: mesas 1, 2, 3 -->
+    <div class="mesa" data-id="1">1</div>
+    <div class="mesa" data-id="2">2</div>
+    <div class="mesa" data-id="3">3</div>
+</div>
+
+<input type="hidden" name="mesas_seleccionadas" id="mesasSeleccionadas">
+
+<script>
+    const mesas = document.querySelectorAll('.mesa[data-id]');
+    const inputMesas = document.getElementById('mesasSeleccionadas');
+    let seleccionadas = [];
+
+    mesas.forEach(mesa => {
+        mesa.addEventListener('click', () => {
+            const id = mesa.getAttribute('data-id');
+            if (seleccionadas.includes(id)) {
+                seleccionadas = seleccionadas.filter(m => m !== id);
+                mesa.classList.remove('selected');
+            } else {
+                seleccionadas.push(id);
+                mesa.classList.add('selected');
+            }
+            inputMesas.value = seleccionadas.join(',');
+        });
+    });
+</script>
+
+
+{% endblock %}

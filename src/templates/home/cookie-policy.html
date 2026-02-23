@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Política de Cookies" %} | Bizardia{% endblock %}
+
+{% block content %}
+<div class="container py-5" style="max-width: 900px;">
+
+    <h1 class="mb-4">{% trans "Política de Cookies" %}</h1>
+
+    <p class="text-muted">
+        {% trans "Última actualización:" %} {% now "d/m/Y" %}
+    </p>
+
+    <hr class="my-4">
+
+    <!-- 1. QUÉ SON LAS COOKIES -->
+    <section class="mb-5">
+        <h4>1. {% trans "¿Qué son las cookies?" %}</h4>
+        <p>
+            Una cookie es un pequeño archivo de texto que se almacena en el navegador
+            del usuario cuando visita una página web. Su finalidad es recordar información
+            sobre su visita para facilitar la navegación y mejorar la experiencia de uso.
+        </p>
+    </section>
+
+    <!-- 2. TIPOS DE COOKIES UTILIZADAS -->
+    <section class="mb-5">
+        <h4>2. {% trans "Tipos de cookies utilizadas en este sitio web" %}</h4>
+
+        <h6 class="mt-3">a) {% trans "Cookies técnicas o necesarias" %}</h6>
+        <p>
+            Son esenciales para el funcionamiento del sitio web y permiten la navegación
+            y utilización de sus diferentes opciones o servicios.
+        </p>
+
+        <ul>
+            <li><strong>sessionid</strong>: gestión de sesión de usuario.</li>
+            <li><strong>csrftoken</strong>: seguridad en formularios.</li>
+            <li><strong>cookies de autenticación</strong>: mantenimiento de inicio de sesión.</li>
+        </ul>
+
+        <p>
+            Estas cookies no requieren consentimiento previo al ser necesarias para el
+            funcionamiento básico del sitio.
+        </p>
+
+        <h6 class="mt-4">b) {% trans "Cookies de análisis (si se implementan)" %}</h6>
+        <p>
+            En caso de utilizar herramientas como Google Analytics u otras similares,
+            se podrán instalar cookies para analizar el comportamiento de navegación
+            de los usuarios y mejorar los servicios ofrecidos.
+        </p>
+
+        <p>
+            Estas cookies solo se instalarán si el usuario otorga su consentimiento.
+        </p>
+    </section>
+
+    <!-- 3. COOKIES DE TERCEROS -->
+    <section class="mb-5">
+        <h4>3. {% trans "Cookies de terceros" %}</h4>
+        <p>
+            Este sitio web puede utilizar servicios de terceros que recopilen información
+            con fines estadísticos o técnicos. En tal caso, dichos terceros serán responsables
+            del tratamiento conforme a sus propias políticas de privacidad.
+        </p>
+    </section>
+
+    <!-- 4. GESTIÓN DE COOKIES -->
+    <section class="mb-5">
+        <h4>4. {% trans "Gestión y eliminación de cookies" %}</h4>
+        <p>
+            El usuario puede configurar su navegador para aceptar o rechazar cookies,
+            así como eliminar las ya instaladas.
+        </p>
+
+        <p>
+            A continuación, se facilitan enlaces a la configuración de los principales navegadores:
+        </p>
+
+        <ul>
+            <li><a href="https://support.mozilla.org/es/kb/Borrar%20cookies" target="_blank">Mozilla Firefox</a></li>
+            <li><a href="https://support.google.com/chrome/answer/95647" target="_blank">Google Chrome</a></li>
+            <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank">Safari</a></li>
+            <li><a href="https://support.microsoft.com/es-es/help/17442/windows-internet-explorer-delete-manage-cookies" target="_blank">Microsoft Edge</a></li>
+        </ul>
+
+        <p>
+            La desactivación de algunas cookies puede afectar al correcto funcionamiento
+            del sitio web.
+        </p>
+    </section>
+
+    <!-- 5. BASE LEGAL -->
+    <section class="mb-5">
+        <h4>5. {% trans "Base legal" %}</h4>
+        <p>
+            La utilización de cookies se regula por la Ley 34/2002, de Servicios de la Sociedad
+            de la Información y Comercio Electrónico (LSSI-CE), así como por el Reglamento
+            General de Protección de Datos (RGPD).
+        </p>
+    </section>
+
+    <!-- 6. MODIFICACIONES -->
+    <section class="mb-5">
+        <h4>6. {% trans "Modificaciones" %}</h4>
+        <p>
+            Bizardia se reserva el derecho a modificar la presente Política de Cookies
+            para adaptarla a novedades legislativas o técnicas.
+        </p>
+    </section>
+
+</div>
+{% endblock %}

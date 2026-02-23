@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h1 class="mb-3">{{ content.title }}</h1>
+
+    <p class="text-muted">
+        {{ content.published_at|date:"Y/m/d H:i" }}
+    </p>
+
+    {% if content.content %}
+        <div class="mb-5">
+            {{ content.content|safe }}
+        </div>
+    {% endif %}
+
+    <div class="row g-4">
+
+    {% for img in content.images.all %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow-sm">
+                <img src="{{ img.image.url }}"
+                     class="card-img-top img-fluid gallery-img"
+                     style="height:300px; object-fit:cover; cursor:pointer;"
+                     data-bs-toggle="modal"
+                     data-bs-target="#imageModal"
+                     data-img="{{ img.image.url }}"
+                     alt="{{ img.title }}">
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+
+
+    <div class="mt-5">
+        <a href="{% url 'gallery_app:gallery_list' %}"
+           class="btn bg-bizardia text-white">
+            ← {% trans "Back to gallery" %}
+        </a>
+    </div>
+
+</div>
+
+
+
+<!-- IMAGE MODAL -->
+<div class="modal fade" id="imageModal" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content bg-dark">
+
+            <div class="modal-header border-0">
+                <button type="button"
+                        class="btn-close btn-close-white ms-auto"
+                        data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body d-flex justify-content-center align-items-center p-0">
+                <img id="modalImage"
+                     src=""
+                     class="img-fluid"
+                     style="max-height:95vh;">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+
+    modal.addEventListener("show.bs.modal", function(event) {
+        const img = event.relatedTarget;
+        const imgSrc = img.getAttribute("data-img");
+        modalImage.src = imgSrc;
+    });
+});
+</script>
+
+{% endblock %}

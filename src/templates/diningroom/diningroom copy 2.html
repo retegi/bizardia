@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8 col-md-12">
+    <h1 class="text-center">{% trans 'Reserve table' %}</h1>
+    <form method="post" id="reservaForm">
+        {% csrf_token %}
+
+        <!-- 0. Fecha -->
+        <div class="mb-3">
+            <label for="reservaFecha" class="form-label">{% trans 'Reservation date' %}</label>
+            <input type="date" class="form-control" id="reservaFecha" name="reservation_date" required>
+        </div>
+
+        <!-- 1. Número de socio -->
+        <div class="mb-3">
+            <label for="membershipNumber" class="form-label">{% trans 'Membership number' %}</label>
+            <input type="text" class="form-control" id="membershipNumber" name="membership_number" required>
+        </div>
+
+        <!-- 2. Número de comensales -->
+        <div class="mb-3">
+            <label for="numberOfDiners" class="form-label">{% trans 'Number of diners' %}</label>
+            <input type="number" class="form-control" id="numberOfDiners" name="num_diners" min="1" required>
+        </div>
+
+        <!-- 3. Selector visual de mesas y salas -->
+        <style>
+            .mesa-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 130px);
+                gap: 40px 50px;
+                justify-content: center;
+                margin-bottom: 30px;
+                padding: 20px;
+            }
+
+            .mesa, .sala {
+                position: relative;
+                width: 130px;
+                height: 70px;
+                border-radius: 6px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: bold;
+                transition: background-color 0.3s, transform 0.2s;
+                text-align: center;
+                padding: 8px;
+            }
+
+            .mesa {
+                background: linear-gradient(135deg, #f1e2c6, #e0c7a3);
+                border: 3px solid #b0885a;
+                color: #5a4020;
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+            }
+
+            .mesa::before, .mesa::after {
+                content: '';
+                position: absolute;
+                left: -12px;
+                right: -12px;
+                height: 10px;
+                background: linear-gradient(to right, #d9c2a2, #c2a986);
+                border-radius: 5px;
+                box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+            }
+
+            .mesa::before { top: -15px; }
+            .mesa::after { bottom: -15px; }
+
+            .sala {
+                border: 2px dashed #aaa;
+                background-color: #f7e7cb;
+                color: #6e573b;
+            }
+
+            .sala.goiko {
+                background-color: #f3efd7;
+            }
+
+            .sala.goiko::after {
+                content: "🎲🎈🧸";
+                position: absolute;
+                bottom: 5px;
+                font-size: 16px;
+                color: #8c7650;
+            }
+
+            .mesa.selected, .sala.selected {
+                background: #4caf50 !important;
+                color: white !important;
+                border-color: #39843c !important;
+            }
+
+            .mesa.disabled {
+                visibility: hidden;
+            }
+        </style>
+
+        <div class="mesa-grid" id="mesaGrid">
+            <div class="mesa" data-id="7">7</div>
+            <div class="mesa" data-id="8">8</div>
+            <div class="mesa disabled"></div>
+
+            <div class="mesa" data-id="4">4</div>
+            <div class="mesa" data-id="5">5</div>
+            <div class="mesa" data-id="6">6</div>
+
+            <div class="mesa" data-id="1">1</div>
+            <div class="mesa" data-id="2">2</div>
+            <div class="mesa" data-id="3">3</div>
+
+            <div class="sala" data-id="urkabe">{% trans 'Urkabe room' %}</div>
+            <div class="sala goiko" data-id="goiko">{% trans 'Goiko room' %}</div>
+            <div class="mesa disabled"></div>
+        </div>
+
+        <input type="hidden" name="selected_tables" id="mesasSeleccionadas">
+
+        <script>
+            const seleccionables = document.querySelectorAll('[data-id]');
+            const inputMesas = document.getElementById('mesasSeleccionadas');
+            let seleccionadas = [];
+
+            seleccionables.forEach(el => {
+                el.addEventListener('click', () => {
+                    const id = el.getAttribute('data-id');
+                    if (seleccionadas.includes(id)) {
+                        seleccionadas = seleccionadas.filter(m => m !== id);
+                        el.classList.remove('selected');
+                    } else {
+                        seleccionadas.push(id);
+                        el.classList.add('selected');
+                    }
+                    inputMesas.value = JSON.stringify(seleccionadas);
+
+                });
+            });
+        </script>
+
+        <!-- 4. Midday / Dinner / Birthday -->
+        <div class="mb-3">
+            <label class="form-label d-block">{% trans 'Select your options' %}</label>
+            <div class="btn-group" role="group" aria-label="Meal selection">
+                <input type="radio" class="btn-check" id="midday" name="meal_type" value="midday" autocomplete="off">
+                <label class="btn btn-outline-primary me-2" for="midday">{% trans 'Midday meal' %}</label>
+
+                <input type="radio" class="btn-check" id="dinner" name="meal_type" value="dinner" autocomplete="off">
+                <label class="btn btn-outline-primary me-2" for="dinner">{% trans 'Dinner' %}</label>
+
+                <input type="checkbox" class="btn-check" id="birthday" name="is_birthday" value="true" autocomplete="off">
+                <label class="btn btn-outline-primary" for="birthday">{% trans 'Birthday' %}</label>
+            </div>
+        </div>
+
+        <!-- 5. Fuegos -->
+        <div class="mb-3">
+            <label class="form-label d-block">{% trans 'How many fires?' %}</label>
+            <div class="btn-group" role="group">
+                {% for i in "01234"|make_list %}
+                    <input type="radio" class="btn-check" name="fires" id="fire{{ i }}" value="{{ i }}" autocomplete="off" {% if i == '0' %}checked{% endif %}>
+                    <label class="btn btn-outline-danger me-2" for="fire{{ i }}">{{ i }}</label>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- 6. Hornos -->
+        <div class="mb-3">
+            <label class="form-label d-block">{% trans 'How many ovens?' %}</label>
+            <div class="btn-group" role="group">
+                {% for i in "012"|make_list %}
+                    <input type="radio" class="btn-check" name="ovens" id="oven{{ i }}" value="{{ i }}" autocomplete="off" {% if i == '0' %}checked{% endif %}>
+                    <label class="btn btn-outline-warning me-2" for="oven{{ i }}">{{ i }}</label>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- 7. Barbacoa -->
+        <div class="mb-3">
+            <label class="form-label d-block">{% trans 'Barbecue?' %}</label>
+            <div class="btn-group" role="group">
+                <input type="radio" class="btn-check" name="barbacue" id="bbq_no" value="no" autocomplete="off" checked>
+                <label class="btn btn-outline-secondary me-2" for="bbq_no">No</label>
+                <input type="radio" class="btn-check" name="barbacue" id="bbq_yes" value="yes" autocomplete="off">
+                <label class="btn btn-outline-secondary" for="bbq_yes">Yes</label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success p-3 my-3 w-100 text-center">{% trans 'Submit reservation' %}</button>
+    </form>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
+</div>
+{% endblock %}

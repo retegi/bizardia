@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8">
+  <title>TPV – Bizardia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- CSS TPV -->
+  <style>
+    .category-card {
+      cursor: pointer;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .category-card:hover {
+      transform: scale(1.04);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+    }
+
+    .category-image {
+      position: relative;
+      width: 100%;
+      height: 180px;
+    }
+
+    .category-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .category-no-image {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+    }
+
+    .category-title-overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 14px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-align: center;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.75),
+        rgba(0,0,0,0.05)
+      );
+    }
+  </style>
+</head>
+
+
+
+
+
+
+
+<body class="bg-light">
+
+<div class="container-fluid vh-100">
+  <div class="row h-100">
+
+    <!-- IZQUIERDA: CATEGORÍAS -->
+    <div class="col-7 p-4 overflow-auto">
+<button id="backBtn"
+          class="btn btn-outline-secondary d-none bb-3 m-1 bg-success text-white">
+    ← Itzuli
+  </button>
+      <div class="w-100 text-center">
+
+
+        </div>
+
+  <div class="row g-4" id="grid">
+
+    {% for category in categories %}
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="category-card h-100 category-btn"
+             data-id="{{ category.id }}">
+
+          <div class="category-image">
+            {% if category.image %}
+              <img src="{{ category.image.url }}" alt="{{ category.name }}">
+            {% else %}
+              <div class="category-no-image"></div>
+            {% endif %}
+
+            <div class="category-title-overlay">
+              {{ category.name }}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+
+    <!-- DERECHA: TICKET -->
+    <div class="col-5 bg-white border-start p-4 d-flex flex-column">
+      <h2>Tiketa</h2>
+
+      <ul id="ticket-items" class="list-unstyled flex-grow-1 overflow-auto">
+  <!-- VACÍO al cargar -->
+</ul>
+
+
+      <div class="fs-3 fw-bold text-end">
+        Total: <span id="ticket-total">0,00</span> €
+      </div>
+
+      <div class="d-flex gap-2 mt-3">
+  <button id="clear-ticket-btn"
+          class="btn btn-outline-secondary w-25">
+    🗑 Tiketa borratu
+  </button>
+
+  <button class="btn btn-success w-75">
+    Tiketa amaitu
+  </button>
+</div>
+
+
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<script>
+const PRODUCTS_BY_CATEGORY = {
+  {% for category in categories %}
+    "{{ category.id }}": [
+      {% for product in category.products.all %}
+        {
+          id: "{{ product.id }}",
+          name: "{{ product.name|escapejs }}",
+          price: "{{ product.price }}",
+          image: "{% if product.image %}{{ product.image.url }}{% else %}{% endif %}"
+        },
+      {% endfor %}
+    ],
+  {% endfor %}
+};
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const grid = document.getElementById("grid");
+  const backBtn = document.getElementById("backBtn");
+  const list = document.getElementById("ticket-items");
+  const ticketTotalEl = document.getElementById("ticket-total");
+  const ticketId = document.getElementById("ticket-id").value;
+
+  // Guardamos categorías para volver atrás
+  const categoriesHTML = grid.innerHTML;
+
+  // -------------------------
+  // CATEGORÍAS -> PRODUCTOS
+  // -------------------------
+  attachCategoryEvents();
+
+  backBtn.addEventListener("click", () => {
+    grid.innerHTML = categoriesHTML;
+    backBtn.classList.add("d-none");
+    attachCategoryEvents();
+  });
+
+  function attachCategoryEvents() {
+    document.querySelectorAll(".category-btn").forEach(btn => {
+      btn.onclick = () => showProducts(btn.dataset.id);
+    });
+  }
+
+  function showProducts(categoryId) {
+    const products = PRODUCTS_BY_CATEGORY[categoryId] || [];
+    grid.innerHTML = "";
+    backBtn.classList.remove("d-none");
+
+    products.forEach(product => {
+      grid.innerHTML += `
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="category-card h-100 product-btn" data-product="${product.id}">
+            <div class="category-image">
+              ${product.image
+                ? `<img src="${product.image}" alt="${product.name}">`
+                : `<div class="category-no-image"></div>`
+              }
+              <div class="category-title-overlay">${product.name}</div>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    attachProductEvents();
+  }
+
+  function attachProductEvents() {
+    document.querySelectorAll(".product-btn").forEach(btn => {
+      btn.onclick = () => addProductToTicket(btn.dataset.product);
+    });
+  }
+
+  function addProductToTicket(productId) {
+    fetch("{% url 'tpv:add_item' %}", {
+      method: "POST",
+      headers: {
+        "X-CSRFToken": "{{ csrf_token }}",
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: `product_id=${productId}&ticket_id=${ticketId}`
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) updateTicketUI(data);
+    });
+  }
+
+  // -------------------------
+  // TICKET UI
+  // -------------------------
+  function updateTicketUI(data) {
+    const item = data.item;
+
+    let row = list.querySelector(`[data-product-id="${item.id}"]`);
+
+    if (!row) {
+      row = document.createElement("li");
+      row.className = "ticket-item border-bottom py-2";
+      row.dataset.productId = item.id;
+
+      row.innerHTML = `
+        <div class="row align-items-center">
+          <div class="col-5">
+            <div class="fw-bold">${item.name}</div>
+            <small class="text-muted">${item.price} €</small>
+          </div>
+
+          <div class="col-2 text-center fw-bold">
+            <span class="item-qty">${item.quantity}</span>
+          </div>
+
+          <div class="col-3 text-center">
+            <div class="btn-group btn-group-sm">
+              <button type="button" class="btn btn-outline-secondary btn-minus">−</button>
+              <button type="button" class="btn btn-outline-secondary btn-plus">+</button>
+            </div>
+          </div>
+
+          <div class="col-2 text-end fw-bold">
+            <span class="item-subtotal">${item.subtotal} €</span>
+          </div>
+        </div>
+      `;
+
+      list.appendChild(row);
+    } else {
+      row.querySelector(".item-qty").innerText = item.quantity;
+      row.querySelector(".item-subtotal").innerText = item.subtotal + " €";
+    }
+
+    ticketTotalEl.innerText = data.total;
+  }
+
+  // ✅ EVENT DELEGATION para + y -
+  list.addEventListener("click", (e) => {
+    const plusBtn = e.target.closest(".btn-plus");
+    const minusBtn = e.target.closest(".btn-minus");
+    if (!plusBtn && !minusBtn) return;
+
+    const row = e.target.closest(".ticket-item");
+    if (!row) return;
+
+    const productId = row.dataset.productId;
+    const action = plusBtn ? "plus" : "minus";
+
+    changeQty(productId, action);
+  });
+
+  function changeQty(productId, action) {
+    fetch("{% url 'tpv:update_quantity' %}", {
+      method: "POST",
+      headers: {
+        "X-CSRFToken": "{{ csrf_token }}",
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: `ticket_id=${ticketId}&product_id=${productId}&action=${action}`
+    })
+    .then(res => res.json())
+    .then(data => {
+      const row = list.querySelector(`[data-product-id="${productId}"]`);
+
+      if (data.removed) {
+        if (row) row.remove();
+      } else {
+        if (row) {
+          row.querySelector(".item-qty").innerText = data.quantity;
+          row.querySelector(".item-subtotal").innerText = data.subtotal + " €";
+        }
+      }
+
+      ticketTotalEl.innerText = data.total;
+    });
+  }
+
+  // -------------------------
+  // VACIAR TICKET
+  // -------------------------
+  const clearBtn = document.getElementById("clear-ticket-btn");
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      if (!confirm("¿Vaciar el ticket actual?")) return;
+
+      fetch("{% url 'tpv:clear_ticket' %}", {
+        method: "POST",
+        headers: {
+          "X-CSRFToken": "{{ csrf_token }}",
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `ticket_id=${ticketId}`
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          list.innerHTML = "";
+          ticketTotalEl.innerText = "0,00";
+        }
+      });
+    });
+  }
+});
+</script>
+
+
+</body>
+
+<input type="hidden" id="ticket-id" value="{{ ticket.id }}">
+
+</html>
+
+

@@ -1,0 +1,100 @@
+/* Layout */
+.reservation-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.mesa-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mesa-grid-mini {
+    display: grid;
+    grid-template-columns: repeat(3, 70px);
+    gap: 18px 30px;
+}
+
+.mesa-mini {
+    width: 70px;
+    height: 40px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #f1e2c6, #e0c7a3);
+    border: 2px solid #b0885a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #5a4020;
+    font-size: 14px;
+}
+
+.mesa-mini.selected {
+    background: #6b8e23;
+    color: white;
+    border-color: #39843c;
+}
+
+.placeholder {
+    visibility: hidden;
+}
+
+/* Salas */
+.salas-row {
+    margin-top: 18px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.sala-mini {
+    width: 95px;
+    height: 42px;
+    border-radius: 6px;
+    border: 2px dashed #b0885a;
+    background: #f7e7cb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    text-align: center;
+    padding: 4px;
+}
+
+.sala-mini.selected {
+    background: #6b8e23;
+    color: white;
+    border: 2px solid #39843c;
+}
+
+/* Cocina */
+.kitchen-mini {
+    font-size: 44px;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .mesa-grid-mini {
+        grid-template-columns: repeat(3, 52px);
+        gap: 10px 16px;
+    }
+
+    .mesa-mini {
+        width: 52px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .sala-mini {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .kitchen-mini {
+        font-size: 32px;
+    }
+}

@@ -1,0 +1,41 @@
+{% load i18n static %}
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Bizardia — Auth{% endblock %}</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/input.min.css' %}">  <!-- 💥 ESTA LÍNEA -->
+  {% block extra_head %}{% endblock %}
+  <style>
+    body {
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f6f7fb;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container" style="max-width: 540px;">
+    {% if messages %}
+      <div class="mb-3">
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="auth-card">
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

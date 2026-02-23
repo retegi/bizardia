@@ -1,0 +1,63 @@
+<!-- blog/templates/blog/blog_detail.html -->
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block head %}
+{% endblock %}
+
+
+{% block content %}<!-- blog/templates/blog/blog_list.html -->
+
+
+<div class="container" style="min-height:80vh;">
+<div class="row">
+
+<h1 class="text-center p-5">{% trans 'History' %}</h1>
+<div class="w-100 text-end">
+
+<a href="{% url 'blog_app:blog_create' %}"><button class="btn btn-sm bg-white">{% trans 'Add historical event' %}</button></a>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col-lg-3 col-md-12">{% trans 'Date' %}</th>
+      <th scope="col-lg-6 col-md-12">{% trans 'Event' %}</th>
+      <th scope="col-lg-3 col-md-12">{% trans 'Image' %}</th>
+
+      
+     
+    </tr>
+  </thead>
+  <tbody>
+    {% for content in content %}
+    <tr>
+      <th scope="row" class="bg-dark text-white col-lg-3 col-md-12">{{ content.published_at|date:"d M Y" }}</th>
+      
+      <td class=" col-lg-6 col-md-12"><b>{{ content.title }}</b><br>{{ content.short|safe }}<br>
+      <div class="w-100 text-end">
+        <a href="{% url 'history_app:history_detail' content.id %}"><button class="btn btn-sm bg-bizardia w-50 text-white m-3">{% trans 'Read' %}</button></a>
+      </div>
+      </td>
+      
+      <td class=" col-lg-3 col-md-12">
+        {% if content.image %}
+            <img class="w-100" src="/media/{{ content.image }}">
+        {% endif %}
+      </td>
+     
+    </tr>
+    {% empty %}
+    <tr>
+      <th scope="row">0</th>
+      <td>{% trans 'There are no events' %}</td>
+     
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+
+</div>
+</div>
+{% endblock %}

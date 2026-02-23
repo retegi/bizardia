@@ -1,0 +1,287 @@
+[
+{
+  "model": "product.product",
+  "pk": 1,
+  "fields": {
+    "category": 1,
+    "name": "Auzoko sagardoa",
+    "code": "1",
+    "description": "",
+    "price": "2.60",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/auzoko-sagardoa.jpg",
+    "created_at": "2026-02-04T19:21:34.967Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 2,
+  "fields": {
+    "category": 1,
+    "name": "Ordozelai\" Sagardoa",
+    "code": "2",
+    "description": "",
+    "price": "2.20",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/ordozelai-sagardoa.jpg",
+    "created_at": "2026-02-04T21:27:37.488Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 3,
+  "fields": {
+    "category": 1,
+    "name": "\"Baleio\" Sagardoa",
+    "code": "3",
+    "description": "",
+    "price": "2.20",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/baleio-sagardoa.jpeg",
+    "created_at": "2026-02-04T21:28:36.924Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 4,
+  "fields": {
+    "category": 2,
+    "name": "Ardo beltza \"Puerta Vieja\"",
+    "code": "4",
+    "description": "",
+    "price": "8.50",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/puerta-vieja.jpg",
+    "created_at": "2026-02-04T21:33:31.556Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 5,
+  "fields": {
+    "category": 2,
+    "name": "Ardo beltza \"Valdemar\"",
+    "code": "7",
+    "description": "",
+    "price": "8.50",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/ardoa-valdemar.jpg",
+    "created_at": "2026-02-05T15:19:51.375Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 6,
+  "fields": {
+    "category": 2,
+    "name": "Ardo beltza \"P. Larrieta\"",
+    "code": "8",
+    "description": "",
+    "price": "4.80",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/ardobelta-larrieta.jpg",
+    "created_at": "2026-02-05T15:21:09.226Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 7,
+  "fields": {
+    "category": 2,
+    "name": "Ardo beltza \"Iñurrieta\"",
+    "code": "9",
+    "description": "",
+    "price": "5.20",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/ardobeltza-inurrieta.jpg",
+    "created_at": "2026-02-05T15:23:06.676Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 8,
+  "fields": {
+    "category": 2,
+    "name": "Ardo beltza \"Protos\"",
+    "code": "10",
+    "description": "",
+    "price": "7.50",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/ardobeltza-protos.png",
+    "created_at": "2026-02-05T15:24:09.495Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 9,
+  "fields": {
+    "category": 2,
+    "name": "Ardo zuria \"Protos\"",
+    "code": "11",
+    "description": "",
+    "price": "7.50",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/ardozuria-protos.jpeg",
+    "created_at": "2026-02-05T15:28:44.804Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 10,
+  "fields": {
+    "category": 2,
+    "name": "Lanbrusco",
+    "code": "13",
+    "description": "",
+    "price": "3.50",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/lanbrusko.jpg",
+    "created_at": "2026-02-05T15:33:20.744Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 11,
+  "fields": {
+    "category": 2,
+    "name": "Txakolina",
+    "code": "14",
+    "description": "",
+    "price": "8.50",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/txakolina.jpg",
+    "created_at": "2026-02-05T15:34:39.950Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 12,
+  "fields": {
+    "category": 3,
+    "name": "Keler Txikia",
+    "code": "15",
+    "description": "",
+    "price": "1.20",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/garagardoa-keler.jpeg",
+    "created_at": "2026-02-05T15:39:58.769Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 13,
+  "fields": {
+    "category": 3,
+    "name": "Heineken",
+    "code": "17",
+    "description": "",
+    "price": "1.50",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/garagardoa-heineken.jpg",
+    "created_at": "2026-02-05T15:42:31.149Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 14,
+  "fields": {
+    "category": 3,
+    "name": "Voll Damm",
+    "code": "20",
+    "description": "",
+    "price": "1.50",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/garagardoa-volldamm.jpg",
+    "created_at": "2026-02-05T15:43:41.432Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 15,
+  "fields": {
+    "category": 3,
+    "name": "Radler",
+    "code": "23",
+    "description": "",
+    "price": "1.20",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/garagardoa-radler.jpeg",
+    "created_at": "2026-02-05T15:44:29.817Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 16,
+  "fields": {
+    "category": 3,
+    "name": "Buckler 0,0",
+    "code": "34",
+    "description": "",
+    "price": "1.20",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/garagardoa-buckler.jpg",
+    "created_at": "2026-02-05T15:45:44.403Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 17,
+  "fields": {
+    "category": 4,
+    "name": "Coca Cola Botila",
+    "code": "33",
+    "description": "",
+    "price": "1.20",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/cocacola-botila.jpg",
+    "created_at": "2026-02-05T15:47:53.245Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 18,
+  "fields": {
+    "category": 4,
+    "name": "Coca Cola Lata",
+    "code": "55",
+    "description": "",
+    "price": "1.20",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/cocacola-lata.jpeg",
+    "created_at": "2026-02-05T15:48:42.055Z"
+  }
+},
+{
+  "model": "product.product",
+  "pk": 19,
+  "fields": {
+    "category": 4,
+    "name": "Kas Laranja",
+    "code": "56",
+    "description": "",
+    "price": "1.20",
+    "stock": 0,
+    "is_active": true,
+    "image": "products/kas-laranja.jpg",
+    "created_at": "2026-02-05T15:49:43.224Z"
+  }
+}
+]

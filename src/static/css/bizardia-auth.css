@@ -1,0 +1,71 @@
+/* =========
+   1) Variables de color (cubriendo variantes)
+   ========= */
+:root,
+body,
+.aaui-theme--light,
+.aaui-theme--dark {
+  --primary-color: #6B8E23;
+  --primary-color-hover: #5a7a1e;
+  --primary-color-active: #4a671a;
+
+  /* Nombres que usa allauth-ui en varias versiones */
+  --aaui-primary: #6B8E23;
+  --aaui-primary-600: #5a7a1e;
+  --aaui-primary-700: #4a671a;
+  --aaui-link: #6B8E23;
+}
+
+/* =========
+   2) Botón primario (cubrir selectores típicos de allauth-ui)
+   ========= */
+button[type="submit"],
+.btn-primary,
+button.btn-primary,
+.allauth-button,
+.aaui-btn,
+.aaui-btn-primary,
+.aaui-button,
+.aaui-button--primary,
+a.allauth-social-button.primary {
+  background-color: var(--aaui-primary) !important;
+  border-color: var(--aaui-primary) !important;
+  color: #fff !important;
+}
+
+button[type="submit"]:hover,
+.btn-primary:hover,
+.allauth-button:hover,
+.aaui-btn:hover,
+.aaui-btn-primary:hover,
+.aaui-button:hover,
+.aaui-button--primary:hover,
+a.allauth-social-button.primary:hover {
+  background-color: var(--primary-color-hover) !important;
+  border-color: var(--primary-color-hover) !important;
+}
+
+/* =========
+   3) Enlaces
+   ========= */
+a, .aaui-link {
+  color: var(--aaui-link) !important;
+}
+a:hover, .aaui-link:hover {
+  color: var(--primary-color-hover) !important;
+}
+
+/* =========
+   4) Botón Google (estilo más integrado)
+   ========= */
+.aaui-socialbutton--google,
+a.allauth-social-button.google {
+  background: #fff !important;
+  color: #000 !important;
+  border: 2px solid var(--aaui-primary) !important;
+}
+.aaui-socialbutton--google:hover,
+a.allauth-social-button.google:hover {
+  border-color: var(--primary-color-hover) !important;
+}
+

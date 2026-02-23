@@ -1,0 +1,39 @@
+<!-- blog/templates/blog/blog_detail.html -->
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block head %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<section id="news" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">{% trans 'News' %}</h2>
+            <div class="row">
+                {% for news in news %}
+                <div class="col-md-4 animate-fadeIn">
+                    <div class="card">
+                        <a href="{% url 'news_app:news_detail' news.slug %}">
+                        <img src="/media/{{ news.image }}" class="card-img-top" alt="{{ news.title }}">
+                        </a>
+                            <div class="card-body">
+                            <h5 class="card-title">{{ news.title }}</h5>
+                            <p class="card-text">{{ news.short }}</p>
+                            <a href="{% url 'news_app:news_detail' news.slug %}" class="btn btn-primary-custom btn-sm">{% trans 'Read more' %}</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            {{ news.published_at }}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %} 
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'news_app:news_list' %}" class="btn bg-bizardia">{% trans 'See more' %}</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

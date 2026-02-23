@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Política de Privacidad" %} | Bizardia{% endblock %}
+
+{% block content %}
+<div class="container py-5" style="max-width: 900px;">
+
+    <h1 class="mb-4">{% trans "Política de Privacidad" %}</h1>
+
+    <p class="text-muted">
+        {% trans "Última actualización:" %} {% now "d/m/Y" %}
+    </p>
+
+    <hr class="my-4">
+
+    <!-- 1. RESPONSABLE DEL TRATAMIENTO -->
+    <section class="mb-5">
+        <h4>1. {% trans "Responsable del tratamiento" %}</h4>
+        <p>
+            En cumplimiento del Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD),
+            se informa que los datos personales recogidos a través del sitio web serán tratados por:
+        </p>
+
+        <ul>
+            <li><strong>Bizardia Kultur Elkartea</strong></li>
+            <li>Oiartzun, Gipuzkoa, Euskadi</li>
+            <li>Email: info@bizardia.eus</li>
+            <li>Web: www.bizardia.eus</li>
+        </ul>
+    </section>
+
+    <!-- 2. FINALIDAD DEL TRATAMIENTO -->
+    <section class="mb-5">
+        <h4>2. {% trans "Finalidad del tratamiento" %}</h4>
+
+        <p>Los datos personales podrán ser tratados con las siguientes finalidades:</p>
+
+        <ul>
+            <li>Gestión de socios y miembros de la asociación.</li>
+            <li>Gestión de reservas de salas y actividades.</li>
+            <li>Gestión del sistema interno de TPV y control de pagos.</li>
+            <li>Atender solicitudes realizadas a través de formularios de contacto.</li>
+            <li>Envío de comunicaciones relacionadas con actividades de la asociación.</li>
+            <li>Cumplimiento de obligaciones legales.</li>
+        </ul>
+    </section>
+
+    <!-- 3. BASE LEGAL -->
+    <section class="mb-5">
+        <h4>3. {% trans "Base jurídica del tratamiento" %}</h4>
+
+        <p>El tratamiento se basa en:</p>
+
+        <ul>
+            <li>El consentimiento del interesado.</li>
+            <li>La ejecución de la relación asociativa.</li>
+            <li>El cumplimiento de obligaciones legales.</li>
+            <li>El interés legítimo de la asociación.</li>
+        </ul>
+    </section>
+
+    <!-- 4. CONSERVACIÓN DE DATOS -->
+    <section class="mb-5">
+        <h4>4. {% trans "Conservación de los datos" %}</h4>
+
+        <p>
+            Los datos personales se conservarán mientras exista relación con la asociación
+            y durante el tiempo necesario para cumplir con obligaciones legales.
+        </p>
+    </section>
+
+    <!-- 5. DESTINATARIOS -->
+    <section class="mb-5">
+        <h4>5. {% trans "Destinatarios de los datos" %}</h4>
+
+        <p>
+            No se cederán datos a terceros salvo obligación legal o cuando sea necesario
+            para la prestación del servicio (por ejemplo, proveedores tecnológicos
+            de alojamiento web).
+        </p>
+    </section>
+
+    <!-- 6. DERECHOS -->
+    <section class="mb-5">
+        <h4>6. {% trans "Derechos de los interesados" %}</h4>
+
+        <p>El usuario puede ejercer los siguientes derechos:</p>
+
+        <ul>
+            <li>Acceso a sus datos personales.</li>
+            <li>Rectificación de datos inexactos.</li>
+            <li>Supresión de sus datos.</li>
+            <li>Limitación del tratamiento.</li>
+            <li>Portabilidad de los datos.</li>
+            <li>Oposición al tratamiento.</li>
+        </ul>
+
+        <p>
+            Para ejercer estos derechos puede enviar una solicitud a:
+            <strong>info@bizardia.eus</strong>
+        </p>
+    </section>
+
+    <!-- 7. SEGURIDAD -->
+    <section class="mb-5">
+        <h4>7. {% trans "Medidas de seguridad" %}</h4>
+
+        <p>
+            Bizardia aplica medidas técnicas y organizativas adecuadas para garantizar
+            la seguridad de los datos personales y evitar su alteración, pérdida,
+            tratamiento o acceso no autorizado.
+        </p>
+    </section>
+
+    <!-- 8. MODIFICACIONES -->
+    <section class="mb-5">
+        <h4>8. {% trans "Modificaciones" %}</h4>
+
+        <p>
+            Bizardia se reserva el derecho de modificar la presente Política de Privacidad
+            para adaptarla a novedades legislativas o cambios en sus actividades.
+        </p>
+    </section>
+
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+Django>=5.0,<6.0
+Pillow>=10.0
+django-tinymce>=4.0
+django-environ>=0.11
+django-allauth>=65.0
+django-allauth-ui>=1.8
+django-widget-tweaks>=1.5
+slippers>=0.6
+django-rosetta>=0.10
+polib>=1.2.0
+PyJWT>=2.8
+cryptography>=45.0
+gunicorn>=21.2.0
+python-dotenv

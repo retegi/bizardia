@@ -1,0 +1,318 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+<div class="row">
+<div class="col-lg-2"></div>
+<div class="col-lg-8 col-md-12">
+
+<h1 class="text-center">{% trans 'Reserve table' %}</h1>
+
+<form method="post" id="reservaForm">
+{% csrf_token %}
+
+<!-- Fecha -->
+<div class="mb-3">
+    <label for="reservaFecha" class="form-label">{% trans 'Reservation date' %}</label>
+    <input type="date" class="form-control" id="reservaFecha" name="reservation_date" required>
+</div>
+
+<!-- Actividades -->
+<div class="mb-3">
+<label class="form-label d-block">{% trans 'Select your activities' %}</label>
+<div class="btn-group flex-wrap" role="group">
+    <input type="checkbox" class="btn-check" id="breakfast" name="activities" value="breakfast">
+    <label class="btn btn-outline-primary me-2 mb-2" for="breakfast">{% trans 'Breakfast' %}</label>
+
+    <input type="checkbox" class="btn-check" id="lunch" name="activities" value="lunch">
+    <label class="btn btn-outline-primary me-2 mb-2" for="lunch">{% trans 'Lunch' %}</label>
+
+    <input type="checkbox" class="btn-check" id="midday" name="activities" value="midday">
+    <label class="btn btn-outline-primary me-2 mb-2" for="midday">{% trans 'Midday meal' %}</label>
+
+    <input type="checkbox" class="btn-check" id="merienda" name="activities" value="merienda">
+    <label class="btn btn-outline-primary me-2 mb-2" for="merienda">{% trans 'Merienda' %}</label>
+
+    <input type="checkbox" class="btn-check" id="dinner" name="activities" value="dinner">
+    <label class="btn btn-outline-primary me-2 mb-2" for="dinner">{% trans 'Dinner' %}</label>
+</div>
+</div>
+
+<!-- Número socio -->
+<div class="mb-3">
+<label class="form-label">{% trans 'Membership number' %}</label>
+<input type="text" class="form-control" name="membership_number" required>
+</div>
+
+<!-- Comensales -->
+<div class="mb-3">
+<label class="form-label">{% trans 'Number of diners' %}</label>
+<input type="number" class="form-control" name="num_diners" min="1" required>
+</div>
+
+<!-- Selector visual -->
+
+<style>
+
+/* MINI PLANO EXACTO IGUAL QUE RESERVATIONS */
+
+.mesa-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 90px);
+    grid-template-rows: repeat(3, 70px);
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* POSICIONES EXACTAS */
+
+/* FILA SUPERIOR */
+.m7 { grid-column: 1; grid-row: 1; }
+.m8 { grid-column: 2; grid-row: 1; }
+
+/* FILA MEDIA */
+.m4 { grid-column: 1; grid-row: 2; }
+.m5 { grid-column: 2; grid-row: 2; }
+.m6 { grid-column: 3; grid-row: 2; }
+
+/* FILA INFERIOR */
+.m1 { grid-column: 1; grid-row: 3; }
+.m2 { grid-column: 2; grid-row: 3; }
+.m3 { grid-column: 3; grid-row: 3; }
+
+/* COCINA */
+.kitchen{
+    grid-column: 4;
+    grid-row: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kitchen img{
+    width: 65px;
+    height: auto;
+}
+
+/* ESTILO MESAS IGUAL QUE RESERVATIONS */
+.mesa{
+    width: 90px;
+    height: 55px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background: #e6d4b8;
+    border: 2px solid #b0885a;
+    cursor: pointer;
+}
+
+.mesa.selected{
+    background-color: #6b8e23;
+    color: white;
+    border-color: #4e6b19;
+}
+
+.mesa.disabled{
+    opacity:.3;
+    pointer-events:none;
+}
+
+/* SALAS IGUAL QUE RESERVATIONS */
+.salas-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.sala{
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 2px dashed #b0885a;
+    background-color: #f3e3c7;
+    font-size: 14px;
+    cursor:pointer;
+}
+
+.sala.selected{
+    background-color: #6b8e23;
+    color: white;
+    border: none;
+}
+
+.sala.disabled{
+    opacity:.3;
+    pointer-events:none;
+}
+
+/* RESPONSIVE EXACTO */
+@media (max-width: 480px){
+
+    .mesa-grid{
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        width: 100%;
+    }
+
+    .mesa{
+        width: 100%;
+        height: 50px;
+        font-size: 14px;
+    }
+
+    .kitchen img{
+        width: 45px;
+    }
+}
+
+</style>
+
+<div class="mb-3">
+<label class="form-label d-block">{% trans 'Select your tables and rooms' %}</label>
+
+<div class="mesa-grid">
+
+<div class="mesa m7" data-id="7">7</div>
+<div class="mesa m8" data-id="8">8</div>
+
+<div class="mesa m4" data-id="4">4</div>
+<div class="mesa m5" data-id="5">5</div>
+<div class="mesa m6" data-id="6">6</div>
+
+<div class="mesa m1" data-id="1">1</div>
+<div class="mesa m2" data-id="2">2</div>
+<div class="mesa m3" data-id="3">3</div>
+
+<div class="kitchen">
+    <img src="{% static 'img/kitchen2.jpg' %}">
+</div>
+
+</div>
+    <div class="salas-row">
+
+    <div class="sala" data-id="urkabe">
+        {% trans 'Urkabe room' %}
+    </div>
+
+    <div class="sala" data-id="goiko">
+        {% trans 'Goiko room' %}
+    </div>
+
+</div>
+
+<input type="hidden" name="room_urkabe" id="roomUrkabeInput" value="false">
+<input type="hidden" name="room_goiko" id="roomGoikoInput" value="false">
+
+
+<input type="hidden" name="selected_tables" id="mesasSeleccionadas">
+
+</div>
+
+<!-- Cumpleaños -->
+<div class="mb-3">
+<label class="form-label">{% trans 'Is it a birthday celebration?' %}</label><br>
+<div class="btn-group">
+    <input type="radio" class="btn-check" name="is_birthday" id="birthday_no" value="false" checked>
+    <label class="btn btn-outline-primary me-2" for="birthday_no">{% trans 'No' %}</label>
+
+    <input type="radio" class="btn-check" name="is_birthday" id="birthday_yes" value="true">
+    <label class="btn btn-outline-primary" for="birthday_yes">{% trans 'Yes' %}</label>
+</div>
+</div>
+
+<!-- Fuegos -->
+<div class="mb-3">
+<label class="form-label">{% trans 'How many fires?' %}</label><br>
+<div class="btn-group">
+{% for i in "01234"|make_list %}
+<input type="radio" class="btn-check" name="fires" id="fire{{ i }}" value="{{ i }}" {% if i == '0' %}checked{% endif %}>
+<label class="btn btn-outline-danger me-2" for="fire{{ i }}">{{ i }}</label>
+{% endfor %}
+</div>
+</div>
+
+<!-- Hornos -->
+<div class="mb-3">
+<label class="form-label">{% trans 'How many ovens?' %}</label><br>
+<div class="btn-group">
+{% for i in "012"|make_list %}
+<input type="radio" class="btn-check" name="ovens" id="oven{{ i }}" value="{{ i }}" {% if i == '0' %}checked{% endif %}>
+<label class="btn btn-outline-warning me-2" for="oven{{ i }}">{{ i }}</label>
+{% endfor %}
+</div>
+</div>
+
+<!-- Barbacoa -->
+<div class="mb-3">
+<label class="form-label">{% trans 'Barbecue?' %}</label><br>
+<div class="btn-group">
+<input type="radio" class="btn-check" name="barbacue" id="bbq_no" value="no" checked>
+<label class="btn btn-outline-secondary me-2" for="bbq_no">{% trans 'No' %}</label>
+
+<input type="radio" class="btn-check" name="barbacue" id="bbq_yes" value="yes">
+<label class="btn btn-outline-secondary" for="bbq_yes">{% trans 'Yes' %}</label>
+</div>
+</div>
+
+<button type="submit"
+class="btn p-3 my-3 w-100 text-white"
+style="background-color:#6b8e23;font-size:22px;">
+{% trans 'Submit reservation' %}
+</button>
+
+
+
+    <script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    const seleccionables = document.querySelectorAll('[data-id]');
+    const inputMesas = document.getElementById('mesasSeleccionadas');
+    const inputUrkabe = document.getElementById('roomUrkabeInput');
+    const inputGoiko = document.getElementById('roomGoikoInput');
+
+    let seleccionadas = [];
+
+    seleccionables.forEach(el => {
+
+        el.addEventListener('click', function(){
+
+            if(el.classList.contains('disabled')) return;
+
+            const id = el.getAttribute('data-id');
+
+            if(seleccionadas.includes(id)){
+                seleccionadas = seleccionadas.filter(m => m !== id);
+                el.classList.remove('selected');
+            }else{
+                seleccionadas.push(id);
+                el.classList.add('selected');
+            }
+
+            // Guardar solo mesas (números)
+            const soloMesas = seleccionadas.filter(x => !isNaN(x));
+            inputMesas.value = JSON.stringify(soloMesas);
+
+            // Guardar salas
+            inputUrkabe.value = seleccionadas.includes('urkabe') ? 'true' : 'false';
+            inputGoiko.value = seleccionadas.includes('goiko') ? 'true' : 'false';
+
+        });
+
+    });
+
+});
+</script>
+
+</form>
+</div>
+<div class="col-lg-2"></div>
+</div>
+</div>
+
+{% endblock %}

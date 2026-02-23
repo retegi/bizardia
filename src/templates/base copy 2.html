@@ -1,0 +1,593 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bizardia - Sociedad Gastronómica y Cultural</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts - Modern minimal typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+
+    <style>
+        :root {
+            --primary-color: #6b8e23; /* Verde oliva */
+            --secondary-color: #c2b280; /* Beige arena */
+            --accent-color: #a8c686; /* Verde claro */
+            --light-color: #f5f5f0;
+            --dark-color: #333333;
+            --text-color: #4a4a4a;
+        }
+        .bg-bizardia{
+            background-color:#6b8e23;
+        }
+        .text-bizardia{
+            color: #6b8e23;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            color: var(--dark-color);
+            letter-spacing: -0.5px;
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-color) !important;
+            letter-spacing: -1px;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 0.3rem;
+            color: var(--dark-color);
+            font-size: 0.95rem;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+        }
+        
+        .hero-section {
+            position: relative;
+            height: 85vh;
+            overflow: hidden;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8);
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            width: 100%;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+        }
+        
+        .btn-primary-custom {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 0.8rem 2.2rem;
+            font-weight: 500;
+            margin: 0.5rem;
+            border-radius: 50px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary-custom:hover {
+            background-color: #5a7a1d;
+            border-color: #5a7a1d;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary-custom {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 0.8rem 2.2rem;
+            font-weight: 500;
+            margin: 0.5rem;
+            border-radius: 50px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary-custom:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            color: var(--dark-color);
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: "";
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+            background-color: white;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-img-top {
+            height: 220px;
+            object-fit: cover;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        
+        .card-text {
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+        
+        .gallery-item {
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-item img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .history-section {
+            background-color: white;
+            padding: 6rem 0;
+        }
+        
+        .contact-info {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-info li {
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            color: var(--primary-color);
+            margin-right: 0.8rem;
+            margin-top: 3px;
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .language-selector {
+            margin-left: 1rem;
+        }
+        
+        .dropdown-toggle::after {
+            display: none;
+        }
+        
+        .avatar-img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--light-color);
+        }
+        
+        .form-control, .form-select {
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(107, 142, 35, 0.15);
+        }
+        
+        /* Animation effects */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section {
+                height: 70vh;
+            }
+            
+            .section-title {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home_app:home' %}">Bizardia</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home_app:home' %}#news">{% trans 'News' %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home_app:home' %}#activities">{% trans 'Activities' %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home_app:home' %}#gallery">{% trans 'Gallery' %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home_app:home' %}#blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home_app:home' %}#history">{% trans 'History' %}</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="bizardiaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Bizardia
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="bizardiaDropdown">
+                        <li><a class="dropdown-item" href="#">{% trans 'Legal statutes' %}</a></li>
+                        <li><a class="dropdown-item" href="#">{% trans 'Organization chart' %}</a></li>
+                        <li><a class="dropdown-item" href="#">{% trans 'Transparency' %}</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle bg-bizardia text-dark" href="#" id="bizardiaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {% trans 'Reserve' %}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="bizardiaDropdown">
+                        <li><a class="dropdown-item bg-bizardia" href="{% url 'diningroom_app:create_reservation' %}">{% trans 'Reserve' %}</a></li>
+                        <li><a class="dropdown-item" href="{% url 'diningroom_app:reservation_list' %}">{% trans 'See reservations' %}</a></li>
+                        
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home_app:home' %}#contact">{% trans 'Contact' %}</a>
+                </li>
+            </ul>
+
+            <div class="d-flex align-items-center">
+                {% get_current_language as CURRENT_LANGUAGE %}
+                {% get_available_languages as AVAILABLE_LANGUAGES %}
+                {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+
+                <!-- Language selector -->
+                <div class="dropdown me-3">
+                    <button class="btn btn-outline-light dropdown-toggle text-dark" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ CURRENT_LANGUAGE|upper }}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                        {% for language in languages %}
+                            {% if language.code != CURRENT_LANGUAGE %}
+                                <li>
+                                    <form action="{% url 'set_language' %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="language" value="{{ language.code }}">
+                                    <input type="hidden" name="next" value="{{ request.get_full_path|escape }}">
+                                    <button type="submit" class="dropdown-item">
+                                        {{ language.code|upper }}
+                                    </button>
+                                </form>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                {% if user.is_authenticated %}
+                <!-- User avatar dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-outline-light dropdown-toggle d-flex align-items-center text-dark" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!--<img src="https://via.placeholder.com/24" alt="icono" class="rounded-circle me-2" style="width: 24px; height: 24px;">-->
+                        <span class="d-none d-md-inline text-bizardia">{{ user.username }}</span> <!-- Puedes traducirlo o quitarlo -->
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>{% trans 'Settings' %}</a></li>
+                        <li><a class="dropdown-item" href="{% url 'account_logout' %}"><i class="fas fa-sign-in-alt me-2"></i>{% trans 'Logout' %}</a></li>
+                    </ul>
+                </div>
+                {% else %}
+                <!-- User avatar dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-outline-light dropdown-toggle d-flex align-items-center text-dark bg-bizardia" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!--<img src="https://via.placeholder.com/24" alt="icono" class="rounded-circle me-2" style="width: 24px; height: 24px;">-->
+                        <span class="d-none d-md-inline">{% trans 'Login' %}</span> <!-- Puedes traducirlo o quitarlo -->
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="{% url 'account_login' %}"><i class="fas fa-sign-in-alt me-2"></i>{% trans 'Login' %}</a></li>
+                        <li><a class="dropdown-item" href="{% url 'account_signup' %}"><i class="fas fa-user-plus me-2"></i>{% trans 'Sign up' %}</a></li>
+                          </ul>
+                </div>
+                
+
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+{% block content %}
+{% endblock %}
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4>Bizardia</h4>
+                    <p>Gurutzeko elkartea.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Enlaces</h5>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'home_app:home' %}#news">{% trans 'News' %}</a></li>
+                        <li><a href="{% url 'home_app:home' %}#activities">{% trans 'Activities' %}</a></li>
+                        <li><a href="{% url 'home_app:home' %}#gallery">{% trans 'Gallery' %}</a></li>
+                        <li><a href="{% url 'home_app:home' %}#history">{% trans 'History' %}</a></li>
+                        <li><a href="{% url 'home_app:home' %}#contact">{% trans 'Contact' %}</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Bizardia</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">{% trans 'Legal statutes' %}</a></li>
+                        <li><a href="#">{% trans 'Organization chart' %}</a></li>
+                        <li><a href="#">{% trans 'Transparency' %}</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <!--<h5>Newsletter</h5>
+                    <p>Suscríbete para recibir nuestras últimas noticias y eventos.</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Tu email" required>
+                            <button class="btn btn-outline-light" type="submit">Suscribir</button>
+                        </div>
+                    </form>-->
+                    <p><i class="fas fa-phone me-2"></i> +34 943 XXX XXX</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@bizardia.com</p>
+                </div>
+            </div>
+            <hr class="my-4 bg-light opacity-25">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2023 Bizardia. {% trans 'All rights reserved' %}.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="#" class="text-light" style="text-decoration:none;">{% trans 'Privacy Policy' %}</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-light" style="text-decoration:none;">{% trans 'Terms and conditions' %}</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-light" style="text-decoration:none;">{% trans 'Cookies' %}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Activar tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+        
+        // Animación al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate-fadeIn');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(15px)';
+                el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(el);
+            });
+            
+            // Cambiar navbar al hacer scroll
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                    navbar.style.padding = '0.5rem 0';
+                } else {
+                    navbar.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
+                    navbar.style.padding = '1rem 0';
+                }
+            });
+        });
+        
+        // Formulario de contacto
+        /*const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+                this.reset();
+            });
+        }*/
+    </script>
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+         <script>
+var map = L.map('map').setView([43.308861144570336, -1.844196218861588], 16);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+var marker = L.marker([43.308861144570336, -1.844196218861588]).addTo(map);
+    </script>
+
+
+</body>
+</html>

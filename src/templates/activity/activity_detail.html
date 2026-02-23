@@ -1,0 +1,113 @@
+<!-- blog/templates/blog/blog_detail.html -->
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block head %}
+{% endblock %}
+
+
+{% block content %}
+<div class="container py-5">
+ 
+  <div class="card shadow-sm border-0">
+  
+    <div class="card-body">
+ <h1 class="card-title mb-3">{{ activity.title }}</h1>
+      <p class="text-muted mb-4">
+        <strong>{% trans 'Author' %}:</strong> {{ activity.author }} |
+        <strong>{% trans 'Date' %}:</strong> {{ activity.activity_date_time|date:"Y/m/d H:i" }} {% if activity.show_price %} |
+          <strong>{% trans 'Price' %}:</strong> {{ activity.price }}€ {% endif %}{% if activity.audience %} |
+          <strong>{% trans 'Nork hartu dezake parte?' %}:</strong> {{ activity.audience }} {% endif %}
+      </p>
+     
+
+      <div class="card-text fs-5">
+          <div class="row">
+              {% if activity.cover_image %}
+                <div class="col-4">
+                    <img src="{{ activity.cover_image.url }}"
+                         class="img-fluid mb-3 gallery-image"
+                         data-bs-toggle="modal"
+                         data-bs-target="#imageModal"
+                         data-image="{{ activity.cover_image.url }}"
+                         style="cursor:pointer;">
+                </div>
+                {% endif %}
+
+
+              {% if activity.cover_image %}
+              <div class="col-8">
+              {% else %}
+              <div class="col-12">
+              {% endif %}
+                  {% if activity.show_registration_button %}
+                  <a href="{% url 'activity_app:activity_register' activity.slug %}" class="btn btn-sm bg-bizardia text-white m-2">{% trans 'Register' %}</a>{% endif %}<a href="{% url 'activity_app:activity_registered_list' activity.slug %}" class="btn btn-sm bg-bizardia text-white m-2">{% trans 'Registered list' %}</a><br>
+                    {{ activity.content|safe }}<br>
+                  {% if activity.audience %}
+                                    <label>{% trans 'Nork hartu dezake parte?' %} <br></nbr><b>{{ activity.audience }}</b></label>
+                                    {% endif %}
+                  {% if activity.show_price %}
+                     <br><br><Label>{% trans 'Price' %}:</label><b><h3>{{ activity.price }}€</h3></b>
+                  {% endif %}
+                    {% if activity.show_registration_button %}
+                        <a href="{% url 'activity_app:activity_register' activity.slug %}" class="btn btn-sm bg-bizardia text-white m-1">{% trans 'Register' %}</a>{% endif %}<a href="{% url 'activity_app:activity_registered_list' activity.slug %}" class="btn btn-sm bg-bizardia text-white m-1">{% trans 'Registered list' %}</a><br>
+
+
+              </div>
+
+          </div>
+
+
+
+      </div>
+          {% if activity.images.all %}
+    <div class="row mt-5">
+        {% for img in activity.images.all %}
+            <div class="col-md-4">
+                <img src="{{ img.image.url }}"
+                     class="img-fluid mb-3 gallery-image"
+                     data-bs-toggle="modal"
+                     data-bs-target="#imageModal"
+                     data-image="{{ img.image.url }}"
+                     style="cursor:pointer;">
+
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+    </div>
+  </div>
+</div>
+
+
+    <!-- Fullscreen Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close btn-close-white ms-auto"
+                data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body d-flex justify-content-center align-items-center">
+        <img id="modalImage" src="" class="img-fluid w-100">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll(".gallery-image");
+    const modalImage = document.getElementById("modalImage");
+
+    images.forEach(img => {
+        img.addEventListener("click", function () {
+            modalImage.src = this.getAttribute("data-image");
+        });
+    });
+});
+</script>
+
+{% endblock %}

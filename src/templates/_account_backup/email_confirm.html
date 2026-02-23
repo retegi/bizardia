@@ -1,0 +1,21 @@
+{% extends "base_auth.html" %}
+{% load i18n account %}
+{% block title %}{% trans "Confirmar email" %}{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-6 text-center">
+    <h1 class="h4 mb-3">{% trans "Confirmar email" %}</h1>
+    {% if confirmation %}
+      <p class="text-muted">
+        {% blocktrans with email=confirmation.email_address.email %}Confirma que quieres asociar el email {{ email }} a tu cuenta.{% endblocktrans %}
+      </p>
+      <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">{% trans "Confirmar" %}</button>
+      </form>
+    {% else %}
+      <p class="text-muted">{% trans "Este enlace de confirmación no es válido o ya fue usado." %}</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

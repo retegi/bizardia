@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block head %}
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid" style="background-image: url('{% static 'img/soziedade.png' %}'); min-height:50vh;">
+  <div class="row text-center p-5">
+    <h1 class="" style="">Bizardia</h1>
+    <p>Gurutzeko elkartea</p>
+    <div class="w-100">
+    <button class="btn bg-dark text-white col-3 p-3">{% trans 'Order table' %}</button><br><br>
+    <button class="btn bg-dark text-white col-3 p-3">{% trans 'Pay account' %}</button>
+    </div>
+  </div>
+</div>
+{% endblock %}

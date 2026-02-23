@@ -1,0 +1,18 @@
+<!-- blog/templates/blog/blog_form.html -->
+<!-- blog/templates/blog/blog_detail.html -->
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block head %}
+{% endblock %}
+
+
+{% block content %}
+<h2>Crear nuevo post</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Publicar</button>
+</form>
+<a href="{% url 'blog_app:blog_list' %}">← Volver</a>
+{% endblock %}

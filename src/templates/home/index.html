@@ -1,0 +1,418 @@
+{% extends 'base.html' %}
+{% load static i18n group_filters %}
+{% block head %}
+<style>
+#map {
+    width: 100%;
+    height: 350px !important;
+    min-height: 350px;
+    display: block;
+}
+
+/* HERO CAROUSEL */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* móvil: pantalla completa */
+.hero-section,
+.hero-section .carousel,
+.hero-section .carousel-inner,
+.hero-section .carousel-item {
+    height: 100vh;
+}
+
+/* imagen */
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* desktop */
+@media (min-width: 992px) {
+    .hero-section,
+    .hero-section .carousel,
+    .hero-section .carousel-inner,
+    .hero-section .carousel-item {
+        height: 50vh !important;
+        max-height: 50vh;
+    }
+}
+
+
+
+
+</style>
+{% endblock %}
+
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<section class="container pt-3 pb-3 bg-light">
+    {% for activity in activity_outstanding %}
+    <div class="row">
+        <div class="col-lg-3 col-md-3">
+            <a href="{% url 'activity_app:activity_detail' activity.slug %}">
+                <img src="{{ activity.cover_image.url }}" class="w-100"></a>
+        </div>
+        <div class="col-lg-7 col-md-9 p-3">
+            <label class="text-bizardia">{{ activity.activity_date_time|date:"d/m/Y H:i" }}</label>
+            <a href="{% url 'activity_app:activity_detail' activity.slug %}" style="text-decoration:none" class="text-bizardia4" ><h4 class=""><b>{{ activity.title }}</b></h4></a>
+            <p>{{ activity.short }} <a style="text-decoration:none" class="text-bizardia" href="#">(...)</a></p>
+            {% if activity.audience %}
+            <label>{% trans 'Nork hartu dezake parte?' %} <b>{{ activity.audience }}</b></label>
+            {% endif %}
+            {% if activity.show_price %}
+            <p>Zenbatekoa: <b>{{ activity.price }}€</b></p>
+            {% endif %}
+            <a href="{% url 'activity_app:activity_detail' activity.slug %}"><button class="btn btn-sm bg-bizardia text-white">Xehetasunak ikusi</button></a> {% if activity.show_registration_button %}<a href="{% url 'activity_app:activity_register' activity.slug %}"><button class="btn btn-sm bg-bizardia text-white">Izena eman</button></a>{% endif %}
+        </div>
+
+    </div>
+    {% endfor %}
+
+</section>
+
+<section class="container mt-3">
+    <div class="row text-center bg-bizardia2">
+        <h5 class="p-3">Egutegia</h5>
+    </div>
+    <div class="row">
+        {% for activity in latest_activity %}
+        <div class="col-lg-2 col-md-12 bg-white p-3 border-end">
+            <h6 class=""><b>{{ activity.activity_date_time|date:"M Y"}}</b></h6>
+            <div class="row">
+                <div class="col-3"><b><h3>{{ activity.activity_date_time|date:"d"}}</h3></h3></b></div>
+                <div class="col-9"><a class="text-bizardia" href="{% url 'activity_app:activity_detail' activity.slug %}" style="text-decoration:none;"><b>{{ activity.title }}</b></a><br>
+                    <label class="text-bizardia3">{{ activity.activity_date_time|date:"H:i"}}</label></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% if request.user|has_group:"bazkideak" or request.user.is_superuser %}
+<section class="container mt-3 bg-bizardia">
+    <a href="{% url 'diningroom_app:create_reservation' %}" style="text-decoration:none;" target="_blank"><h5 class="text-center p-3 text-white">Mahaia erreserbatu</h5></a>
+</section>
+{% endif %}
+
+<section class="container bg-white mt-3">
+    <div class="row">
+        <div class="col-lg-3 col-md-12 bg-bizardia2 p-3">
+             {% with news=latest_news.first %}
+                {% if news %}
+                <div class="animate-fadeIn">
+                    <div class="card">
+                        <a href="{% url 'news_app:news_detail' news.slug %}">
+                            <img src="{{ news.image.url }}" class="card-img-top" alt="{{ news.title }}">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ news.title }}</h5>
+                            <a href="{% url 'news_app:news_detail' news.slug %}"
+                               class="btn btn-primary-custom btn-sm text-white">
+                               {% trans 'Read' %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endwith %}
+
+            {% if home_content.show_membership_section %}
+            <h4 class="text-bizardia4">Egin zaitez bazkide</h4>
+            <img class="w-100" src="{% static 'img/bizardia-bazkide-egin.png' %}">
+            <p class="bg-white p-2">{{ home_content.membership_info_text }}</p>
+            {% if home_content.show_membership_button %}
+            <a href="{% url 'home_app:home' %}#contact" target="_blank"><button class="btn btn-sm bg-bizardia4 text-light w-100 mt-3">{% trans 'Bazkide egin' %}</button></a>
+            {% endif %}
+            {% endif %}
+        </div>
+        <div class="col-lg-6 col-md-12 p-3">
+            <h3 class="text-center p-3">Ongi etorria Bizardia elkartera</h3>
+            <img class="w-100" src="{% static 'img/bizardia-akuarela.png' %}">
+            <h4 class="text-bizardia4 p-3">Bizardia elkartearen helburuak hauek dira:</h4>
+            <p class="text-bizardia4">Kultur, jolas eta kirol munduan egin daitezkeen eta proposa daitezkeen jarduerak aurrera eramatea.</p>
+            <div class="row mt-3 mb-3">
+                <div class="col-lg-4 col-md-12">
+                    Sorrera urtea: <b>{{ home_content.foundation_year }}</b>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    Bazkideak: <b>{{ home_content.number_of_members }}</b>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    Ekintzak: <b>{{ home_content.activities_per_year }}</b>
+                </div>
+            </div>
+            <a href="https://www.euskadi.eus/eusko-jaurlaritza/-/elkartea/bizardia-kultur-jolas-eta-kirol-elkartea/" target="_blank"><button class="btn btn-sm bg-bizardia2button m-2 w-25">Inskripzioa</button></a><a href="https://www.euskadi.eus/contenidos/asociacion/asrpg00904/es_def/adjuntos/Estatutos.pdf" target="_blank"><button class="btn btn-sm bg-bizardia2button m-2 w-25">Estatutuak</button></a>{% if request.user|has_group:"bazkideak" or request.user.is_superuser %}
+            <a href="{% url 'partner_app:partner_list' %}"
+               class=""><button class="btn btn-sm bg-bizardia2button m-2 w-25">
+                Bazkideen zerrenda</button>
+            </a>
+            {% endif %}
+
+        </div>
+        <div class="col-lg-3 col-md-12 bg-bizardia2 p-3">
+            <div class="row">
+                <div class="col-4">
+                    <img src="{% static 'img/xabier-eskudero.gif' %}" class="w-100">
+                </div>
+                <div class="col-8 p-3">
+                    <h6><b>{{ home_content.director_name }}</b></h6>
+                    <h6>{{ home_content.director_position }}</h6>
+
+                </div>
+            </div>
+            <div class="row bg-white p-3">
+                {% if home_content.show_welcome_section %}
+                <h6 class="fst-italic">{% trans 'Ongietorri mezua' %}</h6>
+                <p class="fst-italic text-bizardia3">{{ home_content.director_welcome_text }}.</p>
+                {% endif %}
+            </div><hr>
+            {% if request.user|has_group:"bazkideak" or request.user.is_superuser %}
+            <a href="{% url 'partner_app:partner_list' %}"
+               class="btn btn-sm bg-bizardia4 text-light w-100 mt-3">
+                Bazkideen zerrenda
+            </a>
+            {% endif %}
+
+
+        </div>
+
+    </div>
+</section>
+
+<section id="activities-list" class="py-5 mt-5" style="background-color:#FDFBF9">
+        <div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            <h3 class="text-center text-bizardia3">Kirola</h3>
+            <img src="{% static 'img/bizardia-kirolak.png' %}" class="w-100">
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <h3 class="text-center text-bizardia3">Kultura</h3>
+            <img src="{% static 'img/bizardia-gastronomia.png' %}" class="w-100">
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <h3 class="text-center text-bizardia3">Jokoa</h3>
+            <img src="{% static 'img/bizardia-jokoak.png' %}" class="w-100">
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <h3 class="text-center text-bizardia3">Dantza</h3>
+            <img src="{% static 'img/bizardia-dantza.png' %}" class="w-100">
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <h3 class="text-center text-bizardia3">Ospakizunak</h3>
+            <img src="{% static 'img/bizardia-ospakizunak.png' %}" class="w-100">
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <h3 class="text-center text-bizardia3">Ehiza</h3>
+            <img src="{% static 'img/bizardia-ehiza.png' %}" class="w-100">
+        </div>
+    </div>
+        </div>
+</section>
+
+    <!-- Noticias Section -->
+    <section id="news" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">{% trans 'News' %}</h2>
+            <div class="row">
+                {% for news in latest_news %}
+                <div class="col-md-4 animate-fadeIn">
+                    <div class="card">
+                        <a href="{% url 'news_app:news_detail' news.slug %}"><img src="/media/{{ news.image }}" class="card-img-top" alt="Noticia 1"></a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ news.title }}</h5>
+                            <p class="card-text">{{ news.short|safe }}</p>
+                            <a href="{% url 'news_app:news_detail' news.slug %}" class="btn btn-primary-custom btn-sm">{% trans 'See more' %}</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            {{ news.published_at|date:"Y/m/d H:i" }}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+               
+                
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'news_app:news_list' %}" class="btn btn-outline-secondary">{% trans 'See more' %}</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Actividades Section -->
+    <section id="activities" class="py-5" style="background-color:#eee">
+        <div class="container">
+            <h2 class="text-center section-title">{% trans 'Activities' %}</h2>
+            <div class="row">
+            
+                {% for content in latest_activity %}
+                <div class="col-lg-6 col-md-12 mb-4 animate-fadeIn">
+                    <div class="card">
+                        <div class="row g-0">
+                            <div class="col-md-5">
+                                <a href="{% url 'activity_app:activity_detail' content.slug %}"><img src="/media/{{ content.cover_image }}" class="img-fluid rounded-start w-100" alt=""></a>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ content.title }}</h5>
+                                    <h4 class="">{{ content.activityDateHour|date:"Y/m/d H:i" }}</h4>
+                                    <p class="card-text">{{ content.short }}</p>
+                                    {% if content.audience %}
+                                    <label>{% trans 'Nork hartu dezake parte?' %} <b>{{ content.audience }}</b></label>
+                                    {% endif %}
+                                    {% if content.price %}
+                                    <label>Prezioa: </label><h5 class="card-title text-secondary">{{ content.price }}€</h5>
+                                    {% endif %}
+                                    <a href="{% url 'activity_app:activity_detail' content.slug %}" class="btn btn-sm bg-bizardia text-white m-1">{% trans 'Detail' %}</a><a href="{% url 'activity_app:activity_register' content.slug %}" class="btn btn-sm bg-bizardia text-white m-1">{% trans 'Register' %}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'activity_app:activity_list' %}" class="btn btn-sm bg-bizardia text-white">{% trans 'See more' %}</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Historia Section -->
+    <section id="history" class="history-section py-5">
+        <div class="container">
+            <h2 class="text-center section-title">{% trans 'History' %}</h2>
+            <div class="row align-items-center">
+            {% for content in latest_history %}
+                <div class="col-lg-6 animate-fadeIn">
+                    <a href="{% url 'history_app:history_detail' content.pk %}"><img src="/media/{{ content.image }}" alt="Historia de Bizardia" class="img-fluid rounded shadow w-100"></a>
+                </div>
+                <div class="col-lg-6 animate-fadeIn delay-1">
+                    <h3>{{ content.title }}</h3>
+                    <p>{{ content.short|safe }}</p>
+                    <a href="{% url 'history_app:history_detail' content.pk %}" class="btn btn-primary-custom">{% trans 'Read more' %}</a>
+                </div>
+            {% endfor %}
+            </div>
+             <div class="text-center mt-4">
+                <a href="{% url 'history_app:history_list' %}" class="btn btn-outline-secondary">{% trans 'All articles on the history of Bizardia' %}</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contact" class="py-5 bg-bizardia2">
+        <div class="container">
+            <h2 class="text-center section-title">{% trans 'Contact' %}</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>{% trans 'Contact information' %}</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> {{ content.address }}</li>
+                        <li><i class="fas fa-phone"></i> {{ content.phone }}</li>
+                        <li><i class="fas fa-envelope"></i> {{ content.email }}</li>
+                        <!--<li><i class="fas fa-clock"></i> Horario: Lunes a Domingo, 10:00 - 23:00</li>-->
+                    </ul>
+                    
+                    <!--<div class="mt-4">
+                        <h4>Síguenos</h4>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>-->
+                    
+                    <div class="mt-4">
+                        <h4>{% trans 'Location' %}</h4>
+                        <div id="map" class="contact-map"></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 delay-1">
+                    <h3>{% trans 'Contact form' %}</h3>
+                    <form method="post" action="{% url 'contact' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">{% trans 'Name' %}</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="asunto" class="form-label">{% trans 'Subject' %}</label>
+                            <select class="form-select" id="asunto" name="asunto">
+                                <option selected>{% trans 'Select a subject' %}</option>
+                                <option>{% trans 'Reservations' %}</option>
+                                <option>{% trans 'Information' %}</option>
+                                <option>{% trans 'Events' %}</option>
+                                <option>{% trans 'Other topic' %}</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensaje" class="form-label">{% trans 'Message' %}</label>
+                            <textarea class="form-control" id="mensaje" name="mensaje" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary-custom w-100 text-white">{% trans 'Send message' %}</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+window.addEventListener("load", function () {
+
+    const mapContainer = document.getElementById("map");
+    if (!mapContainer || !window.L) return;
+
+    // Evitar doble inicialización
+    if (mapContainer._leaflet_id) return;
+
+    const map = L.map(mapContainer).setView(
+        [43.308861144570336, -1.844196218861588],
+        16
+    );
+
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap"
+    }).addTo(map);
+
+    L.marker([43.308861144570336, -1.844196218861588]).addTo(map);
+
+    // Forzar recalculo tras pequeño delay
+    setTimeout(function () {
+        map.invalidateSize();
+    }, 500);
+
+});
+</script>
+{% endblock %}
+
+
+
+
+

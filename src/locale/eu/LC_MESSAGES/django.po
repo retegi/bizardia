@@ -1,0 +1,1392 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-20 17:51+0100\n"
+"PO-Revision-Date: 2026-02-20 19:00+0100\n"
+"Last-Translator:   <admin@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.10.3\n"
+
+#: applications/activity/forms.py:24 applications/activity/models.py:164
+#: applications/product/models.py:6 applications/product/models.py:45
+#: templates/partner/partner_list.html:15
+msgid "Izena"
+msgstr "Izena"
+
+#: applications/activity/forms.py:25 applications/activity/models.py:165
+msgid "Abizena"
+msgstr "Abizena"
+
+#: applications/activity/forms.py:26 applications/activity/models.py:166
+msgid "Herria"
+msgstr "Herria"
+
+#: applications/activity/forms.py:27 applications/activity/models.py:169
+msgid "Mendi federazioko kidea"
+msgstr "Mendi federazioko kidea"
+
+#: applications/activity/forms.py:28 applications/activity/models.py:174
+msgid "Erregistro anonimoa"
+msgstr "Erregistro anonimoa"
+
+#: applications/activity/models.py:14 applications/announcement/models.py:19
+#: applications/blog/models.py:8 applications/gallery/models.py:11
+#: applications/gallery/models.py:55 applications/history/models.py:8
+#: applications/news/models.py:15
+#, fuzzy
+#| msgid "Izena"
+msgid "Izenburua"
+msgstr "Izena"
+
+#: applications/activity/models.py:16
+#, fuzzy
+#| msgid "Information"
+msgid "Informazio osoa"
+msgstr "Informazioa"
+
+#: applications/activity/models.py:17
+#, fuzzy
+#| msgid "Information"
+msgid "Informazio laburra"
+msgstr "Informazioa"
+
+#: applications/activity/models.py:22
+msgid "Irudi nagusia"
+msgstr "Irudi nagusia"
+
+#: applications/activity/models.py:25 applications/blog/models.py:43
+#: applications/gallery/models.py:24 applications/history/models.py:49
+#: applications/news/models.py:45
+msgid "Egilea"
+msgstr "Egilea"
+
+#: applications/activity/models.py:26 applications/blog/models.py:48
+#: applications/gallery/models.py:27 applications/history/models.py:54
+#: applications/news/models.py:58
+msgid "Argitaratua"
+msgstr "Argitaratua"
+
+#: applications/activity/models.py:27
+msgid "Nabarmendua"
+msgstr "Nabarmendua"
+
+#: applications/activity/models.py:30 applications/product/models.py:61
+msgid "Prezioa"
+msgstr "Prezioa"
+
+#: applications/activity/models.py:38
+msgid "Data eta ordua"
+msgstr "Data eta ordua"
+
+#: applications/activity/models.py:45
+#, fuzzy
+#| msgid "o regístrate con"
+msgid "Show registration button"
+msgstr "edo erregistratu honekin"
+
+#: applications/activity/models.py:50
+msgid "Show price"
+msgstr "Prezioa agerian"
+
+#: applications/activity/models.py:57 applications/activity/models.py:153
+msgid "Jarduera"
+msgstr "Jarduera"
+
+#: applications/activity/models.py:58
+msgid "Jarduerak"
+msgstr "Jarduerak"
+
+#: applications/activity/models.py:161 applications/diningRoom/models.py:18
+#: applications/partner/models.py:12
+msgid "Erabiltzailea"
+msgstr "Erabiltzailea"
+
+#: applications/activity/models.py:181
+msgid "Jardueraren izen-ematea"
+msgstr "Jardueraren izen-ematea"
+
+#: applications/activity/models.py:182
+msgid "Jardueretako izen-emateak"
+msgstr "Jardueretako izen-ematea"
+
+#: applications/announcement/admin.py:42
+#, fuzzy
+#| msgid "Contact"
+msgid "Content"
+msgstr "Kontaktatu"
+
+#: applications/announcement/admin.py:51
+msgid "Visibility"
+msgstr "Agerian"
+
+#: applications/announcement/admin.py:60
+msgid "Schedule"
+msgstr "Ordutegia"
+
+#: applications/announcement/admin.py:67
+msgid "System"
+msgstr "Sistema"
+
+#: applications/announcement/models.py:10 applications/news/models.py:10
+#, fuzzy
+#| msgid "Publish"
+msgid "Publikoa"
+msgstr "Argitaratu"
+
+#: applications/announcement/models.py:11 applications/news/models.py:11
+msgid "Bazkideentzat bakarrik"
+msgstr "Bazkideentzat bakarrik"
+
+#: applications/announcement/models.py:12
+msgid "Zuzendaritzarentzat bakarrik"
+msgstr "Zuzendaritzarentzat bakarrik"
+
+#: applications/announcement/models.py:29 applications/blog/models.py:19
+#: applications/gallery/models.py:15 applications/history/models.py:25
+#: applications/news/models.py:26
+msgid "Edukia"
+msgstr "Edukia"
+
+#: applications/announcement/models.py:35
+msgid "Testu laburra (bannerrean)"
+msgstr "Testu laburra"
+
+#: applications/announcement/models.py:38
+msgid "If empty, title will be shown in banner."
+msgstr "Hutsik badago, izenburua banner-ean erakutsiko da."
+
+#: applications/announcement/models.py:45 applications/news/models.py:51
+msgid "Ikusgarritasuna"
+msgstr "Ikusgarritasuna"
+
+#: applications/announcement/models.py:55
+msgid "Hasiera data"
+msgstr "Hasiera data"
+
+#: applications/announcement/models.py:59
+msgid "Amaiera data"
+msgstr "Amaiera data"
+
+#: applications/announcement/models.py:63
+msgid "Aktiboa"
+msgstr "Aktiboa"
+
+#: applications/announcement/models.py:68
+msgid "Lehentasuna"
+msgstr "Lehentasuna"
+
+#: applications/announcement/models.py:70
+msgid "Higher number = shown first"
+msgstr "Zenbaki handiagoa = lehenengo erakusten da"
+
+#: applications/announcement/models.py:77
+msgid "Banner estiloa"
+msgstr "Banner estiloa"
+
+#: applications/announcement/models.py:91
+msgid "Komunikatua"
+msgstr "Komunikatua"
+
+#: applications/announcement/models.py:92
+msgid "Komunikatuak"
+msgstr "Komunikatuak"
+
+#: applications/blog/models.py:13 applications/history/models.py:13
+#: applications/news/models.py:20
+msgid "Slug"
+msgstr "Slug (URLko helbidea)"
+
+#: applications/blog/models.py:25 applications/gallery/models.py:17
+#: applications/history/models.py:31 applications/news/models.py:32
+msgid "Laburpena"
+msgstr "Laburpena"
+
+#: applications/blog/models.py:31 applications/gallery/models.py:20
+#: applications/history/models.py:37 applications/news/models.py:63
+#, fuzzy
+#| msgid "Argitaratua"
+msgid "Argitaratze-data"
+msgstr "Argitaratua"
+
+#: applications/blog/models.py:36 applications/gallery/models.py:50
+#: applications/history/models.py:42 applications/news/models.py:38
+#: applications/product/models.py:17 applications/product/models.py:77
+msgid "Irudia"
+msgstr "Irudia"
+
+#: applications/blog/models.py:54
+msgid "Blogeko sarrera"
+msgstr "Blokgeko sarrera"
+
+#: applications/blog/models.py:55
+msgid "Blogeko sarrerak"
+msgstr "Blogeko sarrerak"
+
+#: applications/diningRoom/forms.py:9
+#: templates/diningroom/diningroom-copy20260215.html:170
+#: templates/diningroom/diningroom.html:25
+msgid "Select your activities"
+msgstr "Hautatu zure aukerak"
+
+#: applications/diningRoom/forms.py:17
+#, fuzzy
+#| msgid "Selected tables"
+msgid "Selected tables (JSON)"
+msgstr "Aukeratutako mahaiak"
+
+#: applications/diningRoom/forms.py:26 ⁨templates/diningroom/diningroom copy
+#: 2.html⁩:169 templates/diningroom/diningroom-copy20260215.html:230
+#: templates/diningroom/diningroom.html:346
+msgid "How many fires?"
+msgstr "Zenbat su?"
+
+#: applications/diningRoom/forms.py:34 ⁨templates/diningroom/diningroom copy
+#: 2.html⁩:180 templates/diningroom/diningroom-copy20260215.html:241
+#: templates/diningroom/diningroom.html:357
+msgid "How many ovens?"
+msgstr "Zenbat labe?"
+
+#: applications/diningRoom/forms.py:63 applications/diningRoom/forms.py:67
+msgid "Invalid tables format."
+msgstr "Taulen formatu baliogabea."
+
+#: applications/diningRoom/models.py:23
+msgid "Erreserba-data"
+msgstr "Erreserba-data"
+
+#: applications/diningRoom/models.py:28 applications/product/models.py:24
+#: applications/product/models.py:84
+msgid "Sortze-data"
+msgstr "Erreserba-data"
+
+#: applications/diningRoom/models.py:33 applications/partner/models.py:16
+#: templates/partner/partner_list.html:14
+msgid "Bazkide zenbakia"
+msgstr "Bazkide zenbakia"
+
+#: applications/diningRoom/models.py:38
+msgid "Jankide kopurua"
+msgstr "Bazkide zenbakia"
+
+#: applications/diningRoom/models.py:42 applications/diningRoom/models.py:69
+msgid "Erreserba"
+msgstr "Erreserba"
+
+#: applications/diningRoom/models.py:43
+msgid "Erreserbak"
+msgstr "Erreserbak"
+
+#: applications/diningRoom/models.py:57
+#: templates/diningroom/diningroom-copy20260215.html:173
+#: templates/diningroom/diningroom.html:28 ⁨templates/diningroom/reservations
+#: copy.html⁩:26
+msgid "Breakfast"
+msgstr "Gosaria"
+
+#: applications/diningRoom/models.py:58
+#: templates/diningroom/diningroom-copy20260215.html:176
+#: templates/diningroom/diningroom.html:31 ⁨templates/diningroom/reservations
+#: copy.html⁩:27
+msgid "Lunch"
+msgstr "Hamaiketakoa"
+
+#: applications/diningRoom/models.py:59 ⁨templates/diningroom/diningroom copy
+#: 2.html⁩:157 templates/diningroom/diningroom-copy20260215.html:179
+#: templates/diningroom/diningroom.html:34 ⁨templates/diningroom/reservations
+#: copy.html⁩:28
+msgid "Midday meal"
+msgstr "Bazkaria"
+
+#: applications/diningRoom/models.py:60
+#: templates/diningroom/diningroom-copy20260215.html:182
+#: templates/diningroom/diningroom.html:37 ⁨templates/diningroom/reservations
+#: copy.html⁩:29
+msgid "Merienda"
+msgstr "Merienda"
+
+#: applications/diningRoom/models.py:61 ⁨templates/diningroom/diningroom copy
+#: 2.html⁩:160 templates/diningroom/diningroom-copy20260215.html:185
+#: templates/diningroom/diningroom.html:40 ⁨templates/diningroom/reservations
+#: copy.html⁩:30
+msgid "Dinner"
+msgstr "Afaria"
+
+#: applications/diningRoom/models.py:62
+#: templates/diningroom/diningroom-copy20260215.html:188
+#: ⁨templates/diningroom/reservations copy.html⁩:31
+msgid "Other activity"
+msgstr "Beste ekintza bat"
+
+#: applications/diningRoom/models.py:73
+msgid "Denbora-tartea"
+msgstr "Denbora-tartea"
+
+#: applications/diningRoom/models.py:80
+msgid "Hautatutako mahaiak"
+msgstr "Hautatutako mahaiak"
+
+#: applications/diningRoom/models.py:86
+#, fuzzy
+#| msgid "Urkabe room"
+msgid "Urkabe gela"
+msgstr "Urkabe gela"
+
+#: applications/diningRoom/models.py:91
+#, fuzzy
+#| msgid "Goiko room"
+msgid "Goiko gela"
+msgstr "Goikoa gela"
+
+#: applications/diningRoom/models.py:97
+msgid "Sukaldeko suak"
+msgstr "Sukaldeko suak"
+
+#: applications/diningRoom/models.py:102
+msgid "Labeak"
+msgstr "Labeak"
+
+#: applications/diningRoom/models.py:108
+msgid "Barbakoa"
+msgstr "Barbakoa"
+
+#: applications/diningRoom/models.py:114
+msgid "Urtebetetze ospakizuna"
+msgstr "Urtebetetze ospakizuna"
+
+#: applications/diningRoom/models.py:119
+msgid "Erreserba-tartea"
+msgstr " Erreserba-tartea "
+
+#: applications/diningRoom/models.py:120
+msgid "Erreserba-tarteak"
+msgstr "Erreserba-tarteak"
+
+#: applications/gallery/models.py:13 applications/history/models.py:19
+msgid "Data"
+msgstr "Data"
+
+#: applications/gallery/models.py:32
+msgid "Galeria"
+msgstr "Galeria"
+
+#: applications/gallery/models.py:33
+#, fuzzy
+#| msgid "Categories"
+msgid "Galeriak"
+msgstr "Kategoriak"
+
+#: applications/gallery/models.py:61
+msgid "Ordena"
+msgstr "Ordena"
+
+#: applications/gallery/models.py:67
+#, fuzzy
+#| msgid "Categories"
+msgid "Galeriako irudia"
+msgstr "Kategoriak"
+
+#: applications/gallery/models.py:68
+#, fuzzy
+#| msgid "Categories"
+msgid "Galeriako irudiak"
+msgstr "Kategoriak"
+
+#: applications/history/models.py:60 applications/history/models.py:61
+#, fuzzy
+#| msgid "History"
+msgid "Historia"
+msgstr "Historia"
+
+#: applications/news/models.py:68
+msgid "Albistea"
+msgstr "Albistea"
+
+#: applications/news/models.py:69
+msgid "Albisteak"
+msgstr "Albisteak"
+
+#: applications/partner/models.py:23
+msgid "Telefono mugikorra"
+msgstr "Telefono mugikorra"
+
+#: applications/partner/models.py:30
+msgid "Bigarren mugikorra"
+msgstr "Bigarren mugikorra"
+
+#: applications/partner/models.py:37
+msgid "Helbidea"
+msgstr "Helbidea"
+
+#: applications/partner/models.py:44
+msgid "Jaiotze-data"
+msgstr "Jaiotze-data"
+
+#: applications/partner/models.py:50 templates/partner/partner_list.html:17
+msgid "Bazkide-data"
+msgstr "Bazkide-data"
+
+#: applications/partner/models.py:61
+msgid "Lotutako bazkidea"
+msgstr "Lotutako bazkidea"
+
+#: applications/partner/models.py:65
+msgid "Bazkidea"
+msgstr "Bazkidea"
+
+#: applications/partner/models.py:66
+msgid "Bazkideak"
+msgstr "Bazkideak"
+
+#: applications/partner/models.py:77
+#, fuzzy
+#| msgid "Erabiltzailea"
+msgid "Lotu gabeko erabiltzailea"
+msgstr "Erabiltzailea"
+
+#: applications/product/models.py:12 applications/product/models.py:56
+msgid "Deskribapena"
+msgstr "Deskribapena"
+
+#: applications/product/models.py:29 applications/product/models.py:41
+#, fuzzy
+#| msgid "Categories"
+msgid "Kategoria"
+msgstr "Kategoriak"
+
+#: applications/product/models.py:30
+#, fuzzy
+#| msgid "Categories"
+msgid "Kategoriak"
+msgstr "Kategoriak"
+
+#: applications/product/models.py:50
+msgid "Kodea"
+msgstr "Kodea"
+
+#: applications/product/models.py:67
+#, fuzzy
+msgid "Stocka"
+msgstr "Stock maila"
+
+#: applications/product/models.py:72
+msgid "Aktibo"
+msgstr "Aktibo"
+
+#: applications/product/models.py:89
+#, fuzzy
+#| msgid "Product"
+msgid "Produktua"
+msgstr "Produktua"
+
+#: applications/product/models.py:90
+#, fuzzy
+#| msgid "Product"
+msgid "Produktuak"
+msgstr "Produktua"
+
+#: config/settings.py:201
+msgid "Español"
+msgstr "Gaztelania"
+
+#: config/settings.py:202
+msgid "English"
+msgstr "Ingelesa"
+
+#: config/settings.py:203
+msgid "Euskara"
+msgstr "Euskara"
+
+#: templates/_account_backup/_login.bak.html:4
+msgid "Iniciar sesión"
+msgstr "Saioa hasi"
+
+#: templates/_account_backup/_login.bak.html:11
+msgid "Iniciar sesión en Bizardia"
+msgstr "Saioa hasi"
+
+#: templates/_account_backup/_login.bak.html:18
+#: templates/_account_backup/password_reset.html:18
+#: templates/_account_backup/signup-old.html:18
+msgid "Email"
+msgstr "Emaila"
+
+#: templates/_account_backup/_login.bak.html:28
+#: templates/_account_backup/signup-old.html:26
+msgid "Contraseña"
+msgstr "Pasahitza"
+
+#: templates/_account_backup/_login.bak.html:39
+msgid "Recordarme"
+msgstr "Gogoratu"
+
+#: templates/_account_backup/_login.bak.html:42
+msgid "Entrar"
+msgstr "Sartu"
+
+#: templates/_account_backup/_login.bak.html:46
+msgid "¿Olvidaste tu contraseña?"
+msgstr "Pasahitza ahaztu duzu?"
+
+#: templates/_account_backup/_login.bak.html:50
+msgid "o continúa con"
+msgstr "edo jarraitu honekin"
+
+#: templates/_account_backup/_login.bak.html:53
+msgid "Continuar con Google"
+msgstr "Googleekin jarraitu"
+
+#: templates/_account_backup/_login.bak.html:60
+msgid "¿No tienes cuenta?"
+msgstr "Ez duzu konturik?"
+
+#: templates/_account_backup/_login.bak.html:61
+msgid "Regístrate"
+msgstr "Erregistratu"
+
+#: templates/_account_backup/email_confirm.html:3
+#: templates/_account_backup/email_confirm.html:7
+msgid "Confirmar email"
+msgstr "Emaila baieztatu"
+
+#: templates/_account_backup/email_confirm.html:10
+#, python-format
+msgid "Confirma que quieres asociar el email %(email)s a tu cuenta."
+msgstr "Baieztatu %(email)s emaila zure kontuarekin lotu nahi duzula."
+
+#: templates/_account_backup/email_confirm.html:14
+msgid "Confirmar"
+msgstr "Baieztatu"
+
+#: templates/_account_backup/email_confirm.html:17
+msgid "Este enlace de confirmación no es válido o ya fue usado."
+msgstr ""
+"Baieztatzeko esteka hau ez da baliagarria, edo dagoeneko erabilia izan da."
+
+#: templates/_account_backup/password_reset.html:4
+#: templates/_account_backup/password_reset.html:11
+msgid "Restablecer contraseña"
+msgstr "Pasahitza berrabiarazi"
+
+#: templates/_account_backup/password_reset.html:12
+msgid ""
+"Introduce tu email y te enviaremos un enlace para restablecer tu contraseña."
+msgstr ""
+"Sartu zure emaila eta esteka bat bidaliko dizugu pasahitza berrabiarazteko."
+
+#: templates/_account_backup/password_reset.html:24
+msgid "Enviar enlace"
+msgstr "Esteka bidali"
+
+#: templates/_account_backup/password_reset.html:28
+msgid "Volver al inicio de sesión"
+msgstr "Hasi saioa berriro"
+
+#: templates/_account_backup/signup-old.html:4
+#: templates/_account_backup/signup-old.html:11
+#: templates/_account_backup/signup-old.html:41
+msgid "Crear cuenta"
+msgstr "Kontua sortu"
+
+#: templates/_account_backup/signup-old.html:34
+msgid "Confirmar contraseña"
+msgstr "Pasahitza baieztatu"
+
+#: templates/_account_backup/signup-old.html:45
+msgid "o regístrate con"
+msgstr "edo erregistratu honekin"
+
+#: templates/_account_backup/signup-old.html:48
+msgid "Google"
+msgstr "Google"
+
+#: templates/_account_backup/signup-old.html:55
+msgid "¿Ya tienes cuenta?"
+msgstr "Konturik baduzu?"
+
+#: templates/_account_backup/signup-old.html:56
+msgid "Inicia sesión"
+msgstr "Saioa hasi"
+
+#: templates/_account_backup/signup-old.html:61
+msgid ""
+"Tras registrarte, te enviaremos un correo para confirmar tu email. Tu cuenta"
+" será activada por Bizardia después de la verificación."
+msgstr ""
+"Erregistratu ondoren, zure emaila baieztatzeko email bat bidaliko dizugu. "
+"Orduan zure kontua aktibatua egongo da baieztatu ondoren."
+
+#: templates/_account_backup/signup_pending.html:8
+msgid "Registro enviado"
+msgstr "Erregistroa bidalia"
+
+#: templates/_account_backup/signup_pending.html:9
+msgid ""
+"Gracias por registrarte. Tu cuenta será revisada y activada manualmente por "
+"un administrador"
+msgstr ""
+"Eskerrik asko erregistratzeagatik. Zure kontua administratzaile batek "
+"berrikusi eta eskuz aktibatuko du."
+
+#: templates/_account_backup/signup_pending.html:10
+msgid "Recibirás un correo cuando esté lista para usarse"
+msgstr "Erabiltzeko prest dagoenean mezu elektroniko bat jasoko duzu."
+
+#: templates/_account_backup/verification_sent.html:3
+#: templates/_account_backup/verification_sent.html:7
+msgid "Verificación enviada"
+msgstr "Baieztapena bidalia"
+
+#: templates/_account_backup/verification_sent.html:9
+msgid ""
+"Hemos enviado un enlace de verificación a tu email. Revisa tu bandeja de "
+"entrada (y spam)."
+msgstr ""
+"Zure emailera esteka bat bidali dugu. Begiratu ezazu (agian spam atalean "
+"egon daiteke)."
+
+#: templates/activity/activity_detail.html:17
+#: templates/history/history_detail.html:15 templates/news/news_detail.html:15
+msgid "Author"
+msgstr "Egilea"
+
+#: templates/activity/activity_detail.html:18
+#: templates/diningroom/user_reservations_copia.html:12
+#: templates/history/history_detail.html:16
+#: templates/history/history_list.html:24 templates/news/news_detail.html:16
+msgid "Date"
+msgstr "Data"
+
+#: templates/activity/activity_detail.html:19
+#: templates/activity/activity_detail.html:46
+#: templates/activity/activity_list.html:24
+msgid "Price"
+msgstr "Prezioa"
+
+#: templates/activity/activity_detail.html:43
+#: templates/activity/activity_detail.html:49
+#: templates/activity/activity_list.html:28 templates/home/index.html:275
+#: templates/home/index2.html:168
+msgid "Register"
+msgstr "Izena eman"
+
+#: templates/activity/activity_detail.html:43
+#: templates/activity/activity_detail.html:49
+#: templates/activity/activity_registered_list.html:10
+msgid "Registered list"
+msgstr "Izena eman dutenen zerrenda"
+
+#: templates/activity/activity_list.html:11
+msgid "Activity"
+msgstr "Jarduera"
+
+#: templates/activity/activity_list.html:26
+msgid "Details"
+msgstr "Xehetasunak"
+
+#: templates/activity/activity_register.html:75
+msgid "Back"
+msgstr "Itzuli"
+
+#: templates/activity/activity_register.html:80
+#, fuzzy
+#| msgid "Confirmar"
+msgid "Confirm"
+msgstr "Baieztatu"
+
+#: templates/activity/activity_registered_list.html:59
+msgid "No registered users yet"
+msgstr "Oraindik ez da inor erregistratu"
+
+#: templates/activity/activity_registered_list.html:67
+msgid "Back to activity"
+msgstr "Jardueretara itzuli"
+
+#: ⁨templates/base copy 2.html⁩:353 ⁨templates/base copy 2.html⁩:475
+#: templates/base.html:430 templates/base.html:644
+#: templates/home/index.html:225 templates/home/index2.html:89
+#: templates/news/news_list.html:14
+msgid "News"
+msgstr "Albisteak"
+
+#: ⁨templates/base copy 2.html⁩:356 ⁨templates/base copy 2.html⁩:476
+#: templates/base.html:436 templates/base.html:645
+#: ⁨templates/diningroom/reservations copy.html⁩:22
+#: templates/home/index.html:256 templates/home/index2.html:78
+#: templates/home/index2.html:149
+msgid "Activities"
+msgstr "Jarduerak"
+
+#: ⁨templates/base copy 2.html⁩:359 ⁨templates/base copy 2.html⁩:477
+#: templates/base.html:442 templates/base.html:646
+#: templates/gallery/gallery_list.html:8 templates/home/index2.html:187
+msgid "Gallery"
+msgstr "Galeria"
+
+#: ⁨templates/base copy 2.html⁩:365 ⁨templates/base copy 2.html⁩:478
+#: templates/base.html:462 templates/base.html:647
+#: templates/history/history_list.html:15 templates/home/index.html:295
+#: templates/home/index2.html:221
+msgid "History"
+msgstr "Historia"
+
+#: ⁨templates/base copy 2.html⁩:372 ⁨templates/base copy 2.html⁩:485
+#: templates/base.html:463 templates/base.html:654
+msgid "Legal statutes"
+msgstr "Estatutu legalak"
+
+#: ⁨templates/base copy 2.html⁩:373 ⁨templates/base copy 2.html⁩:486
+#: templates/base.html:464 templates/base.html:655
+msgid "Organization chart"
+msgstr "Organigrama"
+
+#: ⁨templates/base copy 2.html⁩:374 ⁨templates/base copy 2.html⁩:487
+#: templates/base.html:465 templates/base.html:656
+msgid "Transparency"
+msgstr "Gardentasuna"
+
+#: ⁨templates/base copy 2.html⁩:380 ⁨templates/base copy 2.html⁩:383
+#: templates/base.html:475 templates/base.html:478
+msgid "Reserve"
+msgstr "Erreserbatu"
+
+#: ⁨templates/base copy 2.html⁩:384
+msgid "See reservations"
+msgstr "Erreserbak ikusi"
+
+#: ⁨templates/base copy 2.html⁩:389 ⁨templates/base copy 2.html⁩:479
+#: ⁨templates/base copy.html⁩:39 templates/base.html:493
+#: templates/base.html:648 templates/home/index.html:317
+#: templates/home/index2.html:243
+msgid "Contact"
+msgstr "Kontaktatu"
+
+#: ⁨templates/base copy 2.html⁩:429 templates/base.html:541
+#: templates/base.html:597
+msgid "Settings"
+msgstr "Konfigurazioa"
+
+#: ⁨templates/base copy 2.html⁩:430 templates/base.html:546
+#: templates/base.html:598
+msgid "Logout"
+msgstr "Saioa amaitu"
+
+#: ⁨templates/base copy 2.html⁩:438 ⁨templates/base copy 2.html⁩:441
+#: templates/base.html:555 templates/base.html:603
+msgid "Login"
+msgstr "Saioa hasi"
+
+#: ⁨templates/base copy 2.html⁩:442
+msgid "Sign up"
+msgstr "Erregistratu"
+
+#: ⁨templates/base copy 2.html⁩:506 templates/base.html:675
+msgid "All rights reserved"
+msgstr "Eskubide guztiak erreserbatuta"
+
+#: ⁨templates/base copy 2.html⁩:510 templates/base.html:679
+msgid "Privacy Policy"
+msgstr "Pribatutasun politika"
+
+#: ⁨templates/base copy 2.html⁩:511 templates/base.html:680
+msgid "Terms and conditions"
+msgstr "Termino eta baldintzak"
+
+#: ⁨templates/base copy 2.html⁩:512 templates/base.html:681
+msgid "Cookies"
+msgstr "Cookieak"
+
+#: ⁨templates/base copy.html⁩:37
+msgid "Home"
+msgstr "Hasiera"
+
+#: ⁨templates/base copy.html⁩:38
+msgid "About"
+msgstr "Informazioa"
+
+#: ⁨templates/base copy.html⁩:43
+msgid "Search..."
+msgstr "Bilatu..."
+
+#: ⁨templates/base copy.html⁩:69
+msgid "Política de privacidad"
+msgstr "Pribatutasun politika"
+
+#: ⁨templates/base copy.html⁩:70
+msgid "Aviso legal"
+msgstr "Lege-oharra"
+
+#: ⁨templates/base copy.html⁩:72
+msgid "politica de cookies"
+msgstr "Cookie politika"
+
+#: templates/base.html:479
+msgid "All reservations"
+msgstr "Erreserba guztiak"
+
+#: templates/base.html:480
+msgid "My reservations"
+msgstr "Nire erreserbak"
+
+#: templates/blog/blog_detail.html:26
+msgid "Back to blog"
+msgstr "Blogera itzuli"
+
+#: templates/blog/blog_list.html:20 templates/history/history_list.html:39
+#: templates/home/index.html:120
+msgid "Read"
+msgstr "Irakurri"
+
+#: templates/diningroom/confirm_delete.html:8
+msgid "Are you sure you want to delete this reservation?"
+msgstr "Ziur zaude erreserba bertan behera utzi nahi duzula?"
+
+#: templates/diningroom/confirm_delete.html:10
+#: templates/diningroom/user_reservations.html:102
+#: templates/diningroom/user_reservations_copia.html:83
+msgid "Delete"
+msgstr "Borratu"
+
+#: templates/diningroom/confirm_delete.html:11
+msgid "Cancel"
+msgstr "Bertan behera utzi"
+
+#: ⁨templates/diningroom/diningroom copy 2.html⁩:13
+#: templates/diningroom/diningroom-copy20260215.html:13
+#: templates/diningroom/diningroom.html:13 templates/home/index2.html:76
+msgid "Reserve table"
+msgstr "Mahaia erreserbatu"
+
+#: ⁨templates/diningroom/diningroom copy 2.html⁩:19
+#: templates/diningroom/diningroom-copy20260215.html:19
+#: templates/diningroom/diningroom.html:19 ⁨templates/diningroom/reservations
+#: copy.html⁩:49
+msgid "Reservation date"
+msgstr "Erreserba eguna"
+
+#: ⁨templates/diningroom/diningroom copy 2.html⁩:25
+#: templates/diningroom/diningroom-copy20260215.html:32
+#: templates/diningroom/diningroom.html:58 ⁨templates/diningroom/reservations
+#: copy.html⁩:18 templates/diningroom/user_reservations_copia.html:26
+msgid "Membership number"
+msgstr "Bazkide zenbakia"
+
+#: ⁨templates/diningroom/diningroom copy 2.html⁩:31
+#: templates/diningroom/diningroom-copy20260215.html:38
+#: templates/diningroom/diningroom.html:64 ⁨templates/diningroom/reservations
+#: copy.html⁩:19
+msgid "Number of diners"
+msgstr "Zenbat mahaikide?"
+
+#: ⁨templates/diningroom/diningroom copy 2.html⁩:124
+#: templates/diningroom/diningroom-copy20260215.html:132
+#: templates/diningroom/diningroom.html:199 ⁨templates/diningroom/reservations
+#: copy.html⁩:44
+msgid "Urkabe room"
+msgstr "Urkabe gela"
+
+#: ⁨templates/diningroom/diningroom copy 2.html⁩:125
+#: templates/diningroom/diningroom-copy20260215.html:134
+#: templates/diningroom/diningroom.html:201 ⁨templates/diningroom/reservations
+#: copy.html⁩:45
+msgid "Goiko room"
+msgstr "Goikoa gela"
+
+#: ⁨templates/diningroom/diningroom copy 2.html⁩:154
+msgid "Select your options"
+msgstr "Hautatu zure aukera"
+
+#: ⁨templates/diningroom/diningroom copy 2.html⁩:163
+#: ⁨templates/diningroom/reservations copy.html⁩:42
+#: templates/diningroom/reservations.html:151
+#: templates/diningroom/user_reservations.html:124
+#: templates/diningroom/user_reservations_copia.html:23
+msgid "Birthday"
+msgstr "Urtebetetzea"
+
+#: ⁨templates/diningroom/diningroom copy 2.html⁩:191
+#: templates/diningroom/diningroom-copy20260215.html:252
+#: templates/diningroom/diningroom.html:368
+msgid "Barbecue?"
+msgstr "Barbakoa"
+
+#: ⁨templates/diningroom/diningroom copy 2.html⁩:200
+#: templates/diningroom/diningroom-copy20260215.html:261
+#: templates/diningroom/diningroom.html:377
+msgid "Submit reservation"
+msgstr "Bidali erreserba"
+
+#: templates/diningroom/diningroom-copy20260215.html:118
+#: templates/diningroom/diningroom.html:184
+msgid "Select your tables and rooms"
+msgstr "Hautatu zure mahaiak eta gelak"
+
+#: templates/diningroom/diningroom-copy20260215.html:194
+#: templates/diningroom/diningroom.html:72
+msgid "Please specify the activity"
+msgstr "Zeaztu ekintza"
+
+#: templates/diningroom/diningroom-copy20260215.html:195
+#: templates/diningroom/diningroom.html:73
+msgid "e.g. Board game night, Workshop, Meeting..."
+msgstr "Adibidez, mahai jokoen gaua, bilera, etab."
+
+#: templates/diningroom/diningroom-copy20260215.html:218
+#: templates/diningroom/diningroom.html:334
+msgid "Is it a birthday celebration?"
+msgstr "Urtebetetze ospakizuna da?"
+
+#: templates/diningroom/diningroom-copy20260215.html:221
+#: templates/diningroom/diningroom-copy20260215.html:255
+#: templates/diningroom/diningroom.html:337
+#: templates/diningroom/diningroom.html:371 ⁨templates/diningroom/reservations
+#: copy.html⁩:42 ⁨templates/diningroom/reservations copy.html⁩:44
+#: ⁨templates/diningroom/reservations copy.html⁩:45
+#: ⁨templates/diningroom/reservations copy.html⁩:48
+msgid "No"
+msgstr "Ez"
+
+#: templates/diningroom/diningroom-copy20260215.html:224
+#: templates/diningroom/diningroom-copy20260215.html:257
+#: templates/diningroom/diningroom.html:340
+#: templates/diningroom/diningroom.html:373 ⁨templates/diningroom/reservations
+#: copy.html⁩:42 ⁨templates/diningroom/reservations copy.html⁩:44
+#: ⁨templates/diningroom/reservations copy.html⁩:45
+#: ⁨templates/diningroom/reservations copy.html⁩:48
+msgid "Yes"
+msgstr "Bai"
+
+#: templates/diningroom/diningroom.html:239
+msgid "Selecciona fecha y franja horaria primero."
+msgstr "Lehenengo aukeratu data eta ordu-tartea."
+
+#: templates/diningroom/reservation_success.html:9
+msgid "Reservation completed successfully"
+msgstr "Erreserba behar bezala osatu da"
+
+#: templates/diningroom/reservation_success.html:10
+msgid "Thank you! Your reservation has been submitted"
+msgstr "Eskerrik asko, zure erreserba bidalia izan da."
+
+#: ⁨templates/diningroom/reservations copy.html⁩:6
+#: templates/diningroom/reservations.html:82
+msgid "All Reservations"
+msgstr "Erreserba guztiak"
+
+#: ⁨templates/diningroom/reservations copy.html⁩:38
+msgid "Other activity details"
+msgstr "Beste ekintza baten xehetasunak"
+
+#: ⁨templates/diningroom/reservations copy.html⁩:43
+msgid "Selected tables"
+msgstr "Aukeratutako mahaiak"
+
+#: ⁨templates/diningroom/reservations copy.html⁩:46
+#: templates/diningroom/reservations.html:175
+#: templates/diningroom/user_reservations.html:148
+#: templates/diningroom/user_reservations_copia.html:24
+msgid "Fires"
+msgstr "Suak"
+
+#: ⁨templates/diningroom/reservations copy.html⁩:47
+#: templates/diningroom/reservations.html:180
+#: templates/diningroom/user_reservations.html:153
+#: templates/diningroom/user_reservations_copia.html:25
+msgid "Ovens"
+msgstr "Labeak"
+
+#: ⁨templates/diningroom/reservations copy.html⁩:48
+#: templates/diningroom/user_reservations_copia.html:22
+msgid "Barbecue"
+msgstr "Barbakoa"
+
+#: ⁨templates/diningroom/reservations copy.html⁩:53
+#: templates/diningroom/user_reservations.html:204
+#: templates/diningroom/user_reservations_copia.html:91
+msgid "No reservations"
+msgstr "Ez daude erreserbak"
+
+#: templates/diningroom/reservations.html:95
+#, fuzzy
+#| msgid "Search..."
+msgid "Search"
+msgstr "Bilatu..."
+
+#: templates/diningroom/reservations.html:103
+#| msgid "All reservations"
+msgid "View all reservations"
+msgstr "Erreserba guztiak ikusi"
+
+#: templates/diningroom/reservations.html:139
+#: templates/diningroom/user_reservations.html:112
+msgid "Membership"
+msgstr "Bazkide zenbakia"
+
+#: templates/diningroom/reservations.html:144
+#: templates/diningroom/user_reservations.html:117
+#: templates/diningroom/user_reservations_copia.html:14
+msgid "Diners"
+msgstr "Afariak"
+
+#: templates/diningroom/reservations.html:162
+#: templates/diningroom/user_reservations.html:135
+msgid "BBQ"
+msgstr "Barbakoa"
+
+#: templates/diningroom/reservations.html:211
+#: templates/diningroom/user_reservations.html:183
+msgid "Sala Urkabe"
+msgstr "Urkabe Gela"
+
+#: templates/diningroom/reservations.html:215
+#: templates/diningroom/user_reservations.html:187
+msgid "Sala Goikoa"
+msgstr "Goikoa Gela"
+
+#: templates/diningroom/reservations.html:232
+msgid "No reservations for this date"
+msgstr "Ez dago erreserbarik data honetarako"
+
+#: templates/diningroom/user_reservations.html:80
+#: templates/diningroom/user_reservations_copia.html:6
+msgid "My Reservations"
+msgstr "Nire erreserbak"
+
+#: templates/diningroom/user_reservations_copia.html:13
+msgid "Day moment"
+msgstr "Egun tartea"
+
+#: templates/diningroom/user_reservations_copia.html:17
+msgid "Table"
+msgstr "Mahaia"
+
+#: templates/diningroom/user_reservations_copia.html:27
+msgid "Options"
+msgstr "Aukerak"
+
+#: templates/gallery/gallery_detail.html:43
+msgid "Back to gallery"
+msgstr "Galeriara itzuli"
+
+#: templates/gallery/gallery_form.html:11
+msgid "Add photo"
+msgstr "Irudia gehitu"
+
+#: templates/gallery/gallery_form.html:15
+msgid "Publish"
+msgstr "Argitaratu"
+
+#: templates/gallery/gallery_form.html:17
+msgid "Return"
+msgstr "Itzuli"
+
+#: templates/gallery/gallery_list.html:27
+msgid "No image"
+msgstr "Irudirik ez"
+
+#: templates/gallery/gallery_list.html:47
+#| msgid "Gallery"
+msgid "View gallery"
+msgstr "Galeria ikusi"
+
+#: templates/gallery/gallery_list.html:56
+msgid "No galleries available."
+msgstr "Ez dago ikusgai galeriarik"
+
+#: templates/history/history_detail.html:25
+msgid "Back to history"
+msgstr "Historiara itzuli"
+
+#: templates/history/history_list.html:18
+msgid "Add historical event"
+msgstr "Gertakizun hitorikoa sortu"
+
+#: templates/history/history_list.html:25
+msgid "Event"
+msgstr "Ekitaldia"
+
+#: templates/history/history_list.html:26
+msgid "Image"
+msgstr "Irudia"
+
+#: templates/history/history_list.html:53
+msgid "There are no events"
+msgstr "Ez daude gertakizunak"
+
+#: ⁨templates/home/index copy.html⁩:14
+msgid "Order table"
+msgstr "Mahaia erreserbatu"
+
+#: ⁨templates/home/index copy.html⁩:15
+msgid "Pay account"
+msgstr "Kontua ordaindu"
+
+#: templates/home/index.html:133
+msgid "Bazkide egin"
+msgstr "Bazkide egin"
+
+#: templates/home/index.html:174
+msgid "Ongietorri mezua"
+msgstr "Ongietorri mezua"
+
+#: templates/home/index.html:234 templates/home/index.html:246
+#: templates/home/index.html:285 templates/home/index2.html:110
+#: templates/home/index2.html:141 templates/home/index2.html:178
+#: templates/home/index2.html:198 templates/home/index2.html:212
+#: templates/news/news_list.html:35
+msgid "See more"
+msgstr "Gehiago ikusi"
+
+#: templates/home/index.html:275 templates/home/index2.html:168
+msgid "Detail"
+msgstr "Xehetasunak"
+
+#: templates/home/index.html:304 templates/home/index2.html:129
+#: templates/home/index2.html:230 templates/news/news_list.html:25
+msgid "Read more"
+msgstr "Gehiago irakurri"
+
+#: templates/home/index.html:309 templates/home/index2.html:235
+msgid "All articles on the history of Bizardia"
+msgstr "Bizardiaren historiaren artikulu guztiak"
+
+#: templates/home/index.html:320 templates/home/index2.html:246
+msgid "Contact information"
+msgstr "Kontaktu informazioa"
+
+#: templates/home/index.html:339 templates/home/index2.html:265
+msgid "Location"
+msgstr "Kokapena"
+
+#: templates/home/index.html:344 templates/home/index2.html:272
+msgid "Contact form"
+msgstr "Harremanetarako formularioa"
+
+#: templates/home/index.html:348 templates/home/index2.html:276
+msgid "Name"
+msgstr "Izena"
+
+#: templates/home/index.html:356 templates/home/index2.html:284
+msgid "Subject"
+msgstr "Gaia"
+
+#: templates/home/index.html:358 templates/home/index2.html:286
+msgid "Select a subject"
+msgstr "Aukeratu gaia"
+
+#: templates/home/index.html:359 templates/home/index2.html:287
+msgid "Reservations"
+msgstr "Erreserba"
+
+#: templates/home/index.html:360 templates/home/index2.html:288
+msgid "Information"
+msgstr "Informazioa"
+
+#: templates/home/index.html:361 templates/home/index2.html:289
+msgid "Events"
+msgstr "Ekitaldiak"
+
+#: templates/home/index.html:362 templates/home/index2.html:290
+msgid "Other topic"
+msgstr "Beste gai bat"
+
+#: templates/home/index.html:366 templates/home/index2.html:294
+msgid "Message"
+msgstr "Mezua"
+
+#: templates/home/index.html:369 templates/home/index2.html:297
+msgid "Send message"
+msgstr "Bidali"
+
+#: templates/home/index2.html:132
+msgid "Published at"
+msgstr "Argitalpen data"
+
+#: templates/home/index2.html:205
+msgid "Videos"
+msgstr "Bideoak"
+
+#: templates/news/news_detail.html:24
+msgid "Back to news"
+msgstr "Itzuli albisteetara"
+
+#: templates/partner/partner_list.html:7
+msgid "Bazkideen zerrenda"
+msgstr "Bazkideen zerrenda"
+
+#: templates/partner/partner_list.html:16
+msgid "Telefonoa"
+msgstr "Telefonoa"
+
+#: templates/partner/partner_list.html:28
+msgid "Erabiltzailerik gabe"
+msgstr "Erabiltzailerik gabe"
+
+#: templates/partner/partner_list.html:39
+msgid "Ez dago bazkiderik erregistratuta."
+msgstr "Ez dago bazkiderik erregistratua"
+
+#: templates/socialaccount-copia/authentication_error.html:7
+msgid "No se pudo completar el inicio de sesión"
+msgstr "Ezin izan da saioa hasi"
+
+#: templates/socialaccount-copia/authentication_error.html:8
+msgid ""
+"Se produjo un error al intentar iniciar sesión a través de su cuenta de "
+"terceros."
+msgstr ""
+"Errore bat gertatu da zure hirugarrenen kontuaren bidez saioa hasten "
+"saiatzean."
+
+#: templates/socialaccount-copia/authentication_error.html:9
+msgid "Posible causa:"
+msgstr "Kausa posiblea:"
+
+#: templates/socialaccount-copia/authentication_error.html:9
+msgid "Tu cuenta todavía no ha sido activada."
+msgstr "Zure kontua ez da oraindik aktibatu."
+
+#: templates/socialaccount-copia/authentication_error.html:10
+msgid "Espera la activación o ponte en contacto con un administrador."
+msgstr ""
+"Mesedez, itxaron aktibazioa edo jarri harremanetan administratzaile batekin."
+
+#: templates/socialaccount-copia/authentication_error.html:11
+msgid "Volver a iniciar sesión"
+msgstr "Hasi saioa berriro"
+
+#, fuzzy
+#~ msgid "Jarduera pertsonalizatua"
+#~ msgstr "Jardueraren izen-ematea"
+
+#~ msgid "Category"
+#~ msgstr "Kategoria"
+
+#~ msgid "Categories"
+#~ msgstr "Kategoriak"
+
+#~ msgid "Unit"
+#~ msgstr "Unitatea"
+
+#~ msgid "Stock level"
+#~ msgstr "Stock maila"
+
+#~ msgid "Minimum stock"
+#~ msgstr "Stock minimoa"
+
+#~ msgid "Active"
+#~ msgstr "Gaitua"
+
+#~ msgid "Product"
+#~ msgstr "Produktua"
+
+#~ msgid "Products"
+#~ msgstr "Produktuak"
+
+#~ msgid "No activity"
+#~ msgstr "Ekintzarik ez"
+
+#~ msgid "Goikoa room"
+#~ msgstr "Goikoa gela"
+
+#~ msgid "Back to activities"
+#~ msgstr "Jardueretaraitzuli"
+
+#~ msgid "Nombre"
+#~ msgstr "Izena"
+
+#~ msgid "Apellido"
+#~ msgstr "Abizena"
+
+#~ msgid "Localidad"
+#~ msgstr "Herria"
+
+#~ msgid "Federación de montaña"
+#~ msgstr "Mendi federazioko kidea"
+
+#~ msgid "Registro anónimo"
+#~ msgstr "Erregistro anonimoa"
+
+#~ msgid "My account"
+#~ msgstr "Nire kontua"
+
+#~ msgid "ERP"
+#~ msgstr "ERP"
+
+#~ msgid "Create order"
+#~ msgstr "Eskaera sortu"
+
+#~ msgid "All orders"
+#~ msgstr "Eskaera guztiak"
+
+#~ msgid "All order slips"
+#~ msgstr "Albaran guztiak"
+
+#~ msgid "All invoices"
+#~ msgstr "Faktura guztiak"
+
+#~ msgid "Crear Pedido al Almacén"
+#~ msgstr "Sortu biltegiko eskaera"
+
+#~ msgid "Productos solicitados"
+#~ msgstr "Eskatutako produktuak"
+
+#~ msgid "Añadir producto"
+#~ msgstr "Produktua gehitu"
+
+#~ msgid "Guardar Pedido"
+#~ msgstr "Eskaera gorde"
+
+#, fuzzy
+#~ msgid "Fires?"
+#~ msgstr "Suak"
+
+#, fuzzy
+#~ msgid "Ovens?"
+#~ msgstr "Labeak"
+
+#, fuzzy
+#~ msgid "Sign In"
+#~ msgstr "Erregistratu"
+
+#~ msgid "Account"
+#~ msgstr "Kontua"
+
+#, fuzzy
+#~ msgid "Reservation dae"
+#~ msgstr "Erreserba"
+
+#, fuzzy
+#~ msgid "Select your meal type"
+#~ msgstr "Hautatu zure aukera"
+
+#~ msgid "Meal type"
+#~ msgstr "Ordu-eremua"
+
+#, fuzzy
+#~ msgid "Birthday?"
+#~ msgstr "Urtebetetzea"
+
+#~ msgid "Spanish"
+#~ msgstr "Gaztelania"
+
+#~ msgid "Basque"
+#~ msgstr "Euskara"
+
+#~ msgid ""
+#~ "If you have not created an account yet, then please {{ link }}sign up{{ "
+#~ "end_link }} first."
+#~ msgstr ""
+#~ "Oraindik konturik ez baduzu, mesedez {{ link }}izena eman{{ end_link }} "
+#~ "lehenik."

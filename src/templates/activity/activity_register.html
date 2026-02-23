@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<section class="container my-5">
+
+    <!-- TÍTULO -->
+    <div class="row mb-4">
+        <div class="col text-center">
+            <h2 class="fw-bold">{{ activity.title }}</h2>
+            {% if activity.activityDateHour %}
+                <p class="text-muted">
+                    {{ activity.activityDateHour|date:"d/m/Y H:i" }}
+                </p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+
+                    <form method="post">
+                        {% csrf_token %}
+
+                        <!-- Nombre -->
+                        <div class="mb-3">
+                            <label class="form-label">
+                                {{ form.name.label }}
+                            </label>
+                            {{ form.name }}
+                        </div>
+
+                        <!-- Apellido -->
+                        <div class="mb-3">
+                            <label class="form-label">
+                                {{ form.surname.label }}
+                            </label>
+                            {{ form.surname }}
+                        </div>
+
+                        <!-- Localidad -->
+                        <div class="mb-3">
+                            <label class="form-label">
+                                {{ form.locality.label }}
+                            </label>
+                            {{ form.locality }}
+                        </div>
+
+                        <hr>
+
+                        <!-- Federación -->
+                        <div class="form-check mb-2">
+                            {{ form.federation_member }}
+                            <label class="form-check-label">
+                                {{ form.federation_member.label }}
+                            </label>
+                        </div>
+
+                        <!-- Anónimo -->
+                        <div class="form-check mb-4">
+                            {{ form.anonymous }}
+                            <label class="form-check-label">
+                                {{ form.anonymous.label }}
+                            </label>
+                        </div>
+
+                        <!-- BOTONES -->
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'activity_app:activity_detail' activity.slug %}"
+                               class="btn btn-outline-secondary">
+                                ← {% trans 'Back' %}
+                            </a>
+
+                            <button type="submit"
+                                    class="btn bg-bizardia text-white px-4 w-50">
+                                {% trans 'Confirm' %}
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+{% endblock %}
