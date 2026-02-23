@@ -3,5 +3,6 @@ services:
     command: gunicorn config.wsgi:application --bind 0.0.0.0:8000
     ports:
       - "127.0.0.1:8010:8000"
+    restart: always
     environment:
       DJANGO_DEBUG: "0"
