@@ -9,3 +9,4 @@ services:
     volumes:
       - ./src/staticfiles:/app/staticfiles
       - ./src/media:/app/media
+      - ./src/db.sqlite3:/app/db.sqlite3
