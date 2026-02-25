@@ -62,7 +62,9 @@
     <div class="row">
         <div class="col-lg-3 col-md-3">
             <a href="{% url 'activity_app:activity_detail' activity.slug %}">
+                {% if activity.cover_image %}
                 <img src="{{ activity.cover_image.url }}" class="w-100"></a>
+            {% endif %}
         </div>
         <div class="col-lg-7 col-md-9 p-3">
             <label class="text-bizardia">{{ activity.activity_date_time|date:"d/m/Y H:i" }}</label>
@@ -264,12 +266,16 @@
                     <div class="card">
                         <div class="row g-0">
                             <div class="col-md-5">
-                                <a href="{% url 'activity_app:activity_detail' content.slug %}"><img src="/media/{{ content.cover_image }}" class="img-fluid rounded-start w-100" alt=""></a>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ content.title }}</h5>
-                                    <h4 class="">{{ content.activityDateHour|date:"Y/m/d H:i" }}</h4>
+    {% if content.cover_image %}
+        <a href="{% url 'activity_app:activity_detail' content.slug %}">
+            <img src="{{ content.cover_image.url }}" class="img-fluid rounded-start w-100" alt="">
+        </a>
+    {% endif %}
+</div>
+<div class="col-md-7">
+    <div class="card-body">
+        <h5 class="card-title">{{ content.title }}</h5>
+        <h4>{{ content.activity_date_time|date:"Y/m/d H:i" }}</h4>
                                     <p class="card-text">{{ content.short }}</p>
                                     {% if content.audience %}
                                     <label>{% trans 'Nork hartu dezake parte?' %} <b>{{ content.audience }}</b></label>
