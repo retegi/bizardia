@@ -21,12 +21,12 @@ class Activity(models.Model):
     short = models.TextField(_("Informazio laburra"), blank=True, null=True)
 
     class Audience(models.TextChoices):
-        ANYONE = "anyone", _("Edozein pertsona")
-        MEMBERS = "members", _("Bazkideak")
-        CHILDREN = "children", _("Haurrak")
-        ADULTS = "adults", _("Helduak")
-        FAMILIES = "families", _("Familiak")
-        MEMBERS_CHILDREN = "members_children", _("Bazkideak eta haurrak")
+        ANYONE = "Edozein pertsona", _("Edozein pertsona")
+        MEMBERS = "Bazkideak", _("Bazkideak")
+        CHILDREN = "Haurrak", _("Haurrak")
+        ADULTS = "Helduak", _("Helduak")
+        FAMILIES = "Familiak", _("Familiak")
+        MEMBERS_CHILDREN = "Bazkideak eta haurrak", _("Bazkideak eta haurrak")
 
     audience = models.CharField(
         _("Nork hartu dezake parte?"),
