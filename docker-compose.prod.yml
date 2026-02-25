@@ -7,4 +7,5 @@ services:
     environment:
       DJANGO_DEBUG: "0"
     volumes:
-      - ./staticfiles:/app/staticfiles
+      - ./src/staticfiles:/app/staticfiles
+      - ./src/media:/app/media
