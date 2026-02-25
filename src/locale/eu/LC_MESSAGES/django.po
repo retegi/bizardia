@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-20 17:51+0100\n"
-"PO-Revision-Date: 2026-02-20 19:00+0100\n"
+"PO-Revision-Date: 2026-02-25 17:54+0100\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -45,22 +45,19 @@ msgstr "Erregistro anonimoa"
 #: applications/blog/models.py:8 applications/gallery/models.py:11
 #: applications/gallery/models.py:55 applications/history/models.py:8
 #: applications/news/models.py:15
-#, fuzzy
 #| msgid "Izena"
 msgid "Izenburua"
-msgstr "Izena"
+msgstr "Izenburua"
 
 #: applications/activity/models.py:16
-#, fuzzy
 #| msgid "Information"
 msgid "Informazio osoa"
-msgstr "Informazioa"
+msgstr "Informazio osoa"
 
 #: applications/activity/models.py:17
-#, fuzzy
 #| msgid "Information"
 msgid "Informazio laburra"
-msgstr "Informazioa"
+msgstr "Informazio laburra"
 
 #: applications/activity/models.py:22
 msgid "Irudi nagusia"
@@ -91,10 +88,9 @@ msgid "Data eta ordua"
 msgstr "Data eta ordua"
 
 #: applications/activity/models.py:45
-#, fuzzy
 #| msgid "o regístrate con"
 msgid "Show registration button"
-msgstr "edo erregistratu honekin"
+msgstr "Izena emateko botoia agerian"
 
 #: applications/activity/models.py:50
 msgid "Show price"
@@ -122,10 +118,9 @@ msgid "Jardueretako izen-emateak"
 msgstr "Jardueretako izen-ematea"
 
 #: applications/announcement/admin.py:42
-#, fuzzy
 #| msgid "Contact"
 msgid "Content"
-msgstr "Kontaktatu"
+msgstr "Edukia"
 
 #: applications/announcement/admin.py:51
 msgid "Visibility"
@@ -140,7 +135,6 @@ msgid "System"
 msgstr "Sistema"
 
 #: applications/announcement/models.py:10 applications/news/models.py:10
-#, fuzzy
 #| msgid "Publish"
 msgid "Publikoa"
 msgstr "Argitaratu"
@@ -215,10 +209,9 @@ msgstr "Laburpena"
 
 #: applications/blog/models.py:31 applications/gallery/models.py:20
 #: applications/history/models.py:37 applications/news/models.py:63
-#, fuzzy
 #| msgid "Argitaratua"
 msgid "Argitaratze-data"
-msgstr "Argitaratua"
+msgstr "Argitaratze-data"
 
 #: applications/blog/models.py:36 applications/gallery/models.py:50
 #: applications/history/models.py:42 applications/news/models.py:38
@@ -241,10 +234,9 @@ msgid "Select your activities"
 msgstr "Hautatu zure aukerak"
 
 #: applications/diningRoom/forms.py:17
-#, fuzzy
 #| msgid "Selected tables"
 msgid "Selected tables (JSON)"
-msgstr "Aukeratutako mahaiak"
+msgstr "taula hautatu"
 
 #: applications/diningRoom/forms.py:26 ⁨templates/diningroom/diningroom copy
 #: 2.html⁩:169 templates/diningroom/diningroom-copy20260215.html:230
@@ -382,29 +374,25 @@ msgid "Galeria"
 msgstr "Galeria"
 
 #: applications/gallery/models.py:33
-#, fuzzy
 #| msgid "Categories"
 msgid "Galeriak"
-msgstr "Kategoriak"
+msgstr "Galeriak"
 
 #: applications/gallery/models.py:61
 msgid "Ordena"
 msgstr "Ordena"
 
 #: applications/gallery/models.py:67
-#, fuzzy
 #| msgid "Categories"
 msgid "Galeriako irudia"
-msgstr "Kategoriak"
+msgstr "Galeriako irudia"
 
 #: applications/gallery/models.py:68
-#, fuzzy
 #| msgid "Categories"
 msgid "Galeriako irudiak"
-msgstr "Kategoriak"
+msgstr "Galeriako irudiak"
 
 #: applications/history/models.py:60 applications/history/models.py:61
-#, fuzzy
 #| msgid "History"
 msgid "Historia"
 msgstr "Historia"
@@ -700,7 +688,6 @@ msgid "Back"
 msgstr "Itzuli"
 
 #: templates/activity/activity_register.html:80
-#, fuzzy
 #| msgid "Confirmar"
 msgid "Confirm"
 msgstr "Baieztatu"
@@ -1018,7 +1005,6 @@ msgid "No reservations"
 msgstr "Ez daude erreserbak"
 
 #: templates/diningroom/reservations.html:95
-#, fuzzy
 #| msgid "Search..."
 msgid "Search"
 msgstr "Bilatu..."
