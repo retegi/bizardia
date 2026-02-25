@@ -13,6 +13,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.utils import timezone
 
 class HomePageView(TemplateView):
     if settings.PUBLIC:
@@ -25,7 +26,11 @@ class HomePageView(TemplateView):
         context['latest_news'] = News.objects.order_by('-published_at')[:3]  # Últimas 5 noticias
         context['latest_post'] = Post.objects.order_by('-published_at')[:3]  # Últimas 5 noticias
         context['latest_activity'] = Activity.objects.order_by('published_at')[:6]  # Últimas 5 noticias
-        context['activity_outstanding'] = Activity.objects.filter(outstanding=True)
+        context['activity_outstanding'] = Activity.objects.filter(
+            outstanding=True,
+            status=Activity.Status.PUBLISHED,
+            activity_date_time__gte=timezone.now()
+        ).order_by('activity_date_time')
         context['latest_history'] = History.objects.order_by('-published_at')[:1]  # Últimas 5 noticias
         context['latest_images'] = Gallery.objects.order_by('-published_at')[:6]  # Últimas 5 noticias
         context['home_content'] = HomeContent.objects.first()
