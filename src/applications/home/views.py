@@ -25,7 +25,10 @@ class HomePageView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['latest_news'] = News.objects.order_by('-published_at')[:3]  # Últimas 5 noticias
         context['latest_post'] = Post.objects.order_by('-published_at')[:3]  # Últimas 5 noticias
-        context['latest_activity'] = Activity.objects.order_by('published_at')[:6]  # Últimas 5 noticias
+        context['latest_activity'] = Activity.objects.filter(
+            status=Activity.Status.PUBLISHED,
+            activity_date_time__gte=timezone.now()
+        ).order_by('activity_date_time')[:6] # Últimas 5 noticias
         context['activity_outstanding'] = Activity.objects.filter(
             outstanding=True,
             status=Activity.Status.PUBLISHED,
