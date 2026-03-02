@@ -28,7 +28,7 @@ class Activity(models.Model):
     short = models.TextField(_("Informazio laburra"), blank=True, null=True)
 
     class Audience(models.TextChoices):
-        ANYONE = "Edozein pertsonak", _("Edozein pertsona")
+        ANYONE = "Edozein pertsonak", _("Edozein pertsonak")
         MEMBERS = "Bazkideek", _("Bazkideak")
         CHILDREN = "Haurrak", _("Haurrak")
         ADULTS = "Helduak", _("Helduak")
