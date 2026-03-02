@@ -41,7 +41,6 @@ venv.bak/
 # ===============================
 staticfiles/
 media/
-*.mo
 *.pot
 
 # ⚠️ NO ignorar migraciones en proyectos reales
