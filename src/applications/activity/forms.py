@@ -6,7 +6,8 @@ from django.utils.translation import gettext_lazy as _
 
 from django import forms
 from django.utils.translation import gettext_lazy as _
-from .models import Activity, ActivityRegistration
+from .models import Activity, ActivityRegistration, YesNo
+
 
 
 class ActivityForm(forms.ModelForm):
@@ -39,6 +40,7 @@ class ActivityForm(forms.ModelForm):
         }
 
 class ActivityRegistrationForm(forms.ModelForm):
+
     class Meta:
         model = ActivityRegistration
         fields = [
@@ -61,6 +63,17 @@ class ActivityRegistrationForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'surname': forms.TextInput(attrs={'class': 'form-control'}),
             'locality': forms.TextInput(attrs={'class': 'form-control'}),
-            'federation_member': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
-            'anonymous': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'federation_member': forms.RadioSelect(attrs={'class': 'btn-check'}),
+            'anonymous': forms.RadioSelect(attrs={'class': 'btn-check'}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Federación → obligatorio y sin opción vacía
+        self.fields['federation_member'].choices = YesNo.choices
+        self.fields['federation_member'].required = True
+
+        # Anónimo → sin opción vacía y default = "no"
+        self.fields['anonymous'].choices = YesNo.choices
+        self.fields['anonymous'].initial = YesNo.NO

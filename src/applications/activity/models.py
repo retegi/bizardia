@@ -14,6 +14,13 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from tinymce.models import HTMLField
 
+
+
+class YesNo(models.TextChoices):
+    YES = "yes", _("Bai")
+    NO = "no", _("Ez")
+
+
 class Activity(models.Model):
     title = models.CharField(_("Izenburua"), max_length=200)
     slug = models.SlugField(_("URL testua (tartetik ez utzi)"), unique=True, blank=True)
@@ -21,8 +28,8 @@ class Activity(models.Model):
     short = models.TextField(_("Informazio laburra"), blank=True, null=True)
 
     class Audience(models.TextChoices):
-        ANYONE = "Edozein pertsona", _("Edozein pertsona")
-        MEMBERS = "Bazkideak", _("Bazkideak")
+        ANYONE = "Edozein pertsonak", _("Edozein pertsona")
+        MEMBERS = "Bazkideek", _("Bazkideak")
         CHILDREN = "Haurrak", _("Haurrak")
         ADULTS = "Helduak", _("Helduak")
         FAMILIES = "Familiak", _("Familiak")
@@ -185,7 +192,9 @@ class ActivityImage(models.Model):
         super().save(*args, **kwargs)
 
 
+
 class ActivityRegistration(models.Model):
+
     activity = models.ForeignKey(
         Activity,
         on_delete=models.CASCADE,
@@ -205,14 +214,19 @@ class ActivityRegistration(models.Model):
     surname = models.CharField(_("Abizena"), max_length=100)
     locality = models.CharField(_("Herria"), max_length=100, blank=True)
 
-    federation_member = models.BooleanField(
+    federation_member = models.CharField(
         _("Mendi federazioko kidea"),
-        default=False
+        max_length=3,
+        choices=YesNo.choices,
+        blank=False,
     )
 
-    anonymous = models.BooleanField(
+    anonymous = models.CharField(
         _("Erregistro anonimoa"),
-        default=False
+        max_length=3,
+        choices=YesNo.choices,
+        default=YesNo.NO,
+        blank=False,
     )
 
     created_at = models.DateTimeField(auto_now_add=True)

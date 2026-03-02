@@ -52,21 +52,41 @@
 
                         <hr>
 
-                        <!-- Federación -->
-                        <div class="form-check mb-2">
-                            {{ form.federation_member }}
-                            <label class="form-check-label">
-                                {{ form.federation_member.label }}
-                            </label>
-                        </div>
+                        <hr>
 
-                        <!-- Anónimo -->
-                        <div class="form-check mb-4">
-                            {{ form.anonymous }}
-                            <label class="form-check-label">
-                                {{ form.anonymous.label }}
-                            </label>
-                        </div>
+<!-- Federación -->
+<div class="mb-4">
+    <label class="form-label fw-semibold d-block">
+        {{ form.federation_member.label }}
+    </label>
+
+    <div class="btn-group w-100" role="group">
+        {% for radio in form.federation_member %}
+            {{ radio.tag }}
+            <label class="btn btn-outline-success w-50"
+                   for="{{ radio.id_for_label }}">
+                {{ radio.choice_label }}
+            </label>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Anónimo -->
+<div class="mb-4">
+    <label class="form-label fw-semibold d-block">
+        {{ form.anonymous.label }}
+    </label>
+
+    <div class="btn-group w-100" role="group">
+        {% for radio in form.anonymous %}
+            {{ radio.tag }}
+            <label class="btn btn-outline-secondary w-50"
+                   for="{{ radio.id_for_label }}">
+                {{ radio.choice_label }}
+            </label>
+        {% endfor %}
+    </div>
+</div>
 
                         <!-- BOTONES -->
                         <div class="d-flex justify-content-between">
