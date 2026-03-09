@@ -1,5 +1,6 @@
 # applications/news/views.py
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required, permission_required
 from .models import News
 from .forms import NewsForm
 
@@ -34,6 +35,8 @@ def news_detail(request, slug):
     return render(request, "news/news_detail.html", {"news": news})
 
 
+@login_required
+@permission_required('news.add_news', raise_exception=True)
 def news_create(request):
     if request.method == 'POST':
         form = NewsForm(request.POST, request.FILES)

@@ -4,5 +4,6 @@ from django.apps import AppConfig
 class PartnerConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'applications.partner'
-def ready(self):
-    import applications.partner.signals
+
+    def ready(self):
+        import applications.partner.signals

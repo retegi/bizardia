@@ -24,7 +24,7 @@
       <div class="card-text fs-5">
           <div class="row">
               {% if activity.cover_image %}
-                <div class="col-4">
+                <div class="col-12 col-lg-4">
                     <img src="{{ activity.cover_image.url }}"
                          class="img-fluid mb-3 gallery-image"
                          data-bs-toggle="modal"
@@ -36,7 +36,7 @@
 
 
               {% if activity.cover_image %}
-              <div class="col-8">
+              <div class="col-12 col-lg-8">
               {% else %}
               <div class="col-12">
               {% endif %}

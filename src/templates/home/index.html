@@ -23,6 +23,40 @@
     height: 100vh;
 }
 
+.announcement-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.announcement-banner__text {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.4;
+}
+
+.announcement-banner--info {
+    background: #d8ecff;
+}
+
+.announcement-banner--warning {
+    background: #fff3cd;
+}
+
+.announcement-banner--danger {
+    background: #f8d7da;
+}
+
+.announcement-banner--success {
+    background: #d1e7dd;
+}
+
 /* imagen */
 .hero-image {
     width: 100%;
@@ -55,6 +89,15 @@
             {{ message }}
         </div>
     {% endfor %}
+{% endif %}
+
+{% if current_announcement %}
+<section class="container">
+    <div class="announcement-banner announcement-banner--{{ current_announcement.banner_style }}">
+        <p class="announcement-banner__text">{{ current_announcement.short_text|default:current_announcement.title }}</p>
+        <a href="{% url 'announcement:detail' current_announcement.slug %}" class="btn btn-sm bg-bizardia text-white">{% trans 'Details' %}</a>
+    </div>
+</section>
 {% endif %}
 
 <section class="container pt-3 pb-3 bg-light">
@@ -330,9 +373,9 @@
                 <div class="col-lg-6">
                     <h3>{% trans 'Contact information' %}</h3>
                     <ul class="contact-info">
-                        <li><i class="fas fa-map-marker-alt"></i> {{ content.address }}</li>
-                        <li><i class="fas fa-phone"></i> {{ content.phone }}</li>
-                        <li><i class="fas fa-envelope"></i> {{ content.email }}</li>
+                        <li><i class="fas fa-map-marker-alt"></i> {{ home_content.address }}</li>
+                        <li><i class="fas fa-phone"></i> {{ home_content.phone }}</li>
+                        <li><i class="fas fa-envelope"></i> {{ home_content.email }}</li>
                         <!--<li><i class="fas fa-clock"></i> Horario: Lunes a Domingo, 10:00 - 23:00</li>-->
                     </ul>
                     
@@ -417,8 +460,5 @@ window.addEventListener("load", function () {
 });
 </script>
 {% endblock %}
-
-
-
 
 

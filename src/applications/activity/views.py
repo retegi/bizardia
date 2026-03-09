@@ -1,10 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import TemplateView
+from django.urls import reverse
+from urllib.parse import urlencode
 from .models import Activity, ActivityRegistration
 from .forms import ActivityForm
 from django.contrib.auth.decorators import login_required
 from .forms import ActivityRegistrationForm
 from django.contrib.auth.decorators import user_passes_test
+from django.utils import timezone
 
 
 def activity_list(request):
@@ -51,9 +54,17 @@ def activity_create(request):
         form = ActivityForm()
     return render(request, 'activity/activity_form.html', {'form': form})
 
-@login_required
 def activity_register(request, slug):
     activity = get_object_or_404(Activity, slug=slug, status=Activity.Status.PUBLISHED)
+    login_url = f"{reverse('account_login')}?{urlencode({'next': request.get_full_path()})}"
+
+    if not request.user.is_authenticated:
+        return render(request, 'activity/activity_register.html', {
+            'activity': activity,
+            'form': ActivityRegistrationForm(),
+            'require_login_modal': True,
+            'login_url': login_url,
+        })
 
     if request.method == 'POST':
         form = ActivityRegistrationForm(request.POST)
@@ -72,7 +83,9 @@ def activity_register(request, slug):
 
     return render(request, 'activity/activity_register.html', {
         'activity': activity,
-        'form': form
+        'form': form,
+        'require_login_modal': False,
+        'login_url': login_url,
     })
 
 

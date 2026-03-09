@@ -23,8 +23,15 @@
             <div class="card shadow-sm">
                 <div class="card-body p-4">
 
+                    {% if require_login_modal %}
+                        <div class="alert alert-warning" role="alert">
+                            {% trans "You must be logged in to complete this form." %}
+                        </div>
+                    {% endif %}
+
                     <form method="post">
                         {% csrf_token %}
+                        <fieldset {% if require_login_modal %}disabled{% endif %}>
 
                         <!-- Nombre -->
                         <div class="mb-3">
@@ -96,10 +103,13 @@
                             </a>
 
                             <button type="submit"
+                                    {% if require_login_modal %}disabled{% endif %}
                                     class="btn bg-bizardia text-white px-4 w-50">
                                 {% trans 'Confirm' %}
                             </button>
                         </div>
+
+                        </fieldset>
 
                     </form>
 
@@ -110,4 +120,37 @@
     </div>
 
 </section>
+
+{% if require_login_modal %}
+<div class="modal fade" id="loginRequiredModal" tabindex="-1" aria-labelledby="loginRequiredModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginRequiredModalLabel">{% trans "Login required" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{% trans 'Close' %}"></button>
+            </div>
+            <div class="modal-body">
+                {% trans "To register for this activity, please log in first." %}
+            </div>
+            <div class="modal-footer">
+                <a href="{{ login_url }}" class="btn bg-bizardia text-white">{% trans "Iniciar sesion" %}</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+{% if require_login_modal %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var modalEl = document.getElementById('loginRequiredModal');
+    if (modalEl) {
+        var loginModal = new bootstrap.Modal(modalEl);
+        loginModal.show();
+    }
+});
+</script>
+{% endif %}
 {% endblock %}

@@ -24,7 +24,7 @@ urlpatterns = [
         name='cookie_policy',
     ),
     path("privacy-policy/", views.PrivacyPolicyView.as_view(), name="privacy_policy"),
-    path("cookie-policy/", views.CookiePolicyView.as_view(), name="cookie_policy"),
-    path("legal-notice/", views.LegalNoticeView.as_view(), name="legal_notice"),
+    path("cookie-policy/", views.CookiePolicyView.as_view(), name="cookie_policy_hyphen"),
+    path("legal-notice/", views.LegalNoticeView.as_view(), name="legal_notice_hyphen"),
 
 ]

@@ -103,10 +103,8 @@ LOGOUT_REDIRECT_URL = "home_app:home"
 # ==================================================
 # django-allauth – Signup / Login
 # ==================================================
-ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_USER_MODEL_USERNAME_FIELD = "username"
 
-ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 
 ACCOUNT_SIGNUP_FIELDS = [
@@ -247,6 +245,11 @@ EMAIL_SUBJECT_PREFIX = env(
     default="[Bizardia] ",
 )
 
+CONTACT_FORM_RECIPIENTS = env.list(
+    "CONTACT_FORM_RECIPIENTS",
+    default=["retegi84@gmail.com"],
+)
+
 EMAIL_TIMEOUT = 30
 
 
@@ -255,5 +258,9 @@ CSRF_TRUSTED_ORIGINS = [
     "https://bizardia.eus",
     "https://www.bizardia.eus",
 ]
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = env.bool("SECURE_SSL_REDIRECT", default=not DEBUG)
+SECURE_HSTS_SECONDS = env.int("SECURE_HSTS_SECONDS", default=31536000 if not DEBUG else 0)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool("SECURE_HSTS_INCLUDE_SUBDOMAINS", default=not DEBUG)
+SECURE_HSTS_PRELOAD = env.bool("SECURE_HSTS_PRELOAD", default=not DEBUG)
+CSRF_COOKIE_SECURE = env.bool("CSRF_COOKIE_SECURE", default=not DEBUG)
+SESSION_COOKIE_SECURE = env.bool("SESSION_COOKIE_SECURE", default=not DEBUG)

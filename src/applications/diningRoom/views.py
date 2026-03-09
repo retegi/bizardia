@@ -131,6 +131,9 @@ class ReservationDeleteView(LoginRequiredMixin,DeleteView):
     template_name = 'diningroom/confirm_delete.html'  # Puedes crear esta plantilla o redirigir directamente
     success_url = reverse_lazy('diningroom_app:user_reservations')  # Ajusta al nombre real de la vista "mis reservas"
 
+    def get_queryset(self):
+        return Reservation.objects.filter(user=self.request.user)
+
 class ReservationAvailabilityView(LoginRequiredMixin, View):
 
     def get(self, request):
