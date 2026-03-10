@@ -464,6 +464,9 @@
                         <!--<li><a class="dropdown-item" href="#">{% trans 'Legal statutes' %}</a></li>
                         <li><a class="dropdown-item" href="#">{% trans 'Organization chart' %}</a></li>
                         <li><a class="dropdown-item" href="#">{% trans 'Transparency' %}</a></li>-->
+                        {% if request.user|has_group:"bazkideak" or request.user.is_superuser %}
+                        <a class="dropdown-item" href="{% url 'partner_app:partner_list' %}">{% trans 'Bazkideen zerrenda' %}</a></li>
+                        {% endif %}
                     </ul>
                 </li>
 

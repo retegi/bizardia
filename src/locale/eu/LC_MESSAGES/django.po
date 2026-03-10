@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-20 17:51+0100\n"
-"PO-Revision-Date: 2026-02-25 17:54+0100\n"
+"PO-Revision-Date: 2026-03-10 17:31+0100\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -35,11 +35,11 @@ msgstr "Herria"
 
 #: applications/activity/forms.py:27 applications/activity/models.py:169
 msgid "Mendi federazioko kidea"
-msgstr "Mendi federazioko kidea"
+msgstr "Mendi federazioko kidea zara edo mendi segururen bat duzu?"
 
 #: applications/activity/forms.py:28 applications/activity/models.py:174
 msgid "Erregistro anonimoa"
-msgstr "Erregistro anonimoa"
+msgstr "Izena modu anonimoan eman nahi duzu?"
 
 #: applications/activity/models.py:14 applications/announcement/models.py:19
 #: applications/blog/models.py:8 applications/gallery/models.py:11

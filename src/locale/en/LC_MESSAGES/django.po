@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-20 17:52+0100\n"
-"PO-Revision-Date: 2026-02-09 14:09+0100\n"
+"PO-Revision-Date: 2026-03-10 17:32+0100\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -35,11 +35,12 @@ msgstr "Locality"
 
 #: applications/activity/forms.py:27 applications/activity/models.py:169
 msgid "Mendi federazioko kidea"
-msgstr "Member of the Mountain Federation"
+msgstr ""
+"Do you belong to a mountain federation or do you have mountain insurance?"
 
 #: applications/activity/forms.py:28 applications/activity/models.py:174
 msgid "Erregistro anonimoa"
-msgstr "Anonymous registration"
+msgstr "Do you want to register anonymously?"
 
 #: applications/activity/models.py:14 applications/announcement/models.py:19
 #: applications/blog/models.py:8 applications/gallery/models.py:11
@@ -236,16 +237,14 @@ msgstr ""
 msgid "Selected tables (JSON)"
 msgstr ""
 
-#: applications/diningRoom/forms.py:26
-#: ⁨templates/diningroom/diningroom copy 2.html⁩:169
-#: templates/diningroom/diningroom-copy20260215.html:230
+#: applications/diningRoom/forms.py:26 ⁨templates/diningroom/diningroom copy
+#: 2.html⁩:169 templates/diningroom/diningroom-copy20260215.html:230
 #: templates/diningroom/diningroom.html:346
 msgid "How many fires?"
 msgstr ""
 
-#: applications/diningRoom/forms.py:34
-#: ⁨templates/diningroom/diningroom copy 2.html⁩:180
-#: templates/diningroom/diningroom-copy20260215.html:241
+#: applications/diningRoom/forms.py:34 ⁨templates/diningroom/diningroom copy
+#: 2.html⁩:180 templates/diningroom/diningroom-copy20260215.html:241
 #: templates/diningroom/diningroom.html:357
 msgid "How many ovens?"
 msgstr ""
@@ -282,38 +281,36 @@ msgstr ""
 
 #: applications/diningRoom/models.py:57
 #: templates/diningroom/diningroom-copy20260215.html:173
-#: templates/diningroom/diningroom.html:28
-#: ⁨templates/diningroom/reservations copy.html⁩:26
+#: templates/diningroom/diningroom.html:28 ⁨templates/diningroom/reservations
+#: copy.html⁩:26
 msgid "Breakfast"
 msgstr "Breakfast"
 
 #: applications/diningRoom/models.py:58
 #: templates/diningroom/diningroom-copy20260215.html:176
-#: templates/diningroom/diningroom.html:31
-#: ⁨templates/diningroom/reservations copy.html⁩:27
+#: templates/diningroom/diningroom.html:31 ⁨templates/diningroom/reservations
+#: copy.html⁩:27
 msgid "Lunch"
 msgstr "Lunch"
 
-#: applications/diningRoom/models.py:59
-#: ⁨templates/diningroom/diningroom copy 2.html⁩:157
-#: templates/diningroom/diningroom-copy20260215.html:179
-#: templates/diningroom/diningroom.html:34
-#: ⁨templates/diningroom/reservations copy.html⁩:28
+#: applications/diningRoom/models.py:59 ⁨templates/diningroom/diningroom copy
+#: 2.html⁩:157 templates/diningroom/diningroom-copy20260215.html:179
+#: templates/diningroom/diningroom.html:34 ⁨templates/diningroom/reservations
+#: copy.html⁩:28
 msgid "Midday meal"
 msgstr "Midday meal"
 
 #: applications/diningRoom/models.py:60
 #: templates/diningroom/diningroom-copy20260215.html:182
-#: templates/diningroom/diningroom.html:37
-#: ⁨templates/diningroom/reservations copy.html⁩:29
+#: templates/diningroom/diningroom.html:37 ⁨templates/diningroom/reservations
+#: copy.html⁩:29
 msgid "Merienda"
 msgstr "Snack"
 
-#: applications/diningRoom/models.py:61
-#: ⁨templates/diningroom/diningroom copy 2.html⁩:160
-#: templates/diningroom/diningroom-copy20260215.html:185
-#: templates/diningroom/diningroom.html:40
-#: ⁨templates/diningroom/reservations copy.html⁩:30
+#: applications/diningRoom/models.py:61 ⁨templates/diningroom/diningroom copy
+#: 2.html⁩:160 templates/diningroom/diningroom-copy20260215.html:185
+#: templates/diningroom/diningroom.html:40 ⁨templates/diningroom/reservations
+#: copy.html⁩:30
 msgid "Dinner"
 msgstr "Dinner"
 
@@ -605,8 +602,8 @@ msgstr ""
 
 #: templates/_account_backup/signup-old.html:61
 msgid ""
-"Tras registrarte, te enviaremos un correo para confirmar tu email. Tu cuenta "
-"será activada por Bizardia después de la verificación."
+"Tras registrarte, te enviaremos un correo para confirmar tu email. Tu cuenta"
+" será activada por Bizardia después de la verificación."
 msgstr ""
 
 #: templates/_account_backup/signup_pending.html:8
@@ -704,8 +701,9 @@ msgstr ""
 
 #: ⁨templates/base copy 2.html⁩:356 ⁨templates/base copy 2.html⁩:476
 #: templates/base.html:436 templates/base.html:645
-#: ⁨templates/diningroom/reservations copy.html⁩:22 templates/home/index.html:256
-#: templates/home/index2.html:78 templates/home/index2.html:149
+#: ⁨templates/diningroom/reservations copy.html⁩:22
+#: templates/home/index.html:256 templates/home/index2.html:78
+#: templates/home/index2.html:149
 msgid "Activities"
 msgstr ""
 
@@ -747,8 +745,9 @@ msgid "See reservations"
 msgstr ""
 
 #: ⁨templates/base copy 2.html⁩:389 ⁨templates/base copy 2.html⁩:479
-#: ⁨templates/base copy.html⁩:39 templates/base.html:493 templates/base.html:648
-#: templates/home/index.html:317 templates/home/index2.html:243
+#: ⁨templates/base copy.html⁩:39 templates/base.html:493
+#: templates/base.html:648 templates/home/index.html:317
+#: templates/home/index2.html:243
 msgid "Contact"
 msgstr "Contact"
 
@@ -850,37 +849,36 @@ msgstr ""
 
 #: ⁨templates/diningroom/diningroom copy 2.html⁩:19
 #: templates/diningroom/diningroom-copy20260215.html:19
-#: templates/diningroom/diningroom.html:19
-#: ⁨templates/diningroom/reservations copy.html⁩:49
+#: templates/diningroom/diningroom.html:19 ⁨templates/diningroom/reservations
+#: copy.html⁩:49
 msgid "Reservation date"
 msgstr ""
 
 #: ⁨templates/diningroom/diningroom copy 2.html⁩:25
 #: templates/diningroom/diningroom-copy20260215.html:32
-#: templates/diningroom/diningroom.html:58
-#: ⁨templates/diningroom/reservations copy.html⁩:18
-#: templates/diningroom/user_reservations_copia.html:26
+#: templates/diningroom/diningroom.html:58 ⁨templates/diningroom/reservations
+#: copy.html⁩:18 templates/diningroom/user_reservations_copia.html:26
 msgid "Membership number"
 msgstr ""
 
 #: ⁨templates/diningroom/diningroom copy 2.html⁩:31
 #: templates/diningroom/diningroom-copy20260215.html:38
-#: templates/diningroom/diningroom.html:64
-#: ⁨templates/diningroom/reservations copy.html⁩:19
+#: templates/diningroom/diningroom.html:64 ⁨templates/diningroom/reservations
+#: copy.html⁩:19
 msgid "Number of diners"
 msgstr ""
 
 #: ⁨templates/diningroom/diningroom copy 2.html⁩:124
 #: templates/diningroom/diningroom-copy20260215.html:132
-#: templates/diningroom/diningroom.html:199
-#: ⁨templates/diningroom/reservations copy.html⁩:44
+#: templates/diningroom/diningroom.html:199 ⁨templates/diningroom/reservations
+#: copy.html⁩:44
 msgid "Urkabe room"
 msgstr ""
 
 #: ⁨templates/diningroom/diningroom copy 2.html⁩:125
 #: templates/diningroom/diningroom-copy20260215.html:134
-#: templates/diningroom/diningroom.html:201
-#: ⁨templates/diningroom/reservations copy.html⁩:45
+#: templates/diningroom/diningroom.html:201 ⁨templates/diningroom/reservations
+#: copy.html⁩:45
 msgid "Goiko room"
 msgstr ""
 
@@ -931,9 +929,8 @@ msgstr ""
 #: templates/diningroom/diningroom-copy20260215.html:221
 #: templates/diningroom/diningroom-copy20260215.html:255
 #: templates/diningroom/diningroom.html:337
-#: templates/diningroom/diningroom.html:371
-#: ⁨templates/diningroom/reservations copy.html⁩:42
-#: ⁨templates/diningroom/reservations copy.html⁩:44
+#: templates/diningroom/diningroom.html:371 ⁨templates/diningroom/reservations
+#: copy.html⁩:42 ⁨templates/diningroom/reservations copy.html⁩:44
 #: ⁨templates/diningroom/reservations copy.html⁩:45
 #: ⁨templates/diningroom/reservations copy.html⁩:48
 msgid "No"
@@ -942,9 +939,8 @@ msgstr ""
 #: templates/diningroom/diningroom-copy20260215.html:224
 #: templates/diningroom/diningroom-copy20260215.html:257
 #: templates/diningroom/diningroom.html:340
-#: templates/diningroom/diningroom.html:373
-#: ⁨templates/diningroom/reservations copy.html⁩:42
-#: ⁨templates/diningroom/reservations copy.html⁩:44
+#: templates/diningroom/diningroom.html:373 ⁨templates/diningroom/reservations
+#: copy.html⁩:42 ⁨templates/diningroom/reservations copy.html⁩:44
 #: ⁨templates/diningroom/reservations copy.html⁩:45
 #: ⁨templates/diningroom/reservations copy.html⁩:48
 msgid "Yes"
@@ -1271,7 +1267,6 @@ msgstr ""
 #~ msgstr "Products"
 
 #, fuzzy
-#~| msgid "Activity"
 #~ msgid "No activity"
 #~ msgstr "Activity"
 
