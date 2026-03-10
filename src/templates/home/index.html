@@ -64,6 +64,19 @@
     object-fit: cover;
 }
 
+.home-category-image {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease;
+    transform: scale(1);
+    will-change: transform;
+}
+
+.home-category-image:hover {
+    transform: scale(1.08);
+    transition-duration: 0.1s;
+}
+
 /* desktop */
 @media (min-width: 992px) {
     .hero-section,
@@ -241,27 +254,27 @@
     <div class="row">
         <div class="col-lg-4 col-md-6">
             <h3 class="text-center text-bizardia3">Kirola</h3>
-            <img src="{% static 'img/bizardia-kirolak.png' %}" class="w-100">
+            <img src="{% static 'img/bizardia-kirolak.png' %}" class="home-category-image">
         </div>
         <div class="col-lg-4 col-md-6">
             <h3 class="text-center text-bizardia3">Kultura</h3>
-            <img src="{% static 'img/bizardia-gastronomia.png' %}" class="w-100">
+            <img src="{% static 'img/bizardia-gastronomia.png' %}" class="home-category-image">
         </div>
         <div class="col-lg-4 col-md-6">
             <h3 class="text-center text-bizardia3">Jokoa</h3>
-            <img src="{% static 'img/bizardia-jokoak.png' %}" class="w-100">
+            <img src="{% static 'img/bizardia-jokoak.png' %}" class="home-category-image">
         </div>
         <div class="col-lg-4 col-md-6">
             <h3 class="text-center text-bizardia3">Dantza</h3>
-            <img src="{% static 'img/bizardia-dantza.png' %}" class="w-100">
+            <img src="{% static 'img/bizardia-dantza.png' %}" class="home-category-image">
         </div>
         <div class="col-lg-4 col-md-6">
             <h3 class="text-center text-bizardia3">Ospakizunak</h3>
-            <img src="{% static 'img/bizardia-ospakizunak.png' %}" class="w-100">
+            <img src="{% static 'img/bizardia-ospakizunak.png' %}" class="home-category-image">
         </div>
         <div class="col-lg-4 col-md-6">
             <h3 class="text-center text-bizardia3">Ehiza</h3>
-            <img src="{% static 'img/bizardia-ehiza.png' %}" class="w-100">
+            <img src="{% static 'img/bizardia-ehiza.png' %}" class="home-category-image">
         </div>
     </div>
         </div>
@@ -460,5 +473,4 @@ window.addEventListener("load", function () {
 });
 </script>
 {% endblock %}
-
 

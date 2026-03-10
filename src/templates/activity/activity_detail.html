@@ -3,6 +3,19 @@
 {% load i18n %}
 {% load static %}
 {% block head %}
+<style>
+  #imageModal .modal-body {
+    padding: 0.75rem;
+  }
+
+  #modalImage {
+    width: auto;
+    height: auto;
+    max-width: calc(100vw - 1.5rem);
+    max-height: calc(100dvh - 4.5rem);
+    object-fit: contain;
+  }
+</style>
 {% endblock %}
 
 
@@ -90,7 +103,7 @@
                 data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body d-flex justify-content-center align-items-center">
-        <img id="modalImage" src="" class="img-fluid w-100">
+        <img id="modalImage" src="" class="img-fluid">
       </div>
     </div>
   </div>
