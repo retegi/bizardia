@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-20 17:52+0100\n"
+"POT-Creation-Date: 2026-03-16 17:40+0100\n"
 "PO-Revision-Date: 2026-03-10 17:32+0100\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,30 +19,66 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.3\n"
 
-#: applications/activity/forms.py:24 applications/activity/models.py:164
+#: applications/activity/admin.py:39
+#, fuzzy
+#| msgid "Contact"
+msgid "Contenido"
+msgstr "Contact"
+
+#: applications/activity/admin.py:42
+msgid "Datos de la actividad"
+msgstr ""
+
+#: applications/activity/admin.py:45
+msgid "Participación"
+msgstr ""
+
+#: applications/activity/admin.py:48
+msgid "Publicación"
+msgstr ""
+
+#: applications/activity/admin.py:75
+msgid "Público"
+msgstr ""
+
+#: applications/activity/admin.py:79 applications/activity/models.py:92
+#: applications/blog/models.py:48 applications/gallery/models.py:27
+#: applications/history/models.py:54 applications/news/models.py:58
+msgid "Argitaratua"
+msgstr ""
+
+#: applications/activity/forms.py:55 applications/activity/models.py:246
 #: applications/product/models.py:6 applications/product/models.py:45
 #: templates/partner/partner_list.html:15
 msgid "Izena"
 msgstr "Name"
 
-#: applications/activity/forms.py:25 applications/activity/models.py:165
+#: applications/activity/forms.py:56 applications/activity/models.py:247
 msgid "Abizena"
 msgstr "Lastname"
 
-#: applications/activity/forms.py:26 applications/activity/models.py:166
+#: applications/activity/forms.py:57 applications/activity/models.py:248
 msgid "Herria"
 msgstr "Locality"
 
-#: applications/activity/forms.py:27 applications/activity/models.py:169
+#: applications/activity/forms.py:58 applications/activity/models.py:251
 msgid "Mendi federazioko kidea"
 msgstr ""
 "Do you belong to a mountain federation or do you have mountain insurance?"
 
-#: applications/activity/forms.py:28 applications/activity/models.py:174
+#: applications/activity/forms.py:59 applications/activity/models.py:258
 msgid "Erregistro anonimoa"
 msgstr "Do you want to register anonymously?"
 
-#: applications/activity/models.py:14 applications/announcement/models.py:19
+#: applications/activity/models.py:20
+msgid "Bai"
+msgstr ""
+
+#: applications/activity/models.py:21
+msgid "Ez"
+msgstr ""
+
+#: applications/activity/models.py:25 applications/announcement/models.py:19
 #: applications/blog/models.py:8 applications/gallery/models.py:11
 #: applications/gallery/models.py:55 applications/history/models.py:8
 #: applications/news/models.py:15
@@ -51,68 +87,164 @@ msgstr "Do you want to register anonymously?"
 msgid "Izenburua"
 msgstr "Name"
 
-#: applications/activity/models.py:16
-msgid "Informazio osoa"
-msgstr ""
-
-#: applications/activity/models.py:17
-msgid "Informazio laburra"
-msgstr ""
-
-#: applications/activity/models.py:22
-msgid "Irudi nagusia"
-msgstr ""
-
-#: applications/activity/models.py:25 applications/blog/models.py:43
-#: applications/gallery/models.py:24 applications/history/models.py:49
-#: applications/news/models.py:45
-msgid "Egilea"
-msgstr ""
-
-#: applications/activity/models.py:26 applications/blog/models.py:48
-#: applications/gallery/models.py:27 applications/history/models.py:54
-#: applications/news/models.py:58
-msgid "Argitaratua"
+#: applications/activity/models.py:26
+msgid "URL testua (tartetik ez utzi)"
 msgstr ""
 
 #: applications/activity/models.py:27
-msgid "Nabarmendua"
+msgid "Informazio osoa xehetasun guztiekin"
 msgstr ""
 
-#: applications/activity/models.py:30 applications/product/models.py:61
-msgid "Prezioa"
+#: applications/activity/models.py:28
+msgid "Informazio laburra"
 msgstr ""
 
-#: applications/activity/models.py:38
-msgid "Data eta ordua"
+#: applications/activity/models.py:31
+msgid "Edozein pertsonak"
 msgstr ""
 
-#: applications/activity/models.py:45
-msgid "Show registration button"
+#: applications/activity/models.py:32 applications/partner/models.py:73
+msgid "Bazkideak"
+msgstr ""
+
+#: applications/activity/models.py:33
+msgid "Haurrak"
+msgstr ""
+
+#: applications/activity/models.py:34
+msgid "Helduak"
+msgstr ""
+
+#: applications/activity/models.py:35
+msgid "Familiak"
+msgstr ""
+
+#: applications/activity/models.py:36
+msgid "Bazkideak eta haurrak"
+msgstr ""
+
+#: applications/activity/models.py:39
+#: templates/activity/activity_detail.html:33
+#: templates/activity/activity_detail.html:60
+#: templates/activity/activity_list.html:24 templates/home/index.html:130
+#: templates/home/index.html:337
+msgid "Nork hartu dezake parte?"
+msgstr ""
+
+#: applications/activity/models.py:46
+msgid "Ohar gehigarria"
 msgstr ""
 
 #: applications/activity/models.py:50
-msgid "Show price"
+msgid "Ej: “Haurrak heldu batekin lagundua”, “12 urtetik aurrera”…"
 msgstr ""
 
-#: applications/activity/models.py:57 applications/activity/models.py:153
+#: applications/activity/models.py:57
+msgid "Irudi nagusia"
+msgstr ""
+
+#: applications/activity/models.py:67
+msgid "Sortzailea"
+msgstr ""
+
+#: applications/activity/models.py:71
+msgid "Antolatzailea"
+msgstr ""
+
+#: applications/activity/models.py:73
+msgid "Nabarmendua"
+msgstr ""
+
+#: applications/activity/models.py:76 applications/product/models.py:61
+msgid "Prezioa"
+msgstr ""
+
+#: applications/activity/models.py:83
+msgid "Data eta ordua"
+msgstr ""
+
+#: applications/activity/models.py:85
+msgid "Izena emateko botoia agertzea"
+msgstr ""
+
+#: applications/activity/models.py:86
+msgid "Prezioa agertzea"
+msgstr ""
+
+#: applications/activity/models.py:90
+msgid "Zirriborroa"
+msgstr ""
+
+#: applications/activity/models.py:91
+msgid "Balidazio zain"
+msgstr ""
+
+#: applications/activity/models.py:93
+msgid "Artxibatua"
+msgstr ""
+
+#: applications/activity/models.py:96
+msgid "Egoera"
+msgstr ""
+
+#: applications/activity/models.py:104 applications/diningRoom/models.py:28
+#: applications/product/models.py:24 applications/product/models.py:84
+msgid "Sortze-data"
+msgstr ""
+
+#: applications/activity/models.py:105
+msgid "Eguneratua"
+msgstr ""
+
+#: applications/activity/models.py:108 applications/blog/models.py:31
+#: applications/gallery/models.py:20 applications/history/models.py:37
+#: applications/news/models.py:63
+msgid "Argitaratze-data"
+msgstr ""
+
+#: applications/activity/models.py:115
+msgid "Nork argitaratu du"
+msgstr ""
+
+#: applications/activity/models.py:119 applications/activity/models.py:202
+#: applications/activity/models.py:235
 msgid "Jarduera"
 msgstr ""
 
-#: applications/activity/models.py:58
+#: applications/activity/models.py:120
 msgid "Jarduerak"
 msgstr ""
 
-#: applications/activity/models.py:161 applications/diningRoom/models.py:18
+#: applications/activity/models.py:206
+msgid "Galdera"
+msgstr ""
+
+#: applications/activity/models.py:211
+msgid "Erantzuna"
+msgstr ""
+
+#: applications/activity/models.py:216 applications/gallery/models.py:61
+msgid "Ordena"
+msgstr ""
+
+#: applications/activity/models.py:221
+msgid "Jardueraren galdera/erantzuna"
+msgstr ""
+
+#: applications/activity/models.py:222
+msgid "Jardueraren galderak eta erantzunak"
+msgstr ""
+
+#: applications/activity/models.py:243 applications/diningRoom/models.py:18
 #: applications/partner/models.py:12
 msgid "Erabiltzailea"
 msgstr ""
 
-#: applications/activity/models.py:181
+#: applications/activity/models.py:268
 msgid "Jardueraren izen-ematea"
 msgstr ""
 
-#: applications/activity/models.py:182
+#: applications/activity/models.py:269
 msgid "Jardueretako izen-emateak"
 msgstr ""
 
@@ -208,15 +340,15 @@ msgstr ""
 msgid "Laburpena"
 msgstr ""
 
-#: applications/blog/models.py:31 applications/gallery/models.py:20
-#: applications/history/models.py:37 applications/news/models.py:63
-msgid "Argitaratze-data"
-msgstr ""
-
 #: applications/blog/models.py:36 applications/gallery/models.py:50
 #: applications/history/models.py:42 applications/news/models.py:38
 #: applications/product/models.py:17 applications/product/models.py:77
 msgid "Irudia"
+msgstr ""
+
+#: applications/blog/models.py:43 applications/gallery/models.py:24
+#: applications/history/models.py:49 applications/news/models.py:45
+msgid "Egilea"
 msgstr ""
 
 #: applications/blog/models.py:54
@@ -229,7 +361,7 @@ msgstr ""
 
 #: applications/diningRoom/forms.py:9
 #: templates/diningroom/diningroom-copy20260215.html:170
-#: templates/diningroom/diningroom.html:25
+#: templates/diningroom/diningroom.html:24
 msgid "Select your activities"
 msgstr ""
 
@@ -237,15 +369,17 @@ msgstr ""
 msgid "Selected tables (JSON)"
 msgstr ""
 
-#: applications/diningRoom/forms.py:26 ⁨templates/diningroom/diningroom copy
-#: 2.html⁩:169 templates/diningroom/diningroom-copy20260215.html:230
-#: templates/diningroom/diningroom.html:346
+#: applications/diningRoom/forms.py:26
+#: ⁨templates/diningroom/diningroom copy 2.html⁩:169
+#: templates/diningroom/diningroom-copy20260215.html:230
+#: templates/diningroom/diningroom.html:231
 msgid "How many fires?"
 msgstr ""
 
-#: applications/diningRoom/forms.py:34 ⁨templates/diningroom/diningroom copy
-#: 2.html⁩:180 templates/diningroom/diningroom-copy20260215.html:241
-#: templates/diningroom/diningroom.html:357
+#: applications/diningRoom/forms.py:34
+#: ⁨templates/diningroom/diningroom copy 2.html⁩:180
+#: templates/diningroom/diningroom-copy20260215.html:241
+#: templates/diningroom/diningroom.html:242
 msgid "How many ovens?"
 msgstr ""
 
@@ -257,12 +391,7 @@ msgstr ""
 msgid "Erreserba-data"
 msgstr ""
 
-#: applications/diningRoom/models.py:28 applications/product/models.py:24
-#: applications/product/models.py:84
-msgid "Sortze-data"
-msgstr ""
-
-#: applications/diningRoom/models.py:33 applications/partner/models.py:16
+#: applications/diningRoom/models.py:33 applications/partner/models.py:23
 #: templates/partner/partner_list.html:14
 msgid "Bazkide zenbakia"
 msgstr ""
@@ -281,36 +410,38 @@ msgstr ""
 
 #: applications/diningRoom/models.py:57
 #: templates/diningroom/diningroom-copy20260215.html:173
-#: templates/diningroom/diningroom.html:28 ⁨templates/diningroom/reservations
-#: copy.html⁩:26
+#: templates/diningroom/diningroom.html:27
+#: ⁨templates/diningroom/reservations copy.html⁩:26
 msgid "Breakfast"
 msgstr "Breakfast"
 
 #: applications/diningRoom/models.py:58
 #: templates/diningroom/diningroom-copy20260215.html:176
-#: templates/diningroom/diningroom.html:31 ⁨templates/diningroom/reservations
-#: copy.html⁩:27
+#: templates/diningroom/diningroom.html:30
+#: ⁨templates/diningroom/reservations copy.html⁩:27
 msgid "Lunch"
 msgstr "Lunch"
 
-#: applications/diningRoom/models.py:59 ⁨templates/diningroom/diningroom copy
-#: 2.html⁩:157 templates/diningroom/diningroom-copy20260215.html:179
-#: templates/diningroom/diningroom.html:34 ⁨templates/diningroom/reservations
-#: copy.html⁩:28
+#: applications/diningRoom/models.py:59
+#: ⁨templates/diningroom/diningroom copy 2.html⁩:157
+#: templates/diningroom/diningroom-copy20260215.html:179
+#: templates/diningroom/diningroom.html:33
+#: ⁨templates/diningroom/reservations copy.html⁩:28
 msgid "Midday meal"
 msgstr "Midday meal"
 
 #: applications/diningRoom/models.py:60
 #: templates/diningroom/diningroom-copy20260215.html:182
-#: templates/diningroom/diningroom.html:37 ⁨templates/diningroom/reservations
-#: copy.html⁩:29
+#: templates/diningroom/diningroom.html:36
+#: ⁨templates/diningroom/reservations copy.html⁩:29
 msgid "Merienda"
 msgstr "Snack"
 
-#: applications/diningRoom/models.py:61 ⁨templates/diningroom/diningroom copy
-#: 2.html⁩:160 templates/diningroom/diningroom-copy20260215.html:185
-#: templates/diningroom/diningroom.html:40 ⁨templates/diningroom/reservations
-#: copy.html⁩:30
+#: applications/diningRoom/models.py:61
+#: ⁨templates/diningroom/diningroom copy 2.html⁩:160
+#: templates/diningroom/diningroom-copy20260215.html:185
+#: templates/diningroom/diningroom.html:39
+#: ⁨templates/diningroom/reservations copy.html⁩:30
 msgid "Dinner"
 msgstr "Dinner"
 
@@ -374,10 +505,6 @@ msgstr ""
 msgid "Galeriak"
 msgstr "Categories"
 
-#: applications/gallery/models.py:61
-msgid "Ordena"
-msgstr ""
-
 #: applications/gallery/models.py:67
 #, fuzzy
 #| msgid "Categories"
@@ -402,40 +529,62 @@ msgstr ""
 msgid "Albisteak"
 msgstr ""
 
-#: applications/partner/models.py:23
-msgid "Telefono mugikorra"
+#: applications/partner/forms.py:15
+msgid "First name"
+msgstr ""
+
+#: applications/partner/forms.py:16
+msgid "Last name"
+msgstr ""
+
+#: applications/partner/forms.py:17
+#: templates/_account_backup/_login.bak.html:18
+#: templates/_account_backup/password_reset.html:18
+#: templates/_account_backup/signup-old.html:18
+#: templates/partner/my_profile.html:41
+msgid "Email"
+msgstr "Email"
+
+#: applications/partner/models.py:16 templates/base.html:543
+#: templates/base.html:611 templates/partner/my_profile.html:27
+#: templates/partner/my_profile_edit.html:72
+msgid "Avatar"
 msgstr ""
 
 #: applications/partner/models.py:30
-msgid "Bigarren mugikorra"
+msgid "Telefono mugikorra"
 msgstr ""
 
 #: applications/partner/models.py:37
-msgid "Helbidea"
+msgid "Bigarren mugikorra"
 msgstr ""
 
 #: applications/partner/models.py:44
+msgid "Helbidea"
+msgstr ""
+
+#: applications/partner/models.py:51
 msgid "Jaiotze-data"
 msgstr ""
 
-#: applications/partner/models.py:50 templates/partner/partner_list.html:17
+#: applications/partner/models.py:57 templates/partner/partner_list.html:17
 msgid "Bazkide-data"
 msgstr ""
 
-#: applications/partner/models.py:61
+#: applications/partner/models.py:68
 msgid "Lotutako bazkidea"
 msgstr ""
 
-#: applications/partner/models.py:65
+#: applications/partner/models.py:72
 msgid "Bazkidea"
 msgstr ""
 
-#: applications/partner/models.py:66
-msgid "Bazkideak"
+#: applications/partner/models.py:84
+msgid "Lotu gabeko erabiltzailea"
 msgstr ""
 
-#: applications/partner/models.py:77
-msgid "Lotu gabeko erabiltzailea"
+#: applications/partner/views.py:61 templates/partner/my_profile_edit.html:8
+msgid "Edit profile"
 msgstr ""
 
 #: applications/product/models.py:12 applications/product/models.py:56
@@ -479,15 +628,15 @@ msgstr "Product"
 msgid "Produktuak"
 msgstr "Product"
 
-#: config/settings.py:201
+#: config/settings.py:200
 msgid "Español"
 msgstr "Spanish"
 
-#: config/settings.py:202
+#: config/settings.py:201
 msgid "English"
 msgstr "English"
 
-#: config/settings.py:203
+#: config/settings.py:202
 msgid "Euskara"
 msgstr "Euskara"
 
@@ -498,12 +647,6 @@ msgstr "Login"
 #: templates/_account_backup/_login.bak.html:11
 msgid "Iniciar sesión en Bizardia"
 msgstr "Login in Bizardia"
-
-#: templates/_account_backup/_login.bak.html:18
-#: templates/_account_backup/password_reset.html:18
-#: templates/_account_backup/signup-old.html:18
-msgid "Email"
-msgstr "Email"
 
 #: templates/_account_backup/_login.bak.html:28
 #: templates/_account_backup/signup-old.html:26
@@ -602,8 +745,8 @@ msgstr ""
 
 #: templates/_account_backup/signup-old.html:61
 msgid ""
-"Tras registrarte, te enviaremos un correo para confirmar tu email. Tu cuenta"
-" será activada por Bizardia después de la verificación."
+"Tras registrarte, te enviaremos un correo para confirmar tu email. Tu cuenta "
+"será activada por Bizardia después de la verificación."
 msgstr ""
 
 #: templates/_account_backup/signup_pending.html:8
@@ -633,54 +776,82 @@ msgid ""
 "entrada (y spam)."
 msgstr ""
 
-#: templates/activity/activity_detail.html:17
+#: templates/activity/activity_detail.html:30
 #: templates/history/history_detail.html:15 templates/news/news_detail.html:15
 msgid "Author"
 msgstr "Author"
 
-#: templates/activity/activity_detail.html:18
+#: templates/activity/activity_detail.html:31
 #: templates/diningroom/user_reservations_copia.html:12
 #: templates/history/history_detail.html:16
 #: templates/history/history_list.html:24 templates/news/news_detail.html:16
+#: templates/tpv/my_ticket_list.html:14
 msgid "Date"
 msgstr "Date"
 
-#: templates/activity/activity_detail.html:19
-#: templates/activity/activity_detail.html:46
-#: templates/activity/activity_list.html:24
+#: templates/activity/activity_detail.html:32
+#: templates/activity/activity_detail.html:63
+#: templates/activity/activity_list.html:27
 msgid "Price"
 msgstr ""
 
-#: templates/activity/activity_detail.html:43
-#: templates/activity/activity_detail.html:49
-#: templates/activity/activity_list.html:28 templates/home/index.html:275
+#: templates/activity/activity_detail.html:57
+#: templates/activity/activity_detail.html:66
+#: templates/activity/activity_list.html:31 templates/home/index.html:342
 #: templates/home/index2.html:168
 msgid "Register"
 msgstr "Register"
 
-#: templates/activity/activity_detail.html:43
-#: templates/activity/activity_detail.html:49
+#: templates/activity/activity_detail.html:57
+#: templates/activity/activity_detail.html:66
 #: templates/activity/activity_registered_list.html:10
 #, fuzzy
 #| msgid "Register"
 msgid "Registered list"
 msgstr "Register"
 
+#: templates/activity/activity_detail.html:94
+msgid "Galderak eta erantzunak"
+msgstr ""
+
 #: templates/activity/activity_list.html:11
 msgid "Activity"
 msgstr "Activity"
 
-#: templates/activity/activity_list.html:26
+#: templates/activity/activity_list.html:29 templates/home/index.html:111
 msgid "Details"
 msgstr "Details"
 
-#: templates/activity/activity_register.html:75
+#: templates/activity/activity_register.html:28
+msgid "You must be logged in to complete this form."
+msgstr ""
+
+#: templates/activity/activity_register.html:102
 msgid "Back"
 msgstr ""
 
-#: templates/activity/activity_register.html:80
+#: templates/activity/activity_register.html:108
 msgid "Confirm"
 msgstr ""
+
+#: templates/activity/activity_register.html:129
+msgid "Login required"
+msgstr ""
+
+#: templates/activity/activity_register.html:130
+#: templates/diningroom/collective_payment.html:108
+msgid "Close"
+msgstr ""
+
+#: templates/activity/activity_register.html:133
+msgid "To register for this activity, please log in first."
+msgstr ""
+
+#: templates/activity/activity_register.html:136
+#, fuzzy
+#| msgid "Iniciar sesión"
+msgid "Iniciar sesion"
+msgstr "Login"
 
 #: templates/activity/activity_registered_list.html:59
 msgid "No registered users yet"
@@ -693,50 +864,49 @@ msgid "Back to activity"
 msgstr "Back to activities"
 
 #: ⁨templates/base copy 2.html⁩:353 ⁨templates/base copy 2.html⁩:475
-#: templates/base.html:430 templates/base.html:644
-#: templates/home/index.html:225 templates/home/index2.html:89
+#: templates/base.html:431 templates/base.html:670
+#: templates/home/index.html:286 templates/home/index2.html:89
 #: templates/news/news_list.html:14
 msgid "News"
 msgstr ""
 
 #: ⁨templates/base copy 2.html⁩:356 ⁨templates/base copy 2.html⁩:476
-#: templates/base.html:436 templates/base.html:645
-#: ⁨templates/diningroom/reservations copy.html⁩:22
-#: templates/home/index.html:256 templates/home/index2.html:78
-#: templates/home/index2.html:149
+#: templates/base.html:437 templates/base.html:671
+#: ⁨templates/diningroom/reservations copy.html⁩:22 templates/home/index.html:317
+#: templates/home/index2.html:78 templates/home/index2.html:149
 msgid "Activities"
 msgstr ""
 
 #: ⁨templates/base copy 2.html⁩:359 ⁨templates/base copy 2.html⁩:477
-#: templates/base.html:442 templates/base.html:646
+#: templates/base.html:443 templates/base.html:672
 #: templates/gallery/gallery_list.html:8 templates/home/index2.html:187
 msgid "Gallery"
 msgstr ""
 
 #: ⁨templates/base copy 2.html⁩:365 ⁨templates/base copy 2.html⁩:478
-#: templates/base.html:462 templates/base.html:647
-#: templates/history/history_list.html:15 templates/home/index.html:295
+#: templates/base.html:463 templates/base.html:673
+#: templates/history/history_list.html:15 templates/home/index.html:362
 #: templates/home/index2.html:221
 msgid "History"
 msgstr ""
 
 #: ⁨templates/base copy 2.html⁩:372 ⁨templates/base copy 2.html⁩:485
-#: templates/base.html:463 templates/base.html:654
+#: templates/base.html:464 templates/base.html:680
 msgid "Legal statutes"
 msgstr ""
 
 #: ⁨templates/base copy 2.html⁩:373 ⁨templates/base copy 2.html⁩:486
-#: templates/base.html:464 templates/base.html:655
+#: templates/base.html:465 templates/base.html:681
 msgid "Organization chart"
 msgstr ""
 
 #: ⁨templates/base copy 2.html⁩:374 ⁨templates/base copy 2.html⁩:487
-#: templates/base.html:465 templates/base.html:656
+#: templates/base.html:466 templates/base.html:682
 msgid "Transparency"
 msgstr ""
 
 #: ⁨templates/base copy 2.html⁩:380 ⁨templates/base copy 2.html⁩:383
-#: templates/base.html:475 templates/base.html:478
+#: templates/base.html:479 templates/base.html:482
 msgid "Reserve"
 msgstr ""
 
@@ -745,24 +915,23 @@ msgid "See reservations"
 msgstr ""
 
 #: ⁨templates/base copy 2.html⁩:389 ⁨templates/base copy 2.html⁩:479
-#: ⁨templates/base copy.html⁩:39 templates/base.html:493
-#: templates/base.html:648 templates/home/index.html:317
-#: templates/home/index2.html:243
+#: ⁨templates/base copy.html⁩:39 templates/base.html:499 templates/base.html:674
+#: templates/home/index.html:384 templates/home/index2.html:243
 msgid "Contact"
 msgstr "Contact"
 
-#: ⁨templates/base copy 2.html⁩:429 templates/base.html:541
-#: templates/base.html:597
+#: ⁨templates/base copy 2.html⁩:429 templates/base.html:552
+#: templates/base.html:618
 msgid "Settings"
 msgstr ""
 
-#: ⁨templates/base copy 2.html⁩:430 templates/base.html:546
-#: templates/base.html:598
+#: ⁨templates/base copy 2.html⁩:430 templates/base.html:562
+#: templates/base.html:624
 msgid "Logout"
 msgstr ""
 
 #: ⁨templates/base copy 2.html⁩:438 ⁨templates/base copy 2.html⁩:441
-#: templates/base.html:555 templates/base.html:603
+#: templates/base.html:571 templates/base.html:629
 msgid "Login"
 msgstr ""
 
@@ -770,19 +939,19 @@ msgstr ""
 msgid "Sign up"
 msgstr ""
 
-#: ⁨templates/base copy 2.html⁩:506 templates/base.html:675
+#: ⁨templates/base copy 2.html⁩:506 templates/base.html:701
 msgid "All rights reserved"
 msgstr ""
 
-#: ⁨templates/base copy 2.html⁩:510 templates/base.html:679
+#: ⁨templates/base copy 2.html⁩:510 templates/base.html:705
 msgid "Privacy Policy"
 msgstr ""
 
-#: ⁨templates/base copy 2.html⁩:511 templates/base.html:680
+#: ⁨templates/base copy 2.html⁩:511 templates/base.html:706
 msgid "Terms and conditions"
 msgstr ""
 
-#: ⁨templates/base copy 2.html⁩:512 templates/base.html:681
+#: ⁨templates/base copy 2.html⁩:512 templates/base.html:707
 msgid "Cookies"
 msgstr ""
 
@@ -810,12 +979,42 @@ msgstr ""
 msgid "politica de cookies"
 msgstr ""
 
-#: templates/base.html:479
+#: templates/base.html:468 templates/partner/partner_list.html:7
+msgid "Bazkideen zerrenda"
+msgstr ""
+
+#: templates/base.html:483
 msgid "All reservations"
 msgstr ""
 
-#: templates/base.html:480
+#: templates/base.html:484
 msgid "My reservations"
+msgstr ""
+
+#: templates/base.html:485 templates/diningroom/collective_payment.html:21
+#: templates/diningroom/collective_payment.html:28
+msgid "Collective payment"
+msgstr ""
+
+#: templates/base.html:486 templates/tpv/my_ticket_list.html:6
+msgid "My tickets"
+msgstr ""
+
+#: templates/base.html:557 templates/base.html:621
+#: templates/partner/my_profile.html:8
+msgid "My profile"
+msgstr ""
+
+#: templates/base.html:782
+msgid "Más información"
+msgstr ""
+
+#: templates/base.html:787
+msgid "Rechazar"
+msgstr ""
+
+#: templates/base.html:788
+msgid "Aceptar"
 msgstr ""
 
 #: templates/blog/blog_detail.html:26
@@ -823,8 +1022,130 @@ msgid "Back to blog"
 msgstr ""
 
 #: templates/blog/blog_list.html:20 templates/history/history_list.html:39
-#: templates/home/index.html:120
+#: templates/home/index.html:181
 msgid "Read"
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:11
+msgid "pays to"
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:12
+#: templates/diningroom/collective_payment.html:65
+msgid "Person"
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:13
+#: templates/diningroom/collective_payment.html:66
+msgid "Paid"
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:14
+#: templates/diningroom/collective_payment.html:80
+#: templates/tpv/ticket_detail.html:70
+msgid "Total"
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:15
+#: templates/diningroom/collective_payment.html:82
+msgid "Each"
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:16
+#: templates/diningroom/collective_payment.html:93
+msgid "Result"
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:17
+msgid "Email is required."
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:18
+msgid "Invalid email address."
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:19
+#, fuzzy
+#| msgid "Email"
+msgid "Email sent."
+msgstr "Email"
+
+#: templates/diningroom/collective_payment.html:20
+msgid "Could not send email."
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:22
+#: templates/diningroom/collective_payment.html:72
+msgid "No diners added yet."
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:23
+msgid "Sending…"
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:24
+#: templates/diningroom/collective_payment.html:117
+msgid "Send"
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:29
+msgid ""
+"Add diners and what each one paid. Then calculate the minimum transfers so "
+"everyone ends up paying the same."
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:33
+msgid "Download PDF"
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:36
+#: templates/diningroom/collective_payment.html:107
+msgid "Send by email"
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:45
+#: templates/home/index.html:415 templates/home/index2.html:276
+msgid "Name"
+msgstr "Name"
+
+#: templates/diningroom/collective_payment.html:49
+msgid "Paid amount"
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:54
+msgid "Add"
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:67
+#: templates/tpv/my_ticket_list.html:16
+#, fuzzy
+#| msgid "Active"
+msgid "Actions"
+msgstr "Active"
+
+#: templates/diningroom/collective_payment.html:81
+#: templates/diningroom/reservations.html:232
+#: templates/diningroom/user_reservations.html:249
+#: templates/diningroom/user_reservations_copia.html:14
+msgid "Diners"
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:85
+msgid "Calculate"
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:94
+msgid "Add diners and click calculate."
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:111
+msgid "Email address"
+msgstr ""
+
+#: templates/diningroom/collective_payment.html:116
+#: templates/diningroom/confirm_delete.html:11
+#: templates/partner/my_profile_edit.html:13
+msgid "Cancel"
 msgstr ""
 
 #: templates/diningroom/confirm_delete.html:8
@@ -832,53 +1153,50 @@ msgid "Are you sure you want to delete this reservation?"
 msgstr ""
 
 #: templates/diningroom/confirm_delete.html:10
-#: templates/diningroom/user_reservations.html:102
+#: templates/diningroom/user_reservations.html:234
 #: templates/diningroom/user_reservations_copia.html:83
 msgid "Delete"
 msgstr ""
 
-#: templates/diningroom/confirm_delete.html:11
-msgid "Cancel"
-msgstr ""
-
 #: ⁨templates/diningroom/diningroom copy 2.html⁩:13
 #: templates/diningroom/diningroom-copy20260215.html:13
-#: templates/diningroom/diningroom.html:13 templates/home/index2.html:76
+#: templates/diningroom/diningroom.html:11 templates/home/index2.html:76
 msgid "Reserve table"
 msgstr ""
 
 #: ⁨templates/diningroom/diningroom copy 2.html⁩:19
 #: templates/diningroom/diningroom-copy20260215.html:19
-#: templates/diningroom/diningroom.html:19 ⁨templates/diningroom/reservations
-#: copy.html⁩:49
+#: templates/diningroom/diningroom.html:18
+#: ⁨templates/diningroom/reservations copy.html⁩:49
 msgid "Reservation date"
 msgstr ""
 
 #: ⁨templates/diningroom/diningroom copy 2.html⁩:25
 #: templates/diningroom/diningroom-copy20260215.html:32
-#: templates/diningroom/diningroom.html:58 ⁨templates/diningroom/reservations
-#: copy.html⁩:18 templates/diningroom/user_reservations_copia.html:26
+#: templates/diningroom/diningroom.html:45
+#: ⁨templates/diningroom/reservations copy.html⁩:18
+#: templates/diningroom/user_reservations_copia.html:26
 msgid "Membership number"
 msgstr ""
 
 #: ⁨templates/diningroom/diningroom copy 2.html⁩:31
 #: templates/diningroom/diningroom-copy20260215.html:38
-#: templates/diningroom/diningroom.html:64 ⁨templates/diningroom/reservations
-#: copy.html⁩:19
+#: templates/diningroom/diningroom.html:51
+#: ⁨templates/diningroom/reservations copy.html⁩:19
 msgid "Number of diners"
 msgstr ""
 
 #: ⁨templates/diningroom/diningroom copy 2.html⁩:124
 #: templates/diningroom/diningroom-copy20260215.html:132
-#: templates/diningroom/diningroom.html:199 ⁨templates/diningroom/reservations
-#: copy.html⁩:44
+#: templates/diningroom/diningroom.html:200
+#: ⁨templates/diningroom/reservations copy.html⁩:44
 msgid "Urkabe room"
 msgstr ""
 
 #: ⁨templates/diningroom/diningroom copy 2.html⁩:125
 #: templates/diningroom/diningroom-copy20260215.html:134
-#: templates/diningroom/diningroom.html:201 ⁨templates/diningroom/reservations
-#: copy.html⁩:45
+#: templates/diningroom/diningroom.html:204
+#: ⁨templates/diningroom/reservations copy.html⁩:45
 msgid "Goiko room"
 msgstr ""
 
@@ -888,49 +1206,48 @@ msgstr ""
 
 #: ⁨templates/diningroom/diningroom copy 2.html⁩:163
 #: ⁨templates/diningroom/reservations copy.html⁩:42
-#: templates/diningroom/reservations.html:151
-#: templates/diningroom/user_reservations.html:124
+#: templates/diningroom/reservations.html:239
+#: templates/diningroom/user_reservations.html:256
 #: templates/diningroom/user_reservations_copia.html:23
 msgid "Birthday"
 msgstr ""
 
 #: ⁨templates/diningroom/diningroom copy 2.html⁩:191
 #: templates/diningroom/diningroom-copy20260215.html:252
-#: templates/diningroom/diningroom.html:368
+#: templates/diningroom/diningroom.html:253
 msgid "Barbecue?"
 msgstr ""
 
 #: ⁨templates/diningroom/diningroom copy 2.html⁩:200
 #: templates/diningroom/diningroom-copy20260215.html:261
-#: templates/diningroom/diningroom.html:377
+#: templates/diningroom/diningroom.html:266
 msgid "Submit reservation"
 msgstr ""
 
 #: templates/diningroom/diningroom-copy20260215.html:118
-#: templates/diningroom/diningroom.html:184
+#: templates/diningroom/diningroom.html:177
 msgid "Select your tables and rooms"
 msgstr ""
 
 #: templates/diningroom/diningroom-copy20260215.html:194
-#: templates/diningroom/diningroom.html:72
 msgid "Please specify the activity"
 msgstr ""
 
 #: templates/diningroom/diningroom-copy20260215.html:195
-#: templates/diningroom/diningroom.html:73
 msgid "e.g. Board game night, Workshop, Meeting..."
 msgstr ""
 
 #: templates/diningroom/diningroom-copy20260215.html:218
-#: templates/diningroom/diningroom.html:334
+#: templates/diningroom/diningroom.html:219
 msgid "Is it a birthday celebration?"
 msgstr ""
 
 #: templates/diningroom/diningroom-copy20260215.html:221
 #: templates/diningroom/diningroom-copy20260215.html:255
-#: templates/diningroom/diningroom.html:337
-#: templates/diningroom/diningroom.html:371 ⁨templates/diningroom/reservations
-#: copy.html⁩:42 ⁨templates/diningroom/reservations copy.html⁩:44
+#: templates/diningroom/diningroom.html:222
+#: templates/diningroom/diningroom.html:256
+#: ⁨templates/diningroom/reservations copy.html⁩:42
+#: ⁨templates/diningroom/reservations copy.html⁩:44
 #: ⁨templates/diningroom/reservations copy.html⁩:45
 #: ⁨templates/diningroom/reservations copy.html⁩:48
 msgid "No"
@@ -938,16 +1255,13 @@ msgstr ""
 
 #: templates/diningroom/diningroom-copy20260215.html:224
 #: templates/diningroom/diningroom-copy20260215.html:257
-#: templates/diningroom/diningroom.html:340
-#: templates/diningroom/diningroom.html:373 ⁨templates/diningroom/reservations
-#: copy.html⁩:42 ⁨templates/diningroom/reservations copy.html⁩:44
+#: templates/diningroom/diningroom.html:225
+#: templates/diningroom/diningroom.html:259
+#: ⁨templates/diningroom/reservations copy.html⁩:42
+#: ⁨templates/diningroom/reservations copy.html⁩:44
 #: ⁨templates/diningroom/reservations copy.html⁩:45
 #: ⁨templates/diningroom/reservations copy.html⁩:48
 msgid "Yes"
-msgstr ""
-
-#: templates/diningroom/diningroom.html:239
-msgid "Selecciona fecha y franja horaria primero."
 msgstr ""
 
 #: templates/diningroom/reservation_success.html:9
@@ -959,7 +1273,7 @@ msgid "Thank you! Your reservation has been submitted"
 msgstr ""
 
 #: ⁨templates/diningroom/reservations copy.html⁩:6
-#: templates/diningroom/reservations.html:82
+#: templates/diningroom/reservations.html:185
 msgid "All Reservations"
 msgstr ""
 
@@ -972,15 +1286,15 @@ msgid "Selected tables"
 msgstr ""
 
 #: ⁨templates/diningroom/reservations copy.html⁩:46
-#: templates/diningroom/reservations.html:175
-#: templates/diningroom/user_reservations.html:148
+#: templates/diningroom/reservations.html:262
+#: templates/diningroom/user_reservations.html:280
 #: templates/diningroom/user_reservations_copia.html:24
 msgid "Fires"
 msgstr ""
 
 #: ⁨templates/diningroom/reservations copy.html⁩:47
-#: templates/diningroom/reservations.html:180
-#: templates/diningroom/user_reservations.html:153
+#: templates/diningroom/reservations.html:266
+#: templates/diningroom/user_reservations.html:285
 #: templates/diningroom/user_reservations_copia.html:25
 msgid "Ovens"
 msgstr ""
@@ -991,54 +1305,54 @@ msgid "Barbecue"
 msgstr ""
 
 #: ⁨templates/diningroom/reservations copy.html⁩:53
-#: templates/diningroom/user_reservations.html:204
+#: templates/diningroom/user_reservations.html:332
 #: templates/diningroom/user_reservations_copia.html:91
 msgid "No reservations"
 msgstr ""
 
-#: templates/diningroom/reservations.html:95
+#: templates/diningroom/reservations.html:193
 #, fuzzy
 #| msgid "Search..."
 msgid "Search"
 msgstr "Search..."
 
-#: templates/diningroom/reservations.html:103
+#: templates/diningroom/reservations.html:199
 msgid "View all reservations"
 msgstr ""
 
-#: templates/diningroom/reservations.html:139
-#: templates/diningroom/user_reservations.html:112
+#: templates/diningroom/reservations.html:228
+#: templates/diningroom/user_reservations.html:244
 msgid "Membership"
 msgstr ""
 
-#: templates/diningroom/reservations.html:144
-#: templates/diningroom/user_reservations.html:117
-#: templates/diningroom/user_reservations_copia.html:14
-msgid "Diners"
-msgstr ""
-
-#: templates/diningroom/reservations.html:162
-#: templates/diningroom/user_reservations.html:135
+#: templates/diningroom/reservations.html:249
+#: templates/diningroom/user_reservations.html:267
 msgid "BBQ"
 msgstr ""
 
-#: templates/diningroom/reservations.html:211
-#: templates/diningroom/user_reservations.html:183
+#: templates/diningroom/reservations.html:295
 msgid "Sala Urkabe"
 msgstr ""
 
-#: templates/diningroom/reservations.html:215
-#: templates/diningroom/user_reservations.html:187
+#: templates/diningroom/reservations.html:298
 msgid "Sala Goikoa"
 msgstr ""
 
-#: templates/diningroom/reservations.html:232
+#: templates/diningroom/reservations.html:308
 msgid "No reservations for this date"
 msgstr ""
 
-#: templates/diningroom/user_reservations.html:80
+#: templates/diningroom/user_reservations.html:212
 #: templates/diningroom/user_reservations_copia.html:6
 msgid "My Reservations"
+msgstr ""
+
+#: templates/diningroom/user_reservations.html:316
+msgid "Urkabe Gela"
+msgstr ""
+
+#: templates/diningroom/user_reservations.html:320
+msgid "Goikoa Gela"
 msgstr ""
 
 #: templates/diningroom/user_reservations_copia.html:13
@@ -1103,6 +1417,48 @@ msgstr ""
 msgid "There are no events"
 msgstr ""
 
+#: templates/home/cookie-policy.html:4 templates/home/cookie-policy.html:9
+msgid "Política de Cookies"
+msgstr ""
+
+#: templates/home/cookie-policy.html:12 templates/home/legal-notice.html:12
+#: templates/home/political-privacy.html:12
+msgid "Última actualización:"
+msgstr ""
+
+#: templates/home/cookie-policy.html:19
+msgid "¿Qué son las cookies?"
+msgstr ""
+
+#: templates/home/cookie-policy.html:29
+msgid "Tipos de cookies utilizadas en este sitio web"
+msgstr ""
+
+#: templates/home/cookie-policy.html:31
+msgid "Cookies técnicas o necesarias"
+msgstr ""
+
+#: templates/home/cookie-policy.html:48
+msgid "Cookies de análisis (si se implementan)"
+msgstr ""
+
+#: templates/home/cookie-policy.html:62
+msgid "Cookies de terceros"
+msgstr ""
+
+#: templates/home/cookie-policy.html:72
+msgid "Gestión y eliminación de cookies"
+msgstr ""
+
+#: templates/home/cookie-policy.html:97
+msgid "Base legal"
+msgstr ""
+
+#: templates/home/cookie-policy.html:107
+#: templates/home/political-privacy.html:118
+msgid "Modificaciones"
+msgstr ""
+
 #: ⁨templates/home/index copy.html⁩:14
 msgid "Order table"
 msgstr ""
@@ -1111,80 +1467,76 @@ msgstr ""
 msgid "Pay account"
 msgstr ""
 
-#: templates/home/index.html:133
+#: templates/home/index.html:194
 msgid "Bazkide egin"
 msgstr ""
 
-#: templates/home/index.html:174
+#: templates/home/index.html:235
 msgid "Ongietorri mezua"
 msgstr ""
 
-#: templates/home/index.html:234 templates/home/index.html:246
-#: templates/home/index.html:285 templates/home/index2.html:110
+#: templates/home/index.html:295 templates/home/index.html:307
+#: templates/home/index.html:352 templates/home/index2.html:110
 #: templates/home/index2.html:141 templates/home/index2.html:178
 #: templates/home/index2.html:198 templates/home/index2.html:212
 #: templates/news/news_list.html:35
 msgid "See more"
 msgstr ""
 
-#: templates/home/index.html:275 templates/home/index2.html:168
+#: templates/home/index.html:342 templates/home/index2.html:168
 msgid "Detail"
 msgstr ""
 
-#: templates/home/index.html:304 templates/home/index2.html:129
+#: templates/home/index.html:371 templates/home/index2.html:129
 #: templates/home/index2.html:230 templates/news/news_list.html:25
 msgid "Read more"
 msgstr ""
 
-#: templates/home/index.html:309 templates/home/index2.html:235
+#: templates/home/index.html:376 templates/home/index2.html:235
 msgid "All articles on the history of Bizardia"
 msgstr ""
 
-#: templates/home/index.html:320 templates/home/index2.html:246
+#: templates/home/index.html:387 templates/home/index2.html:246
 msgid "Contact information"
 msgstr ""
 
-#: templates/home/index.html:339 templates/home/index2.html:265
+#: templates/home/index.html:406 templates/home/index2.html:265
 msgid "Location"
 msgstr ""
 
-#: templates/home/index.html:344 templates/home/index2.html:272
+#: templates/home/index.html:411 templates/home/index2.html:272
 msgid "Contact form"
 msgstr ""
 
-#: templates/home/index.html:348 templates/home/index2.html:276
-msgid "Name"
-msgstr "Name"
-
-#: templates/home/index.html:356 templates/home/index2.html:284
+#: templates/home/index.html:423 templates/home/index2.html:284
 msgid "Subject"
 msgstr ""
 
-#: templates/home/index.html:358 templates/home/index2.html:286
+#: templates/home/index.html:425 templates/home/index2.html:286
 msgid "Select a subject"
 msgstr ""
 
-#: templates/home/index.html:359 templates/home/index2.html:287
+#: templates/home/index.html:426 templates/home/index2.html:287
 msgid "Reservations"
 msgstr ""
 
-#: templates/home/index.html:360 templates/home/index2.html:288
+#: templates/home/index.html:427 templates/home/index2.html:288
 msgid "Information"
 msgstr ""
 
-#: templates/home/index.html:361 templates/home/index2.html:289
+#: templates/home/index.html:428 templates/home/index2.html:289
 msgid "Events"
 msgstr ""
 
-#: templates/home/index.html:362 templates/home/index2.html:290
+#: templates/home/index.html:429 templates/home/index2.html:290
 msgid "Other topic"
 msgstr ""
 
-#: templates/home/index.html:366 templates/home/index2.html:294
+#: templates/home/index.html:433 templates/home/index2.html:294
 msgid "Message"
 msgstr ""
 
-#: templates/home/index.html:369 templates/home/index2.html:297
+#: templates/home/index.html:436 templates/home/index2.html:297
 msgid "Send message"
 msgstr ""
 
@@ -1196,12 +1548,156 @@ msgstr ""
 msgid "Videos"
 msgstr ""
 
+#: templates/home/legal-notice.html:4 templates/home/legal-notice.html:9
+msgid "Aviso Legal"
+msgstr ""
+
+#: templates/home/legal-notice.html:19
+msgid "Datos identificativos"
+msgstr ""
+
+#: templates/home/legal-notice.html:28
+msgid "Domicilio social:"
+msgstr ""
+
+#: templates/home/legal-notice.html:29
+msgid "Correo electrónico:"
+msgstr ""
+
+#: templates/home/legal-notice.html:30
+msgid "Dominio web:"
+msgstr ""
+
+#: templates/home/legal-notice.html:36
+msgid "Objeto"
+msgstr ""
+
+#: templates/home/legal-notice.html:47
+msgid "Condiciones de uso"
+msgstr ""
+
+#: templates/home/legal-notice.html:67
+msgid "Propiedad intelectual e industrial"
+msgstr ""
+
+#: templates/home/legal-notice.html:83
+msgid "Responsabilidad"
+msgstr ""
+
+#: templates/home/legal-notice.html:98
+msgid "Protección de datos"
+msgstr ""
+
+#: templates/home/legal-notice.html:102 templates/home/political-privacy.html:4
+#: templates/home/political-privacy.html:9
+msgid "Política de Privacidad"
+msgstr ""
+
+#: templates/home/legal-notice.html:108
+msgid "Legislación aplicable y jurisdicción"
+msgstr ""
+
+#: templates/home/political-privacy.html:19
+msgid "Responsable del tratamiento"
+msgstr ""
+
+#: templates/home/political-privacy.html:35
+msgid "Finalidad del tratamiento"
+msgstr ""
+
+#: templates/home/political-privacy.html:51
+msgid "Base jurídica del tratamiento"
+msgstr ""
+
+#: templates/home/political-privacy.html:65
+msgid "Conservación de los datos"
+msgstr ""
+
+#: templates/home/political-privacy.html:75
+msgid "Destinatarios de los datos"
+msgstr ""
+
+#: templates/home/political-privacy.html:86
+msgid "Derechos de los interesados"
+msgstr ""
+
+#: templates/home/political-privacy.html:107
+msgid "Medidas de seguridad"
+msgstr ""
+
 #: templates/news/news_detail.html:24
 msgid "Back to news"
 msgstr ""
 
-#: templates/partner/partner_list.html:7
-msgid "Bazkideen zerrenda"
+#: templates/partner/my_profile.html:10
+msgid "Review your current details."
+msgstr ""
+
+#: templates/partner/my_profile.html:15
+msgid "Edit"
+msgstr ""
+
+#: templates/partner/my_profile.html:24
+#: templates/partner/my_profile_edit.html:34
+msgid "Account"
+msgstr ""
+
+#: templates/partner/my_profile.html:30
+#, fuzzy
+msgid "No avatar"
+msgstr "Activity"
+
+#: templates/partner/my_profile.html:35
+msgid "Username"
+msgstr ""
+
+#: templates/partner/my_profile.html:38
+msgid "Full name"
+msgstr ""
+
+#: templates/partner/my_profile.html:51
+#: templates/partner/my_profile_edit.html:66
+msgid "Partner profile"
+msgstr ""
+
+#: templates/partner/my_profile.html:53
+msgid "Partner number"
+msgstr ""
+
+#: templates/partner/my_profile.html:56
+msgid "Mobile phone"
+msgstr ""
+
+#: templates/partner/my_profile.html:59
+msgid "Second mobile phone"
+msgstr ""
+
+#: templates/partner/my_profile.html:62
+msgid "Address"
+msgstr ""
+
+#: templates/partner/my_profile.html:65
+msgid "Date of birth"
+msgstr ""
+
+#: templates/partner/my_profile.html:68
+msgid "Partner date"
+msgstr ""
+
+#: templates/partner/my_profile_edit.html:9
+msgid "Update your details and save changes."
+msgstr ""
+
+#: templates/partner/my_profile_edit.html:16
+msgid "Save"
+msgstr ""
+
+#: templates/partner/my_profile_edit.html:26
+msgid "Please review the errors below."
+msgstr ""
+
+#: templates/partner/my_profile_edit.html:73
+msgid "Current avatar"
 msgstr ""
 
 #: templates/partner/partner_list.html:16
@@ -1242,6 +1738,68 @@ msgstr ""
 msgid "Volver a iniciar sesión"
 msgstr ""
 
+#: templates/tpv/my_ticket_list.html:15
+msgid "Amount"
+msgstr ""
+
+#: templates/tpv/my_ticket_list.html:28
+msgid "View detail"
+msgstr ""
+
+#: templates/tpv/my_ticket_list.html:38
+msgid "You do not have any tickets yet."
+msgstr ""
+
+#: templates/tpv/ticket_detail.html:8
+msgid "Ticket"
+msgstr ""
+
+#: templates/tpv/ticket_detail.html:11
+#, fuzzy
+#| msgid "Back to activities"
+msgid "Back to my tickets"
+msgstr "Back to activities"
+
+#: templates/tpv/ticket_detail.html:17
+msgid "Partner"
+msgstr ""
+
+#: templates/tpv/ticket_detail.html:25
+msgid "Created at"
+msgstr ""
+
+#: templates/tpv/ticket_detail.html:30
+msgid "Closed at"
+msgstr ""
+
+#: templates/tpv/ticket_detail.html:36
+msgid "Payment method"
+msgstr ""
+
+#: templates/tpv/ticket_detail.html:46
+msgid "Product"
+msgstr "Product"
+
+#: templates/tpv/ticket_detail.html:47
+msgid "Qty"
+msgstr ""
+
+#: templates/tpv/ticket_detail.html:48
+msgid "Unit price"
+msgstr ""
+
+#: templates/tpv/ticket_detail.html:49
+msgid "Subtotal"
+msgstr ""
+
+#: templates/tpv/ticket_detail.html:63
+msgid "This ticket has no items."
+msgstr ""
+
+#: templates/tpv/ticket_detail.html:81
+msgid "PDF"
+msgstr ""
+
 #~ msgid "Category"
 #~ msgstr "Category"
 
@@ -1257,21 +1815,8 @@ msgstr ""
 #~ msgid "Minimum stock"
 #~ msgstr "Minimum stock"
 
-#~ msgid "Active"
-#~ msgstr "Active"
-
-#~ msgid "Product"
-#~ msgstr "Product"
-
 #~ msgid "Products"
 #~ msgstr "Products"
-
-#, fuzzy
-#~ msgid "No activity"
-#~ msgstr "Activity"
-
-#~ msgid "Back to activities"
-#~ msgstr "Back to activities"
 
 #~ msgid "Nombre"
 #~ msgstr "Name"

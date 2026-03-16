@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
+    <div>
+      <h1 class="mb-1">{% trans "My profile" %}</h1>
+      <div class="text-muted">
+        {% trans "Review your current details." %}
+      </div>
+    </div>
+    <div>
+      <a class="btn btn-primary" href="{% url 'partner_app:my_profile_edit' %}">
+        {% trans "Edit" %}
+      </a>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title mb-3">{% trans "Account" %}</h5>
+          <div class="d-flex align-items-center gap-3 mb-3">
+            {% if profile.avatar %}
+              <img src="{{ profile.avatar.url }}" class="avatar-img" alt="{% trans 'Avatar' %}">
+            {% else %}
+              <div class="avatar-img d-flex align-items-center justify-content-center bg-light">
+                <span class="text-muted small">{% trans "No avatar" %}</span>
+              </div>
+            {% endif %}
+          </div>
+          <dl class="row mb-0">
+            <dt class="col-sm-4">{% trans "Username" %}</dt>
+            <dd class="col-sm-8">{{ request.user.username|default:"—" }}</dd>
+
+            <dt class="col-sm-4">{% trans "Full name" %}</dt>
+            <dd class="col-sm-8">{{ request.user.get_full_name|default:"—" }}</dd>
+
+            <dt class="col-sm-4">{% trans "Email" %}</dt>
+            <dd class="col-sm-8">{{ request.user.email|default:"—" }}</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title mb-3">{% trans "Partner profile" %}</h5>
+          <dl class="row mb-0">
+            <dt class="col-sm-4">{% trans "Partner number" %}</dt>
+            <dd class="col-sm-8">{{ profile.partner_number|default:"—" }}</dd>
+
+            <dt class="col-sm-4">{% trans "Mobile phone" %}</dt>
+            <dd class="col-sm-8">{{ profile.movil|default:"—" }}</dd>
+
+            <dt class="col-sm-4">{% trans "Second mobile phone" %}</dt>
+            <dd class="col-sm-8">{{ profile.movil2|default:"—" }}</dd>
+
+            <dt class="col-sm-4">{% trans "Address" %}</dt>
+            <dd class="col-sm-8">{{ profile.address|default:"—" }}</dd>
+
+            <dt class="col-sm-4">{% trans "Date of birth" %}</dt>
+            <dd class="col-sm-8">{{ profile.date_of_birth|date:"d/m/Y"|default:"—" }}</dd>
+
+            <dt class="col-sm-4">{% trans "Partner date" %}</dt>
+            <dd class="col-sm-8">{{ profile.partner_date|date:"d/m/Y"|default:"—" }}</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Activity, ActivityRegistration, ActivityImage
+from .models import Activity, ActivityRegistration, ActivityImage, ActivityQuestionAnswer
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.contrib import messages
@@ -20,6 +20,13 @@ class ActivityImageInline(admin.TabularInline):
     model = ActivityImage
     extra = 1
     fields = ("image", "title", "order")
+    ordering = ("order",)
+
+
+class ActivityQuestionAnswerInline(admin.TabularInline):
+    model = ActivityQuestionAnswer
+    extra = 1
+    fields = ("question", "answer", "order")
     ordering = ("order",)
 
 
@@ -62,7 +69,7 @@ class ActivityAdmin(admin.ModelAdmin):
 
     search_fields = ("title", "short", "content", "author")
     prepopulated_fields = {"slug": ("title",)}
-    inlines = [ActivityImageInline, ActivityRegistrationInline]
+    inlines = [ActivityImageInline, ActivityQuestionAnswerInline, ActivityRegistrationInline]
     ordering = ("-published_at", "-created_at")
 
     @admin.display(description=_("Público"))

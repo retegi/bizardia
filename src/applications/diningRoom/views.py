@@ -14,6 +14,15 @@ from django.core.exceptions import ValidationError
 from django.http import JsonResponse
 from django.views import View
 from django.db.models import Prefetch
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_protect
+from django.shortcuts import render
+from django.core.mail import EmailMessage
+from django.conf import settings
+
+import base64
+import json
 
 
 class ReservationCreateView(LoginRequiredMixin, CreateView):
@@ -174,3 +183,49 @@ class ReservationAvailabilityView(LoginRequiredMixin, View):
             "ovens_available": max(0, 2 - total_ovens),
             "fires_available": max(0, 4 - total_fires),
         })
+
+
+@login_required
+def collective_payment_view(request):
+    return render(request, "diningroom/collective_payment.html")
+
+
+@login_required
+@require_POST
+@csrf_protect
+def collective_payment_send_email(request):
+    try:
+        payload = json.loads(request.body.decode("utf-8"))
+    except Exception:
+        return JsonResponse({"success": False, "error": "Invalid JSON"}, status=400)
+
+    to_email = (payload.get("email") or "").strip()
+    filename = (payload.get("filename") or "collective-payment.pdf").strip() or "collective-payment.pdf"
+    pdf_base64 = payload.get("pdf_base64")
+
+    if not to_email:
+        return JsonResponse({"success": False, "error": "Missing email"}, status=400)
+    if not pdf_base64:
+        return JsonResponse({"success": False, "error": "Missing pdf"}, status=400)
+
+    try:
+        pdf_bytes = base64.b64decode(pdf_base64)
+    except Exception:
+        return JsonResponse({"success": False, "error": "Invalid pdf encoding"}, status=400)
+
+    subject = "Collective payment"
+    body = "Adjunto encontrarás el PDF con el cálculo de pagos."
+
+    try:
+        msg = EmailMessage(
+            subject=subject,
+            body=body,
+            from_email=getattr(settings, "DEFAULT_FROM_EMAIL", None),
+            to=[to_email],
+        )
+        msg.attach(filename, pdf_bytes, "application/pdf")
+        sent = msg.send(fail_silently=False)
+    except Exception as e:
+        return JsonResponse({"success": False, "error": str(e)}, status=500)
+
+    return JsonResponse({"success": True, "sent": sent})

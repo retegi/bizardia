@@ -1,9 +1,15 @@
 from django.urls import path
-from .views import ReservationCreateView
 from django.views.generic import TemplateView
-from django.urls import path
-from .views import ReservationListView, UserReservationListView, ReservationDeleteView
-from .views import ReservationAvailabilityView
+
+from .views import (
+    ReservationAvailabilityView,
+    ReservationCreateView,
+    ReservationDeleteView,
+    ReservationListView,
+    UserReservationListView,
+    collective_payment_view,
+    collective_payment_send_email,
+)
 
 app_name = 'diningroom_app'
 
@@ -14,4 +20,6 @@ urlpatterns = [
     path('my-reservations/', UserReservationListView.as_view(), name='user_reservations'),
     path('reservas/eliminar/<int:pk>/', ReservationDeleteView.as_view(), name='delete'),
     path('availability/', ReservationAvailabilityView.as_view(), name='reservation_availability'),
+    path('collective-payment/', collective_payment_view, name='collective_payment'),
+    path('collective-payment/send-email/', collective_payment_send_email, name='collective_payment_send_email'),
 ]

@@ -6,7 +6,9 @@ class Ticket(models.Model):
     partner = models.ForeignKey(
         'partner.Profile',
         on_delete=models.PROTECT,
-        related_name='tickets'
+        related_name='tickets',
+        null=True,
+        blank=True
     )
 
     created_at = models.DateTimeField(auto_now_add=True)

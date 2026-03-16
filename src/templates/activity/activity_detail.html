@@ -89,6 +89,20 @@
     </div>
 {% endif %}
 
+          {% if activity.questions_answers.all %}
+    <div class="mt-4">
+        <h3 class="h5 mb-3">{% trans "Galderak eta erantzunak" %}</h3>
+        <div class="list-group">
+            {% for qa in activity.questions_answers.all %}
+                <div class="list-group-item">
+                    <p class="mb-1"><strong>{{ qa.question }}</strong></p>
+                    <p class="mb-0">{{ qa.answer }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
     </div>
   </div>
 </div>

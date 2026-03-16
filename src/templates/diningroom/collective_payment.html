@@ -1,0 +1,486 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      <div
+        id="i18n"
+        class="d-none"
+        data-pays-to="{% trans 'pays to' %}"
+        data-person="{% trans 'Person' %}"
+        data-paid="{% trans 'Paid' %}"
+        data-total="{% trans 'Total' %}"
+        data-each="{% trans 'Each' %}"
+        data-result="{% trans 'Result' %}"
+        data-email-required="{% trans 'Email is required.' %}"
+        data-invalid-email="{% trans 'Invalid email address.' %}"
+        data-sent-ok="{% trans 'Email sent.' %}"
+        data-sent-error="{% trans 'Could not send email.' %}"
+        data-pdf-title="{% trans 'Collective payment' %}"
+        data-empty-row="{% trans 'No diners added yet.' %}"
+        data-sending="{% trans 'Sending…' %}"
+        data-send="{% trans 'Send' %}"
+      ></div>
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+        <div>
+          <h2 class="mb-1">{% trans "Collective payment" %}</h2>
+          <div class="text-muted">{% trans "Add diners and what each one paid. Then calculate the minimum transfers so everyone ends up paying the same." %}</div>
+        </div>
+        <div class="d-flex gap-2">
+          <button id="btnDownloadPdf" class="btn btn-outline-secondary" type="button" disabled>
+            <i class="fa-solid fa-file-pdf me-2"></i>{% trans "Download PDF" %}
+          </button>
+          <button id="btnSendEmail" class="btn btn-outline-primary" type="button" disabled>
+            <i class="fa-solid fa-paper-plane me-2"></i>{% trans "Send by email" %}
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <form id="addPersonForm" class="row g-3 align-items-end">
+            <div class="col-md-6">
+              <label for="personName" class="form-label">{% trans "Name" %}</label>
+              <input id="personName" class="form-control" type="text" autocomplete="off" required />
+            </div>
+            <div class="col-md-4">
+              <label for="personPaid" class="form-label">{% trans "Paid amount" %}</label>
+              <input id="personPaid" class="form-control" type="number" min="0" step="0.01" value="0" required />
+            </div>
+            <div class="col-md-2 d-grid">
+              <button class="btn btn-primary" type="submit">
+                <i class="fa-solid fa-plus me-2"></i>{% trans "Add" %}
+              </button>
+            </div>
+          </form>
+
+          <hr class="my-4" />
+
+          <div class="table-responsive">
+            <table class="table align-middle mb-0">
+              <thead>
+                <tr>
+                  <th>{% trans "Person" %}</th>
+                  <th class="text-end">{% trans "Paid" %}</th>
+                  <th class="text-end">{% trans "Actions" %}</th>
+                </tr>
+              </thead>
+              <tbody id="peopleTableBody">
+                <tr id="emptyRow">
+                  <td colspan="3" class="text-muted py-4">{% trans "No diners added yet." %}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="d-flex flex-wrap gap-3 align-items-center justify-content-between mt-4">
+            <div class="text-muted">
+              <span class="me-3"><strong>{% trans "Total" %}:</strong> <span id="totalPaid">0.00</span></span>
+              <span class="me-3"><strong>{% trans "Diners" %}:</strong> <span id="totalPeople">0</span></span>
+              <span><strong>{% trans "Each" %}:</strong> <span id="perPerson">0.00</span></span>
+            </div>
+            <button id="btnCalculate" class="btn btn-success" type="button" disabled>
+              <i class="fa-solid fa-calculator me-2"></i>{% trans "Calculate" %}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title mb-3">{% trans "Result" %}</h5>
+          <div id="resultEmpty" class="text-muted">{% trans "Add diners and click calculate." %}</div>
+          <ul id="resultList" class="list-group list-group-flush d-none"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Email modal -->
+<div class="modal fade" id="emailModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{% trans "Send by email" %}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{% trans 'Close' %}"></button>
+      </div>
+      <div class="modal-body">
+        <label for="emailInput" class="form-label">{% trans "Email address" %}</label>
+        <input id="emailInput" class="form-control" type="email" placeholder="name@example.com" />
+        <div id="emailError" class="text-danger small mt-2 d-none"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{% trans "Cancel" %}</button>
+        <button type="button" class="btn btn-primary" id="confirmSendEmail">{% trans "Send" %}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script>
+  const I18N_EL = document.getElementById("i18n");
+  const I18N = {
+    paysTo: I18N_EL.dataset.paysTo,
+    paid: I18N_EL.dataset.paid,
+    person: I18N_EL.dataset.person,
+    total: I18N_EL.dataset.total,
+    each: I18N_EL.dataset.each,
+    result: I18N_EL.dataset.result,
+    emailRequired: I18N_EL.dataset.emailRequired,
+    invalidEmail: I18N_EL.dataset.invalidEmail,
+    sentOk: I18N_EL.dataset.sentOk,
+    sentError: I18N_EL.dataset.sentError,
+    pdfTitle: I18N_EL.dataset.pdfTitle,
+    emptyRow: I18N_EL.dataset.emptyRow,
+    sending: I18N_EL.dataset.sending,
+    send: I18N_EL.dataset.send,
+  };
+
+  const state = {
+    people: [],
+    transactions: [],
+    perPersonCents: 0,
+    targetsById: new Map(),
+  };
+
+  function toCents(value) {
+    const n = Number(value);
+    if (!Number.isFinite(n) || n < 0) return 0;
+    return Math.round(n * 100);
+  }
+
+  function formatMoneyFromCents(cents) {
+    return (cents / 100).toFixed(2);
+  }
+
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  }
+
+  function renderPeople() {
+    const tbody = document.getElementById("peopleTableBody");
+    tbody.innerHTML = "";
+
+    if (state.people.length === 0) {
+      const tr = document.createElement("tr");
+      tr.id = "emptyRow";
+      tr.innerHTML = `<td colspan="3" class="text-muted py-4">${escapeHtml(I18N.emptyRow)}</td>`;
+      tbody.appendChild(tr);
+    } else {
+      for (const p of state.people) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${escapeHtml(p.name)}</td>
+          <td class="text-end">${formatMoneyFromCents(p.paidCents)}</td>
+          <td class="text-end">
+            <button class="btn btn-sm btn-outline-danger" type="button" data-remove="${p.id}">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      }
+    }
+
+    const totalPaidCents = state.people.reduce((acc, p) => acc + p.paidCents, 0);
+    const avg = state.people.length ? (totalPaidCents / state.people.length) : 0;
+    const perFloor = state.people.length ? Math.floor(totalPaidCents / state.people.length) : 0;
+    const remainder = state.people.length ? (totalPaidCents - perFloor * state.people.length) : 0; // 0..n-1
+    state.perPersonCents = perFloor;
+    state.targetsById = new Map();
+    state.people.forEach((p, idx) => {
+      const target = perFloor + (idx < remainder ? 1 : 0);
+      state.targetsById.set(p.id, target);
+    });
+
+    document.getElementById("totalPaid").textContent = formatMoneyFromCents(totalPaidCents);
+    document.getElementById("totalPeople").textContent = String(state.people.length);
+    document.getElementById("perPerson").textContent = (avg / 100).toFixed(2);
+
+    document.getElementById("btnCalculate").disabled = state.people.length < 2;
+
+    // Clear results if people changed
+    state.transactions = [];
+    renderResults();
+    updatePdfButtons();
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function removePerson(id) {
+    state.people = state.people.filter(p => p.id !== id);
+    renderPeople();
+  }
+
+  // Direct settlement between debtors and creditors.
+  // Guarantees: each debtor pays exactly what they owe (no "pay then receive" intermediaries).
+  // Also keeps transfers low by fully settling one side each step.
+  function settleDirectly(people, targetsById) {
+    const debtors = [];
+    const creditors = [];
+
+    for (const p of people) {
+      const target = targetsById.get(p.id);
+      const bal = p.paidCents - target; // >0 should receive, <0 should pay
+      if (bal > 0) creditors.push({ name: p.name, cents: bal });
+      else if (bal < 0) debtors.push({ name: p.name, cents: -bal });
+    }
+
+    if (!debtors.length || !creditors.length) return [];
+
+    // Deterministic: largest creditor first, largest debtor first
+    creditors.sort((a, b) => b.cents - a.cents);
+    debtors.sort((a, b) => b.cents - a.cents);
+
+    const txs = [];
+    let i = 0;
+    let j = 0;
+    while (i < debtors.length && j < creditors.length) {
+      const d = debtors[i];
+      const c = creditors[j];
+      const amount = Math.min(d.cents, c.cents);
+
+      txs.push({ from: d.name, to: c.name, cents: amount });
+      d.cents -= amount;
+      c.cents -= amount;
+
+      if (d.cents === 0) i++;
+      if (c.cents === 0) j++;
+    }
+
+    return txs.filter(t => t.cents > 0);
+  }
+
+  function renderResults() {
+    const empty = document.getElementById("resultEmpty");
+    const list = document.getElementById("resultList");
+
+    if (!state.transactions.length) {
+      empty.classList.remove("d-none");
+      list.classList.add("d-none");
+      list.innerHTML = "";
+      updatePdfButtons();
+      return;
+    }
+
+    empty.classList.add("d-none");
+    list.classList.remove("d-none");
+    list.innerHTML = "";
+
+    for (const t of state.transactions) {
+      const li = document.createElement("li");
+      li.className = "list-group-item d-flex justify-content-between align-items-center";
+      li.innerHTML = `
+        <div>
+          <strong>${escapeHtml(t.from)}</strong> ${escapeHtml(I18N.paysTo)} <strong>${escapeHtml(t.to)}</strong>
+        </div>
+        <span class="badge bg-bizardia text-white">${formatMoneyFromCents(t.cents)}</span>
+      `;
+      list.appendChild(li);
+    }
+    updatePdfButtons();
+  }
+
+  function updatePdfButtons() {
+    const enabled = state.people.length >= 2 && state.transactions.length > 0;
+    document.getElementById("btnDownloadPdf").disabled = !enabled;
+    document.getElementById("btnSendEmail").disabled = !enabled;
+  }
+
+  function calculate() {
+    const totalPaidCents = state.people.reduce((acc, p) => acc + p.paidCents, 0);
+    if (state.people.length < 2) return;
+
+    const perFloor = Math.floor(totalPaidCents / state.people.length);
+    const remainder = totalPaidCents - perFloor * state.people.length;
+    state.perPersonCents = perFloor;
+    state.targetsById = new Map();
+    state.people.forEach((p, idx) => {
+      const target = perFloor + (idx < remainder ? 1 : 0);
+      state.targetsById.set(p.id, target);
+    });
+
+    state.transactions = settleDirectly(state.people, state.targetsById);
+    renderResults();
+  }
+
+  async function buildPdfBytes() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: "pt", format: "a4" });
+
+    let y = 56;
+    doc.setFontSize(18);
+    doc.text(I18N.pdfTitle, 40, y);
+    y += 22;
+
+    const totalPaidCents = state.people.reduce((acc, p) => acc + p.paidCents, 0);
+    doc.setFontSize(11);
+    doc.text(`${I18N.total}: ${formatMoneyFromCents(totalPaidCents)}`, 40, y); y += 16;
+    doc.text(`${I18N.each}: ${formatMoneyFromCents(state.perPersonCents)}`, 40, y); y += 22;
+
+    doc.setFontSize(13);
+    doc.text(I18N.person, 40, y);
+    doc.text(I18N.paid, 360, y, { align: "right" });
+    y += 12;
+    doc.setLineWidth(0.5);
+    doc.line(40, y, 555, y);
+    y += 16;
+
+    doc.setFontSize(11);
+    for (const p of state.people) {
+      if (y > 760) { doc.addPage(); y = 56; }
+      doc.text(String(p.name), 40, y);
+      doc.text(formatMoneyFromCents(p.paidCents), 360, y, { align: "right" });
+      y += 16;
+    }
+
+    y += 10;
+    doc.setFontSize(13);
+    doc.text(I18N.result, 40, y);
+    y += 12;
+    doc.line(40, y, 555, y);
+    y += 16;
+    doc.setFontSize(11);
+
+    for (const t of state.transactions) {
+      if (y > 760) { doc.addPage(); y = 56; }
+      doc.text(`${t.from} ${I18N.paysTo} ${t.to}`, 40, y);
+      doc.text(formatMoneyFromCents(t.cents), 555, y, { align: "right" });
+      y += 16;
+    }
+
+    return doc.output("arraybuffer");
+  }
+
+  async function downloadPdf() {
+    const { jsPDF } = window.jspdf;
+    const bytes = await buildPdfBytes();
+    const blob = new Blob([bytes], { type: "application/pdf" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "collective-payment.pdf";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  async function sendEmail(email) {
+    const bytes = await buildPdfBytes();
+    const b64 = arrayBufferToBase64(bytes);
+    const csrftoken = getCookie("csrftoken");
+
+    const res = await fetch("{% url 'diningroom_app:collective_payment_send_email' %}", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": csrftoken || "",
+      },
+      body: JSON.stringify({
+        email,
+        filename: "collective-payment.pdf",
+        pdf_base64: b64,
+      }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.success) {
+      throw new Error(data.error || I18N.sentError);
+    }
+  }
+
+  function arrayBufferToBase64(buffer) {
+    let binary = "";
+    const bytes = new Uint8Array(buffer);
+    const chunkSize = 0x8000;
+    for (let i = 0; i < bytes.length; i += chunkSize) {
+      binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize));
+    }
+    return btoa(binary);
+  }
+
+  function validateEmail(email) {
+    const v = String(email || "").trim();
+    if (!v) return { ok: false, error: I18N.emailRequired };
+    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    return ok ? { ok: true, value: v } : { ok: false, error: I18N.invalidEmail };
+  }
+
+  // Wire up events
+  document.getElementById("addPersonForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("personName").value.trim();
+    const paidCents = toCents(document.getElementById("personPaid").value);
+    if (!name) return;
+
+    state.people.push({ id: crypto.randomUUID(), name, paidCents });
+    document.getElementById("personName").value = "";
+    document.getElementById("personPaid").value = "0";
+    document.getElementById("personName").focus();
+    renderPeople();
+  });
+
+  document.getElementById("peopleTableBody").addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-remove]");
+    if (!btn) return;
+    removePerson(btn.getAttribute("data-remove"));
+  });
+
+  document.getElementById("btnCalculate").addEventListener("click", () => calculate());
+  document.getElementById("btnDownloadPdf").addEventListener("click", () => downloadPdf());
+
+  const emailModalEl = document.getElementById("emailModal");
+  const emailModal = new bootstrap.Modal(emailModalEl);
+  document.getElementById("btnSendEmail").addEventListener("click", () => {
+    document.getElementById("emailInput").value = "";
+    document.getElementById("emailError").classList.add("d-none");
+    emailModal.show();
+    setTimeout(() => document.getElementById("emailInput").focus(), 100);
+  });
+
+  document.getElementById("confirmSendEmail").addEventListener("click", async () => {
+    const email = document.getElementById("emailInput").value;
+    const validation = validateEmail(email);
+    const err = document.getElementById("emailError");
+    if (!validation.ok) {
+      err.textContent = validation.error;
+      err.classList.remove("d-none");
+      return;
+    }
+
+    err.classList.add("d-none");
+    const btn = document.getElementById("confirmSendEmail");
+    btn.disabled = true;
+    btn.textContent = I18N.sending;
+    try {
+      await sendEmail(validation.value);
+      emailModal.hide();
+      alert(I18N.sentOk);
+    } catch (e) {
+      err.textContent = e.message || I18N.sentError;
+      err.classList.remove("d-none");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = I18N.send;
+    }
+  });
+
+  // Init
+  renderPeople();
+</script>
+{% endblock %}
+

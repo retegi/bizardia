@@ -193,6 +193,39 @@ class ActivityImage(models.Model):
 
 
 
+class ActivityQuestionAnswer(models.Model):
+
+    activity = models.ForeignKey(
+        Activity,
+        on_delete=models.CASCADE,
+        related_name="questions_answers",
+        verbose_name=_("Jarduera")
+    )
+
+    question = models.TextField(
+        _("Galdera"),
+        blank=False,
+    )
+
+    answer = models.TextField(
+        _("Erantzuna"),
+        blank=False,
+    )
+
+    order = models.PositiveIntegerField(
+        _("Ordena"),
+        default=0,
+    )
+
+    class Meta:
+        verbose_name = _("Jardueraren galdera/erantzuna")
+        verbose_name_plural = _("Jardueraren galderak eta erantzunak")
+        ordering = ["order", "id"]
+
+    def __str__(self):
+        return f"{self.activity.title} - {self.question[:50]}"
+
+
 class ActivityRegistration(models.Model):
 
     activity = models.ForeignKey(

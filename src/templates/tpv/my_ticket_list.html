@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-4">
+  <h1 class="h3 mb-4">{% trans "My tickets" %}</h1>
+
+  {% if tickets %}
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>{% trans "Date" %}</th>
+            <th class="text-end">{% trans "Amount" %}</th>
+            <th class="text-end">{% trans "Actions" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ticket in tickets %}
+            <tr>
+              <td>{{ ticket.id }}</td>
+              <td>{{ ticket.created_at|date:"Y-m-d H:i" }}</td>
+              <td class="text-end">{{ ticket.total }} €</td>
+              <td class="text-end">
+                <a href="{% url 'tpv:my_ticket_detail' ticket.id %}"
+                   class="btn btn-sm btn-outline-primary">
+                  {% trans "View detail" %}
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="alert alert-info">
+      {% trans "You do not have any tickets yet." %}
+    </div>
+  {% endif %}
+</div>
+{% endblock %}
+

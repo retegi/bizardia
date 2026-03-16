@@ -12,6 +12,13 @@ class Profile(models.Model):
         verbose_name=_("Erabiltzailea")
     )
 
+    avatar = models.ImageField(
+        _("Avatar"),
+        upload_to="avatars/",
+        null=True,
+        blank=True,
+    )
+
     partner_number = models.PositiveIntegerField(
         _("Bazkide zenbakia"),
         unique=True,

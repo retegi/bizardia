@@ -482,6 +482,8 @@
                         <li class="bg-bizardia text-white"><a class="dropdown-item bg-bizardia text-white" href="{% url 'diningroom_app:create_reservation' %}">{% trans 'Reserve' %}</a></li>
                         <li><a class="dropdown-item" href="{% url 'diningroom_app:reservation_list' %}">{% trans 'All reservations' %}</a></li>
                         <li><a class="dropdown-item" href="{% url 'diningroom_app:user_reservations' %}">{% trans 'My reservations' %}</a></li>
+                        <li><a class="dropdown-item" href="{% url 'diningroom_app:collective_payment' %}">{% trans 'Collective payment' %}</a></li>
+                        <li><a class="dropdown-item" href="{% url 'tpv:my_tickets' %}">{% trans 'My tickets' %}</a></li>
                     </ul>
                 </li>
                 {% endif %}
@@ -537,12 +539,22 @@
                     <div class="dropdown">
                         <button class="btn btn-outline-primary bg-bizardia w-100 dropdown-toggle text-white"
                                 data-bs-toggle="dropdown">
-                            <i class="fas fa-user text-white"></i> {{ user.get_full_name|default:user.email }}
+                            {% if user_profile and user_profile.avatar %}
+                              <img src="{{ user_profile.avatar.url }}" class="avatar-img me-2" alt="{% trans 'Avatar' %}">
+                            {% else %}
+                              <i class="fas fa-user text-white"></i>
+                            {% endif %}
+                            {{ user.get_full_name|default:user.email }}
                         </button>
                         <ul class="dropdown-menu w-100">
                             <li>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cog me-2"></i>{% trans 'Settings' %}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'partner_app:my_profile' %}">
+                                    <i class="fas fa-id-card me-2"></i>{% trans 'My profile' %}
                                 </a>
                             </li>
                             <li>
@@ -595,10 +607,20 @@
                 <div class="dropdown">
                     <button class="btn btn-outline-secondary dropdown-toggle"
                             data-bs-toggle="dropdown">
-                        <i class="fas fa-user text-bizardia"></i> {{ user.get_full_name|default:user.email }}
+                        {% if user_profile and user_profile.avatar %}
+                          <img src="{{ user_profile.avatar.url }}" class="avatar-img me-2" alt="{% trans 'Avatar' %}">
+                        {% else %}
+                          <i class="fas fa-user text-bizardia"></i>
+                        {% endif %}
+                        {{ user.get_full_name|default:user.email }}
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <!--<li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>{% trans 'Settings' %}</a></li>-->
+                        <li>
+                            <a class="dropdown-item" href="{% url 'partner_app:my_profile' %}">
+                                <i class="fas fa-id-card me-2"></i>{% trans 'My profile' %}
+                            </a>
+                        </li>
                         <li class="btn-outline-primary"><a class="dropdown-item " href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt me-2"></i>{% trans 'Logout' %}</a></li>
                     </ul>
                 </div>

@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
+    <div>
+      <h1 class="mb-1">{% trans "Edit profile" %}</h1>
+      <div class="text-muted">{% trans "Update your details and save changes." %}</div>
+    </div>
+    <div class="d-flex gap-2">
+      <a class="btn btn-outline-secondary" href="{% url 'partner_app:my_profile' %}">
+        {% trans "Cancel" %}
+      </a>
+      <button class="btn btn-primary" form="profileForm" type="submit">
+        {% trans "Save" %}
+      </button>
+    </div>
+  </div>
+
+  <form id="profileForm" method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+
+    {% if user_form.non_field_errors or profile_form.non_field_errors %}
+      <div class="alert alert-danger" role="alert">
+        {% trans "Please review the errors below." %}
+      </div>
+    {% endif %}
+
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title mb-3">{% trans "Account" %}</h5>
+
+            <div class="mb-3">
+              <label class="form-label" for="{{ user_form.first_name.id_for_label }}">{{ user_form.first_name.label }}</label>
+              {{ user_form.first_name }}
+              {% for error in user_form.first_name.errors %}
+                <div class="invalid-feedback d-block">{{ error }}</div>
+              {% endfor %}
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="{{ user_form.last_name.id_for_label }}">{{ user_form.last_name.label }}</label>
+              {{ user_form.last_name }}
+              {% for error in user_form.last_name.errors %}
+                <div class="invalid-feedback d-block">{{ error }}</div>
+              {% endfor %}
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="{{ user_form.email.id_for_label }}">{{ user_form.email.label }}</label>
+              {{ user_form.email }}
+              {% for error in user_form.email.errors %}
+                <div class="invalid-feedback d-block">{{ error }}</div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title mb-3">{% trans "Partner profile" %}</h5>
+
+            <div class="mb-3">
+              <label class="form-label" for="{{ profile_form.avatar.id_for_label }}">{{ profile_form.avatar.label }}</label>
+              {% if profile.avatar %}
+                <div class="mb-2 d-flex align-items-center gap-2">
+                  <img src="{{ profile.avatar.url }}" class="avatar-img" alt="{% trans 'Avatar' %}">
+                  <span class="text-muted small">{% trans "Current avatar" %}</span>
+                </div>
+              {% endif %}
+              {{ profile_form.avatar }}
+              {% for error in profile_form.avatar.errors %}
+                <div class="invalid-feedback d-block">{{ error }}</div>
+              {% endfor %}
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="{{ profile_form.movil.id_for_label }}">{{ profile_form.movil.label }}</label>
+              {{ profile_form.movil }}
+              {% for error in profile_form.movil.errors %}
+                <div class="invalid-feedback d-block">{{ error }}</div>
+              {% endfor %}
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="{{ profile_form.movil2.id_for_label }}">{{ profile_form.movil2.label }}</label>
+              {{ profile_form.movil2 }}
+              {% for error in profile_form.movil2.errors %}
+                <div class="invalid-feedback d-block">{{ error }}</div>
+              {% endfor %}
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="{{ profile_form.address.id_for_label }}">{{ profile_form.address.label }}</label>
+              {{ profile_form.address }}
+              {% for error in profile_form.address.errors %}
+                <div class="invalid-feedback d-block">{{ error }}</div>
+              {% endfor %}
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="{{ profile_form.date_of_birth.id_for_label }}">{{ profile_form.date_of_birth.label }}</label>
+              {{ profile_form.date_of_birth }}
+              {% for error in profile_form.date_of_birth.errors %}
+                <div class="invalid-feedback d-block">{{ error }}</div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
