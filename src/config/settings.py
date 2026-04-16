@@ -253,6 +253,12 @@ CONTACT_FORM_RECIPIENTS = env.list(
 
 EMAIL_TIMEOUT = 30
 
+# ==================================================
+# Stripe
+# ==================================================
+STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY", default="")
+STRIPE_PUBLISHABLE_KEY = env("STRIPE_PUBLISHABLE_KEY", default="")
+
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 CSRF_TRUSTED_ORIGINS = [

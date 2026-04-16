@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Activity, ActivityRegistration, ActivityImage, ActivityQuestionAnswer
+from .models import Activity, ActivityRegistration, ActivityImage, ActivityQuestionAnswer, ActivityRegistrationPayment
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.contrib import messages
@@ -8,7 +8,7 @@ from django.contrib import messages
 class ActivityRegistrationInline(admin.TabularInline):
     model = ActivityRegistration
     extra = 0
-    readonly_fields = ("created_at",)
+    readonly_fields = ("created_at", "confirmation_email_sent_at")
 
     radio_fields = {
         "federation_member": admin.HORIZONTAL,
@@ -40,7 +40,7 @@ class ActivityAdmin(admin.ModelAdmin):
             "fields": ("short", "content", "cover_image")
         }),
         (_("Datos de la actividad"), {
-            "fields": ("activity_date_time", "price", "show_price", "show_registration_button")
+            "fields": ("activity_date_time", "price", "currency", "requires_payment", "show_price", "show_registration_button")
         }),
         (_("Participación"), {
             "fields": ("audience", "audience_note")
@@ -57,6 +57,7 @@ class ActivityAdmin(admin.ModelAdmin):
         "is_published_flag",
         "outstanding",
         "activity_date_time",
+        "requires_payment",
         "audience_display",
         "published_at",
     )
@@ -64,6 +65,7 @@ class ActivityAdmin(admin.ModelAdmin):
     list_filter = (
         "status",
         "outstanding",
+        "requires_payment",
         "audience",
     )
 
@@ -113,6 +115,7 @@ class ActivityRegistrationAdmin(admin.ModelAdmin):
         "anonymous",
         "user",
         "created_at",
+        "confirmation_email_sent_at",
     )
 
     list_filter = (
@@ -127,4 +130,39 @@ class ActivityRegistrationAdmin(admin.ModelAdmin):
         "locality",
     )
 
+    ordering = ("-created_at",)
+    readonly_fields = ("confirmation_email_sent_at",)
+
+
+@admin.register(ActivityRegistrationPayment)
+class ActivityRegistrationPaymentAdmin(admin.ModelAdmin):
+    list_display = (
+        "activity",
+        "user",
+        "amount",
+        "currency",
+        "status",
+        "registration",
+        "created_at",
+    )
+    list_filter = ("status", "currency", "activity")
+    search_fields = (
+        "activity__title",
+        "user__username",
+        "stripe_checkout_session_id",
+        "registration__name",
+        "registration__surname",
+    )
+    readonly_fields = (
+        "activity",
+        "user",
+        "registration",
+        "stripe_checkout_session_id",
+        "status",
+        "registration_data",
+        "amount",
+        "currency",
+        "created_at",
+        "updated_at",
+    )
     ordering = ("-created_at",)

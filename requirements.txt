@@ -12,3 +12,4 @@ PyJWT>=2.8
 cryptography>=45.0
 gunicorn>=21.2.0
 python-dotenv
+stripe>=11.0

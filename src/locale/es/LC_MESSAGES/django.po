@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-16 17:39+0100\n"
+"POT-Creation-Date: 2026-04-16 18:31+0200\n"
 "PO-Revision-Date: 2026-03-10 17:32+0100\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,37 +40,37 @@ msgstr ""
 msgid "Publicación"
 msgstr "Publicado el"
 
-#: applications/activity/admin.py:75
+#: applications/activity/admin.py:77
 msgid "Público"
 msgstr ""
 
-#: applications/activity/admin.py:79 applications/activity/models.py:92
+#: applications/activity/admin.py:81 applications/activity/models.py:99
 #: applications/blog/models.py:48 applications/gallery/models.py:27
 #: applications/history/models.py:54 applications/news/models.py:58
 msgid "Argitaratua"
 msgstr ""
 
-#: applications/activity/forms.py:55 applications/activity/models.py:246
+#: applications/activity/forms.py:59 applications/activity/models.py:253
 #: applications/product/models.py:6 applications/product/models.py:45
 #: templates/partner/partner_list.html:15
 msgid "Izena"
 msgstr "Nombre"
 
-#: applications/activity/forms.py:56 applications/activity/models.py:247
+#: applications/activity/forms.py:60 applications/activity/models.py:254
 msgid "Abizena"
 msgstr "Apellido"
 
-#: applications/activity/forms.py:57 applications/activity/models.py:248
+#: applications/activity/forms.py:61 applications/activity/models.py:255
 msgid "Herria"
 msgstr "Localidad"
 
-#: applications/activity/forms.py:58 applications/activity/models.py:251
+#: applications/activity/forms.py:62 applications/activity/models.py:258
 msgid "Mendi federazioko kidea"
 msgstr ""
 "¿Perteneces a la federación de montaña o dispones de algún seguro de "
 "montaña? "
 
-#: applications/activity/forms.py:59 applications/activity/models.py:258
+#: applications/activity/forms.py:63 applications/activity/models.py:265
 msgid "Erregistro anonimoa"
 msgstr "¿Quieres inscribirte de forma anónima?"
 
@@ -167,94 +167,184 @@ msgstr ""
 msgid "Prezioa"
 msgstr ""
 
-#: applications/activity/models.py:83
-msgid "Data eta ordua"
-msgstr ""
-
-#: applications/activity/models.py:85
-msgid "Izena emateko botoia agertzea"
+#: applications/activity/models.py:83 applications/activity/models.py:348
+msgid "Moneta"
 msgstr ""
 
 #: applications/activity/models.py:86
-msgid "Prezioa agertzea"
+msgid "Stripe-rako ISO moneta-kodea. Adibidez: eur"
+msgstr ""
+
+#: applications/activity/models.py:88
+msgid "Ordainketa behar du"
 msgstr ""
 
 #: applications/activity/models.py:90
-msgid "Zirriborroa"
+msgid "Data eta ordua"
 msgstr ""
 
-#: applications/activity/models.py:91
-msgid "Balidazio zain"
+#: applications/activity/models.py:92
+msgid "Izena emateko botoia agertzea"
 msgstr ""
 
 #: applications/activity/models.py:93
+msgid "Prezioa agertzea"
+msgstr ""
+
+#: applications/activity/models.py:97
+msgid "Zirriborroa"
+msgstr ""
+
+#: applications/activity/models.py:98
+msgid "Balidazio zain"
+msgstr ""
+
+#: applications/activity/models.py:100
 msgid "Artxibatua"
 msgstr ""
 
-#: applications/activity/models.py:96
+#: applications/activity/models.py:103 applications/activity/models.py:340
 msgid "Egoera"
 msgstr ""
 
-#: applications/activity/models.py:104 applications/diningRoom/models.py:28
+#: applications/activity/models.py:111 applications/diningRoom/models.py:28
 #: applications/product/models.py:24 applications/product/models.py:84
 msgid "Sortze-data"
 msgstr ""
 
-#: applications/activity/models.py:105
+#: applications/activity/models.py:112
 msgid "Eguneratua"
 msgstr ""
 
-#: applications/activity/models.py:108 applications/blog/models.py:31
+#: applications/activity/models.py:115 applications/blog/models.py:31
 #: applications/gallery/models.py:20 applications/history/models.py:37
 #: applications/news/models.py:63
 msgid "Argitaratze-data"
 msgstr ""
 
-#: applications/activity/models.py:115
+#: applications/activity/models.py:122
 msgid "Nork argitaratu du"
 msgstr ""
 
-#: applications/activity/models.py:119 applications/activity/models.py:202
-#: applications/activity/models.py:235
+#: applications/activity/models.py:126 applications/activity/models.py:209
+#: applications/activity/models.py:242 applications/activity/models.py:315
 msgid "Jarduera"
 msgstr ""
 
-#: applications/activity/models.py:120
+#: applications/activity/models.py:127
 msgid "Jarduerak"
 msgstr ""
 
-#: applications/activity/models.py:206
+#: applications/activity/models.py:213
 msgid "Galdera"
 msgstr ""
 
-#: applications/activity/models.py:211
+#: applications/activity/models.py:218
 msgid "Erantzuna"
 msgstr ""
 
-#: applications/activity/models.py:216 applications/gallery/models.py:61
+#: applications/activity/models.py:223 applications/gallery/models.py:61
 msgid "Ordena"
 msgstr ""
 
-#: applications/activity/models.py:221
+#: applications/activity/models.py:228
 msgid "Jardueraren galdera/erantzuna"
 msgstr ""
 
-#: applications/activity/models.py:222
+#: applications/activity/models.py:229
 msgid "Jardueraren galderak eta erantzunak"
 msgstr ""
 
-#: applications/activity/models.py:243 applications/diningRoom/models.py:18
-#: applications/partner/models.py:12
+#: applications/activity/models.py:250 applications/activity/models.py:322
+#: applications/diningRoom/models.py:18 applications/partner/models.py:12
 msgid "Erabiltzailea"
 msgstr ""
 
-#: applications/activity/models.py:268
+#: applications/activity/models.py:274
+msgid "Baieztapen emaila bidalita"
+msgstr "Email de confirmación enviado"
+
+#: applications/activity/models.py:280
 msgid "Jardueraren izen-ematea"
 msgstr ""
 
-#: applications/activity/models.py:269
+#: applications/activity/models.py:281
 msgid "Jardueretako izen-emateak"
 msgstr ""
+
+#: applications/activity/models.py:307
+msgid "Ordainketa zain"
+msgstr ""
+
+#: applications/activity/models.py:308
+msgid "Ordainduta"
+msgstr ""
+
+#: applications/activity/models.py:309
+msgid "Bertan behera"
+msgstr ""
+
+#: applications/activity/models.py:330
+#, fuzzy
+#| msgid "Izena"
+msgid "Izen-ematea"
+msgstr "Nombre"
+
+#: applications/activity/models.py:333
+msgid "Stripe Checkout Session ID"
+msgstr ""
+
+#: applications/activity/models.py:346
+msgid "Izen-emate datuak"
+msgstr ""
+
+#: applications/activity/models.py:347
+msgid "Zenbatekoa"
+msgstr ""
+
+#: applications/activity/models.py:353
+msgid "Jarduera izen-ematearen ordainketa"
+msgstr "Pago de inscripción a actividad"
+
+#: applications/activity/models.py:354
+msgid "Jarduera izen-emateen ordainketak"
+msgstr "Pagos de inscripciones a actividades"
+
+#: applications/activity/views.py:167
+msgid "Paid activities must be confirmed through Stripe Checkout."
+msgstr "Las actividades de pago deben confirmarse mediante Stripe Checkout."
+
+#: applications/activity/views.py:214
+msgid "Stripe is not configured."
+msgstr "Stripe no está configurado."
+
+#: applications/activity/views.py:223
+msgid "This activity requires payment, but it has no valid price."
+msgstr "Esta actividad requiere pago, pero no tiene un precio válido."
+
+#: applications/activity/views.py:271
+msgid "Stripe Checkout could not be started. Please try again."
+msgstr "No se ha podido iniciar Stripe Checkout. Inténtalo de nuevo."
+
+#: applications/activity/views.py:291
+msgid "Stripe session is missing."
+msgstr "Falta la sesión de Stripe."
+
+#: applications/activity/views.py:308
+msgid "Stripe payment could not be verified. Please try again."
+msgstr "No se ha podido verificar el pago de Stripe. Inténtalo de nuevo."
+
+#: applications/activity/views.py:312
+msgid "Payment has not been completed."
+msgstr "El pago no se ha completado."
+
+#: applications/activity/views.py:328
+msgid "Payment completed and registration confirmed."
+msgstr "Pago completado e inscripción confirmada."
+
+#: applications/activity/views.py:345
+msgid "Payment canceled. Registration has not been created."
+msgstr "Pago cancelado. No se ha creado la inscripción."
 
 #: applications/announcement/admin.py:42
 #, fuzzy
@@ -848,6 +938,7 @@ msgid "Galderak eta erantzunak"
 msgstr ""
 
 #: templates/activity/activity_list.html:11
+#: templates/activity/activity_registration_list.html:17
 msgid "Activity"
 msgstr "Actividad"
 
@@ -857,36 +948,36 @@ msgstr "Detalles"
 
 #: templates/activity/activity_register.html:28
 msgid "You must be logged in to complete this form."
-msgstr ""
+msgstr "Debes iniciar sesión para completar este formulario."
 
-#: templates/activity/activity_register.html:102
+#: templates/activity/activity_register.html:107
 msgid "Back"
 msgstr "Volver"
 
-#: templates/activity/activity_register.html:108
-#, fuzzy
-#| msgid "Confirmar"
+#: templates/activity/activity_register.html:114
+msgid "Pay and confirm"
+msgstr "Pagar y confirmar"
+
+#: templates/activity/activity_register.html:116
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: templates/activity/activity_register.html:129
+#: templates/activity/activity_register.html:138
 msgid "Login required"
-msgstr ""
+msgstr "Inicio de sesión requerido"
 
-#: templates/activity/activity_register.html:130
+#: templates/activity/activity_register.html:139
 #: templates/diningroom/collective_payment.html:108
 msgid "Close"
-msgstr ""
+msgstr "Cerrar"
 
-#: templates/activity/activity_register.html:133
+#: templates/activity/activity_register.html:142
 msgid "To register for this activity, please log in first."
-msgstr ""
+msgstr "Para inscribirte en esta actividad, inicia sesión primero."
 
-#: templates/activity/activity_register.html:136
-#, fuzzy
-#| msgid "Volver a iniciar sesión"
-msgid "Iniciar sesion"
-msgstr "Volver a iniciar sesión"
+#: templates/activity/activity_register.html:145
+msgid "Log in"
+msgstr "Iniciar sesión"
 
 #: templates/activity/activity_registered_list.html:59
 msgid "No registered users yet"
@@ -897,6 +988,97 @@ msgstr "Todavía no hay usuarios registrados"
 #| msgid "Back to activities"
 msgid "Back to activity"
 msgstr "Volver a actividades"
+
+#: templates/activity/activity_registration_list.html:8
+msgid "Activity registrations"
+msgstr "Inscripciones a actividades"
+
+#: templates/activity/activity_registration_list.html:20
+#: templates/activity/activity_registration_list.html:44
+msgid "Select an activity"
+msgstr "Selecciona una actividad"
+
+#: templates/activity/activity_registration_list.html:33
+msgid "View"
+msgstr "Ver"
+
+#: templates/activity/activity_registration_list.html:50
+msgid "Total registrations"
+msgstr "Total de inscritos"
+
+#: templates/activity/activity_registration_list.html:56
+msgid "Total amount collected"
+msgstr "Total del importe recaudado"
+
+#: templates/activity/activity_registration_list.html:71
+msgid "Nº"
+msgstr "Nº"
+
+#: templates/activity/activity_registration_list.html:72
+msgid "Surname"
+msgstr "Apellido"
+
+#: templates/activity/activity_registration_list.html:73
+#: templates/diningroom/collective_payment.html:45
+#: templates/home/index.html:415 templates/home/index2.html:276
+msgid "Name"
+msgstr "Nombre"
+
+#: templates/activity/activity_registration_list.html:74
+msgid "Locality"
+msgstr "Localidad"
+
+#: templates/activity/activity_registration_list.html:75
+msgid "Mountain federation"
+msgstr "Federación montaña"
+
+#: templates/activity/activity_registration_list.html:76
+#: templates/diningroom/collective_payment.html:13
+#: templates/diningroom/collective_payment.html:66
+msgid "Paid"
+msgstr "Pagado"
+
+#: templates/activity/activity_registration_list.html:77
+#: templates/diningroom/collective_payment.html:49
+msgid "Paid amount"
+msgstr "Importe pagado"
+
+#: templates/activity/activity_registration_list.html:78
+msgid "Registration date and time"
+msgstr "Fecha y hora de registro"
+
+#: templates/activity/activity_registration_list.html:91
+#: templates/activity/activity_registration_list.html:100
+msgid "Not applicable"
+msgstr "No aplica"
+
+#: templates/activity/activity_registration_list.html:93
+#: templates/diningroom/diningroom-copy20260215.html:224
+#: templates/diningroom/diningroom-copy20260215.html:257
+#: templates/diningroom/diningroom.html:225
+#: templates/diningroom/diningroom.html:259
+#: ⁨templates/diningroom/reservations copy.html⁩:42
+#: ⁨templates/diningroom/reservations copy.html⁩:44
+#: ⁨templates/diningroom/reservations copy.html⁩:45
+#: ⁨templates/diningroom/reservations copy.html⁩:48
+msgid "Yes"
+msgstr "Sí"
+
+#: templates/activity/activity_registration_list.html:95
+#: templates/diningroom/diningroom-copy20260215.html:221
+#: templates/diningroom/diningroom-copy20260215.html:255
+#: templates/diningroom/diningroom.html:222
+#: templates/diningroom/diningroom.html:256
+#: ⁨templates/diningroom/reservations copy.html⁩:42
+#: ⁨templates/diningroom/reservations copy.html⁩:44
+#: ⁨templates/diningroom/reservations copy.html⁩:45
+#: ⁨templates/diningroom/reservations copy.html⁩:48
+msgid "No"
+msgstr "No"
+
+#: templates/activity/activity_registration_list.html:117
+msgid "There are no registrations for this activity"
+msgstr "No hay inscripciones para esta actividad"
 
 #: ⁨templates/base copy 2.html⁩:353 ⁨templates/base copy 2.html⁩:475
 #: templates/base.html:431 templates/base.html:670
@@ -1074,11 +1256,6 @@ msgstr ""
 msgid "Person"
 msgstr ""
 
-#: templates/diningroom/collective_payment.html:13
-#: templates/diningroom/collective_payment.html:66
-msgid "Paid"
-msgstr ""
-
 #: templates/diningroom/collective_payment.html:14
 #: templates/diningroom/collective_payment.html:80
 #: templates/tpv/ticket_detail.html:70
@@ -1141,17 +1318,6 @@ msgstr ""
 #: templates/diningroom/collective_payment.html:107
 msgid "Send by email"
 msgstr ""
-
-#: templates/diningroom/collective_payment.html:45
-#: templates/home/index.html:415 templates/home/index2.html:276
-msgid "Name"
-msgstr "Nombre"
-
-#: templates/diningroom/collective_payment.html:49
-#, fuzzy
-#| msgid "Pay account"
-msgid "Paid amount"
-msgstr "Pagar cuenta"
 
 #: templates/diningroom/collective_payment.html:54
 msgid "Add"
@@ -1284,28 +1450,6 @@ msgstr "Ejemplo. Noche de juego de mes, reunión, etc."
 #: templates/diningroom/diningroom.html:219
 msgid "Is it a birthday celebration?"
 msgstr "¿Es una una celebración de cumpleaños?"
-
-#: templates/diningroom/diningroom-copy20260215.html:221
-#: templates/diningroom/diningroom-copy20260215.html:255
-#: templates/diningroom/diningroom.html:222
-#: templates/diningroom/diningroom.html:256
-#: ⁨templates/diningroom/reservations copy.html⁩:42
-#: ⁨templates/diningroom/reservations copy.html⁩:44
-#: ⁨templates/diningroom/reservations copy.html⁩:45
-#: ⁨templates/diningroom/reservations copy.html⁩:48
-msgid "No"
-msgstr "No"
-
-#: templates/diningroom/diningroom-copy20260215.html:224
-#: templates/diningroom/diningroom-copy20260215.html:257
-#: templates/diningroom/diningroom.html:225
-#: templates/diningroom/diningroom.html:259
-#: ⁨templates/diningroom/reservations copy.html⁩:42
-#: ⁨templates/diningroom/reservations copy.html⁩:44
-#: ⁨templates/diningroom/reservations copy.html⁩:45
-#: ⁨templates/diningroom/reservations copy.html⁩:48
-msgid "Yes"
-msgstr "Sí"
 
 #: templates/diningroom/reservation_success.html:9
 msgid "Reservation completed successfully"
@@ -1884,6 +2028,11 @@ msgid "PDF"
 msgstr ""
 
 #, fuzzy
+#~| msgid "Volver a iniciar sesión"
+#~ msgid "Iniciar sesion"
+#~ msgstr "Volver a iniciar sesión"
+
+#, fuzzy
 #~| msgid "No reservations"
 #~ msgid "Show registration button"
 #~ msgstr "No hay reservas"
@@ -1922,9 +2071,6 @@ msgstr ""
 
 #~ msgid "Apellido"
 #~ msgstr "Apellido"
-
-#~ msgid "Localidad"
-#~ msgstr "Localidad"
 
 #~ msgid "Federación de montaña"
 #~ msgstr "Federación de montaña"

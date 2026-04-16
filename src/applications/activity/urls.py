@@ -18,6 +18,21 @@ urlpatterns = [
         name='activity_register'
     ),
     path(
+        '<slug:slug>/checkout/',
+        views.activity_checkout,
+        name='activity_checkout'
+    ),
+    path(
+        '<slug:slug>/checkout/success/',
+        views.activity_checkout_success,
+        name='activity_checkout_success'
+    ),
+    path(
+        '<slug:slug>/checkout/cancel/',
+        views.activity_checkout_cancel,
+        name='activity_checkout_cancel'
+    ),
+    path(
         '<slug:slug>/registered/',
         views.activity_registered_list,
         name='activity_registered_list'

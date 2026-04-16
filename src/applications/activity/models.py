@@ -79,6 +79,13 @@ class Activity(models.Model):
         blank=True,
         null=True
     )
+    currency = models.CharField(
+        _("Moneta"),
+        max_length=3,
+        default="eur",
+        help_text=_("Stripe-rako ISO moneta-kodea. Adibidez: eur")
+    )
+    requires_payment = models.BooleanField(_("Ordainketa behar du"), default=False)
 
     activity_date_time = models.DateTimeField(_("Data eta ordua"), null=True, blank=True)
 
@@ -263,6 +270,11 @@ class ActivityRegistration(models.Model):
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
+    confirmation_email_sent_at = models.DateTimeField(
+        _("Baieztapen emaila bidalita"),
+        null=True,
+        blank=True,
+    )
 
     class Meta:
         verbose_name = _("Jardueraren izen-ematea")
@@ -270,3 +282,77 @@ class ActivityRegistration(models.Model):
 
     def __str__(self):
         return f"{self.activity.title} - {self.name}"
+
+    @property
+    def has_completed_payment(self):
+        try:
+            return self.payment.status == ActivityRegistrationPayment.Status.COMPLETED
+        except ActivityRegistrationPayment.DoesNotExist:
+            return False
+
+    @property
+    def completed_payment(self):
+        try:
+            payment = self.payment
+        except ActivityRegistrationPayment.DoesNotExist:
+            return None
+
+        if payment.status == ActivityRegistrationPayment.Status.COMPLETED:
+            return payment
+        return None
+
+
+class ActivityRegistrationPayment(models.Model):
+    class Status(models.TextChoices):
+        PENDING = "pending", _("Ordainketa zain")
+        COMPLETED = "completed", _("Ordainduta")
+        CANCELED = "canceled", _("Bertan behera")
+
+    activity = models.ForeignKey(
+        Activity,
+        on_delete=models.CASCADE,
+        related_name="registration_payments",
+        verbose_name=_("Jarduera")
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name=_("Erabiltzailea")
+    )
+    registration = models.OneToOneField(
+        ActivityRegistration,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="payment",
+        verbose_name=_("Izen-ematea")
+    )
+    stripe_checkout_session_id = models.CharField(
+        _("Stripe Checkout Session ID"),
+        max_length=255,
+        unique=True,
+        blank=True,
+        null=True
+    )
+    status = models.CharField(
+        _("Egoera"),
+        max_length=12,
+        choices=Status.choices,
+        default=Status.PENDING,
+        db_index=True
+    )
+    registration_data = models.JSONField(_("Izen-emate datuak"))
+    amount = models.DecimalField(_("Zenbatekoa"), max_digits=6, decimal_places=2)
+    currency = models.CharField(_("Moneta"), max_length=3, default="eur")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = _("Jarduera izen-ematearen ordainketa")
+        verbose_name_plural = _("Jarduera izen-emateen ordainketak")
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.activity.title} - {self.amount} {self.currency}"

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="eu">
+<head>
+    <meta charset="utf-8">
+    <title>Izen-ematea baieztatuta</title>
+</head>
+<body style="font-family: Arial, sans-serif; color: #222; line-height: 1.5;">
+    <h1 style="font-size: 22px; margin-bottom: 16px;">Izen-ematea baieztatuta</h1>
+
+    <p>Kaixo {{ registration.name }},</p>
+    <p>Zure izen-ematea ongi jaso dugu.</p>
+
+    <table cellpadding="6" cellspacing="0" style="border-collapse: collapse;">
+        <tr>
+            <th align="left">Jarduera</th>
+            <td>{{ activity.title }}</td>
+        </tr>
+        {% if activity.activity_date_time %}
+        <tr>
+            <th align="left">Data eta ordua</th>
+            <td>{{ activity.activity_date_time|date:"SHORT_DATETIME_FORMAT" }}</td>
+        </tr>
+        {% endif %}
+        <tr>
+            <th align="left">Izena</th>
+            <td>{{ registration.name }} {{ registration.surname }}</td>
+        </tr>
+        {% if registration.locality %}
+        <tr>
+            <th align="left">Herria</th>
+            <td>{{ registration.locality }}</td>
+        </tr>
+        {% endif %}
+        <tr>
+            <th align="left">Mendi federazioko kidea</th>
+            <td>{{ registration.get_federation_member_display }}</td>
+        </tr>
+        <tr>
+            <th align="left">Ordainketa</th>
+            <td>
+                {% if activity.requires_payment and registration.completed_payment %}
+                    {{ registration.completed_payment.amount }} {{ registration.completed_payment.currency|upper }}
+                {% elif activity.requires_payment %}
+                    baieztapenaren zain
+                {% else %}
+                    ez dagokio
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+
+    <p style="margin-top: 20px;">Eskerrik asko.</p>
+    <p>Bizardia</p>
+</body>
+</html>

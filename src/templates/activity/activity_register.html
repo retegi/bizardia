@@ -29,8 +29,13 @@
                         </div>
                     {% endif %}
 
-                    <form method="post">
+                    <form method="post" action="{% if activity.requires_payment %}{% url 'activity_app:activity_checkout' activity.slug %}{% else %}{% url 'activity_app:activity_register' activity.slug %}{% endif %}">
                         {% csrf_token %}
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ form.non_field_errors }}
+                            </div>
+                        {% endif %}
                         <fieldset {% if require_login_modal %}disabled{% endif %}>
 
                         <!-- Nombre -->
@@ -105,7 +110,11 @@
                             <button type="submit"
                                     {% if require_login_modal %}disabled{% endif %}
                                     class="btn bg-bizardia text-white px-4 w-50">
-                                {% trans 'Confirm' %}
+                                {% if activity.requires_payment %}
+                                    {% trans 'Pay and confirm' %}
+                                {% else %}
+                                    {% trans 'Confirm' %}
+                                {% endif %}
                             </button>
                         </div>
 
@@ -133,7 +142,7 @@
                 {% trans "To register for this activity, please log in first." %}
             </div>
             <div class="modal-footer">
-                <a href="{{ login_url }}" class="btn bg-bizardia text-white">{% trans "Iniciar sesion" %}</a>
+                <a href="{{ login_url }}" class="btn bg-bizardia text-white">{% trans "Log in" %}</a>
             </div>
         </div>
     </div>
