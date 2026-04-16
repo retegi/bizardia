@@ -461,11 +461,17 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'history_app:history_list' %}">{% trans 'History' %}</a></li>
+                        {% if can_access_django_admin %}
+                        <li><a class="dropdown-item" href="/admin/" target="_blank" rel="noopener noreferrer">{% trans 'Administrar' %}</a></li>
+                        {% endif %}
+                        {% if can_view_activity_registration_list %}
+                        <li><a class="dropdown-item" href="/zerrenda/" target="_blank" rel="noopener noreferrer">{% trans 'Inskripzioak' %}</a></li>
+                        {% endif %}
                         <!--<li><a class="dropdown-item" href="#">{% trans 'Legal statutes' %}</a></li>
                         <li><a class="dropdown-item" href="#">{% trans 'Organization chart' %}</a></li>
                         <li><a class="dropdown-item" href="#">{% trans 'Transparency' %}</a></li>-->
                         {% if request.user|has_group:"bazkideak" or request.user.is_superuser %}
-                        <a class="dropdown-item" href="{% url 'partner_app:partner_list' %}">{% trans 'Bazkideen zerrenda' %}</a></li>
+                        <li><a class="dropdown-item" href="{% url 'partner_app:partner_list' %}">{% trans 'Bazkideen zerrenda' %}</a></li>
                         {% endif %}
                     </ul>
                 </li>
@@ -636,9 +642,16 @@
     </div>
 </nav>
 
-
-
-
+{% if messages %}
+<div class="container mt-3">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{% trans 'Close' %}"></button>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
 
 
 {% block content %}
@@ -651,7 +664,7 @@
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <h4>Bizardia</h4>
-                    <p>Gurutzeko elkartea.</p>
+                    <p>{% trans 'Gurutzeko elkartea.' %}</p>
                     <div class="social-icons">
                         {% if home.facebook_url %}
                         <a href="{{ home.facebook_url }}" target="_blank"><i class="fab fa-facebook"></i></a>
@@ -665,7 +678,7 @@
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
-                    <h5>Enlaces</h5>
+                    <h5>{% trans 'Links' %}</h5>
                     <ul class="footer-links">
                         <li><a href="{% url 'home_app:home' %}#news">{% trans 'News' %}</a></li>
                         <li><a href="{% url 'home_app:home' %}#activities">{% trans 'Activities' %}</a></li>
@@ -776,10 +789,9 @@
   <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
 
     <div class="small">
-      {% trans 'Utilizamos cookies propias y de terceros para mejorar la experiencia.
-      Puedes aceptarlas o configurarlas' %}.
+      {% blocktrans trimmed %}We use our own and third-party cookies to improve your experience. You can accept or configure them.{% endblocktrans %}
       <a href="{% url 'home_app:cookie_policy' %}" class="text-info text-decoration-underline">
-        {% trans 'Más información' %}
+        {% trans 'More information' %}
       </a>
     </div>
 

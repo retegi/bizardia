@@ -100,6 +100,20 @@
     </div>
 </div>
 
+{% if activity.requires_payment %}
+<div class="mb-4">
+    <div class="form-check">
+        {{ form.pay_on_event }}
+        <label class="form-check-label fw-semibold" for="{{ form.pay_on_event.id_for_label }}">
+            {{ form.pay_on_event.label }}
+        </label>
+    </div>
+    <div class="form-text">
+        {% trans "Your registration will be confirmed now and payment will remain pending for the event day." %}
+    </div>
+</div>
+{% endif %}
+
                         <!-- BOTONES -->
                         <div class="d-flex justify-content-between">
                             <a href="{% url 'activity_app:activity_detail' activity.slug %}"
@@ -109,9 +123,12 @@
 
                             <button type="submit"
                                     {% if require_login_modal %}disabled{% endif %}
-                                    class="btn bg-bizardia text-white px-4 w-50">
+                                    class="btn bg-bizardia text-white px-4 w-50"
+                                    id="registration-submit-button"
+                                    data-pay-label="{% trans 'Pay and confirm' %}"
+                                    data-confirm-label="{% trans 'Confirm' %}">
                                 {% if activity.requires_payment %}
-                                    {% trans 'Pay and confirm' %}
+                                    <span id="registration-submit-label">{% trans 'Pay and confirm' %}</span>
                                 {% else %}
                                     {% trans 'Confirm' %}
                                 {% endif %}
@@ -158,6 +175,29 @@ document.addEventListener('DOMContentLoaded', function () {
     if (modalEl) {
         var loginModal = new bootstrap.Modal(modalEl);
         loginModal.show();
+    }
+});
+</script>
+{% endif %}
+{% if activity.requires_payment %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var payOnEventInput = document.getElementById('{{ form.pay_on_event.id_for_label }}');
+    var submitButton = document.getElementById('registration-submit-button');
+    var submitLabel = document.getElementById('registration-submit-label');
+
+    function updateSubmitLabel() {
+        if (!payOnEventInput || !submitButton || !submitLabel) {
+            return;
+        }
+        submitLabel.textContent = payOnEventInput.checked
+            ? submitButton.dataset.confirmLabel
+            : submitButton.dataset.payLabel;
+    }
+
+    updateSubmitLabel();
+    if (payOnEventInput) {
+        payOnEventInput.addEventListener('change', updateSubmitLabel);
     }
 });
 </script>

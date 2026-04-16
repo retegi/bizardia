@@ -35,7 +35,9 @@
             <th align="left">Ordainketa egoera</th>
             <td>
                 {% if activity.requires_payment and registration.completed_payment %}
-                    ordainduta
+                    online ordainduta
+                {% elif activity.requires_payment and registration.pending_on_event_payment %}
+                    izen-ematea baieztatuta dago, eta ordainketa ekitaldiaren egunerako zain geratu da
                 {% elif activity.requires_payment %}
                     baieztapenaren zain
                 {% else %}

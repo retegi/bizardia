@@ -6,11 +6,12 @@ from django.conf.urls.i18n import i18n_patterns
 
 from applications.partner.views import SignupPendingView
 from applications.home.views import contact_view
-from applications.activity.views import ActivityRegistrationListView
+from applications.activity.views import ActivityRegistrationListView, stripe_webhook
 
 urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('zerrenda/', ActivityRegistrationListView.as_view(), name='activity_registration_list'),
+    path('stripe/webhook/', stripe_webhook, name='stripe_webhook'),
 ]
 
 # Rosetta (solo si está instalada)

@@ -2,9 +2,12 @@ import logging
 
 from django.conf import settings
 from django.core.mail import EmailMessage, EmailMultiAlternatives, get_connection
+from django.db import transaction
 from django.template.loader import render_to_string
 from django.utils import timezone
 from django.utils.translation import override
+
+from .models import ActivityRegistration, ActivityRegistrationPayment
 
 logger = logging.getLogger(__name__)
 
@@ -42,10 +45,14 @@ def send_activity_registration_admin_email(registration):
     if not recipient:
         return False
 
-    payment = registration.completed_payment
-    if payment:
-        payment_status = payment.get_status_display()
-        paid_amount = f"{payment.amount} {payment.currency.upper()}"
+    completed_payment = registration.completed_payment
+    pending_on_event_payment = registration.pending_on_event_payment
+    if completed_payment:
+        payment_status = "Online ordainduta"
+        paid_amount = f"{completed_payment.amount} {completed_payment.currency.upper()}"
+    elif pending_on_event_payment:
+        payment_status = "Ekitaldiaren egunean ordaintzeko zain"
+        paid_amount = "-"
     elif registration.activity.requires_payment:
         payment_status = "Ordainketa baieztapenaren zain"
         paid_amount = "-"
@@ -115,3 +122,58 @@ def send_activity_registration_confirmation_email(registration):
     registration.confirmation_email_sent_at = timezone.now()
     registration.save(update_fields=["confirmation_email_sent_at"])
     return True
+
+
+def confirm_activity_registration_payment(payment):
+    with transaction.atomic():
+        payment = (
+            ActivityRegistrationPayment.objects
+            .select_for_update()
+            .select_related("activity", "user", "registration")
+            .get(pk=payment.pk)
+        )
+
+        already_completed = (
+            payment.status == ActivityRegistrationPayment.Status.COMPLETED
+            and payment.registration_id
+        )
+        if already_completed:
+            return payment.registration, False
+
+        registration = payment.registration
+        if registration is None:
+            registration = ActivityRegistration.objects.create(
+                activity=payment.activity,
+                user=payment.user,
+                **payment.registration_data,
+            )
+
+        payment.registration = registration
+        payment.status = ActivityRegistrationPayment.Status.COMPLETED
+        payment.payment_method = ActivityRegistrationPayment.Method.STRIPE
+        payment.save(update_fields=["registration", "status", "payment_method", "updated_at"])
+
+    send_activity_registration_confirmation_email(registration)
+    return registration, True
+
+
+def create_pay_on_event_activity_registration(activity, user, registration_data):
+    with transaction.atomic():
+        registration = ActivityRegistration.objects.create(
+            activity=activity,
+            user=user,
+            **registration_data,
+        )
+        ActivityRegistrationPayment.objects.create(
+            activity=activity,
+            user=user,
+            registration=registration,
+            registration_data=registration_data,
+            amount=activity.price,
+            currency=activity.currency.lower(),
+            payment_method=ActivityRegistrationPayment.Method.ON_EVENT,
+            status=ActivityRegistrationPayment.Status.PENDING,
+        )
+
+    send_activity_registration_confirmation_email(registration)
+    return registration

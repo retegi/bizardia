@@ -73,7 +73,7 @@
                                         <th scope="col">{% trans "Name" %}</th>
                                         <th scope="col">{% trans "Locality" %}</th>
                                         <th scope="col">{% trans "Mountain federation" %}</th>
-                                        <th scope="col">{% trans "Paid" %}</th>
+                                        <th scope="col">{% trans "Payment status" %}</th>
                                         <th scope="col">{% trans "Paid amount" %}</th>
                                         <th scope="col">{% trans "Registration date and time" %}</th>
                                     </tr>
@@ -90,9 +90,11 @@
                                                 {% if not selected_activity.requires_payment %}
                                                     {% trans "Not applicable" %}
                                                 {% elif registration.has_completed_payment %}
-                                                    {% trans "Yes" %}
+                                                    {% trans "Paid online" %}
+                                                {% elif registration.pending_on_event_payment %}
+                                                    {% trans "Pending payment on event day" %}
                                                 {% else %}
-                                                    {% trans "No" %}
+                                                    {% trans "Pending" %}
                                                 {% endif %}
                                             </td>
                                             <td>

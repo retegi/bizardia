@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-16 18:31+0200\n"
+"POT-Creation-Date: 2026-04-16 21:16+0200\n"
 "PO-Revision-Date: 2026-03-10 17:32+0100\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,27 +50,31 @@ msgstr ""
 msgid "Argitaratua"
 msgstr ""
 
-#: applications/activity/forms.py:59 applications/activity/models.py:253
+#: applications/activity/forms.py:48
+msgid "Pagaré el día del evento"
+msgstr "Pagaré el día del evento"
+
+#: applications/activity/forms.py:64 applications/activity/models.py:253
 #: applications/product/models.py:6 applications/product/models.py:45
 #: templates/partner/partner_list.html:15
 msgid "Izena"
 msgstr "Nombre"
 
-#: applications/activity/forms.py:60 applications/activity/models.py:254
+#: applications/activity/forms.py:65 applications/activity/models.py:254
 msgid "Abizena"
 msgstr "Apellido"
 
-#: applications/activity/forms.py:61 applications/activity/models.py:255
+#: applications/activity/forms.py:66 applications/activity/models.py:255
 msgid "Herria"
 msgstr "Localidad"
 
-#: applications/activity/forms.py:62 applications/activity/models.py:258
+#: applications/activity/forms.py:67 applications/activity/models.py:258
 msgid "Mendi federazioko kidea"
 msgstr ""
 "¿Perteneces a la federación de montaña o dispones de algún seguro de "
 "montaña? "
 
-#: applications/activity/forms.py:63 applications/activity/models.py:265
+#: applications/activity/forms.py:68 applications/activity/models.py:265
 msgid "Erregistro anonimoa"
 msgstr "¿Quieres inscribirte de forma anónima?"
 
@@ -134,8 +138,8 @@ msgstr ""
 #: applications/activity/models.py:39
 #: templates/activity/activity_detail.html:33
 #: templates/activity/activity_detail.html:60
-#: templates/activity/activity_list.html:24 templates/home/index.html:130
-#: templates/home/index.html:337
+#: templates/activity/activity_list.html:24 templates/home/index.html:122
+#: templates/home/index.html:329
 msgid "Nork hartu dezake parte?"
 msgstr ""
 
@@ -167,7 +171,7 @@ msgstr ""
 msgid "Prezioa"
 msgstr ""
 
-#: applications/activity/models.py:83 applications/activity/models.py:348
+#: applications/activity/models.py:83 applications/activity/models.py:373
 msgid "Moneta"
 msgstr ""
 
@@ -203,7 +207,7 @@ msgstr ""
 msgid "Artxibatua"
 msgstr ""
 
-#: applications/activity/models.py:103 applications/activity/models.py:340
+#: applications/activity/models.py:103 applications/activity/models.py:359
 msgid "Egoera"
 msgstr ""
 
@@ -227,7 +231,7 @@ msgid "Nork argitaratu du"
 msgstr ""
 
 #: applications/activity/models.py:126 applications/activity/models.py:209
-#: applications/activity/models.py:242 applications/activity/models.py:315
+#: applications/activity/models.py:242 applications/activity/models.py:334
 msgid "Jarduera"
 msgstr ""
 
@@ -255,7 +259,7 @@ msgstr ""
 msgid "Jardueraren galderak eta erantzunak"
 msgstr ""
 
-#: applications/activity/models.py:250 applications/activity/models.py:322
+#: applications/activity/models.py:250 applications/activity/models.py:341
 #: applications/diningRoom/models.py:18 applications/partner/models.py:12
 msgid "Erabiltzailea"
 msgstr ""
@@ -272,77 +276,94 @@ msgstr ""
 msgid "Jardueretako izen-emateak"
 msgstr ""
 
-#: applications/activity/models.py:307
+#: applications/activity/models.py:322
+msgid "Stripe"
+msgstr "Stripe"
+
+#: applications/activity/models.py:323
+msgid "Ekitaldiaren egunean"
+msgstr "El día del evento"
+
+#: applications/activity/models.py:326
 msgid "Ordainketa zain"
 msgstr ""
 
-#: applications/activity/models.py:308
+#: applications/activity/models.py:327
 msgid "Ordainduta"
 msgstr ""
 
-#: applications/activity/models.py:309
+#: applications/activity/models.py:328
 msgid "Bertan behera"
 msgstr ""
 
-#: applications/activity/models.py:330
+#: applications/activity/models.py:349
 #, fuzzy
 #| msgid "Izena"
 msgid "Izen-ematea"
 msgstr "Nombre"
 
-#: applications/activity/models.py:333
+#: applications/activity/models.py:352
 msgid "Stripe Checkout Session ID"
 msgstr ""
 
-#: applications/activity/models.py:346
+#: applications/activity/models.py:366
+msgid "Ordainketa modua"
+msgstr "Método de pago"
+
+#: applications/activity/models.py:371
 msgid "Izen-emate datuak"
 msgstr ""
 
-#: applications/activity/models.py:347
+#: applications/activity/models.py:372
 msgid "Zenbatekoa"
 msgstr ""
 
-#: applications/activity/models.py:353
+#: applications/activity/models.py:378
 msgid "Jarduera izen-ematearen ordainketa"
 msgstr "Pago de inscripción a actividad"
 
-#: applications/activity/models.py:354
+#: applications/activity/models.py:379
 msgid "Jarduera izen-emateen ordainketak"
 msgstr "Pagos de inscripciones a actividades"
 
-#: applications/activity/views.py:167
+#: applications/activity/views.py:185
 msgid "Paid activities must be confirmed through Stripe Checkout."
 msgstr "Las actividades de pago deben confirmarse mediante Stripe Checkout."
 
-#: applications/activity/views.py:214
-msgid "Stripe is not configured."
-msgstr "Stripe no está configurado."
-
-#: applications/activity/views.py:223
+#: applications/activity/views.py:232
 msgid "This activity requires payment, but it has no valid price."
 msgstr "Esta actividad requiere pago, pero no tiene un precio válido."
 
-#: applications/activity/views.py:271
+#: applications/activity/views.py:244
+msgid "Registration confirmed. Payment is pending for the event day."
+msgstr "Inscripción confirmada. El pago queda pendiente para el día del evento."
+
+#: applications/activity/views.py:248
+msgid "Stripe is not configured."
+msgstr "Stripe no está configurado."
+
+#: applications/activity/views.py:297
 msgid "Stripe Checkout could not be started. Please try again."
 msgstr "No se ha podido iniciar Stripe Checkout. Inténtalo de nuevo."
 
-#: applications/activity/views.py:291
+#: applications/activity/views.py:317
 msgid "Stripe session is missing."
 msgstr "Falta la sesión de Stripe."
 
-#: applications/activity/views.py:308
+#: applications/activity/views.py:329 applications/activity/views.py:346
+msgid "Payment completed successfully and registration confirmed."
+msgstr ""
+"El pago se ha realizado correctamente y la inscripción ha sido confirmada."
+
+#: applications/activity/views.py:336
 msgid "Stripe payment could not be verified. Please try again."
 msgstr "No se ha podido verificar el pago de Stripe. Inténtalo de nuevo."
 
-#: applications/activity/views.py:312
+#: applications/activity/views.py:340
 msgid "Payment has not been completed."
 msgstr "El pago no se ha completado."
 
-#: applications/activity/views.py:328
-msgid "Payment completed and registration confirmed."
-msgstr "Pago completado e inscripción confirmada."
-
-#: applications/activity/views.py:345
+#: applications/activity/views.py:418
 msgid "Payment canceled. Registration has not been created."
 msgstr "Pago cancelado. No se ha creado la inscripción."
 
@@ -657,8 +678,8 @@ msgstr ""
 msgid "Email"
 msgstr "Email"
 
-#: applications/partner/models.py:16 templates/base.html:543
-#: templates/base.html:611 templates/partner/my_profile.html:27
+#: applications/partner/models.py:16 templates/base.html:549
+#: templates/base.html:617 templates/partner/my_profile.html:27
 #: templates/partner/my_profile_edit.html:72
 msgid "Avatar"
 msgstr ""
@@ -740,15 +761,15 @@ msgstr "Producto"
 msgid "Produktuak"
 msgstr "Producto"
 
-#: config/settings.py:200
+#: config/settings.py:201
 msgid "Español"
 msgstr "Castellano"
 
-#: config/settings.py:201
+#: config/settings.py:202
 msgid "English"
 msgstr "Inglés"
 
-#: config/settings.py:202
+#: config/settings.py:203
 msgid "Euskara"
 msgstr "Euskara"
 
@@ -922,7 +943,7 @@ msgstr "Precio"
 
 #: templates/activity/activity_detail.html:57
 #: templates/activity/activity_detail.html:66
-#: templates/activity/activity_list.html:31 templates/home/index.html:342
+#: templates/activity/activity_list.html:31 templates/home/index.html:334
 #: templates/home/index2.html:168
 msgid "Register"
 msgstr "Registrarse"
@@ -942,7 +963,7 @@ msgstr ""
 msgid "Activity"
 msgstr "Actividad"
 
-#: templates/activity/activity_list.html:29 templates/home/index.html:111
+#: templates/activity/activity_list.html:29 templates/home/index.html:103
 msgid "Details"
 msgstr "Detalles"
 
@@ -950,32 +971,42 @@ msgstr "Detalles"
 msgid "You must be logged in to complete this form."
 msgstr "Debes iniciar sesión para completar este formulario."
 
-#: templates/activity/activity_register.html:107
+#: templates/activity/activity_register.html:112
+msgid ""
+"Your registration will be confirmed now and payment will remain pending for "
+"the event day."
+msgstr ""
+"Tu inscripción se confirmará ahora y el pago quedará pendiente para el día "
+"del evento."
+
+#: templates/activity/activity_register.html:121
 msgid "Back"
 msgstr "Volver"
 
-#: templates/activity/activity_register.html:114
+#: templates/activity/activity_register.html:128
+#: templates/activity/activity_register.html:131
 msgid "Pay and confirm"
 msgstr "Pagar y confirmar"
 
-#: templates/activity/activity_register.html:116
+#: templates/activity/activity_register.html:129
+#: templates/activity/activity_register.html:133
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: templates/activity/activity_register.html:138
+#: templates/activity/activity_register.html:155
 msgid "Login required"
 msgstr "Inicio de sesión requerido"
 
-#: templates/activity/activity_register.html:139
+#: templates/activity/activity_register.html:156 templates/base.html:650
 #: templates/diningroom/collective_payment.html:108
 msgid "Close"
 msgstr "Cerrar"
 
-#: templates/activity/activity_register.html:142
+#: templates/activity/activity_register.html:159
 msgid "To register for this activity, please log in first."
 msgstr "Para inscribirte en esta actividad, inicia sesión primero."
 
-#: templates/activity/activity_register.html:145
+#: templates/activity/activity_register.html:162
 msgid "Log in"
 msgstr "Iniciar sesión"
 
@@ -1020,7 +1051,7 @@ msgstr "Apellido"
 
 #: templates/activity/activity_registration_list.html:73
 #: templates/diningroom/collective_payment.html:45
-#: templates/home/index.html:415 templates/home/index2.html:276
+#: templates/home/index.html:407 templates/home/index2.html:276
 msgid "Name"
 msgstr "Nombre"
 
@@ -1033,10 +1064,8 @@ msgid "Mountain federation"
 msgstr "Federación montaña"
 
 #: templates/activity/activity_registration_list.html:76
-#: templates/diningroom/collective_payment.html:13
-#: templates/diningroom/collective_payment.html:66
-msgid "Paid"
-msgstr "Pagado"
+msgid "Payment status"
+msgstr "Estado del pago"
 
 #: templates/activity/activity_registration_list.html:77
 #: templates/diningroom/collective_payment.html:49
@@ -1048,82 +1077,70 @@ msgid "Registration date and time"
 msgstr "Fecha y hora de registro"
 
 #: templates/activity/activity_registration_list.html:91
-#: templates/activity/activity_registration_list.html:100
+#: templates/activity/activity_registration_list.html:102
 msgid "Not applicable"
 msgstr "No aplica"
 
 #: templates/activity/activity_registration_list.html:93
-#: templates/diningroom/diningroom-copy20260215.html:224
-#: templates/diningroom/diningroom-copy20260215.html:257
-#: templates/diningroom/diningroom.html:225
-#: templates/diningroom/diningroom.html:259
-#: ⁨templates/diningroom/reservations copy.html⁩:42
-#: ⁨templates/diningroom/reservations copy.html⁩:44
-#: ⁨templates/diningroom/reservations copy.html⁩:45
-#: ⁨templates/diningroom/reservations copy.html⁩:48
-msgid "Yes"
-msgstr "Sí"
+msgid "Paid online"
+msgstr "Pagado online"
 
 #: templates/activity/activity_registration_list.html:95
-#: templates/diningroom/diningroom-copy20260215.html:221
-#: templates/diningroom/diningroom-copy20260215.html:255
-#: templates/diningroom/diningroom.html:222
-#: templates/diningroom/diningroom.html:256
-#: ⁨templates/diningroom/reservations copy.html⁩:42
-#: ⁨templates/diningroom/reservations copy.html⁩:44
-#: ⁨templates/diningroom/reservations copy.html⁩:45
-#: ⁨templates/diningroom/reservations copy.html⁩:48
-msgid "No"
-msgstr "No"
+msgid "Pending payment on event day"
+msgstr "Pendiente de pago el día del evento"
 
-#: templates/activity/activity_registration_list.html:117
+#: templates/activity/activity_registration_list.html:97
+msgid "Pending"
+msgstr "Pendiente"
+
+#: templates/activity/activity_registration_list.html:119
 msgid "There are no registrations for this activity"
 msgstr "No hay inscripciones para esta actividad"
 
 #: ⁨templates/base copy 2.html⁩:353 ⁨templates/base copy 2.html⁩:475
-#: templates/base.html:431 templates/base.html:670
-#: templates/home/index.html:286 templates/home/index2.html:89
+#: templates/base.html:431 templates/base.html:683
+#: templates/home/index.html:278 templates/home/index2.html:89
 #: templates/news/news_list.html:14
 msgid "News"
 msgstr "Noticias"
 
 #: ⁨templates/base copy 2.html⁩:356 ⁨templates/base copy 2.html⁩:476
-#: templates/base.html:437 templates/base.html:671
-#: ⁨templates/diningroom/reservations copy.html⁩:22 templates/home/index.html:317
+#: templates/base.html:437 templates/base.html:684
+#: ⁨templates/diningroom/reservations copy.html⁩:22 templates/home/index.html:309
 #: templates/home/index2.html:78 templates/home/index2.html:149
 msgid "Activities"
 msgstr "Actividades"
 
 #: ⁨templates/base copy 2.html⁩:359 ⁨templates/base copy 2.html⁩:477
-#: templates/base.html:443 templates/base.html:672
+#: templates/base.html:443 templates/base.html:685
 #: templates/gallery/gallery_list.html:8 templates/home/index2.html:187
 msgid "Gallery"
 msgstr "Galeria"
 
 #: ⁨templates/base copy 2.html⁩:365 ⁨templates/base copy 2.html⁩:478
-#: templates/base.html:463 templates/base.html:673
-#: templates/history/history_list.html:15 templates/home/index.html:362
+#: templates/base.html:463 templates/base.html:686
+#: templates/history/history_list.html:15 templates/home/index.html:354
 #: templates/home/index2.html:221
 msgid "History"
 msgstr "Historia"
 
 #: ⁨templates/base copy 2.html⁩:372 ⁨templates/base copy 2.html⁩:485
-#: templates/base.html:464 templates/base.html:680
+#: templates/base.html:470 templates/base.html:693
 msgid "Legal statutes"
 msgstr "Estatutos legales"
 
 #: ⁨templates/base copy 2.html⁩:373 ⁨templates/base copy 2.html⁩:486
-#: templates/base.html:465 templates/base.html:681
+#: templates/base.html:471 templates/base.html:694
 msgid "Organization chart"
 msgstr "Organigrama"
 
 #: ⁨templates/base copy 2.html⁩:374 ⁨templates/base copy 2.html⁩:487
-#: templates/base.html:466 templates/base.html:682
+#: templates/base.html:472 templates/base.html:695
 msgid "Transparency"
 msgstr "Transparencia"
 
 #: ⁨templates/base copy 2.html⁩:380 ⁨templates/base copy 2.html⁩:383
-#: templates/base.html:479 templates/base.html:482
+#: templates/base.html:485 templates/base.html:488
 msgid "Reserve"
 msgstr "Reservar"
 
@@ -1132,23 +1149,23 @@ msgid "See reservations"
 msgstr "Ver reservas"
 
 #: ⁨templates/base copy 2.html⁩:389 ⁨templates/base copy 2.html⁩:479
-#: ⁨templates/base copy.html⁩:39 templates/base.html:499 templates/base.html:674
-#: templates/home/index.html:384 templates/home/index2.html:243
+#: ⁨templates/base copy.html⁩:39 templates/base.html:505 templates/base.html:687
+#: templates/home/index.html:376 templates/home/index2.html:243
 msgid "Contact"
 msgstr "Contactar"
 
-#: ⁨templates/base copy 2.html⁩:429 templates/base.html:552
-#: templates/base.html:618
+#: ⁨templates/base copy 2.html⁩:429 templates/base.html:558
+#: templates/base.html:624
 msgid "Settings"
 msgstr "Configuración"
 
-#: ⁨templates/base copy 2.html⁩:430 templates/base.html:562
-#: templates/base.html:624
+#: ⁨templates/base copy 2.html⁩:430 templates/base.html:568
+#: templates/base.html:630
 msgid "Logout"
 msgstr "Cerrar sesión"
 
 #: ⁨templates/base copy 2.html⁩:438 ⁨templates/base copy 2.html⁩:441
-#: templates/base.html:571 templates/base.html:629
+#: templates/base.html:577 templates/base.html:635
 msgid "Login"
 msgstr "Iniciar sesión"
 
@@ -1156,19 +1173,19 @@ msgstr "Iniciar sesión"
 msgid "Sign up"
 msgstr "Registrarse"
 
-#: ⁨templates/base copy 2.html⁩:506 templates/base.html:701
+#: ⁨templates/base copy 2.html⁩:506 templates/base.html:714
 msgid "All rights reserved"
 msgstr "Todos los derechos reservados"
 
-#: ⁨templates/base copy 2.html⁩:510 templates/base.html:705
+#: ⁨templates/base copy 2.html⁩:510 templates/base.html:718
 msgid "Privacy Policy"
 msgstr "Política de privacidad"
 
-#: ⁨templates/base copy 2.html⁩:511 templates/base.html:706
+#: ⁨templates/base copy 2.html⁩:511 templates/base.html:719
 msgid "Terms and conditions"
 msgstr "Términos y condiciones"
 
-#: ⁨templates/base copy 2.html⁩:512 templates/base.html:707
+#: ⁨templates/base copy 2.html⁩:512 templates/base.html:720
 msgid "Cookies"
 msgstr "Cookies"
 
@@ -1196,52 +1213,76 @@ msgstr "Aviso legal"
 msgid "politica de cookies"
 msgstr "Política de cookies"
 
-#: templates/base.html:468 templates/partner/partner_list.html:7
+#: templates/base.html:465
+msgid "Administrar"
+msgstr "Administrar"
+
+#: templates/base.html:468
+msgid "Inskripzioak"
+msgstr "Inscripciones"
+
+#: templates/base.html:474 templates/partner/partner_list.html:7
 msgid "Bazkideen zerrenda"
 msgstr ""
 
-#: templates/base.html:483
+#: templates/base.html:489
 #, fuzzy
 #| msgid "All Reservations"
 msgid "All reservations"
 msgstr "Todas las reservas"
 
-#: templates/base.html:484
+#: templates/base.html:490
 msgid "My reservations"
 msgstr "Mis reservas"
 
-#: templates/base.html:485 templates/diningroom/collective_payment.html:21
+#: templates/base.html:491 templates/diningroom/collective_payment.html:21
 #: templates/diningroom/collective_payment.html:28
 msgid "Collective payment"
 msgstr ""
 
-#: templates/base.html:486 templates/tpv/my_ticket_list.html:6
+#: templates/base.html:492 templates/tpv/my_ticket_list.html:6
 msgid "My tickets"
 msgstr ""
 
-#: templates/base.html:557 templates/base.html:621
+#: templates/base.html:563 templates/base.html:627
 #: templates/partner/my_profile.html:8
 msgid "My profile"
 msgstr ""
 
-#: templates/base.html:782
-msgid "Más información"
-msgstr ""
+#: templates/base.html:667
+msgid "Gurutzeko elkartea."
+msgstr "Asociación de Gurutze."
 
-#: templates/base.html:787
+#: templates/base.html:681
+msgid "Links"
+msgstr "Enlaces"
+
+#: templates/base.html:792
+msgid ""
+"We use our own and third-party cookies to improve your experience. You can "
+"accept or configure them."
+msgstr ""
+"Utilizamos cookies propias y de terceros para mejorar tu experiencia. Puedes "
+"aceptarlas o configurarlas."
+
+#: templates/base.html:794
+msgid "More information"
+msgstr "Más información"
+
+#: templates/base.html:799
 msgid "Rechazar"
-msgstr ""
+msgstr "Rechazar"
 
-#: templates/base.html:788
+#: templates/base.html:800
 msgid "Aceptar"
-msgstr ""
+msgstr "Aceptar"
 
 #: templates/blog/blog_detail.html:26
 msgid "Back to blog"
 msgstr "Volver al blog"
 
 #: templates/blog/blog_list.html:20 templates/history/history_list.html:39
-#: templates/home/index.html:181
+#: templates/home/index.html:173
 #, fuzzy
 #| msgid "Read more"
 msgid "Read"
@@ -1255,6 +1296,11 @@ msgstr ""
 #: templates/diningroom/collective_payment.html:65
 msgid "Person"
 msgstr ""
+
+#: templates/diningroom/collective_payment.html:13
+#: templates/diningroom/collective_payment.html:66
+msgid "Paid"
+msgstr "Pagado"
 
 #: templates/diningroom/collective_payment.html:14
 #: templates/diningroom/collective_payment.html:80
@@ -1450,6 +1496,28 @@ msgstr "Ejemplo. Noche de juego de mes, reunión, etc."
 #: templates/diningroom/diningroom.html:219
 msgid "Is it a birthday celebration?"
 msgstr "¿Es una una celebración de cumpleaños?"
+
+#: templates/diningroom/diningroom-copy20260215.html:221
+#: templates/diningroom/diningroom-copy20260215.html:255
+#: templates/diningroom/diningroom.html:222
+#: templates/diningroom/diningroom.html:256
+#: ⁨templates/diningroom/reservations copy.html⁩:42
+#: ⁨templates/diningroom/reservations copy.html⁩:44
+#: ⁨templates/diningroom/reservations copy.html⁩:45
+#: ⁨templates/diningroom/reservations copy.html⁩:48
+msgid "No"
+msgstr "No"
+
+#: templates/diningroom/diningroom-copy20260215.html:224
+#: templates/diningroom/diningroom-copy20260215.html:257
+#: templates/diningroom/diningroom.html:225
+#: templates/diningroom/diningroom.html:259
+#: ⁨templates/diningroom/reservations copy.html⁩:42
+#: ⁨templates/diningroom/reservations copy.html⁩:44
+#: ⁨templates/diningroom/reservations copy.html⁩:45
+#: ⁨templates/diningroom/reservations copy.html⁩:48
+msgid "Yes"
+msgstr "Sí"
 
 #: templates/diningroom/reservation_success.html:9
 msgid "Reservation completed successfully"
@@ -1677,76 +1745,76 @@ msgstr "Pedir mesa"
 msgid "Pay account"
 msgstr "Pagar cuenta"
 
-#: templates/home/index.html:194
+#: templates/home/index.html:186
 msgid "Bazkide egin"
 msgstr ""
 
-#: templates/home/index.html:235
+#: templates/home/index.html:227
 msgid "Ongietorri mezua"
 msgstr ""
 
-#: templates/home/index.html:295 templates/home/index.html:307
-#: templates/home/index.html:352 templates/home/index2.html:110
+#: templates/home/index.html:287 templates/home/index.html:299
+#: templates/home/index.html:344 templates/home/index2.html:110
 #: templates/home/index2.html:141 templates/home/index2.html:178
 #: templates/home/index2.html:198 templates/home/index2.html:212
 #: templates/news/news_list.html:35
 msgid "See more"
 msgstr "Ver más"
 
-#: templates/home/index.html:342 templates/home/index2.html:168
+#: templates/home/index.html:334 templates/home/index2.html:168
 msgid "Detail"
 msgstr "Detalle"
 
-#: templates/home/index.html:371 templates/home/index2.html:129
+#: templates/home/index.html:363 templates/home/index2.html:129
 #: templates/home/index2.html:230 templates/news/news_list.html:25
 msgid "Read more"
 msgstr "Leer más"
 
-#: templates/home/index.html:376 templates/home/index2.html:235
+#: templates/home/index.html:368 templates/home/index2.html:235
 msgid "All articles on the history of Bizardia"
 msgstr "Todos los artículos de la historia de Bizardia"
 
-#: templates/home/index.html:387 templates/home/index2.html:246
+#: templates/home/index.html:379 templates/home/index2.html:246
 msgid "Contact information"
 msgstr "Información de contacto"
 
-#: templates/home/index.html:406 templates/home/index2.html:265
+#: templates/home/index.html:398 templates/home/index2.html:265
 msgid "Location"
 msgstr "Localización"
 
-#: templates/home/index.html:411 templates/home/index2.html:272
+#: templates/home/index.html:403 templates/home/index2.html:272
 msgid "Contact form"
 msgstr "Formulario de contacto"
 
-#: templates/home/index.html:423 templates/home/index2.html:284
+#: templates/home/index.html:415 templates/home/index2.html:284
 msgid "Subject"
 msgstr "Asunto"
 
-#: templates/home/index.html:425 templates/home/index2.html:286
+#: templates/home/index.html:417 templates/home/index2.html:286
 msgid "Select a subject"
 msgstr "Selecciona un tema"
 
-#: templates/home/index.html:426 templates/home/index2.html:287
+#: templates/home/index.html:418 templates/home/index2.html:287
 msgid "Reservations"
 msgstr "Reservas"
 
-#: templates/home/index.html:427 templates/home/index2.html:288
+#: templates/home/index.html:419 templates/home/index2.html:288
 msgid "Information"
 msgstr "Información"
 
-#: templates/home/index.html:428 templates/home/index2.html:289
+#: templates/home/index.html:420 templates/home/index2.html:289
 msgid "Events"
 msgstr "Eventos"
 
-#: templates/home/index.html:429 templates/home/index2.html:290
+#: templates/home/index.html:421 templates/home/index2.html:290
 msgid "Other topic"
 msgstr "Otro tema"
 
-#: templates/home/index.html:433 templates/home/index2.html:294
+#: templates/home/index.html:425 templates/home/index2.html:294
 msgid "Message"
 msgstr "Mensaje"
 
-#: templates/home/index.html:436 templates/home/index2.html:297
+#: templates/home/index.html:428 templates/home/index2.html:297
 msgid "Send message"
 msgstr "Enviar mensaje"
 

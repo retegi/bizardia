@@ -9,8 +9,10 @@ Mendi federazioko kidea: {{ registration.get_federation_member_display }}
 Izen-emate data eta ordua: {{ registration.created_at|date:"SHORT_DATETIME_FORMAT" }}
 
 {% if activity.requires_payment and registration.completed_payment %}
-Ordainketa egoera: ordainduta
+Ordainketa egoera: online ordainduta
 Ordaindutako zenbatekoa: {{ registration.completed_payment.amount }} {{ registration.completed_payment.currency|upper }}
+{% elif activity.requires_payment and registration.pending_on_event_payment %}
+Ordainketa egoera: izen-ematea baieztatuta dago, eta ordainketa ekitaldiaren egunerako zain geratu da.
 {% elif activity.requires_payment %}
 Ordainketa egoera: baieztapenaren zain
 {% else %}

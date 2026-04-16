@@ -301,8 +301,27 @@ class ActivityRegistration(models.Model):
             return payment
         return None
 
+    @property
+    def pending_on_event_payment(self):
+        try:
+            payment = self.payment
+        except ActivityRegistrationPayment.DoesNotExist:
+            return None
+
+        is_pending_on_event = (
+            payment.payment_method == ActivityRegistrationPayment.Method.ON_EVENT
+            and payment.status == ActivityRegistrationPayment.Status.PENDING
+        )
+        if is_pending_on_event:
+            return payment
+        return None
+
 
 class ActivityRegistrationPayment(models.Model):
+    class Method(models.TextChoices):
+        STRIPE = "stripe", _("Stripe")
+        ON_EVENT = "on_event", _("Ekitaldiaren egunean")
+
     class Status(models.TextChoices):
         PENDING = "pending", _("Ordainketa zain")
         COMPLETED = "completed", _("Ordainduta")
@@ -342,6 +361,12 @@ class ActivityRegistrationPayment(models.Model):
         choices=Status.choices,
         default=Status.PENDING,
         db_index=True
+    )
+    payment_method = models.CharField(
+        _("Ordainketa modua"),
+        max_length=12,
+        choices=Method.choices,
+        default=Method.STRIPE,
     )
     registration_data = models.JSONField(_("Izen-emate datuak"))
     amount = models.DecimalField(_("Zenbatekoa"), max_digits=6, decimal_places=2)

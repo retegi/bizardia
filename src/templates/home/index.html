@@ -96,14 +96,6 @@
 
 
 {% block content %}
-{% if messages %}
-    {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
-            {{ message }}
-        </div>
-    {% endfor %}
-{% endif %}
-
 {% if current_announcement %}
 <section class="container">
     <div class="announcement-banner announcement-banner--{{ current_announcement.banner_style }}">
@@ -473,4 +465,3 @@ window.addEventListener("load", function () {
 });
 </script>
 {% endblock %}
-

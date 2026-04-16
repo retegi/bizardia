@@ -161,6 +161,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "django.template.context_processors.i18n",
                 "applications.partner.context_processors.user_profile",
+                "applications.activity.context_processors.activity_navigation_permissions",
             ],
         },
     },
@@ -258,6 +259,7 @@ EMAIL_TIMEOUT = 30
 # ==================================================
 STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY", default="")
 STRIPE_PUBLISHABLE_KEY = env("STRIPE_PUBLISHABLE_KEY", default="")
+STRIPE_WEBHOOK_SECRET = env("STRIPE_WEBHOOK_SECRET", default="")
 
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

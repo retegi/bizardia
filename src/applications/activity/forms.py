@@ -44,6 +44,11 @@ class ActivityForm(forms.ModelForm):
         }
 
 class ActivityRegistrationForm(forms.ModelForm):
+    pay_on_event = forms.BooleanField(
+        label=_("Pagaré el día del evento"),
+        required=False,
+        widget=forms.CheckboxInput(attrs={"class": "form-check-input"}),
+    )
 
     class Meta:
         model = ActivityRegistration

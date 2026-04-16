@@ -141,11 +141,12 @@ class ActivityRegistrationPaymentAdmin(admin.ModelAdmin):
         "user",
         "amount",
         "currency",
+        "payment_method",
         "status",
         "registration",
         "created_at",
     )
-    list_filter = ("status", "currency", "activity")
+    list_filter = ("status", "payment_method", "currency", "activity")
     search_fields = (
         "activity__title",
         "user__username",
@@ -159,6 +160,7 @@ class ActivityRegistrationPaymentAdmin(admin.ModelAdmin):
         "registration",
         "stripe_checkout_session_id",
         "status",
+        "payment_method",
         "registration_data",
         "amount",
         "currency",
