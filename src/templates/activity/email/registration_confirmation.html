@@ -15,31 +15,27 @@
             <th align="left">Jarduera</th>
             <td>{{ activity.title }}</td>
         </tr>
-        {% if activity.activity_date_time %}
-        <tr>
-            <th align="left">Data eta ordua</th>
-            <td>{{ activity.activity_date_time|date:"SHORT_DATETIME_FORMAT" }}</td>
-        </tr>
-        {% endif %}
         <tr>
             <th align="left">Izena</th>
             <td>{{ registration.name }} {{ registration.surname }}</td>
         </tr>
-        {% if registration.locality %}
         <tr>
             <th align="left">Herria</th>
-            <td>{{ registration.locality }}</td>
+            <td>{{ registration.locality|default:"-" }}</td>
         </tr>
-        {% endif %}
         <tr>
             <th align="left">Mendi federazioko kidea</th>
             <td>{{ registration.get_federation_member_display }}</td>
         </tr>
         <tr>
-            <th align="left">Ordainketa</th>
+            <th align="left">Izen-emate data eta ordua</th>
+            <td>{{ registration.created_at|date:"SHORT_DATETIME_FORMAT" }}</td>
+        </tr>
+        <tr>
+            <th align="left">Ordainketa egoera</th>
             <td>
                 {% if activity.requires_payment and registration.completed_payment %}
-                    {{ registration.completed_payment.amount }} {{ registration.completed_payment.currency|upper }}
+                    ordainduta
                 {% elif activity.requires_payment %}
                     baieztapenaren zain
                 {% else %}
@@ -47,6 +43,12 @@
                 {% endif %}
             </td>
         </tr>
+        {% if activity.requires_payment and registration.completed_payment %}
+        <tr>
+            <th align="left">Ordaindutako zenbatekoa</th>
+            <td>{{ registration.completed_payment.amount }} {{ registration.completed_payment.currency|upper }}</td>
+        </tr>
+        {% endif %}
     </table>
 
     <p style="margin-top: 20px;">Eskerrik asko.</p>

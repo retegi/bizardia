@@ -3,17 +3,18 @@ Kaixo {{ registration.name }},
 Zure izen-ematea ongi jaso dugu.
 
 Jarduera: {{ activity.title }}
-{% if activity.activity_date_time %}Data eta ordua: {{ activity.activity_date_time|date:"SHORT_DATETIME_FORMAT" }}{% endif %}
 Izena: {{ registration.name }} {{ registration.surname }}
-{% if registration.locality %}Herria: {{ registration.locality }}{% endif %}
+Herria: {{ registration.locality|default:"-" }}
 Mendi federazioko kidea: {{ registration.get_federation_member_display }}
+Izen-emate data eta ordua: {{ registration.created_at|date:"SHORT_DATETIME_FORMAT" }}
 
 {% if activity.requires_payment and registration.completed_payment %}
-Ordainketa: {{ registration.completed_payment.amount }} {{ registration.completed_payment.currency|upper }}
+Ordainketa egoera: ordainduta
+Ordaindutako zenbatekoa: {{ registration.completed_payment.amount }} {{ registration.completed_payment.currency|upper }}
 {% elif activity.requires_payment %}
-Ordainketa: baieztapenaren zain
+Ordainketa egoera: baieztapenaren zain
 {% else %}
-Ordainketa: ez dagokio
+Ordainketa egoera: ez dagokio
 {% endif %}
 
 Eskerrik asko.
