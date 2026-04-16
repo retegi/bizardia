@@ -5,9 +5,11 @@ from django.contrib.auth import get_user_model
 from django.core import mail
 from django.test import TestCase, override_settings
 from django.urls import reverse
+from django.utils import translation
 
 from .models import Activity, ActivityRegistration, ActivityRegistrationPayment, YesNo
 from .services import send_activity_registration_confirmation_email
+from .views import get_stripe_checkout_locale
 
 
 @override_settings(
@@ -131,3 +133,60 @@ class ActivityRegistrationConfirmationEmailTests(TestCase):
         self.assertEqual(mail.outbox[1].to, [self.user.email])
         self.assertIn("Ordainketa egoera: ordainduta", mail.outbox[1].body)
         self.assertIn("Ordaindutako zenbatekoa: 12,50 EUR", mail.outbox[1].body)
+
+
+@override_settings(STRIPE_SECRET_KEY="sk_test_fake")
+class ActivityStripeCheckoutLocaleTests(TestCase):
+    def setUp(self):
+        self.user = get_user_model().objects.create_user(
+            username="ordaintzailea",
+            email="ordaintzailea@example.com",
+            password="secret",
+        )
+        self.activity = Activity.objects.create(
+            title="Ordainpeko jarduera",
+            slug="ordainpeko-jarduera",
+            author="Bizardia",
+            status=Activity.Status.PUBLISHED,
+            requires_payment=True,
+            price=Decimal("8.00"),
+            currency="eur",
+        )
+
+    def registration_payload(self):
+        return {
+            "name": "Jon",
+            "surname": "Agirre",
+            "locality": "Azpeitia",
+            "federation_member": YesNo.NO,
+            "anonymous": YesNo.NO,
+        }
+
+    def test_stripe_checkout_locale_mapping(self):
+        cases = (
+            ("es", "es"),
+            ("es-es", "es"),
+            ("en", "en"),
+            ("en-us", "en"),
+            ("eu", "es"),
+            ("fr", "es"),
+        )
+
+        for language, expected_locale in cases:
+            with self.subTest(language=language), translation.override(language):
+                self.assertEqual(get_stripe_checkout_locale(), expected_locale)
+
+    @patch("applications.activity.views.stripe.checkout.Session.create")
+    def test_activity_checkout_passes_resolved_locale_to_stripe(self, create_mock):
+        create_mock.return_value = Mock(id="cs_test_locale", url="https://checkout.stripe.test")
+        self.client.force_login(self.user)
+
+        with translation.override("eu"):
+            response = self.client.post(
+                reverse("activity_app:activity_checkout", kwargs={"slug": self.activity.slug}),
+                self.registration_payload(),
+            )
+
+        self.assertEqual(response.status_code, 302)
+        create_mock.assert_called_once()
+        self.assertEqual(create_mock.call_args.kwargs["locale"], "es")

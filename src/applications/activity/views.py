@@ -19,13 +19,24 @@ from django.contrib.auth.decorators import login_required
 from .forms import ActivityRegistrationForm
 from django.contrib.auth.decorators import user_passes_test
 from django.utils import timezone
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import get_language, gettext_lazy as _
 from django.views.decorators.http import require_POST
 
 ACTIVITY_REGISTRATION_LIST_GROUPS = (
     "ekintza-antolatzaileak",
     "zuzendaritza-batzordea",
 )
+
+STRIPE_CHECKOUT_LOCALES = {
+    "es": "es",
+    "en": "en",
+    "eu": "es",
+}
+
+
+def get_stripe_checkout_locale():
+    language = (get_language() or "").split("-")[0].lower()
+    return STRIPE_CHECKOUT_LOCALES.get(language, "es")
 
 
 def activity_list(request):
@@ -266,6 +277,7 @@ def activity_checkout(request, slug):
             },
             success_url=f"{success_url}?session_id={{CHECKOUT_SESSION_ID}}",
             cancel_url=f"{cancel_url}?session_id={{CHECKOUT_SESSION_ID}}",
+            locale=get_stripe_checkout_locale(),
         )
     except stripe.StripeError:
         form.add_error(None, _("Stripe Checkout could not be started. Please try again."))
