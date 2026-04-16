@@ -1,12 +1,36 @@
 import logging
 
 from django.conf import settings
-from django.core.mail import EmailMessage, EmailMultiAlternatives
+from django.core.mail import EmailMessage, EmailMultiAlternatives, get_connection
 from django.template.loader import render_to_string
 from django.utils import timezone
 from django.utils.translation import override
 
 logger = logging.getLogger(__name__)
+
+
+def get_activity_registration_email_connection():
+    return get_connection(
+        timeout=getattr(settings, "ACTIVITY_REGISTRATION_EMAIL_TIMEOUT", 10),
+    )
+
+
+def send_activity_registration_email_message(message, registration, email_type):
+    try:
+        message.connection = get_activity_registration_email_connection()
+        return message.send(fail_silently=False) > 0
+    except Exception:
+        logger.exception(
+            "Activity registration %s email could not be sent.",
+            email_type,
+            extra={
+                "registration_id": registration.pk,
+                "activity_id": registration.activity_id,
+                "activity_title": registration.activity.title,
+                "user_id": registration.user_id,
+            },
+        )
+        return False
 
 
 def send_activity_registration_admin_email(registration):
@@ -48,13 +72,7 @@ def send_activity_registration_admin_email(registration):
         to=[recipient],
     )
 
-    try:
-        message.send(fail_silently=False)
-    except Exception:
-        logger.exception("Activity registration admin email could not be sent.")
-        return False
-
-    return True
+    return send_activity_registration_email_message(message, registration, "admin")
 
 
 def send_activity_registration_confirmation_email(registration):
@@ -66,8 +84,6 @@ def send_activity_registration_confirmation_email(registration):
     user = registration.user
     recipient = getattr(user, "email", "") if user else ""
     if not recipient:
-        registration.confirmation_email_sent_at = timezone.now()
-        registration.save(update_fields=["confirmation_email_sent_at"])
         return False
 
     context = {
@@ -93,10 +109,7 @@ def send_activity_registration_confirmation_email(registration):
     )
     message.attach_alternative(html_body, "text/html")
 
-    try:
-        message.send(fail_silently=False)
-    except Exception:
-        logger.exception("Activity registration confirmation email could not be sent.")
+    if not send_activity_registration_email_message(message, registration, "confirmation"):
         return False
 
     registration.confirmation_email_sent_at = timezone.now()

@@ -86,7 +86,7 @@ class ActivityRegistrationConfirmationEmailTests(TestCase):
         self.assertFalse(send_activity_registration_confirmation_email(registration))
 
         registration.refresh_from_db()
-        self.assertIsNotNone(registration.confirmation_email_sent_at)
+        self.assertIsNone(registration.confirmation_email_sent_at)
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].to, ["bizardia@gmail.com"])
 
@@ -133,6 +133,59 @@ class ActivityRegistrationConfirmationEmailTests(TestCase):
         self.assertEqual(mail.outbox[1].to, [self.user.email])
         self.assertIn("Ordainketa egoera: ordainduta", mail.outbox[1].body)
         self.assertIn("Ordaindutako zenbatekoa: 12,50 EUR", mail.outbox[1].body)
+
+    @patch(
+        "applications.activity.services.EmailMultiAlternatives.send",
+        side_effect=TimeoutError("SMTP timeout"),
+    )
+    @patch("applications.activity.views.stripe.checkout.Session.retrieve")
+    def test_paid_registration_success_survives_confirmation_email_timeout(
+        self,
+        retrieve_mock,
+        send_mock,
+    ):
+        paid_activity = Activity.objects.create(
+            title="Ikastaroa timeout",
+            slug="ikastaroa-timeout",
+            author="Bizardia",
+            status=Activity.Status.PUBLISHED,
+            requires_payment=True,
+            price=Decimal("12.50"),
+            currency="eur",
+        )
+        payment = ActivityRegistrationPayment.objects.create(
+            activity=paid_activity,
+            user=self.user,
+            registration_data=self.registration_payload(),
+            amount=paid_activity.price,
+            currency=paid_activity.currency,
+            stripe_checkout_session_id="cs_test_timeout",
+        )
+        retrieve_mock.return_value = Mock(payment_status="paid")
+        self.client.force_login(self.user)
+
+        with self.assertLogs("applications.activity.services", level="ERROR") as logs:
+            response = self.client.get(
+                reverse(
+                    "activity_app:activity_checkout_success",
+                    kwargs={"slug": paid_activity.slug},
+                ),
+                {"session_id": payment.stripe_checkout_session_id},
+            )
+
+        self.assertEqual(response.status_code, 302)
+        registration = ActivityRegistration.objects.get(activity=paid_activity)
+        payment.refresh_from_db()
+        self.assertEqual(payment.status, ActivityRegistrationPayment.Status.COMPLETED)
+        self.assertEqual(payment.registration, registration)
+        self.assertIsNone(registration.confirmation_email_sent_at)
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].to, ["bizardia@gmail.com"])
+        self.assertTrue(send_mock.called)
+        self.assertIn(
+            "Activity registration confirmation email could not be sent.",
+            "\n".join(logs.output),
+        )
 
 
 @override_settings(STRIPE_SECRET_KEY="sk_test_fake")
