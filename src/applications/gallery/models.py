@@ -1,10 +1,13 @@
-from django.db import models
-from tinymce.models import HTMLField
-from django.utils.translation import gettext_lazy as _
-from PIL import Image
+import os
 from io import BytesIO
-from django.core.files.base import ContentFile
 
+from django.core.files.base import ContentFile
+from django.core.exceptions import ValidationError
+from django.db import models
+from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
+from PIL import Image, ImageOps
+from tinymce.models import HTMLField
 
 
 class Gallery(models.Model):
@@ -27,6 +30,18 @@ class Gallery(models.Model):
         _("Argitaratua"),
         default=True
     )
+    featured = models.BooleanField(
+        _("Destacada"),
+        default=False,
+    )
+    cover_image = models.ForeignKey(
+        "GalleryImage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="cover_for_galleries",
+        verbose_name=_("Fotografía de portada"),
+    )
 
     class Meta:
         verbose_name = _("Galeria")
@@ -36,10 +51,22 @@ class Gallery(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse("gallery_app:gallery_detail", kwargs={"pk": self.pk})
 
-# 🔹 NUEVO MODELO
+    def clean(self):
+        super().clean()
+        if (
+            self.cover_image
+            and self.pk
+            and self.cover_image.gallery_id != self.pk
+        ):
+            raise ValidationError(
+                {"cover_image": _("La fotografía de portada debe pertenecer a esta galería.")}
+            )
+
+
 class GalleryImage(models.Model):
-
     gallery = models.ForeignKey(
         Gallery,
         on_delete=models.CASCADE,
@@ -70,14 +97,15 @@ class GalleryImage(models.Model):
     def __str__(self):
         return f"{self.gallery.title} - {self.id}"
 
-    def compress_image(self, image_field, max_width=1600, quality=80):
+    def process_image(self, image_field, max_width=1600, quality=90):
         img = Image.open(image_field)
 
-        # Convertir a RGB si viene PNG con transparencia
+        # Apply EXIF orientation so saved bytes are physically correct.
+        img = ImageOps.exif_transpose(img)
+
         if img.mode in ("RGBA", "P"):
             img = img.convert("RGB")
 
-        # Redimensionar si es demasiado grande
         if img.width > max_width:
             ratio = max_width / float(img.width)
             new_height = int(float(img.height) * ratio)
@@ -86,14 +114,21 @@ class GalleryImage(models.Model):
         output = BytesIO()
         img.save(output, format="JPEG", quality=quality, optimize=True)
 
-        filename = image_field.name.split(".")[0] + ".jpg"
-
+        base_name = os.path.splitext(image_field.name)[0]
+        filename = f"{base_name}.jpg"
         return ContentFile(output.getvalue(), name=filename)
 
+    def _image_has_changed(self):
+        if not self.image:
+            return False
+        if not self.pk:
+            return True
+        old = type(self).objects.filter(pk=self.pk).only("image").first()
+        if not old:
+            return True
+        return old.image.name != self.image.name
+
     def save(self, *args, **kwargs):
-
-        # Solo comprimir cuando es nueva imagen
-        if self.image and not self.pk:
-            self.image = self.compress_image(self.image)
-
+        if self._image_has_changed():
+            self.image = self.process_image(self.image)
         super().save(*args, **kwargs)

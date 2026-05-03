@@ -77,6 +77,29 @@
     transition-duration: 0.1s;
 }
 
+.featured-gallery-card {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.featured-gallery-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.featured-gallery-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.featured-gallery-card .btn {
+    margin-top: 0.75rem;
+    width: 100%;
+}
+
 /* desktop */
 @media (min-width: 992px) {
     .hero-section,
@@ -185,6 +208,19 @@
             {% if home_content.show_membership_button %}
             <a href="{% url 'home_app:home' %}#contact" target="_blank"><button class="btn btn-sm bg-bizardia4 text-light w-100 mt-3">{% trans 'Bazkide egin' %}</button></a>
             {% endif %}
+            {% endif %}
+
+            {% if featured_gallery and featured_gallery.cover_image %}
+            <div class="featured-gallery-card">
+                <h3 class="text-bizardia4">{% trans "Galería destacada" %}</h3>
+                <a href="{% url 'gallery_app:gallery_detail' featured_gallery.pk %}">
+                    <img src="{{ featured_gallery.cover_image.image.url }}" alt="{{ featured_gallery.title }}">
+                </a>
+                <h6 class="mt-2 mb-0">{{ featured_gallery.title }}</h6>
+                <a href="{% url 'gallery_app:gallery_detail' featured_gallery.pk %}" class="btn btn-sm bg-bizardia text-white">
+                    {% trans "Ver galería" %}
+                </a>
+            </div>
             {% endif %}
         </div>
         <div class="col-lg-6 col-md-12 p-3">

@@ -45,6 +45,16 @@ class HomePageView(TemplateView):
         ).order_by('activity_date_time')
         context['latest_history'] = History.objects.order_by('-published_at')[:1]  # Últimas 5 noticias
         context['latest_images'] = Gallery.objects.order_by('-published_at')[:6]  # Últimas 5 noticias
+        context['featured_gallery'] = (
+            Gallery.objects.filter(
+                featured=True,
+                published=True,
+                cover_image__isnull=False,
+            )
+            .select_related("cover_image")
+            .order_by("-published_at", "-id")
+            .first()
+        )
         context['home_content'] = HomeContent.objects.first()
         return context
 

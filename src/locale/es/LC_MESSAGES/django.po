@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-16 21:16+0200\n"
+"POT-Creation-Date: 2026-05-03 21:31+0200\n"
 "PO-Revision-Date: 2026-03-10 17:32+0100\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgid "Público"
 msgstr ""
 
 #: applications/activity/admin.py:81 applications/activity/models.py:99
-#: applications/blog/models.py:48 applications/gallery/models.py:27
+#: applications/blog/models.py:48 applications/gallery/models.py:30
 #: applications/history/models.py:54 applications/news/models.py:58
 msgid "Argitaratua"
 msgstr ""
@@ -87,8 +87,8 @@ msgid "Ez"
 msgstr ""
 
 #: applications/activity/models.py:25 applications/announcement/models.py:19
-#: applications/blog/models.py:8 applications/gallery/models.py:11
-#: applications/gallery/models.py:55 applications/history/models.py:8
+#: applications/blog/models.py:8 applications/gallery/models.py:14
+#: applications/gallery/models.py:82 applications/history/models.py:8
 #: applications/news/models.py:15
 #, fuzzy
 #| msgid "Izena"
@@ -138,8 +138,8 @@ msgstr ""
 #: applications/activity/models.py:39
 #: templates/activity/activity_detail.html:33
 #: templates/activity/activity_detail.html:60
-#: templates/activity/activity_list.html:24 templates/home/index.html:122
-#: templates/home/index.html:329
+#: templates/activity/activity_list.html:24 templates/home/index.html:145
+#: templates/home/index.html:365
 msgid "Nork hartu dezake parte?"
 msgstr ""
 
@@ -221,7 +221,7 @@ msgid "Eguneratua"
 msgstr ""
 
 #: applications/activity/models.py:115 applications/blog/models.py:31
-#: applications/gallery/models.py:20 applications/history/models.py:37
+#: applications/gallery/models.py:23 applications/history/models.py:37
 #: applications/news/models.py:63
 msgid "Argitaratze-data"
 msgstr ""
@@ -247,7 +247,7 @@ msgstr ""
 msgid "Erantzuna"
 msgstr ""
 
-#: applications/activity/models.py:223 applications/gallery/models.py:61
+#: applications/activity/models.py:223 applications/gallery/models.py:88
 msgid "Ordena"
 msgstr ""
 
@@ -336,7 +336,8 @@ msgstr "Esta actividad requiere pago, pero no tiene un precio válido."
 
 #: applications/activity/views.py:244
 msgid "Registration confirmed. Payment is pending for the event day."
-msgstr "Inscripción confirmada. El pago queda pendiente para el día del evento."
+msgstr ""
+"Inscripción confirmada. El pago queda pendiente para el día del evento."
 
 #: applications/activity/views.py:248
 msgid "Stripe is not configured."
@@ -400,7 +401,7 @@ msgid "Zuzendaritzarentzat bakarrik"
 msgstr ""
 
 #: applications/announcement/models.py:29 applications/blog/models.py:19
-#: applications/gallery/models.py:15 applications/history/models.py:25
+#: applications/gallery/models.py:18 applications/history/models.py:25
 #: applications/news/models.py:26
 msgid "Edukia"
 msgstr ""
@@ -456,18 +457,18 @@ msgstr "Producto"
 msgid "Slug"
 msgstr ""
 
-#: applications/blog/models.py:25 applications/gallery/models.py:17
+#: applications/blog/models.py:25 applications/gallery/models.py:20
 #: applications/history/models.py:31 applications/news/models.py:32
 msgid "Laburpena"
 msgstr ""
 
-#: applications/blog/models.py:36 applications/gallery/models.py:50
+#: applications/blog/models.py:36 applications/gallery/models.py:77
 #: applications/history/models.py:42 applications/news/models.py:38
 #: applications/product/models.py:17 applications/product/models.py:77
 msgid "Irudia"
 msgstr ""
 
-#: applications/blog/models.py:43 applications/gallery/models.py:24
+#: applications/blog/models.py:43 applications/gallery/models.py:27
 #: applications/history/models.py:49 applications/news/models.py:45
 msgid "Egilea"
 msgstr ""
@@ -622,27 +623,76 @@ msgstr ""
 msgid "Erreserba-tarteak"
 msgstr ""
 
-#: applications/gallery/models.py:13 applications/history/models.py:19
-msgid "Data"
+#: applications/gallery/admin.py:81
+msgid "Ez daukazu irudiak gehitzeko baimenik."
 msgstr ""
 
-#: applications/gallery/models.py:32
+#: applications/gallery/admin.py:120
+#, python-format
+msgid "Errorea %(name)s fitxategiarekin: %(error)s"
+msgstr ""
+
+#: applications/gallery/admin.py:128
+#, python-format
+msgid "%(count)s irudi igo dira zuzen."
+msgstr ""
+
+#: applications/gallery/admin.py:134
+#, python-format
+msgid "%(count)s irudik huts egin dute."
+msgstr ""
+
+#: applications/gallery/admin.py:145
+#: templates/admin/gallery/galleryimage/change_list.html:6
+msgid "Subir varias fotos"
+msgstr ""
+
+#: applications/gallery/forms.py:37 applications/gallery/models.py:47
 msgid "Galeria"
 msgstr ""
 
-#: applications/gallery/models.py:33
+#: applications/gallery/forms.py:41
+msgid "Irudiak"
+msgstr ""
+
+#: applications/gallery/forms.py:48
+msgid "Aukeratu gutxienez irudi bat."
+msgstr ""
+
+#: applications/gallery/forms.py:54
+#, python-format
+msgid "Fitxategi baliogabea: %(name)s"
+msgstr ""
+
+#: applications/gallery/models.py:16 applications/history/models.py:19
+msgid "Data"
+msgstr ""
+
+#: applications/gallery/models.py:34
+msgid "Destacada"
+msgstr ""
+
+#: applications/gallery/models.py:43
+msgid "Fotografía de portada"
+msgstr ""
+
+#: applications/gallery/models.py:48
 #, fuzzy
 #| msgid "Categories"
 msgid "Galeriak"
 msgstr "Categorías"
 
-#: applications/gallery/models.py:67
+#: applications/gallery/models.py:65
+msgid "La fotografía de portada debe pertenecer a esta galería."
+msgstr ""
+
+#: applications/gallery/models.py:94
 #, fuzzy
 #| msgid "Categories"
 msgid "Galeriako irudia"
 msgstr "Categorías"
 
-#: applications/gallery/models.py:68
+#: applications/gallery/models.py:95
 #, fuzzy
 #| msgid "Categories"
 msgid "Galeriako irudiak"
@@ -943,7 +993,7 @@ msgstr "Precio"
 
 #: templates/activity/activity_detail.html:57
 #: templates/activity/activity_detail.html:66
-#: templates/activity/activity_list.html:31 templates/home/index.html:334
+#: templates/activity/activity_list.html:31 templates/home/index.html:370
 #: templates/home/index2.html:168
 msgid "Register"
 msgstr "Registrarse"
@@ -963,7 +1013,7 @@ msgstr ""
 msgid "Activity"
 msgstr "Actividad"
 
-#: templates/activity/activity_list.html:29 templates/home/index.html:103
+#: templates/activity/activity_list.html:29 templates/home/index.html:126
 msgid "Details"
 msgstr "Detalles"
 
@@ -999,6 +1049,7 @@ msgstr "Inicio de sesión requerido"
 
 #: templates/activity/activity_register.html:156 templates/base.html:650
 #: templates/diningroom/collective_payment.html:108
+#: templates/gallery/gallery_detail.html:201
 msgid "Close"
 msgstr "Cerrar"
 
@@ -1051,7 +1102,7 @@ msgstr "Apellido"
 
 #: templates/activity/activity_registration_list.html:73
 #: templates/diningroom/collective_payment.html:45
-#: templates/home/index.html:407 templates/home/index2.html:276
+#: templates/home/index.html:443 templates/home/index2.html:276
 msgid "Name"
 msgstr "Nombre"
 
@@ -1097,16 +1148,24 @@ msgstr "Pendiente"
 msgid "There are no registrations for this activity"
 msgstr "No hay inscripciones para esta actividad"
 
+#: templates/admin/gallery/galleryimage/upload_multiple.html:26
+msgid "Subir"
+msgstr ""
+
+#: templates/admin/gallery/galleryimage/upload_multiple.html:27
+msgid "Volver al listado"
+msgstr ""
+
 #: ⁨templates/base copy 2.html⁩:353 ⁨templates/base copy 2.html⁩:475
 #: templates/base.html:431 templates/base.html:683
-#: templates/home/index.html:278 templates/home/index2.html:89
+#: templates/home/index.html:314 templates/home/index2.html:89
 #: templates/news/news_list.html:14
 msgid "News"
 msgstr "Noticias"
 
 #: ⁨templates/base copy 2.html⁩:356 ⁨templates/base copy 2.html⁩:476
 #: templates/base.html:437 templates/base.html:684
-#: ⁨templates/diningroom/reservations copy.html⁩:22 templates/home/index.html:309
+#: ⁨templates/diningroom/reservations copy.html⁩:22 templates/home/index.html:345
 #: templates/home/index2.html:78 templates/home/index2.html:149
 msgid "Activities"
 msgstr "Actividades"
@@ -1119,7 +1178,7 @@ msgstr "Galeria"
 
 #: ⁨templates/base copy 2.html⁩:365 ⁨templates/base copy 2.html⁩:478
 #: templates/base.html:463 templates/base.html:686
-#: templates/history/history_list.html:15 templates/home/index.html:354
+#: templates/history/history_list.html:15 templates/home/index.html:390
 #: templates/home/index2.html:221
 msgid "History"
 msgstr "Historia"
@@ -1150,7 +1209,7 @@ msgstr "Ver reservas"
 
 #: ⁨templates/base copy 2.html⁩:389 ⁨templates/base copy 2.html⁩:479
 #: ⁨templates/base copy.html⁩:39 templates/base.html:505 templates/base.html:687
-#: templates/home/index.html:376 templates/home/index2.html:243
+#: templates/home/index.html:412 templates/home/index2.html:243
 msgid "Contact"
 msgstr "Contactar"
 
@@ -1282,7 +1341,7 @@ msgid "Back to blog"
 msgstr "Volver al blog"
 
 #: templates/blog/blog_list.html:20 templates/history/history_list.html:39
-#: templates/home/index.html:173
+#: templates/home/index.html:196
 #, fuzzy
 #| msgid "Read more"
 msgid "Read"
@@ -1633,11 +1692,21 @@ msgstr "Mesa"
 msgid "Options"
 msgstr "Opciones"
 
-#: templates/gallery/gallery_detail.html:43
+#: templates/gallery/gallery_detail.html:187
 #, fuzzy
 #| msgid "Back to blog"
 msgid "Back to gallery"
 msgstr "Volver al blog"
+
+#: templates/gallery/gallery_detail.html:205
+msgid "Previous photo"
+msgstr ""
+
+#: templates/gallery/gallery_detail.html:214
+#, fuzzy
+#| msgid "Add photo"
+msgid "Next photo"
+msgstr "Añadir imagen"
 
 #: templates/gallery/gallery_form.html:11
 msgid "Add photo"
@@ -1745,76 +1814,84 @@ msgstr "Pedir mesa"
 msgid "Pay account"
 msgstr "Pagar cuenta"
 
-#: templates/home/index.html:186
+#: templates/home/index.html:209
 msgid "Bazkide egin"
 msgstr ""
 
-#: templates/home/index.html:227
+#: templates/home/index.html:215
+msgid "Galería destacada"
+msgstr "Galería destacada"
+
+#: templates/home/index.html:221
+msgid "Ver galería"
+msgstr "Ver galería"
+
+#: templates/home/index.html:263
 msgid "Ongietorri mezua"
 msgstr ""
 
-#: templates/home/index.html:287 templates/home/index.html:299
-#: templates/home/index.html:344 templates/home/index2.html:110
+#: templates/home/index.html:323 templates/home/index.html:335
+#: templates/home/index.html:380 templates/home/index2.html:110
 #: templates/home/index2.html:141 templates/home/index2.html:178
 #: templates/home/index2.html:198 templates/home/index2.html:212
 #: templates/news/news_list.html:35
 msgid "See more"
 msgstr "Ver más"
 
-#: templates/home/index.html:334 templates/home/index2.html:168
+#: templates/home/index.html:370 templates/home/index2.html:168
 msgid "Detail"
 msgstr "Detalle"
 
-#: templates/home/index.html:363 templates/home/index2.html:129
+#: templates/home/index.html:399 templates/home/index2.html:129
 #: templates/home/index2.html:230 templates/news/news_list.html:25
 msgid "Read more"
 msgstr "Leer más"
 
-#: templates/home/index.html:368 templates/home/index2.html:235
+#: templates/home/index.html:404 templates/home/index2.html:235
 msgid "All articles on the history of Bizardia"
 msgstr "Todos los artículos de la historia de Bizardia"
 
-#: templates/home/index.html:379 templates/home/index2.html:246
+#: templates/home/index.html:415 templates/home/index2.html:246
 msgid "Contact information"
 msgstr "Información de contacto"
 
-#: templates/home/index.html:398 templates/home/index2.html:265
+#: templates/home/index.html:434 templates/home/index2.html:265
 msgid "Location"
 msgstr "Localización"
 
-#: templates/home/index.html:403 templates/home/index2.html:272
+#: templates/home/index.html:439 templates/home/index2.html:272
 msgid "Contact form"
 msgstr "Formulario de contacto"
 
-#: templates/home/index.html:415 templates/home/index2.html:284
+#: templates/home/index.html:451 templates/home/index2.html:284
 msgid "Subject"
 msgstr "Asunto"
 
-#: templates/home/index.html:417 templates/home/index2.html:286
+#: templates/home/index.html:453 templates/home/index2.html:286
 msgid "Select a subject"
 msgstr "Selecciona un tema"
 
-#: templates/home/index.html:418 templates/home/index2.html:287
+#: templates/home/index.html:454 templates/home/index2.html:287
 msgid "Reservations"
 msgstr "Reservas"
 
-#: templates/home/index.html:419 templates/home/index2.html:288
+#: templates/home/index.html:455 templates/home/index2.html:288
 msgid "Information"
 msgstr "Información"
 
-#: templates/home/index.html:420 templates/home/index2.html:289
+#: templates/home/index.html:456 templates/home/index2.html:289
 msgid "Events"
 msgstr "Eventos"
 
-#: templates/home/index.html:421 templates/home/index2.html:290
+#: templates/home/index.html:457 templates/home/index2.html:290
 msgid "Other topic"
 msgstr "Otro tema"
 
-#: templates/home/index.html:425 templates/home/index2.html:294
+#: templates/home/index.html:461 templates/home/index2.html:294
 msgid "Message"
 msgstr "Mensaje"
 
-#: templates/home/index.html:428 templates/home/index2.html:297
+#: templates/home/index.html:464 templates/home/index2.html:297
 msgid "Send message"
 msgstr "Enviar mensaje"
 
